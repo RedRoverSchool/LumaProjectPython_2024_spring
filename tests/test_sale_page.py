@@ -19,13 +19,16 @@ def test_availability_of_name():
 @allure.link('https://trello.com/c/eVJdCZD6')
 def test_availability_of_links_fitness():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
-
     browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).should(be.visible)
 
 
 @allure.link('https://trello.com/c/eabRQXD0')
 def test_availability_of_links_bags():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
-
     browser.element(SalePageLocators.BAGS_LINK).should(be.visible)
-    browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).should(be.visible)
+
+
+@allure.link('https://trello.com/c/R37TlLm7')
+def test_bags_link_clickability():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+    browser.element(SalePageLocators.BAGS_LINK).should(be.clickable)
