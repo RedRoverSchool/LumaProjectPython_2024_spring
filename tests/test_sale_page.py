@@ -16,7 +16,7 @@ def test_availability_of_name():
     browser.element(SalePageLocators.GEAR_DEALS_TITLE).should(be.visible)
 
 
-@allure.link('https://trello.com/c/eabRQXD0')
+@allure.link('https://trello.com/c/eVJdCZD6')
 def test_availability_of_links_fitness():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
 
