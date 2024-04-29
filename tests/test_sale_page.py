@@ -14,3 +14,18 @@ def test_011_001_001_sale_breadcrumbs_is_correct():
 def test_availability_of_name():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
     browser.element(SalePageLocators.GEAR_DEALS_TITLE).should(be.visible)
+
+
+@allure.link('https://trello.com/c/eabRQXD0')
+def test_availability_of_links_fitness():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+
+    browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).should(be.visible)
+
+
+@allure.link('https://trello.com/c/eabRQXD0')
+def test_availability_of_links_bags():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+
+    browser.element(SalePageLocators.BAGS_LINK).should(be.visible)
+    browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).should(be.visible)
