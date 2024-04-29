@@ -62,3 +62,11 @@ class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
     TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
     LIST_OF_SEARCH_TERMS = '[class="item"] a'
+
+
+class WomanPageLocators:
+    WOMAN_MENU = "//*[@id='ui-id-4']"
+    TOPS_LINK = "//*[@id='ui-id-9']"
+    TOPS_TITLE = ".page-title-wrapper"
+    BOTTOMS_LINK = "//*[@id='ui-id-10']"
+    BOTTOMS_TITLE = ""
