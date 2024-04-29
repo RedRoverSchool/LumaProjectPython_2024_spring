@@ -1,0 +1,2 @@
+WOMAN_PAGE_LINK = 'https://magento.softwaretestingboard.com/women.html'
+TOPS_WOMAN_PAGE_LINK = 'https://magento.softwaretestingboard.com/women/tops-women.html'
