@@ -6,7 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 url = "https://magento.softwaretestingboard.com/what-is-new.html"
 
-@allure.link('https://trello.com/c/jgLmzBZX/296-tc006004005-whats-new-eco-collection-new')
+@allure.link('https://trello.com/c/jgLmzBZX')
 def test_add_product_to_wishlist_as_non_logged_in_user():
 
     browser.open(url)
