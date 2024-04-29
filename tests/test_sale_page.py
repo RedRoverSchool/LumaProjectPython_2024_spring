@@ -32,3 +32,9 @@ def test_availability_of_links_bags():
 def test_bags_link_clickability():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
     browser.element(SalePageLocators.BAGS_LINK).should(be.clickable)
+
+
+@allure.link('https://trello.com/c/bG0oyzyv')
+def test_fitness_link_clickability():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+    browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).click()
