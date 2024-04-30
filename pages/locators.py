@@ -73,3 +73,9 @@ class WomenPageLocators:
     BOTTOMS_LINK = "//*[@id='ui-id-10']"
     BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
     DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
+
+
+class WhatsNewPageLocators:
+    HEADER = 'h1>span'
+    LUMAS_LATEST_LIST = '.products-grid>ol'
+    LUMAS_LATEST_ITEMS = '.products-grid>ol>li'

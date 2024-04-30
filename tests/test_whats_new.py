@@ -1,7 +1,9 @@
 import allure
 from selene import browser
 
+from data.links import WHATS_NEW_PAGE_LINK
 from pages.main_page import MainPage
+from pages.whats_new_page import WhatsNewPage
 
 
 @allure.suite("US_006.006 | Testing What's New Page")
