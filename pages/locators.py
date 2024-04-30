@@ -64,9 +64,10 @@ class SearchTermsLocators:
     LIST_OF_SEARCH_TERMS = '[class="item"] a'
 
 
-class WomanPageLocators:
-    WOMAN_MENU = "//*[@id='ui-id-4']"
+class WomenPageLocators:
+    WOMEN_MENU = "//*[@id='ui-id-4']"
     TOPS_LINK = "//*[@id='ui-id-9']"
     TOPS_TITLE = ".page-title-wrapper"
     BOTTOMS_LINK = "//*[@id='ui-id-10']"
-    BOTTOMS_TITLE = ""
+    BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
+    DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
