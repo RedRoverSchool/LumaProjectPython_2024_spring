@@ -41,6 +41,7 @@ class NavigatorLocators:
     NAV_GEAR = '#ui-id-6'
     NAV_TRAINING = '#ui-id-7'
     NAV_SALE = '#ui-id-8'
+    NAV_MENU = '#ui-id-2'
 
 
 class SideBarLocators:
