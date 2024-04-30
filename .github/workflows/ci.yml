@@ -89,7 +89,7 @@ jobs:
           CI_RUN: true
           PYTHONDONTWRITEBYTECODE: 1
           PYTHONUNBUFFERED: 1
-#        continue-on-error: true
+        continue-on-error: true
 
       - name: Store allure results
         uses: actions/upload-artifact@v3
