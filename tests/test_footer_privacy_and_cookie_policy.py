@@ -12,4 +12,6 @@ class TestPrivacyAndCookiePolicy:
         main_page.scroll_to_privacy_cookie_policy_link()
 
         main_page.privacy_cookie_policy_link.should(be.visible)
-        main_page.privacy_cookie_policy_link.should(have.text(MainPageData.privacy_cookie_policy_link_text))
+        main_page.privacy_cookie_policy_link.should(
+            have.text(MainPageData.privacy_cookie_policy_link_text)
+        )

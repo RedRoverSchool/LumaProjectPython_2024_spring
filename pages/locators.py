@@ -56,6 +56,7 @@ class BaseLocators:
     PAGE_TITLE = 'h1'
     BREADCRUMBS_LIST = ".breadcrumbs li"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
+    PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
 
 
 class SearchTermsLocators:

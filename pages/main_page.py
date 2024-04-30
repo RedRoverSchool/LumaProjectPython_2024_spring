@@ -1,21 +1,19 @@
 from selene.support.shared.jquery_style import s
+from data.links import MAIN_PAGE_LINK
+from pages.locators import BaseLocators as BL
 
 
 class MainPage:
-    url = "https://magento.softwaretestingboard.com/"
-
-    PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
 
     def __init__(self, browser):
         self.browser = browser
 
     def open_page(self):
-        self.browser.open(self.url)
+        self.browser.open(MAIN_PAGE_LINK)
 
     @property
     def privacy_cookie_policy_link(self):
-        return s(self.PRIVACY_COOKIE_POLICY_LOCATOR)
+        return s(BL.PRIVACY_COOKIE_POLICY_LOCATOR)
 
     def scroll_to_privacy_cookie_policy_link(self):
-        element = self.privacy_cookie_policy_link()
-        self.browser.execute_script("arguments[0].scrollIntoView(true);", element)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", self.privacy_cookie_policy_link())
