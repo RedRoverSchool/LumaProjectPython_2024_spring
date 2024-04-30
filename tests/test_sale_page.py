@@ -64,4 +64,11 @@ def test_bags_link_correct_redirection():
     browser.element(BaseLocators.PAGE_NAME).should(have.text('Bags'))
 
 
+def test_bags_link_correct_redirection_bag():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+    browser.element(SalePageLocators.BAGS_LINK).click()
+    browser.should(have.url_containing("gear/ba11gs"))
+    browser.element(BaseLocators.PAGE_NAME).should(have.text('Bag11s'))
+
+
 
