@@ -72,3 +72,9 @@ class WomanPageLocators:
     TOPS_TITLE = ".page-title-wrapper"
     BOTTOMS_LINK = "//*[@id='ui-id-10']"
     BOTTOMS_TITLE = ""
+
+
+class WhatsNewPageLocators:
+    HEADER = 'h1>span'
+    LUMAS_LATEST_LIST = '.products-grid>ol'
+    LUMAS_LATEST_ITEMS = '.products-grid>ol>li'
