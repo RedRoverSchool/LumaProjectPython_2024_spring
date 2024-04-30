@@ -18,7 +18,7 @@ class MainPage:
         return s(BL.PRIVACY_COOKIE_POLICY_LOCATOR)
 
     def scroll_to_privacy_cookie_policy_link(self):
-        self.browser.execute_script("arguments[0].scrollIntoView(true);", self.privacy_cookie_policy_link())
+        self.browser.driver.execute_script("arguments[0].scrollIntoView(true);", self.privacy_cookie_policy_link())
 
     def is_menu_present(self):
         return s(Nav.NAV_MENU).should(be.present)
