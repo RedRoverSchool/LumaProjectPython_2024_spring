@@ -38,3 +38,19 @@ def test_bags_link_clickability():
 def test_fitness_link_clickability():
     browser.open('https://magento.softwaretestingboard.com/sale.html')
     browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).click()
+
+
+@allure.link('https://trello.com/c/tTSnRKWm')
+def test_fitness_link_correct_redirection():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+    browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).click()
+    browser.should(have.url_containing("gear/fitness-equipment"))
+    browser.element(BaseLocators.PAGE_NAME).should(have.text('Fitness'))
+
+
+
+
+
+
+
+
