@@ -1,3 +1,4 @@
+import allure
 from selene import browser
 from selene.support.conditions import have, be
 
@@ -5,7 +6,9 @@ from pages.main_page import MainPage
 from data.page_data import MainPageData
 
 
+@allure.feature("Footer > Privacy and Cookie Policy")
 class TestPrivacyAndCookiePolicy:
+    @allure.title("TC_012.006.001 | Verify visibility of the 'Privacy and Cookie Policy' link")
     def test_visibility_privacy_and_cookie_policy(self):
         main_page = MainPage(browser=browser)
         main_page.open_page()
