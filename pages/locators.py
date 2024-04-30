@@ -32,6 +32,13 @@ class ProductLocators:
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'
+    BASE_URL = 'https://magento.softwaretestingboard.com'
+    WHAT_NEW_URL = 'https://magento.softwaretestingboard.com/what-is-new.html'
+    MEN_URL = 'https://magento.softwaretestingboard.com/men.html'
+    WOMEN_URL = 'https://magento.softwaretestingboard.com/women.html'
+    GEAR_URL = 'https://magento.softwaretestingboard.com/gear.html'
+    TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
+    SALE_URL = 'https://magento.softwaretestingboard.com/sale.html'
 
 
 class NavigatorLocators:
@@ -42,6 +49,8 @@ class NavigatorLocators:
     NAV_TRAINING = '#ui-id-7'
     NAV_SALE = '#ui-id-8'
     NAV_MENU = '#ui-id-2'
+    NAV_MEN_TOPS = '#ui-id-17'
+    NAV_MEN_BOTTOMS = '#ui-id-18'
 
 
 class SideBarLocators:

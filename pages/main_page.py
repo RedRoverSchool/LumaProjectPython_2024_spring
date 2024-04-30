@@ -1,4 +1,4 @@
-from selene.support.conditions import be
+from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s
 from data.links import MAIN_PAGE_LINK
 from pages.locators import BaseLocators as BL
@@ -28,3 +28,51 @@ class MainPage:
 
     def find_whats_new_link(self):
         return s(Nav.NAV_NEW)
+
+
+    def find_men_link(self):
+        return s(Nav.NAV_MEN)
+
+    def is_men_present(self):
+        return self.find_men_link().should(be.present)
+
+    def is_men_visible(self):
+        return self.find_men_link().should(be.visible)    
+    
+    def is_men_link_present(self):
+        return self.find_men_link().should(be.present)
+
+    def is_men_have_text(self):
+        return self.find_men_link().should(have.text('Men'))
+
+
+    def find_men_tops_link(self):
+        return s(Nav.NAV_MEN_TOPS)
+
+    def is_men_tops_present(self):
+        return self.find_men_tops_link().should(be.present)
+
+    def is_men_tops_visible(self):
+        return self.find_men_tops_link().should(be.visible)    
+    
+    def is_men_tops_link_present(self):
+        return self.find_men_tops_link().should(be.present)
+
+    def is_men_tops_have_text(self):
+        return self.find_men_tops_link().should(have.text('Tops'))
+
+
+    def find_men_bottoms_link(self):
+        return s(Nav.NAV_MEN_BOTTOMS)
+
+    def is_men_bottoms_present(self):
+        return self.find_men_bottoms_link().should(be.present)
+
+    def is_men_bottoms_visible(self):
+        return self.find_men_bottoms_link().should(be.visible)    
+    
+    def is_men_bottoms_link_present(self):
+        return self.find_men_bottoms_link().should(be.present)
+
+    def is_men_bottoms_have_text(self):
+        return self.find_men_bottoms_link().should(have.text('Bottoms'))
