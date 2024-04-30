@@ -46,11 +46,12 @@ def test_fitness_link_correct_redirection():
     browser.element(SalePageLocators.FITNESS_EQUIPMENT_LINK).click()
     browser.should(have.url_containing("gear/fitness-equipment"))
     browser.element(BaseLocators.PAGE_NAME).should(have.text('Fitness'))
+    
 
-
-
-
-
-
-
+@allure.link('https://trello.com/c/QRHjcYZH')
+def test_bags_link_correct_redirection():
+    browser.open('https://magento.softwaretestingboard.com/sale.html')
+    browser.element(SalePageLocators.BAGS_LINK).click()
+    browser.should(have.url_containing("gear/bags"))
+    browser.element(BaseLocators.PAGE_NAME).should(have.text('Bags'))
 
