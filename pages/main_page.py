@@ -25,3 +25,6 @@ class MainPage:
 
     def is_whats_new_link_present(self):
         return s(Nav.NAV_NEW).should(be.present)
+
+    def find_whats_new_link(self):
+        return s(Nav.NAV_NEW)
