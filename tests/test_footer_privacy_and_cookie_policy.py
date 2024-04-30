@@ -10,7 +10,7 @@ from data.page_data import MainPageData
 class TestPrivacyAndCookiePolicy:
 
     @allure.title("TC_012.006.001 | Verify visibility of the 'Privacy and Cookie Policy' link")
-    def test_visibility_privacy_and_cookie_policy(self):
+    def test_visibility_privacy_and_cookie_policy_link(self):
         main_page = MainPage(browser=browser)
         main_page.open_page()
         main_page.scroll_to_privacy_cookie_policy_link()
