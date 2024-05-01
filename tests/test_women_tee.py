@@ -1,5 +1,7 @@
+import pytest
+
 from pages.locators import SalePageLocators, BaseLocators
-from selene import browser, be, have, by
+from selene import browser, be, have, by, query
 from selene.support.shared.jquery_style import s, ss
 import allure
 
@@ -29,3 +31,11 @@ def test_011_016_002_breadcrumbs_nr_of_links_from_women_tees():
     elements.should(have.size(3))
 
 
+def test_011_016_002_breadcrumbs_redirection_from_women_tees_var2():
+    # сравнить ссылки ожидаемые и фактические перебором по очереди
+    expected_links = ['https://magento.softwaretestingboard.com/',
+                      'https://magento.softwaretestingboard.com/women.html',
+                      'https://magento.softwaretestingboard.com/women/tops-women.html']
+    browser.open(SalePageLocators.LINK_TEES_WOMEN)
+    for i, item in enumerate(ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))):
+        assert expected_links[i] == item.get(query.attribute('href'))

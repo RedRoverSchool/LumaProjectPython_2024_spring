@@ -103,3 +103,15 @@ class ProductItem:
 class LoginPage:
     PAGE_TITLE_WRAPPER = "span.base[data-ui-id='page-title-wrapper']"
     MESSAGE_TEXT = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"
+
+    
+class LoginLocators:
+    LINK_LOGIN = 'https://magento.softwaretestingboard.com/customer/account/login'
+    FIELD_NAME = 'div.login-container #email'
+    FIELD_PASSWORD = 'div.login-container #pass'
+    BUTTON_SUBMIT = 'div.login-container #send2'
+    MESSAGE_UNSUCCESSFUL = '#pass-error'
+    USER_NAME_IN_WELCOME = '.logged-in'
+    AUTHORIZATION_LINK = 'authorization-link'
+    LINK_ACCOUNT = 'https://magento.softwaretestingboard.com/customer/account/'
+
