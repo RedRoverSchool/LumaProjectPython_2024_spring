@@ -32,7 +32,8 @@ class MainPage:
     def find_whats_new_link(self):
         return s(Nav.NAV_NEW)
 
-    def find_men_link(self):
+    @staticmethod
+    def find_men_link():
         return s(Nav.NAV_MEN)
 
     def is_men_present(self):
@@ -47,7 +48,8 @@ class MainPage:
     def is_men_have_text(self):
         return self.find_men_link().should(have.text('Men'))
 
-    def find_men_tops_link(self):
+    @staticmethod
+    def find_men_tops_link():
         return s(Nav.NAV_MEN_TOPS)
 
     def is_men_tops_present(self):
@@ -62,7 +64,8 @@ class MainPage:
     def is_men_tops_have_text(self):
         return self.find_men_tops_link().should(have.text('Tops'))
 
-    def find_men_bottoms_link(self):
+    @staticmethod
+    def find_men_bottoms_link():
         return s(Nav.NAV_MEN_BOTTOMS)
 
     def is_men_bottoms_present(self):

@@ -88,7 +88,18 @@ class WhatsNewPageLocators:
     HEADER = 'h1>span'
     LUMAS_LATEST_LIST = '.products-grid>ol'
     LUMAS_LATEST_ITEMS = '.products-grid>ol>li'
+    BUTTON_MORE = 'span.more.button'
 
 
 class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
+
+
+class ProductItem:
+    WISH_LIST = "[aria-label='Add to Wish List']"
+    ITEM_INFO = ".product-item-info"
+
+
+class LoginPage:
+    PAGE_TITLE_WRAPPER = "span.base[data-ui-id='page-title-wrapper']"
+    MESSAGE_TEXT = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"
