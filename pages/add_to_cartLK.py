@@ -36,7 +36,6 @@ def click_add_to_cart_button():
     s("#product-addtocart-button").click()
     browser.config.timeout = 5
 
-
 # def click_cart_icon():
 #     #s(CART_ICON).should(be.visible)
 #     s("//*[@class='action showcart']").click()
