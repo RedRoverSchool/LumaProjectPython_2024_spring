@@ -98,5 +98,8 @@ class MainPage:
     def is_minicart_view_present(self):
         return self.find_minicart_view().should(be.present)
 
+    def is_minicart_view_visible(self):
+        return self.find_minicart_view().should(be.visible)
+
     def is_minicart_have_text(self):
         return self.find_minicart_view().should(have.text('View and Edit Cart'))
