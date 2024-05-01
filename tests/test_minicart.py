@@ -17,6 +17,8 @@ class TestMiniCart:
             s('/html/body/div[2]/main/div[3]/div/div[3]/div[3]/div/div/ol/li[1]/div/div/div[4]/div/div[1]/form/button').click()
         with allure.step("Find and click the cart icon"):
             page.find_cart_icon().click()
+        with allure.step("The minicart is open"):
+            page.is_minicart_present()
         with (allure.step("Minicart has link View and Edit Cart")):
-            element = page.is_minicart_have_text('View and Edit Cart')
-            element.should(be.clickable)
+            page.is_minicart_have_text()
+

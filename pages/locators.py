@@ -40,7 +40,9 @@ class HomeLocators:
     TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
     SALE_URL = 'https://magento.softwaretestingboard.com/sale.html'
     CART_ICON = 'a.showcart'
+    MINICART = '#ui-id-1'
     MINICART_VIEW = 'a.viewcart'
+
 
 
 class NavigatorLocators:

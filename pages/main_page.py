@@ -81,8 +81,16 @@ class MainPage:
     def find_cart_icon(self):
         return s(HL.CART_ICON)
 
+    def find_minicart(self):
+        return s(HL.MINICART)
+    def is_minicart_present(self):
+        return self.find_minicart().should(be.present)
+
+    def is_minicart_visible(self):
+        return self.find_minicart().should(be.visible)
+
     def find_minicart_view(self):
         return s(HL.MINICART_VIEW)
 
-    def is_minicart_have_text(self, text):
-        return self.find_minicart_view().should(have.text(text))
+    def is_minicart_have_text(self):
+        return self.find_minicart_view().should(have.text('View and Edit Cart'))
