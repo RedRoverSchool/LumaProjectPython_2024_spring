@@ -3,8 +3,6 @@ from selene import browser, have
 from pages import add_to_cartLK
 from pages.add_to_cartLK import *
 
-
-
 def test_add_to_cart():
     add_to_cartLK.open_main_page()
     add_to_cartLK.click_title_item()

@@ -45,7 +45,6 @@ def click_cart_icon2():
     browser.wait_until(s("//*[@class='action showcart']"))
     s("//*[@class='action showcart']").click()
 
-
 # def assert_view_and_edit_cart_blue_text():
 #     s(by.xpath(VIEW_AND_EDIT_CART_BLUE_TEXT)).should(be.present)
 #     assert_view_and_edit_cart_blue_text()
