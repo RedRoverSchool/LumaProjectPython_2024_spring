@@ -22,6 +22,7 @@ class ProductLocators:
     RADIANT_TEE_COLOR = '[option-label="Orange"]'
     RADIANT_TEE_QTY = '#qty'
     ADD_TO_CART_BUTTON = '#product-addtocart-button'
+    ADD_TO_CART_BUTTON_FROM_MAINPAGE = 'form[data-product-sku="WS12"] button'
 
     ARGUS_All_WEATHER_TANK = '[alt="Argus All-Weather Tank"]'
     ARGUS_All_WEATHER_TANK_SIZE = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="M"]'
