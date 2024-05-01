@@ -1,7 +1,7 @@
 import allure
 from selene import browser, by, be, have, support
 from selene.support.shared.jquery_style import s
-#from selene.api import s, ss
+#  from selene.api import s, ss
 
 base_url = "https://magento.softwaretestingboard.com/"
 TITLE_ITEM = ("xpath", "//a[@title='Breathe-Easy Tank']")
