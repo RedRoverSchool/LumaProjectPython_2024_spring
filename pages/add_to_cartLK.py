@@ -9,7 +9,6 @@ SIZE_BTN = ("xpath", "//*[@id='option-label-size-143-item-167']")
 COLOR_BTN = ("xpath", "//*[@id='option-label-color-93-item-59']")
 ADD_TO_CATT_BTN = ("xpath", "//*[@id='product-addtocart-button']/span")
 #SUCCESS_MESSAGE = ("xpath", "//span[contains(text(), 'You added Breathe-Easy Tank to your shopping cart.')]")
-
 CART_ICON = ("//*[@class='action showcart']")
 VIEW_AND_EDIT_CART_BLUE_TEXT = ("xpath", "//*[@id='minicart-content-wrapper']/div[2]/div[5]/div/a/span")
 a = '//*[@class="action showcart"]'
@@ -23,7 +22,6 @@ def open_main_page():
 
 def click_title_item():
     s("//a[@title='Breathe-Easy Tank']").click()
-
 
 def click_size_button():
     s("//*[@id='option-label-size-143-item-167']").click()
