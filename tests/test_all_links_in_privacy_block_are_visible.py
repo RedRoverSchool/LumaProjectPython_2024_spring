@@ -1,4 +1,4 @@
-from pages import privacy_block_page
+from pages import privacy_policy_page
 
 url_navigate = "https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode"
 
@@ -10,5 +10,5 @@ text = ["Luma Security", "Luma Privacy Policy", "The Information We Collect",
 
 
 def test_all_links_in_privacy_left_block_are_visible():
-    privacy_block_page.open_page_with_navigate_block(url_navigate)
-    privacy_block_page.move_to_elements(text)
+    privacy_policy_page.open_page_with_navigate_block(url_navigate)
+    privacy_policy_page.move_to_elements(text)
