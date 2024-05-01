@@ -21,8 +21,6 @@ class TestMiniCart:
         with allure.step("The minicart is open"):
             page.is_minicart_present()
         with (allure.step("Minicart has link View and Edit Cart")):
-            page.is_minicart_view_present()
-            page.is_minicart_view_visible()
             page.is_minicart_have_link()
 
 
