@@ -24,7 +24,7 @@ class TestPrivacyAndCookiePolicy:
             have.text(MainPageData.privacy_cookie_policy_link_text)
         )
 
-    @allure.title("Verify redirect to the ‘Privacy and Cookie Policy’ page")
+    @allure.title("TC_012.006.002 | Verify redirect to the ‘Privacy and Cookie Policy’ page")
     def test_redirect_to_privacy_and_cookie_page(self):
         main_page = MainPage(browser=browser)
         privacy_policy_page = PrivacyPolicyPage(browser=browser)
