@@ -79,10 +79,10 @@ class MainPage:
         return self.find_men_bottoms_link().should(have.text('Bottoms'))
 
     def find_cart_icon(self):
-        return s(HL.CART)
+        return s(HL.CART_ICON)
 
-    def find_minicart(self):
-        return s(Nav.MINICART)
+    def find_minicart_view(self):
+        return s(HL.MINICART_VIEW)
 
     def is_minicart_have_text(self, text):
-        return self.find_minicart().should(have.text(text))
+        return self.find_minicart_view().should(have.text(text))

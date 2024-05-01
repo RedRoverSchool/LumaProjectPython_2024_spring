@@ -20,4 +20,3 @@ class TestMiniCart:
         with (allure.step("Minicart has link View and Edit Cart")):
             element = page.is_minicart_have_text('View and Edit Cart')
             element.should(be.clickable)
-
