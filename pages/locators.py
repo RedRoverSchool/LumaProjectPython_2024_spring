@@ -39,6 +39,7 @@ class HomeLocators:
     GEAR_URL = 'https://magento.softwaretestingboard.com/gear.html'
     TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
     SALE_URL = 'https://magento.softwaretestingboard.com/sale.html'
+    CART = 'a.showcart'
 
 
 class NavigatorLocators:
@@ -51,6 +52,7 @@ class NavigatorLocators:
     NAV_MENU = '#ui-id-2'
     NAV_MEN_TOPS = '#ui-id-17'
     NAV_MEN_BOTTOMS = '#ui-id-18'
+    MINICART = '#ui-id-1'
 
 
 class SideBarLocators:

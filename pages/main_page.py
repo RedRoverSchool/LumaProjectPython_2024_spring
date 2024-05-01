@@ -3,6 +3,7 @@ from selene.support.shared.jquery_style import s
 from data.links import MAIN_PAGE_LINK
 from pages.locators import BaseLocators as BL
 from pages.locators import NavigatorLocators as Nav
+from pages.locators import HomeLocators as HL
 
 
 class MainPage:
@@ -76,3 +77,12 @@ class MainPage:
 
     def is_men_bottoms_have_text(self):
         return self.find_men_bottoms_link().should(have.text('Bottoms'))
+
+    def find_cart_icon(self):
+        return s(HL.CART)
+
+    def find_minicart(self):
+        return s(Nav.MINICART)
+
+    def is_minicart_have_text(self, text):
+        return self.find_minicart().should(have.text(text))
