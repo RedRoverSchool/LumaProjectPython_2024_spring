@@ -23,6 +23,7 @@ def open_main_page():
 def click_title_item():
     s("//a[@title='Breathe-Easy Tank']").click()
 
+
 def click_size_button():
     s("//*[@id='option-label-size-143-item-167']").click()
 
