@@ -16,9 +16,11 @@ class TestMiniCart:
             s('#option-label-color-93-item-50').click()
             s('/html/body/div[2]/main/div[3]/div/div[3]/div[3]/div/div/ol/li[1]/div/div/div[4]/div/div[1]/form/button').click()
         with allure.step("Find and click the cart icon"):
+            page.is_find_cart_icon_present()
             page.find_cart_icon().click()
         with allure.step("The minicart is open"):
             page.is_minicart_present()
         with (allure.step("Minicart has link View and Edit Cart")):
+            page.is_minicart_view_present()
             page.is_minicart_have_text()
 
