@@ -40,7 +40,6 @@ def click_add_to_cart_button():
 #     #s(CART_ICON).should(be.visible)
 #     s("//*[@class='action showcart']").click()
 
-
 def click_cart_icon2():
     browser.wait_until(s("//*[@class='action showcart']"))
     s("//*[@class='action showcart']").click()
