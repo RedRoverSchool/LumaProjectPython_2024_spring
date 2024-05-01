@@ -93,3 +93,7 @@ class WhatsNewPageLocators:
     HEADER = 'h1>span'
     LUMAS_LATEST_LIST = '.products-grid>ol'
     LUMAS_LATEST_ITEMS = '.products-grid>ol>li'
+
+
+class PrivacyPolicyPageLocators:
+    PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
