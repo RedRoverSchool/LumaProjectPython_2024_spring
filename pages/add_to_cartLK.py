@@ -1,7 +1,7 @@
 import allure
 from selene import browser, by, be, have, support
 from selene.support.shared.jquery_style import s
-from selene import browser, by, have
+from selene import browser
 from selene.support.shared.jquery_style import s
 
 base_url = "https://magento.softwaretestingboard.com/"
@@ -45,17 +45,6 @@ def click_cart_icon2():
 def assert_view_and_edit_cart_blue_text():
     browser.wait_until(s(VIEW_AND_EDIT_CART_BLUE_TEXT[1]))
     s(VIEW_AND_EDIT_CART_BLUE_TEXT[1]).click()
-
-
-# def assert_view_and_edit_cart_blue_text_in_window():
-#     view_and_edit_cart = browser.element(by.xpath(VIEW_AND_EDIT_CART_BLUE_TEXT))
-#     view_and_edit_cart.should(have.text("View and Edit Cart"))
-#     view_and_edit_cart.should(have.css_class("blue-text"))
-
-
-# def assert_view_and_edit_cart_blue_text_visibility():
-#     view_and_edit_cart = s(by.xpath(VIEW_AND_EDIT_CART_BLUE_TEXT))
-#     view_and_edit_cart.should(be.visible)
 
 
 def assert_view_and_edit_cart_blue_text_visibility():
