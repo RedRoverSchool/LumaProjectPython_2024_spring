@@ -1,5 +1,6 @@
 from selene import browser, have
 from selene.support.shared.jquery_style import s
+from pages.locators import CreateAccountLocators
 
 url = "https://magento.softwaretestingboard.com/customer/account/create/"
 
@@ -42,3 +43,15 @@ def password_strength_meter_label(partial_text):
 
 def password_confirmation_error(partial_text):
     s(".form-create-account #password-confirmation-error").should(have.text(partial_text))
+
+
+def click_the_create_account_link():
+    s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).click()
+
+
+def page_title():
+    s("h1.page-title").should(have.text('Create New Customer Account'))
+
+
+def redirect():
+    s(url).should(have.url("CREATE_ACCOUNT_PAGE"))
