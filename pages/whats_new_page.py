@@ -2,7 +2,8 @@ from selene import browser
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s
 from pages.locators import WhatsNewPageLocators as WNL
-from pages.locators import HomeLocators as Url
+from data.links import WHATS_NEW_PAGE_LINK
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class WhatsNewPage:
@@ -10,7 +11,7 @@ class WhatsNewPage:
         self.browser = browser
 
     def open_page(self):
-        self.browser.open(Url.WHAT_NEW_URL)
+        self.browser.open(WHATS_NEW_PAGE_LINK)
 
     def is_element_text_correct(self, element, text):
         return element.should(have.text(text))
@@ -38,10 +39,13 @@ class WhatsNewPage:
         return self.find_button_more().should(be.visible)
 
     def is_current_link(self):
-        return self.check_current_url() == Url.WHAT_NEW_URL
+        return self.check_current_url() == WHATS_NEW_PAGE_LINK
 
     def click_button_more(self):
         self.find_button_more().click()
 
     def scroll_to(self, element):
         self.browser.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+    def move_to(self, product):
+        ActionChains(self.browser.driver).move_to_element(product).perform()

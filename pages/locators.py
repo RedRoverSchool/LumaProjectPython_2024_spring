@@ -33,17 +33,9 @@ class ProductLocators:
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'
-    BASE_URL = 'https://magento.softwaretestingboard.com'
-    WHAT_NEW_URL = 'https://magento.softwaretestingboard.com/what-is-new.html'
-    MEN_URL = 'https://magento.softwaretestingboard.com/men.html'
-    WOMEN_URL = 'https://magento.softwaretestingboard.com/women.html'
-    GEAR_URL = 'https://magento.softwaretestingboard.com/gear.html'
-    TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
-    SALE_URL = 'https://magento.softwaretestingboard.com/sale.html'
     CART_ICON = 'a.showcart'
     MINICART = '#ui-id-1'
     MINICART_VIEW = 'a.viewcart'
-
 
 
 class NavigatorLocators:
@@ -56,6 +48,7 @@ class NavigatorLocators:
     NAV_MENU = '#ui-id-2'
     NAV_MEN_TOPS = '#ui-id-17'
     NAV_MEN_BOTTOMS = '#ui-id-18'
+    NAV_MEN_TOPS_SUBMENU = "li[class='level1 nav-3-1 category-item first parent ui-menu-item'] ul[role='menu']"
 
 
 class SideBarLocators:
@@ -68,7 +61,8 @@ class SideBarLocators:
 
 class BaseLocators:
     PAGE_NAME = ".base"
-    PAGE_TITLE = 'h1'
+    PAGE_TITLE = "h1"
+    PAGE_HEADER = "#page-title-heading"
     BREADCRUMBS_LIST = ".breadcrumbs li"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
     PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
@@ -100,12 +94,12 @@ class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
 
 
-class ProductItem:
+class ProductItemLocators:
     WISH_LIST = "[aria-label='Add to Wish List']"
     ITEM_INFO = ".product-item-info"
 
 
-class LoginPage:
+class LoginPageLocators:
     PAGE_TITLE_WRAPPER = "span.base[data-ui-id='page-title-wrapper']"
     MESSAGE_TEXT = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"
 
