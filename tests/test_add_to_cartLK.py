@@ -1,4 +1,3 @@
-import time
 from selene import browser, have
 from pages import add_to_cartLK
 from pages.add_to_cartLK import *
