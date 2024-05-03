@@ -5,6 +5,7 @@ from pages.locators import BaseLocators as BL
 from pages.locators import NavigatorLocators as Nav
 from pages.locators import HomeLocators as HL
 from pages.components.nav_wigdet import NavComponent
+from pages.locators import ErinRecommendLocators as ERL
 
 
 class MainPage:
@@ -67,3 +68,8 @@ class MainPage:
 
     def is_minicart_have_link(self):
         return self.find_minicart_view().should(have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
+
+    def is_erin_block_present(self):
+        return s(ERL.HOME_ERIN_BLOCK).should(be.present)
+
+

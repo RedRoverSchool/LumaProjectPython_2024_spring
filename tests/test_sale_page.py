@@ -71,6 +71,6 @@ def test_bags_link_correct_redirection():
 @allure.link('https://trello.com/c/pyqtpSob')
 def test_011_007_002_clickability_button():
     sale_page.visit()
-    sale_page.page_title()
+    sale_page.check_page_title()
     redirect()
 

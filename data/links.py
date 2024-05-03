@@ -16,7 +16,6 @@ GEAR_WATCHES_URL = 'https://magento.softwaretestingboard.com/gear/watches.html'
 PRIVACY_POLICY_PAGE_LINK = 'https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode'
 CONTACT_US_LINK = "https://magento.softwaretestingboard.com/contact/"
 PRIVACY_POLICY_LINK = "https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode"
-SALE_PAGE_LINK = 'https://magento.softwaretestingboard.com/sale.html'
 TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
 VIDEO_DOWNLOAD_URL = 'https://magento.softwaretestingboard.com/training/training-video.html'
-
+ERIN_RECOMMENDS_URL = 'https://magento.softwaretestingboard.com/collections/erin-recommends.html'
