@@ -1,9 +1,22 @@
+BASE_URL = 'https://magento.softwaretestingboard.com'
 MAIN_PAGE_LINK = 'https://magento.softwaretestingboard.com/'
+WHATS_NEW_PAGE_LINK = 'https://magento.softwaretestingboard.com/what-is-new.html'
+MEN_PAGE_URL = 'https://magento.softwaretestingboard.com/men.html'
 WOMEN_PAGE_LINK = 'https://magento.softwaretestingboard.com/women.html'
+GEAR_PAGE_URL = 'https://magento.softwaretestingboard.com/gear.html'
+TRAINING_PAGE_URL = 'https://magento.softwaretestingboard.com/training.html'
+SALE_PAGE_URL = 'https://magento.softwaretestingboard.com/sale.html'
+MEN_TOPS_PAGE_URL = 'https://magento.softwaretestingboard.com/men/tops-men.html'
+MEN_BOTTOMS_PAGE_URL = 'https://magento.softwaretestingboard.com/men/bottoms-men.html'
 TOPS_WOMEN_PAGE_LINK = 'https://magento.softwaretestingboard.com/women/tops-women.html'
 BOTTOMS_WOMEN_PAGE_LINK = 'https://magento.softwaretestingboard.com/women/bottoms-women.html'
-WHATS_NEW_PAGE_LINK = 'https://magento.softwaretestingboard.com/what-is-new.html'
+GEAR_BAGS_URL = 'https://magento.softwaretestingboard.com/gear/bags.html'
+GEAR_FITNESS_URL = 'https://magento.softwaretestingboard.com/gear/fitness-equipment.html'
+GEAR_WATCHES_URL = 'https://magento.softwaretestingboard.com/gear/watches.html'
 PRIVACY_POLICY_PAGE_LINK = 'https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode'
 CONTACT_US_LINK = "https://magento.softwaretestingboard.com/contact/"
 PRIVACY_POLICY_LINK = "https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode"
 SALE_PAGE_LINK = 'https://magento.softwaretestingboard.com/sale.html'
+TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
+VIDEO_DOWNLOAD_URL = 'https://magento.softwaretestingboard.com/training/training-video.html'
+

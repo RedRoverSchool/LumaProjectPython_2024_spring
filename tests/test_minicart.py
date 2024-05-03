@@ -7,7 +7,7 @@ from pages.locators import ProductLocators as PL
 
 @allure.title("Test MiniCart has link View and edit cart")
 class TestMiniCart:
-    def test_minicart_has_link(self, browser_management):
+    def test_minicart_has_link(self):
 
         page = MainPage(browser=browser)
         page.open_page()
