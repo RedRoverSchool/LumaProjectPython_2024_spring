@@ -1,7 +1,7 @@
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s
 from data.links import MAIN_PAGE_LINK
-from pages.locators import BaseLocators as BL
+from pages.locators import BaseLocators as BL, HomeLocators
 from pages.locators import NavigatorLocators as Nav
 from pages.locators import HomeLocators as HL
 from pages.components.nav_wigdet import NavComponent
@@ -67,9 +67,13 @@ class MainPage:
         return self.find_minicart_view().should(be.visible)
 
     def is_minicart_have_link(self):
-        return self.find_minicart_view().should(have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
+        return self.find_minicart_view().should(
+            have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
 
     def is_erin_block_present(self):
         return s(ERL.HOME_ERIN_BLOCK).should(be.present)
 
-
+    @staticmethod
+    def handle_cookies_popup():
+        if s(HomeLocators.COOKIES_MSG).should(be.visible):
+            s(HomeLocators.CONSENT_COOKIES_BTN).click()
