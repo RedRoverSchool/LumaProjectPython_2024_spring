@@ -43,6 +43,8 @@ class HomeLocators:
     CART_ICON = 'a.showcart'
     MINICART = '#ui-id-1'
     MINICART_VIEW = 'a.viewcart'
+    COOKIES_MSG = '/html/body/div[3]/div[2]/div[1]/div[1]/div/div[1]/h2'
+    CONSENT_COOKIES_BTN = '/html/body/div[3]/div[2]/div[1]/div[2]/div[2]/button[1]/p'
 
 
 

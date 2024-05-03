@@ -1,6 +1,6 @@
 from selene import browser
 from selene.support.conditions import have, be
-from selene.support.shared.jquery_style import s
+from selene.support.shared.jquery_style import s, ss
 from pages.locators import WhatsNewPageLocators as WNL
 from pages.locators import HomeLocators as Url
 
@@ -22,7 +22,7 @@ class WhatsNewPage:
         return s(WNL.LUMAS_LATEST_LIST).should(be.present)
 
     def get_lumas_latest_items(self):
-        return s(WNL.LUMAS_LATEST_ITEMS)
+        return ss(WNL.LUMAS_LATEST_ITEMS)
 
     def check_current_url(self):
         return browser.driver.current_url
