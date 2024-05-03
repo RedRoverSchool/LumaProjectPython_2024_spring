@@ -29,6 +29,8 @@ class ProductLocators:
 
 
 class HomeLocators:
+    CONSENT_COOKIES_BTN = '(//p[@class="fc-button-label"])[1]'
+    COOKIES_MSG = '//h1[@class="fc-dialog-headline"]'
     STORE_LOGO = 'a.logo'
     CART_ICON = 'a.showcart'
     MINICART = '#ui-id-1'
