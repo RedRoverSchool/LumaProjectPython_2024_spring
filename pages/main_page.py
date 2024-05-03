@@ -75,5 +75,5 @@ class MainPage:
 
     @staticmethod
     def handle_cookies_popup():
-        if s(HomeLocators.COOKIES_MSG).should(be.visible):
+        if s(HomeLocators.COOKIES_MSG).should(be.present):
             s(HomeLocators.CONSENT_COOKIES_BTN).click()
