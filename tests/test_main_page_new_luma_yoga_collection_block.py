@@ -6,7 +6,7 @@ from pages.main_page import MainPage
 from data.page_data import MainPageData
 
 
-@allure.feature("Main Page > New Luma Yoga Collection > View the New Luma Yoga Collection block")
+@allure.feature("Main Page > New Luma Yoga Collection")
 class TestNewLumaYogaCollectionBlock:
 
     @allure.link("https://trello.com/c/rKXY69Mo")
