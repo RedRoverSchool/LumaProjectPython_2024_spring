@@ -5,6 +5,7 @@ from pages.locators import WhatsNewPageLocators as WNL
 from pages.locators import HomeLocators as Url
 
 
+
 class WhatsNewPage:
     def __init__(self, browser):
         self.browser = browser
@@ -45,3 +46,14 @@ class WhatsNewPage:
 
     def scroll_to(self, element):
         self.browser.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+    @staticmethod
+    def click_bras_and_tank_link():
+        return s(WNL.BRAS_TANKS).click()
+
+    def click_breathe_easy_tank_item(self):
+        return s(WNL.BREATHE_EASY_TANK).click()
+
+
+    def add_to_cart_button(self):
+        return s(WNL.ADD_TO_CART_BUTTON).click()

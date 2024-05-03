@@ -1,9 +1,15 @@
 import allure
-from selene import browser
+from selene import browser, have
+from selene.support.shared.jquery_style import s
 
 from data.links import WHATS_NEW_PAGE_LINK
 from pages.main_page import MainPage
 from pages.whats_new_page import WhatsNewPage
+from pages.locators import WhatsNewPageLocators as WNPL
+
+
+
+
 
 
 @allure.suite("US_006.006 | Testing What's New Page")
@@ -34,3 +40,23 @@ class TestWhatsNew:
             header = page.is_header_present()
         with allure.step("Assert header contains text \'What's New\'"):
             page.is_element_text_correct(header, "What's New")
+
+
+    def test_user_gets_error_message(self, browser_management):
+        page = MainPage(browser=browser)
+        page.open_page()
+        page.find_whats_new_link().click()
+        whats_new_page = WhatsNewPage(browser=browser)
+        whats_new_page.click_bras_and_tank_link()
+        whats_new_page.click_breathe_easy_tank_item()
+        whats_new_page.add_to_cart_button()
+        assert s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
+        assert s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
+
+
+
+
+
+
+
+

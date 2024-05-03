@@ -101,6 +101,15 @@ class WhatsNewPageLocators:
     LUMAS_LATEST_LIST = '.products-grid>ol'
     LUMAS_LATEST_ITEMS = '.products-grid>ol>li'
     BUTTON_MORE = 'span.more.button'
+    BRAS_TANKS = '.categories-menu ul:nth-child(2) li:nth-child(4) a'
+    ADD_TO_CART_BUTTON = '//*[@id="product-addtocart-button"]/span'
+    ERROR_MASSAGE_UNDER_SIZE = '//*[@id="super_attribute[143]-error"]'
+    ERROR_MASSAGE_UNDER_COLOR = '//*[@id="super_attribute[93]-error"]'
+    BREATHE_EASY_TANK = '//*[@id="maincontent"]/div[3]/div[1]/div[4]/ol/li[1]/div/a/span/span/img'
+
+
+
+
 
 
 class PrivacyPolicyPageLocators:
