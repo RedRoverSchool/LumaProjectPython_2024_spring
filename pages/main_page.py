@@ -21,6 +21,14 @@ class MainPage:
     def privacy_cookie_policy_link(self):
         return s(BL.PRIVACY_COOKIE_POLICY_LOCATOR)
 
+    @property
+    def new_luma_yoga_collection_block(self):
+        return s(BL.NEW_LUMA_YOGA_COLLECTION_BLOCK_LOCATOR)
+
+    @property
+    def new_luma_yoga_collection_block_info_text(self):
+        return s(BL.NEW_LUMA_YOGA_COLLECTION_BLOCK_INFO_TEXT_LOCATOR)
+
     def scroll_to_privacy_cookie_policy_link(self):
         self.browser.driver.execute_script("arguments[0].scrollIntoView(true);", self.privacy_cookie_policy_link())
 

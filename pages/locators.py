@@ -75,6 +75,8 @@ class BaseLocators:
                "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
                "https://magento.softwaretestingboard.com/training.html"
                 ]
+    NEW_LUMA_YOGA_COLLECTION_BLOCK_LOCATOR = "//a[contains(@class,'home-main')]/span"
+    NEW_LUMA_YOGA_COLLECTION_BLOCK_INFO_TEXT_LOCATOR = "//a[contains(@class,'home-main')]//span[@class='info']"
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
