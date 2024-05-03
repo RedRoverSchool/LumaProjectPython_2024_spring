@@ -7,7 +7,7 @@ from pages.main_page import MainPage
 @allure.link('https://trello.com/c/i4IEFhzW')
 @allure.suite("US_008.001 | Verifying Men > Displayed, Clickable, Redirection")
 class TestVerifyingMenLink:
-    @allure.feature("Verifying Men > Displayed, Clickable, Redirection from Main page")
+    @allure.feature("Verifying Men > Displayed, Clickable, Redirection for Men navigator")
     def test_verifying_men_link_is_displayed_clickable_redirection_in_the_main_page(self):
         with allure.step("Open home page and check if load successfully"):
             page = MainPage(browser=browser)
@@ -20,7 +20,7 @@ class TestVerifyingMenLink:
             page.nav.verify_nav_men_bottoms()
             page.nav.goto_men_page()
 
-    @allure.feature("Verifying Men > Displayed, Clickable, Redirection from Men page")
+    @allure.feature("Verifying Men > Displayed, Clickable, Redirection for Men navigator")
     def test_verifying_men_link_is_displayed_clickable_redirection_in_the_men_page(self):
         with allure.step("Open men page"):
             men = MenPage(browser=browser)

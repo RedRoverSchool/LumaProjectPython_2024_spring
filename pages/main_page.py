@@ -49,6 +49,7 @@ class MainPage:
 
     def find_minicart(self):
         return s(HL.MINICART)
+
     def is_minicart_present(self):
         return self.find_minicart().should(be.present)
 
