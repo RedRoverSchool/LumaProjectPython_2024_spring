@@ -57,13 +57,22 @@ class SideBarLocators:
 
 
 class BaseLocators:
+    # locators for all pages
     PAGE_NAME = ".base"
     PAGE_TITLE = "h1"
     PAGE_HEADER = "#page-title-heading"
     BREADCRUMBS_LIST = ".breadcrumbs li"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
     PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
-
+    PRODUCT_ITEM_IN_CATALOG = 'li.product-item'  # каждый товар на любой странице в каталоге
+    PRODUCT_PRICE = 'price-label'
+    PRODUCT_NAME = 'product-item-link'
+    PRODUCT_IMAGE = 'product-image-photo'
+    ALL_URL = ["https://magento.softwaretestingboard.com/",
+               "https://magento.softwaretestingboard.com/what-is-new.html",
+               "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
+               "https://magento.softwaretestingboard.com/training.html"
+                ]
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
@@ -124,6 +133,12 @@ class PrivacyPolicy:
     GO_BACK_LINK = "//*[@id='maincontent']/div[3]/div[1]/dl[2]/dd[2]/ul/li[1]/a"
     PRIVACY_POLICY_TITLE = "span[data-ui-id='page-title-wrapper']"
 
+
 class ErinRecommendLocators:
     HOME_ERIN_BLOCK = "//a[@class='block-promo home-erin']"
     PAGE_HEADER = "//span[@data-ui-id='page-title-wrapper']"
+
+
+class PerformanceSportswear:
+    LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+
