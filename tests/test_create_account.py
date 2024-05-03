@@ -2,6 +2,7 @@ import allure
 import pytest
 
 from pages import create_account, message
+from pages.create_account import redirect
 
 
 @pytest.mark.skip
@@ -25,4 +26,5 @@ def test_004_006_05_verify_the_redirection_after_creating_account():
     create_account.visit()
     create_account.click_the_create_account_link()
     create_account.page_title()
+    redirect()
 

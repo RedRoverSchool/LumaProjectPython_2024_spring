@@ -1,6 +1,7 @@
 from selene import browser, have
 from selene.support.shared.jquery_style import s
 from pages.locators import CreateAccountLocators
+from data.links import CREATE_ACCOUNT_PAGE
 
 url = "https://magento.softwaretestingboard.com/customer/account/create/"
 
@@ -54,4 +55,4 @@ def page_title():
 
 
 def redirect():
-    s(url).should(have.url("CREATE_ACCOUNT_PAGE"))
+    browser.should(have.url(url))
