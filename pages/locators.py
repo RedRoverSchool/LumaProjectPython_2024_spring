@@ -1,6 +1,3 @@
-from selenium.webdriver.common.by import By
-
-
 class SalePageLocators:
     GEAR_DEALS_TITLE = "//*[text()='Gear Deals']"
     BAGS_LINK = "//a[text()='Bags']"
@@ -113,6 +110,11 @@ class LoginLocators:
     USER_NAME_IN_WELCOME = '.logged-in'
     AUTHORIZATION_LINK = 'authorization-link'
     LINK_ACCOUNT = 'https://magento.softwaretestingboard.com/customer/account/'
+
+
+class FooterLocators:
+    FOOTER_LINKS = ('xpath', '//footer[@class="page-footer"]//li')
+
 
 class ContactUsLocators:
     CONTACT_US_LINK = "//*[@id='maincontent']/div[3]/div/div[3]/div[1]/p[33]/a"
