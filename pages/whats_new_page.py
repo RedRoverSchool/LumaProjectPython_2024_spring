@@ -1,9 +1,10 @@
 from selene import browser
 from selene.support.conditions import have, be
-from selene.support.shared.jquery_style import s
+from selene.support.shared.jquery_style import s, ss
 from pages.locators import WhatsNewPageLocators as WNL
 from data.links import WHATS_NEW_PAGE_LINK
 from selenium.webdriver.common.action_chains import ActionChains
+from pages.locators import ProductItemLocators as Product
 
 
 class WhatsNewPage:
@@ -49,3 +50,11 @@ class WhatsNewPage:
 
     def move_to(self, product):
         ActionChains(self.browser.driver).move_to_element(product).perform()
+
+    def add_item_to_wish_list(self):
+        self.open_page()
+        self.click_button_more()
+        product = ss(Product.ITEM_INFO).first()
+        self.scroll_to(product)
+        self.move_to(product)
+        s(Product.WISH_LIST).click()

@@ -8,6 +8,8 @@ from faker import Faker
 from selene import browser, support
 from selenium import webdriver
 
+from pages import sign_in
+
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
@@ -93,3 +95,11 @@ def street_address():
 @pytest.fixture
 def city():
     return Faker().city()
+
+
+@pytest.fixture
+def login():
+    sign_in.visit()
+    sign_in.login("pamela341714226113@example.com", "@8j%Yltt(E")
+
+
