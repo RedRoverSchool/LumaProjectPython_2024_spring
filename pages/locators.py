@@ -1,6 +1,3 @@
-from selenium.webdriver.common.by import By
-
-
 class SalePageLocators:
     GEAR_DEALS_TITLE = "//*[text()='Gear Deals']"
     BAGS_LINK = "//a[text()='Bags']"
@@ -33,17 +30,9 @@ class ProductLocators:
 
 class HomeLocators:
     STORE_LOGO = 'a.logo'
-    BASE_URL = 'https://magento.softwaretestingboard.com'
-    WHAT_NEW_URL = 'https://magento.softwaretestingboard.com/what-is-new.html'
-    MEN_URL = 'https://magento.softwaretestingboard.com/men.html'
-    WOMEN_URL = 'https://magento.softwaretestingboard.com/women.html'
-    GEAR_URL = 'https://magento.softwaretestingboard.com/gear.html'
-    TRAINING_URL = 'https://magento.softwaretestingboard.com/training.html'
-    SALE_URL = 'https://magento.softwaretestingboard.com/sale.html'
     CART_ICON = 'a.showcart'
     MINICART = '#ui-id-1'
     MINICART_VIEW = 'a.viewcart'
-
 
 
 class NavigatorLocators:
@@ -56,6 +45,7 @@ class NavigatorLocators:
     NAV_MENU = '#ui-id-2'
     NAV_MEN_TOPS = '#ui-id-17'
     NAV_MEN_BOTTOMS = '#ui-id-18'
+    NAV_MEN_TOPS_SUBMENU = "li[class='level1 nav-3-1 category-item first parent ui-menu-item'] ul[role='menu']"
 
 
 class SideBarLocators:
@@ -67,12 +57,22 @@ class SideBarLocators:
 
 
 class BaseLocators:
+    # locators for all pages
     PAGE_NAME = ".base"
-    PAGE_TITLE = 'h1'
+    PAGE_TITLE = "h1"
+    PAGE_HEADER = "#page-title-heading"
     BREADCRUMBS_LIST = ".breadcrumbs li"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
     PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
-
+    PRODUCT_ITEM_IN_CATALOG = 'li.product-item'  # каждый товар на любой странице в каталоге
+    PRODUCT_PRICE = 'price-label'
+    PRODUCT_NAME = 'product-item-link'
+    PRODUCT_IMAGE = 'product-image-photo'
+    ALL_URL = ["https://magento.softwaretestingboard.com/",
+               "https://magento.softwaretestingboard.com/what-is-new.html",
+               "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
+               "https://magento.softwaretestingboard.com/training.html"
+                ]
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
@@ -100,16 +100,16 @@ class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
 
 
-class ProductItem:
+class ProductItemLocators:
     WISH_LIST = "[aria-label='Add to Wish List']"
     ITEM_INFO = ".product-item-info"
 
 
-class LoginPage:
+class LoginPageLocators:
     PAGE_TITLE_WRAPPER = "span.base[data-ui-id='page-title-wrapper']"
     MESSAGE_TEXT = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"
 
-    
+
 class LoginLocators:
     LINK_LOGIN = 'https://magento.softwaretestingboard.com/customer/account/login'
     FIELD_NAME = 'div.login-container #email'
@@ -119,6 +119,11 @@ class LoginLocators:
     USER_NAME_IN_WELCOME = '.logged-in'
     AUTHORIZATION_LINK = 'authorization-link'
     LINK_ACCOUNT = 'https://magento.softwaretestingboard.com/customer/account/'
+
+
+class FooterLocators:
+    FOOTER_LINKS = ('xpath', '//footer[@class="page-footer"]//li')
+
 
 class ContactUsLocators:
     CONTACT_US_LINK = "//*[@id='maincontent']/div[3]/div/div[3]/div[1]/p[33]/a"
@@ -131,3 +136,13 @@ class PrivacyPolicy:
 
 class CreateAccountLocators:
     CREATE_AN_ACCOUNT_LINK = "(//a[.='Create an Account'])[1]"
+
+
+class ErinRecommendLocators:
+    HOME_ERIN_BLOCK = "//a[@class='block-promo home-erin']"
+    PAGE_HEADER = "//span[@data-ui-id='page-title-wrapper']"
+
+
+class PerformanceSportswear:
+    LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+

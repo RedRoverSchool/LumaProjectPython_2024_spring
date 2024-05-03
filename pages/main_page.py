@@ -4,12 +4,15 @@ from data.links import MAIN_PAGE_LINK
 from pages.locators import BaseLocators as BL
 from pages.locators import NavigatorLocators as Nav
 from pages.locators import HomeLocators as HL
+from pages.components.nav_wigdet import NavComponent
+from pages.locators import ErinRecommendLocators as ERL
 
 
 class MainPage:
 
     def __init__(self, browser):
         self.browser = browser
+        self.nav = NavComponent(browser)
 
     def open_page(self):
         self.browser.open(MAIN_PAGE_LINK)
@@ -33,53 +36,11 @@ class MainPage:
     def find_whats_new_link(self):
         return s(Nav.NAV_NEW)
 
-    @staticmethod
-    def find_men_link():
-        return s(Nav.NAV_MEN)
+    def get_current_url(self):
+        return self.browser.driver.current_url
 
-    def is_men_present(self):
-        return self.find_men_link().should(be.present)
-
-    def is_men_visible(self):
-        return self.find_men_link().should(be.visible)
-
-    def is_men_link_present(self):
-        return self.find_men_link().should(be.present)
-
-    def is_men_have_text(self):
-        return self.find_men_link().should(have.text('Men'))
-
-    @staticmethod
-    def find_men_tops_link():
-        return s(Nav.NAV_MEN_TOPS)
-
-    def is_men_tops_present(self):
-        return self.find_men_tops_link().should(be.present)
-
-    def is_men_tops_visible(self):
-        return self.find_men_tops_link().should(be.visible)
-
-    def is_men_tops_link_present(self):
-        return self.find_men_tops_link().should(be.present)
-
-    def is_men_tops_have_text(self):
-        return self.find_men_tops_link().should(have.text('Tops'))
-
-    @staticmethod
-    def find_men_bottoms_link():
-        return s(Nav.NAV_MEN_BOTTOMS)
-
-    def is_men_bottoms_present(self):
-        return self.find_men_bottoms_link().should(be.present)
-
-    def is_men_bottoms_visible(self):
-        return self.find_men_bottoms_link().should(be.visible)
-
-    def is_men_bottoms_link_present(self):
-        return self.find_men_bottoms_link().should(be.present)
-
-    def is_men_bottoms_have_text(self):
-        return self.find_men_bottoms_link().should(have.text('Bottoms'))
+    def is_loaded(self):
+        assert self.get_current_url() == MAIN_PAGE_LINK, "Home page did not load successfully"
 
     def find_cart_icon(self):
         return s(HL.CART_ICON)
@@ -89,6 +50,7 @@ class MainPage:
 
     def find_minicart(self):
         return s(HL.MINICART)
+
     def is_minicart_present(self):
         return self.find_minicart().should(be.present)
 
@@ -106,3 +68,8 @@ class MainPage:
 
     def is_minicart_have_link(self):
         return self.find_minicart_view().should(have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
+
+    def is_erin_block_present(self):
+        return s(ERL.HOME_ERIN_BLOCK).should(be.present)
+
+

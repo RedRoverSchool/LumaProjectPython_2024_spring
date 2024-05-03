@@ -15,7 +15,7 @@ class TestHover:
     @pytest.mark.parametrize("element", text)
     def test_check_color_of_hover_element(self, element):
         browser.open(url_navigate)
-        for item in browser.all(by.css('ul.items > li.item> a')).filtered_by(have.text(element)):
+        for item in browser.all(by.css('ul.items > li.item> a')).by(have.text(element)):
             item.hover().should(have.css_property('background-color', 'rgba(232, 232, 232, 1)'))
 
     @pytest.mark.parametrize("element", text)
