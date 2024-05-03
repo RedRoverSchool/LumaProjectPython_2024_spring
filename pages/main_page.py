@@ -1,5 +1,5 @@
 from selene.support.conditions import be, have
-from selene.support.shared.jquery_style import s
+from selene.support.shared.jquery_style import s, ss
 from data.links import MAIN_PAGE_LINK
 from pages.locators import BaseLocators as BL, HomeLocators
 from pages.locators import NavigatorLocators as Nav
@@ -75,5 +75,5 @@ class MainPage:
 
     @staticmethod
     def handle_cookies_popup():
-        if s(HomeLocators.COOKIES_MSG).should(be.present):
+        if ss(HomeLocators.COOKIES_MSG):
             s(HomeLocators.CONSENT_COOKIES_BTN).click()
