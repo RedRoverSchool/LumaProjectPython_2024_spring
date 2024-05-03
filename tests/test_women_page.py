@@ -9,6 +9,7 @@ from pages.locators import SalePageLocators
 from pages.locators import BaseLocators
 
 
+@pytest.mark.skip("Page Women is down")
 @allure.title('Women >Dropdown menu>Checking page redirection to Tops elements')
 def test_checking_page_redirection_to_tops_elements():
     women_page.visit()
@@ -17,6 +18,7 @@ def test_checking_page_redirection_to_tops_elements():
     browser.should(have.url(TOPS_WOMEN_PAGE_LINK))
 
 
+@pytest.mark.skip("Page Women is down")
 @allure.title('Women >Dropdown menu> Checking page redirection to Bottom elements')
 def test_checking_page_redirection_to_bottom_elements():
     women_page.visit()
@@ -25,6 +27,7 @@ def test_checking_page_redirection_to_bottom_elements():
     browser.should(have.url(BOTTOMS_WOMEN_PAGE_LINK))
 
 
+@pytest.mark.skip("Page Women is down")
 @allure.title('Women >Dropdown menu>Verify visibility elements')
 def test_verify_visibility_elements_dropdown_menu():
     women_page.visit()
