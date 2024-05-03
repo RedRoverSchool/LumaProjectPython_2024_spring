@@ -8,6 +8,7 @@ from data.page_data import MainPageData
 
 @allure.feature("Main Page > New Luma Yoga Collection > View the New Luma Yoga Collection block")
 class TestNewLumaYogaCollectionBlock:
+
     @allure.link("https://trello.com/c/rKXY69Mo")
     @allure.title("TC_001.005.001 | Verify displays of the 'New Luma Yoga Collection' block")
     def test_displays_of_new_luma_yoga_collection_block(self):
