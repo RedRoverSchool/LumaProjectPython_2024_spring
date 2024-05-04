@@ -1,4 +1,4 @@
-from selene import browser
+from selene import browser, Collection
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
 from pages.locators import WhatsNewPageLocators as WNL
@@ -24,7 +24,7 @@ class WhatsNewPage:
         return s(WNL.LUMAS_LATEST_LIST).should(be.present)
 
     def get_lumas_latest_items(self):
-        return s(WNL.LUMAS_LATEST_ITEMS)
+        return ss(WNL.LUMAS_LATEST_ITEMS)
 
     def check_current_url(self):
         return browser.driver.current_url
@@ -58,3 +58,17 @@ class WhatsNewPage:
         self.scroll_to(product)
         self.move_to(product)
         s(Product.WISH_LIST).click()
+
+    def check_number_of_lumas_latest(self):
+        collection = self.get_lumas_latest_items()
+        return len(collection)
+
+    @staticmethod
+    def get_collection_lumas_latest_items():
+        return ss(WNL.LUMAS_LATEST_IMAGES)
+
+    def check_men_and_women_items_present(self):
+        collection = self.get_collection_lumas_latest_items()
+        for item in collection:
+            item.should(
+                have.attribute("src").value_containing('/m/').or_(have.attribute("src").value_containing('/w/')))

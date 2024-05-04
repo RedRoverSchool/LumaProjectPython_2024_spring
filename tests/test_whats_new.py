@@ -34,3 +34,16 @@ class TestWhatsNew:
             header = page.is_header_present()
         with allure.step("Assert header contains text \'What's New\'"):
             page.is_element_text_correct(header, "What's New")
+
+    @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
+    @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
+    def test_lumas_latest_list_visibility(self, browser_management):
+        page = MainPage(browser=browser)
+        page.open_page()
+        page.find_whats_new_link()\
+            .click()
+        page = WhatsNewPage(browser=browser)
+        page.is_lumas_latest_present()
+        item_number = page.check_number_of_lumas_latest()
+        assert item_number == 4
+        page.check_men_and_women_items_present()
