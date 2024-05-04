@@ -19,9 +19,14 @@ class MenPage:
     def get_current_url(self):
         return self.browser.driver.current_url
 
+    @staticmethod
+    def get_current_header():
+        return s(Header.PAGE_HEADER)
+
     def is_loaded(self):
-        s(Header.PAGE_HEADER).should(have.text("Men"))
-        assert self.get_current_url() == MEN_PAGE_URL, "Men's page did not load successfully"
+        self.get_current_header().should(have.text("Men"))
+        is_current_page_men = self.get_current_url() == MEN_PAGE_URL
+        assert is_current_page_men, "Men's page did not load successfully"
 
     @staticmethod
     def is_active():

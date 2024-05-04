@@ -47,8 +47,14 @@ class NavigatorLocators:
     NAV_MENU = '#ui-id-2'
     NAV_MEN_TOPS = '#ui-id-17'
     NAV_MEN_BOTTOMS = '#ui-id-18'
-    NAV_MEN_TOPS_SUBMENU = "li[class='level1 nav-3-1 category-item first parent ui-menu-item'] ul[role='menu']"
-
+    NAV_MEN_TOPS_JACKET = '#ui-id-19'
+    NAV_MEN_TOPS_HOODIES = '#ui-id-20'
+    NAV_MEN_TOPS_TEES = '#ui-id-21'
+    NAV_MEN_TOPS_TANKS = '#ui-id-22'
+    NAV_MEN_SUBMENU = "li[class='level1 nav-3-1 category-item first parent ui-menu-item']"
+    NAV_MEN_BOTTOMS_SUBMENU = "li[class='level1 nav-3-2 category-item last parent ui-menu-item']"
+    NAV_MEN_TOPS_SUBMENU_HREFS = ".nav-3-1 > ul  > li > a"
+    NAV_MEN_BOTTOMS_SUBMENU_HREFS = ".nav-3-2 > ul  > li > a"
 
 class SideBarLocators:
     BREADCRUMBS = '.breadcrumbs'
