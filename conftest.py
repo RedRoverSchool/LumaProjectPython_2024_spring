@@ -101,5 +101,3 @@ def city():
 def login():
     sign_in.visit()
     sign_in.login("pamela341714226113@example.com", "@8j%Yltt(E")
-
-
