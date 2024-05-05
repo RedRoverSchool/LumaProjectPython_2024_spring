@@ -1,7 +1,6 @@
-from selene import browser
+from selene import browser, command, Element
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
-from selenium.webdriver.common.action_chains import ActionChains
 
 from data.links import WHATS_NEW_PAGE_LINK
 from pages.locators import ProductItemLocators as Product
@@ -31,33 +30,41 @@ class WhatsNewPage:
         return browser.driver.current_url
 
     @staticmethod
-    def find_button_more():
+    def find_button_new_yoga():
         return s(WNL.BUTTON_MORE)
 
     def is_button_present(self):
-        return self.find_button_more().should(be.present)
+        return self.find_button_new_yoga().should(be.present)
 
     def is_button_visible(self):
-        return self.find_button_more().should(be.visible)
+        return self.find_button_new_yoga().should(be.visible)
 
     def is_current_link(self):
         return self.check_current_url() == WHATS_NEW_PAGE_LINK
 
-    def click_button_more(self):
-        self.find_button_more().click()
+    def click_button_shop_new_yoga(self):
+        self.find_button_new_yoga().click()
 
-    def scroll_to(self, element):
-        self.browser.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+    @staticmethod
+    def scroll_to(element: Element):
+        element.perform(command.js.scroll_into_view)
 
-    def move_to(self, product):
-        ActionChains(self.browser.driver).move_to_element(product).perform()
+    def add_items_to_wish_list(self):
+        self.click_button_shop_new_yoga()
+        products = ss(Product.ITEM_INFO)
+        for i in range(2): #len(products)
+            self.scroll_to(products[i])
+            products[i].hover()
+            products[i].s(Product.WISH_LIST).click()
+            s('.message-success').should(have.text("added to your Wish List"))
+            self.browser.driver.back()
 
     def add_item_to_wish_list(self):
         self.open_page()
-        self.click_button_more()
-        product = ss(Product.ITEM_INFO).first()
+        self.click_button_shop_new_yoga()
+        product = s(Product.ITEM_INFO)
         self.scroll_to(product)
-        self.move_to(product)
+        product.hover()
         s(Product.WISH_LIST).click()
 
     def get_number_of_lumas_latest(self):

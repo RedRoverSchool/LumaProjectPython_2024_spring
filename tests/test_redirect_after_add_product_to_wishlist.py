@@ -18,11 +18,11 @@ def test_add_product_to_wishlist_as_non_logged_in_user():
         page.is_current_link()
     with allure.step("Click button more"):
         page.is_button_visible()
-        page.click_button_more()
+        page.click_button_shop_new_yoga()
     with allure.step("Go to product item"):
-        product = ss(Product.ITEM_INFO).first()
+        product = s(Product.ITEM_INFO)
         page.scroll_to(product)
-        page.move_to(product)
+        product.hover()
     with allure.step("Add to Wish List"):
         s(Product.WISH_LIST).click()
     with allure.step("Redirect to Customer Login and verify message"):
