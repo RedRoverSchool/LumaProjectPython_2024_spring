@@ -37,13 +37,12 @@ class TestWhatsNew:
 
     @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
     @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
-    def test_lumas_latest_list_visibility(self, browser_management):
+    def test_lumas_latest_list_visibility(self):
         page = MainPage(browser=browser)
         page.open_page()
-        page.find_whats_new_link()\
-            .click()
+        page.find_whats_new_link().click()
         page = WhatsNewPage(browser=browser)
         page.is_lumas_latest_present()
-        item_number = page.check_number_of_lumas_latest()
+        item_number = page.get_number_of_lumas_latest()
         assert item_number == 4
-        page.check_men_and_women_items_present()
+        assert page.are_men_and_women_items_present() is True
