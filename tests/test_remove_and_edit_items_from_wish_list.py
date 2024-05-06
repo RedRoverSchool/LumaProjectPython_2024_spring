@@ -16,10 +16,17 @@ class TestRemovingAndEditItemsInWishlist:
             message.should_be("Thank you for registering")
             page = WhatsNewPage(browser=browser)
             page.open_page()
-            page.add_items_to_wish_list()
+            page.add_items_to_wish_list(3) #len(products)
         with allure.step("Verify the trash bin icon on the product card for each item"):
             wish_list.visit()
             wish_list.verify_trash_bin_icon_present()
         with allure.step("Click on the trash icon of a specific item to delete from the wishlist"):
-            # wish_list.remove_item_from_wish_list(0)
-            print(len(wish_list.get_products()))
+            size = (len(wish_list.get_products()))
+            wish_list.remove_item_from_wish_list(0)
+            assert len(wish_list.get_products()) + 1 == size
+            last = len(wish_list.get_products()) - 1
+        with allure.step("Click on the edit icon of a specific item to edit item in the wishlist"):
+            wish_list.edit_item_in_wish_list(last, 3, 0, 0)
+            wish_list.remove_item_from_wish_list(0)
+            wish_list.remove_item_from_wish_list(0)
+            wish_list.is_wish_list_empty()

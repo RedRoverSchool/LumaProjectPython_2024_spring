@@ -1,6 +1,8 @@
 from selene import browser, be, have, command
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.common.by import By
+from pages.locators import WishListLocators as WishList
+from data.page_data import WishListData as Data
 
 url = "https://magento.softwaretestingboard.com/wishlist/"
 product_url = "https://magento.softwaretestingboard.com/aether-gym-pant.html?qty=1#143=&93="
@@ -29,7 +31,7 @@ def url_should_contain(param):
 
 
 def get_products():
-    return ss('.product-item-info')
+    return ss(WishList.PRODUCT_ITEM)
 
 
 def verify_trash_bin_icon_present():
@@ -37,19 +39,32 @@ def verify_trash_bin_icon_present():
     size = len(items)
     count = 0
     for i in range(size):
-        items[i].perform(command.js.scroll_into_view)
-        items[i].hover()
-        trash_icon = items[i].s('.btn-remove.action.delete')
-        trash_icon.should(be.visible)
-        trash_icon.should(be.present)
+        items[i].perform(command.js.scroll_into_view).hover()
+        items[i].s(WishList.DELETE_BUCKET).should(be.visible).should(be.present)
         count += 1
     assert count == size
 
 
-def remove_item_from_wish_list(product_index):
-    product = get_products()[product_index]
-    trash_bin_icon = product.s('.btn-remove.action.delete')
-    trash_bin_icon.click()
+def has_success_message():
+    assert s(WishList.SUCCESS_MESSAGE).should(have.text(Data.removed_message))
+
+
+def remove_item_from_wish_list(index):
+    product = get_products()[index]
+    product.hover().s(WishList.DELETE_BUCKET).click()
+    has_success_message()
+
+
+def edit_item_in_wish_list(index, qty, color, size):
+    get_products()[index].hover().s(WishList.ITEM_ACTIONS).click()
+    s(WishList.QUALITY).clear().send_keys(qty)
+    ss(WishList.COLORS)[color].click()
+    ss(WishList.SIZES)[size].click()
+    s(WishList.UPDATED).click()
+
+
+def is_wish_list_empty():
+    s(WishList.EMPTY_MESSAGE).should(have.text(Data.empty_message))
 
 
 def remove_item():

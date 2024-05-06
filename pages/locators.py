@@ -157,3 +157,14 @@ class ErinRecommendLocators:
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
 
+
+class WishListLocators:
+    EMPTY_MESSAGE = '.message.info.empty span'
+    DELETE_BUCKET = '.btn-remove.action.delete'
+    SUCCESS_MESSAGE = '.message-success.success.message'
+    PRODUCT_ITEM = '.products-grid.wishlist .product-item'
+    ITEM_ACTIONS = ".product-item-actions"
+    QUALITY = "input[name='qty']"
+    COLORS = "div.swatch-attribute.color .swatch-option.color"
+    SIZES = "div.swatch-attribute.size .swatch-option.text"
+    UPDATED = "a.action.towishlist.updated"

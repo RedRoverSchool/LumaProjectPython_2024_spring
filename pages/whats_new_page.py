@@ -3,7 +3,9 @@ from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
 
 from data.links import WHATS_NEW_PAGE_LINK
+from data.page_data import WishListData as Data
 from pages.locators import ProductItemLocators as Product
+from pages.locators import WishListLocators as WishList
 from pages.locators import WhatsNewPageLocators as WNL
 
 
@@ -49,14 +51,14 @@ class WhatsNewPage:
     def scroll_to(element: Element):
         element.perform(command.js.scroll_into_view)
 
-    def add_items_to_wish_list(self):
+    def add_items_to_wish_list(self, size):
         self.click_button_shop_new_yoga()
         products = ss(Product.ITEM_INFO)
-        for i in range(2): #len(products)
+        for i in range(size):
             self.scroll_to(products[i])
             products[i].hover()
             products[i].s(Product.WISH_LIST).click()
-            s('.message-success').should(have.text("added to your Wish List"))
+            s(WishList.SUCCESS_MESSAGE).should(have.text(Data.add_wish_list_message))
             self.browser.driver.back()
 
     def add_item_to_wish_list(self):
