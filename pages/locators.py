@@ -106,9 +106,9 @@ class WhatsNewPageLocators:
     ERROR_MASSAGE_UNDER_SIZE = '//*[@id="super_attribute[143]-error"]'
     ERROR_MASSAGE_UNDER_COLOR = '//*[@id="super_attribute[93]-error"]'
     BREATHE_EASY_TANK = "a.product-item-link[href*='breathe-easy-tank']"
-    ADD_TO_COMPARE = '//*[@id="maincontent"]/div[2]/div/div[2]/div[5]/div/a[2]/span'
-    YOU_ADDED_PRODUCT = '//*[@id="maincontent"]/div[1]/div[2]/div/div/div'
-    ADD_TO_WISH_LIST_BUTTON = '//*[@id="maincontent"]/div[2]/div/div[2]/div[5]/div/a[1]/span'
+    ADD_TO_COMPARE = '.product-social-links a:last-child'
+    YOU_ADDED_PRODUCT = '.product-social-links a:last-child'
+    ADD_TO_WISH_LIST_BUTTON = '.product-social-links a:first-child'
     ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
 
 

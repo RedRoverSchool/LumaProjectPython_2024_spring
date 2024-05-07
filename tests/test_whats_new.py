@@ -48,3 +48,6 @@ class TestWhatsNew:
         whats_new_page.add_to_cart_button()
         assert s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
         assert s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
+
+
+
