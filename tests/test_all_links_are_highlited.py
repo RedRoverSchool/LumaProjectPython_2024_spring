@@ -1,5 +1,6 @@
+import allure
 import pytest
-from selene import browser, by, be, have, support
+from selene import browser, by, be, have
 from selene.support.shared.jquery_style import s
 
 url_navigate = "https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode"
@@ -11,6 +12,7 @@ text = ["Luma Security", "Luma Privacy Policy", "The Information We Collect",
         "List of cookies we collect", "Online Account Registration", "Emails", "Acceptance", "Questions for Luma?"]
 
 
+@allure.feature("Verify link highlight after hovering in left-side navigation block")
 class TestHover:
     @pytest.mark.parametrize("element", text)
     def test_check_color_of_hover_element(self, element):
