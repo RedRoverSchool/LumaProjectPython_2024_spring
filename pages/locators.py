@@ -174,3 +174,7 @@ class WishListLocators:
     COLORS = "div.swatch-attribute.color .swatch-option.color"
     SIZES = "div.swatch-attribute.size .swatch-option.text"
     UPDATED = "a.action.towishlist.updated"
+
+
+class TrainingPageLocators:
+    VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'

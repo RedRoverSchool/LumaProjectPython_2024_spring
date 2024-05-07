@@ -101,3 +101,11 @@ def city():
 def login():
     sign_in.visit()
     sign_in.login("pamela341714226113@example.com", "@8j%Yltt(E")
+
+
+@pytest.fixture
+def visit_page():
+    def visit(url):
+        browser.open(url)
+
+    return visit
