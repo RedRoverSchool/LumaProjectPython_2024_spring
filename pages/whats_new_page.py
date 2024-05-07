@@ -57,3 +57,11 @@ class WhatsNewPage:
 
     def add_to_cart_button(self):
         return s(WNL.ADD_TO_CART_BUTTON).click()
+
+
+    def add_to_compare_button(self):
+        return s(WNL.ADD_TO_COMPARE).click()
+
+
+    def add_to_wish_list_button(self):
+        return s(WNL.ADD_TO_WISH_LIST_BUTTON).click()

@@ -105,7 +105,14 @@ class WhatsNewPageLocators:
     ADD_TO_CART_BUTTON = '//*[@id="product-addtocart-button"]/span'
     ERROR_MASSAGE_UNDER_SIZE = '//*[@id="super_attribute[143]-error"]'
     ERROR_MASSAGE_UNDER_COLOR = '//*[@id="super_attribute[93]-error"]'
-    BREATHE_EASY_TANK = '//*[@id="maincontent"]/div[3]/div[1]/div[4]/ol/li[1]/div/a/span/span/img'
+    BREATHE_EASY_TANK = "a.product-item-link[href*='breathe-easy-tank']"
+    ADD_TO_COMPARE = '//*[@id="maincontent"]/div[2]/div/div[2]/div[5]/div/a[2]/span'
+    YOU_ADDED_PRODUCT = '//*[@id="maincontent"]/div[1]/div[2]/div/div/div'
+    ADD_TO_WISH_LIST_BUTTON = '//*[@id="maincontent"]/div[2]/div/div[2]/div[5]/div/a[1]/span'
+    ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
+
+
+
 
 
 

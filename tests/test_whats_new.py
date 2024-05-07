@@ -8,10 +8,6 @@ from pages.whats_new_page import WhatsNewPage
 from pages.locators import WhatsNewPageLocators as WNPL
 
 
-
-
-
-
 @allure.suite("US_006.006 | Testing What's New Page")
 class TestWhatsNew:
     @allure.title("TC_006.006.001 | Test visibility of What's New link on the home page")
@@ -41,7 +37,7 @@ class TestWhatsNew:
         with allure.step("Assert header contains text \'What's New\'"):
             page.is_element_text_correct(header, "What's New")
 
-
+    @allure.title('TC_006.005.001 | Verify that User gets error message This this is required field in red color')
     def test_user_gets_error_message(self, browser_management):
         page = MainPage(browser=browser)
         page.open_page()
@@ -52,11 +48,3 @@ class TestWhatsNew:
         whats_new_page.add_to_cart_button()
         assert s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
         assert s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
-
-
-
-
-
-
-
-
