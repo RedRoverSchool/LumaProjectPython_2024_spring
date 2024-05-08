@@ -16,6 +16,7 @@ CONTACT_US_LINK = BASE_URL + "/contact/"
 TRAINING_URL = BASE_URL + '/training.html'
 VIDEO_DOWNLOAD_URL = BASE_URL + '/training/training-video.html'
 ERIN_RECOMMENDS_URL = BASE_URL + '/collections/erin-recommends.html'
+YOGA_URL = BASE_URL + '/collections/yoga-new.html'
 
 
 class MenUrls:
