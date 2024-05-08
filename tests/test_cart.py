@@ -18,6 +18,7 @@ class TestCart:
         page.find_cart_icon().click()
         page.is_minicart_present()
         page.is_minicart_view_present()
+        page.is_minicart_view_clickable()
         page.find_minicart_view().click()
         page_cart.set_value_of_qty()
         page_cart.is_update_shopping_cart_button_present()
