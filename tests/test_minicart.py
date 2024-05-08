@@ -14,7 +14,7 @@ class TestMiniCart:
         s(PL.RADIANT_TEE_SIZE).click()
         s(PL.RADIANT_TEE_COLOR).click()
         s(PL.ADD_TO_CART_BUTTON_FROM_MAINPAGE).click()
-        page.is_find_cart_icon_present()
+        page.is_cart_icon_present()
         page.find_cart_icon().click()
         page.is_minicart_present()
         page.is_minicart_have_link()
