@@ -109,6 +109,7 @@ class WhatsNewPageLocators:
     LUMAS_LATEST_ITEMS = '.products-grid>ol>li'
     BUTTON_MORE = 'span.more.button'
     LUMAS_LATEST_IMAGES = '.product-image-photo'
+    NEW_YOGA_LINK = "//*[text()='New Luma Yoga Collection']"
 
 
 class PrivacyPolicyPageLocators:
@@ -179,3 +180,6 @@ class WishListLocators:
 class CartLocators:
     QTY = '.input-text.qty'
     UPDATE_SHOPPING_CART_BUTTON = '.action.update'
+
+class TrainingPageLocators:
+    VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'

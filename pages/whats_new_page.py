@@ -87,3 +87,6 @@ class WhatsNewPage:
             elif item.matching(have.attribute("src").value_containing('/w/')):
                 w += 1
         return True if (m > 0 and w > 0) and m + w == 4 else False
+
+    def is_yoga_link_visible(self):
+        return s(WNL.NEW_YOGA_LINK).should(be.visible)
