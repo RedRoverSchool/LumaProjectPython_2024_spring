@@ -23,7 +23,7 @@ class TestYoga:
     def test_yoga_link_redirection(self, browser_management):
         page = WhatsNewPage(browser=browser)
         page.open_page()
-        s(WNL.NEW_YOGA_LINK).click()
+        page.new_yoga_link_click()
         assert page.check_current_url() == YOGA_URL
-        assert browser.element(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
+        assert s(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
 

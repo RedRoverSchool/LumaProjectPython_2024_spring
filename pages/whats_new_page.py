@@ -90,3 +90,6 @@ class WhatsNewPage:
 
     def is_yoga_link_visible(self):
         return s(WNL.NEW_YOGA_LINK).should(be.visible)
+
+    def new_yoga_link_click(self):
+        return s(WNL.NEW_YOGA_LINK).click()
