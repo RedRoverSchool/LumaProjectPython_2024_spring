@@ -1,13 +1,12 @@
 import pytest
 from selene import browser
-from selene.support.conditions import be, have
+from selene.support.conditions import have
 from selene.support.shared.jquery_style import s, ss
 import allure
 import data.links
 from pages.locators import FooterLocators, BaseLocators
 
 
-@pytest.mark.skip
 @allure.link('https://trello.com/c/PMzBgZUn')
 @allure.title('Verifying a footer links from all of the site pages')
 def test_012_001_001_verify_footer_links():
@@ -53,11 +52,11 @@ def test_012_001_001_verify_footer_links():
     check_header("Men")
     check_links_texts()
 
-    visit(data.links.MEN_TOPS_PAGE_URL)
+    visit(data.links.MenUrls.men_sub_urls['Tops'])
     check_header("Tops")
     check_links_texts()
 
-    visit(data.links.MEN_BOTTOMS_PAGE_URL)
+    visit(data.links.MenUrls.men_sub_urls['Bottoms'])
     check_header("Bottoms")
     check_links_texts()
 
