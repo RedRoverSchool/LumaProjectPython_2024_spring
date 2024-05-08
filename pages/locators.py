@@ -38,6 +38,7 @@ class HomeLocators:
     CART_ICON = 'a.showcart'
     MINICART = '#ui-id-1'
     MINICART_VIEW = 'a.viewcart'
+    MINICART_COUNTER = '.counter-label'
 
 
 class NavigatorLocators:
@@ -174,3 +175,7 @@ class WishListLocators:
     COLORS = "div.swatch-attribute.color .swatch-option.color"
     SIZES = "div.swatch-attribute.size .swatch-option.text"
     UPDATED = "a.action.towishlist.updated"
+
+class CartLocators:
+    QTY = '.input-text.qty'
+    UPDATE_SHOPPING_CART_BUTTON = '.action.update'

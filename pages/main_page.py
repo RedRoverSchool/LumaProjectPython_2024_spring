@@ -53,8 +53,14 @@ class MainPage:
     def find_cart_icon(self):
         return s(HL.CART_ICON)
 
-    def is_find_cart_icon_present(self):
+    def is_cart_icon_present(self):
         return self.find_cart_icon().should(be.present)
+
+    def find_counter_number(self):
+        return s(HL.MINICART_COUNTER)
+
+    def is_counter_number_present(self):
+        return self.find_counter_number().should(be.present)
 
     def find_minicart(self):
         return s(HL.MINICART)
