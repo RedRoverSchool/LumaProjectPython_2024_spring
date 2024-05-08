@@ -77,8 +77,8 @@ class MainPage:
     def is_minicart_view_present(self):
         return self.find_minicart_view().should(be.present)
 
-    def is_minicart_view_clickable(self):
-        return self.find_minicart_view().should(be.clickable)
+    def is_minicart_view_enable(self):
+        return self.find_minicart_view().should(be.enabled)
 
     def is_minicart_view_visible(self):
         return self.find_minicart_view().should(be.visible)
