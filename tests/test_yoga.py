@@ -1,9 +1,10 @@
 import allure
-from selene import browser, by, have
+from selene import browser, be, by, have
 from selene.support.shared.jquery_style import s
 from pages.whats_new_page import WhatsNewPage
+from pages.yoga_page import YogaPage
 from pages.locators import WhatsNewPageLocators as WNL, YogaPageLocators as YPL
-from data.links import YOGA_URL
+from data.links import YOGA_URL, YOGA_LIST_URL
 
 
 @allure.suite("US_006.007 | What`s new page > New Luma Yoga Collection")
@@ -37,3 +38,13 @@ class TestYoga:
         assert page.check_current_url() == YOGA_URL
         assert s(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
 
+    @allure.link("https://trello.com/c/jRy1WrCH")
+    @allure.title("TC_006.007.004| What`s new page > New Luma Yoga Collection > "
+                  "The \"List\" button is displayed and changes a page view type")
+    def test_yoga_list_button_visibility_and_redirection(self, browser_management):
+        page = YogaPage(browser=browser)
+        page.open_page()
+        page.is_list_button_visible()
+        page.list_button_click()
+        assert page.check_current_url() == YOGA_LIST_URL
+        assert s(YPL.WRAPPER_LIST_VIEW).should(be.visible)
