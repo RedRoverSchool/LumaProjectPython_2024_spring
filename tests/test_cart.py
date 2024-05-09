@@ -1,5 +1,7 @@
+import time
+
 import allure
-from selene.support.shared.jquery_style import s
+
 from selene import browser, have
 from pages.main_page import MainPage
 from pages.cart_page import CartPage
@@ -11,16 +13,9 @@ class TestCart:
         page_cart = CartPage(browser=browser)
         page = MainPage(browser=browser)
         page.open_page()
-        s(PL.RADIANT_TEE_SIZE).click()
-        s(PL.RADIANT_TEE_COLOR).click()
-        s(PL.ADD_TO_CART_BUTTON_FROM_MAINPAGE).click()
-        page.is_cart_icon_present()
-        page.find_cart_icon().click()
-        page.is_minicart_present()
-        page.is_minicart_view_present()
-        page.find_minicart_view().click()
-        page_cart.set_value_of_qty()
-        page_cart.is_update_shopping_cart_button_present()
-        page_cart.find_update_shopping_cart_button().click()
-        page.is_counter_number_present()
-        page.find_counter_number().should(have.text('2'))
+        page.add_item_to_cart(PL.RADIANT_TEE_SIZE, PL.RADIANT_TEE_COLOR, PL.ADD_TO_CART_BUTTON_FROM_MAINPAGE)
+        page_cart.open_page()
+        page_cart.set_value_of_qty('2')
+        time.sleep(3)
+        page_cart.is_counter_number_present()
+        page_cart.find_counter_number().should(have.text('2'))

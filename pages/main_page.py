@@ -8,6 +8,7 @@ from pages.components.nav_wigdet import NavComponent
 from pages.locators import ErinRecommendLocators as ERL
 
 
+
 class MainPage:
 
     def __init__(self, browser):
@@ -74,6 +75,7 @@ class MainPage:
     def find_minicart_view(self):
         return s(HL.MINICART_VIEW)
 
+    @property
     def is_minicart_view_present(self):
         return self.find_minicart_view().should(be.present)
 
@@ -94,3 +96,8 @@ class MainPage:
     def handle_cookies_popup():
         if ss(HomeLocators.COOKIES_MSG):
             s(HomeLocators.CONSENT_COOKIES_BTN).click()
+
+    def add_item_to_cart(self, size, color, add_to_cart_button):
+        s(size).click()
+        s(color).click()
+        s(add_to_cart_button).click()
