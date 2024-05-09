@@ -27,3 +27,13 @@ class TestYoga:
         assert page.check_current_url() == YOGA_URL
         assert s(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
 
+    @allure.link("https://trello.com/c/oTH09O30")
+    @allure.title("TC_006.007.003| What`s new page > New Luma Yoga Collection "
+                  "> The \"Shop New Yoga\" button link redirects to New Luma Yoga Collection page")
+    def test_yoga_button_redirection(self, browser_management):
+        page = WhatsNewPage(browser=browser)
+        page.open_page()
+        page.click_button_shop_new_yoga()
+        assert page.check_current_url() == YOGA_URL
+        assert s(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
+
