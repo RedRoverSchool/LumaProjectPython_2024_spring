@@ -39,4 +39,14 @@ class ErinRecommendsPage:
     def is_next_button_visible(self):
         return s(ERL.PAGE_NEXT).should(be.visible)
 
+    def expand_show_per_page_dropdown(self):
+        return s(ERL.PAGE_DROPDOWN).click()
+
+    def select_per_page_option(self, selected_option):
+        return s(ERL.PAGE_DROPDOWN).element(f".//option[@value='{selected_option}']").click()
+
+    def verify_number_of_product_displayed(self, min_count, max_count):
+        products_count = len(ERL.PRODUCTS)
+        assert min_count <= products_count <= max_count, f"Number of displayed products {products_count} is not within the expected range {min_count}-{max_count}"
+
 

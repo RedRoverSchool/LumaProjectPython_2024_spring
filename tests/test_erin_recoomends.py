@@ -38,6 +38,20 @@ class TestErinRecommends:
             page.click_next()
             browser.should(have.url_containing("p=2"))
 
+    @allure.title("TC_001.002.004 | Main Page > Erin Recommendations > Select Number of Products Displayed")
+    def test_show_per_page(self):
+        with allure.step("Open Erin Recommends page"):
+            page = ErinRecommendsPage(browser=browser)
+            page.open_page()
+        with allure.step("Scroll to and expand the 'Show Per Page' dropdown"):
+            page.scroll_to_footer()
+            page.expand_show_per_page_dropdown()
+        with allure.step("Select a different number to display product per page"):
+            page.select_per_page_option(24)
+        with allure.step("Assert number of product displayed matches to selection"):
+            page.verify_number_of_product_displayed(13,24)
+
+
 
 
 
