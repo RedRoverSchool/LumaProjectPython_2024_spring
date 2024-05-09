@@ -17,6 +17,7 @@ TRAINING_URL = BASE_URL + '/training.html'
 VIDEO_DOWNLOAD_URL = BASE_URL + '/training/training-video.html'
 ERIN_RECOMMENDS_URL = BASE_URL + '/collections/erin-recommends.html'
 CART_LINK = BASE_URL + '/checkout/cart/'
+YOGA_URL = BASE_URL + '/collections/yoga-new.html'
 
 
 class MenUrls:
