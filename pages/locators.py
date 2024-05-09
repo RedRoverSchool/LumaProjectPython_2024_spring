@@ -33,6 +33,10 @@ class ProductLocators:
     RADIANT_TEE_IMG = 'img[alt="Radiant Tee"]'
     RADIANT_TEE_TITLE = 'span[data-ui-id="page-title-wrapper"]'
     RADIANT_TEE_PRICE = '#product-price-1556'
+    SIZE_XS = '#option-label-size-143-item-166'
+    COLOR_BLUE = '#option-label-color-93-item-50'
+    SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input super-attribute-select'
+    TEXT_REQUIRED_FIELD = 'This is a required field.'
 
 
 class HomeLocators:
@@ -63,6 +67,7 @@ class NavigatorLocators:
     NAV_MEN_TOPS_SUBMENU_HREFS = ".nav-3-1 > ul  > li > a"
     NAV_MEN_BOTTOMS_SUBMENU_HREFS = ".nav-3-2 > ul  > li > a"
 
+
 class SideBarLocators:
     BREADCRUMBS = '.breadcrumbs'
     ITEM_HOME = '.item.home a'
@@ -90,6 +95,7 @@ class BaseLocators:
                 ]
     NEW_LUMA_YOGA_COLLECTION_BLOCK_LOCATOR = "//a[contains(@class,'home-main')]/span"
     NEW_LUMA_YOGA_COLLECTION_BLOCK_INFO_TEXT_LOCATOR = "//a[contains(@class,'home-main')]//span[@class='info']"
+
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
@@ -184,3 +190,12 @@ class WishListLocators:
 
 class TrainingPageLocators:
     VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'
+
+
+class PerformanceSportswear:
+    LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+    BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
+    SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
+    TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
+    IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
+    ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'

@@ -39,3 +39,18 @@ def test_015_002_006_order_search_terms():
     search_terms_page.order_search_terms()
 
 
+@allure.link('https://trello.com/c/XL8szgwc')
+def test_015_001_006_check_if_search_terms_are_sorted():
+    # список ключевых,вытаскиваемых с помощью selene, выглядит не так, как при selenium.
+    # Теперь есть лишние пробелы, перевод строки, слова с малой буквы неправильно сортируются.
+    # С selenium тест = ОК
+    browser.open(ST.LINK_SEARCH_TERMS)
+    list_of_goods = []  # good : strip, lower, no spaces
+    list_of_goods_from_terms = []  # words from terms applied lower()
+    terms = ss(ST.LIST_OF_SEARCH_TERMS)
+    for keyword in terms:
+        keyword = keyword.get(query.attribute("text")).strip().replace(" ","").lower()
+        list_of_goods_from_terms.append(keyword.lower())
+        list_of_goods.append(keyword)
+    list_of_goods_sorted = sorted(list_of_goods)
+    assert list_of_goods_from_terms == list_of_goods_sorted
