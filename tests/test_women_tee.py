@@ -42,7 +42,7 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees_var2():
     for i, item in enumerate(ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))):
         assert expected_links[i] == item.get(query.attribute('href'))
 
-@pytest.skip
+@pytest.mark.skip
 @allure.link('https://trello.com/c/SKLAh5ku/')
 def test_002_001_001_product_name_price_img_visibility():
     sign_in.visit()
