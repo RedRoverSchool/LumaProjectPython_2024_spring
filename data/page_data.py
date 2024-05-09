@@ -15,3 +15,7 @@ class WishListData:
     empty_message = 'You have no items in your wish list.'
     removed_message = 'has been removed from your Wish List.'
     add_wish_list_message = "added to your Wish List"
+
+
+class MenSalePageData:
+    breadcrumbs_path = ['Home', 'Sale', 'Men Sale']

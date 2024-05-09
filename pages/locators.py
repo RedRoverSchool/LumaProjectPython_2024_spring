@@ -78,6 +78,7 @@ class BaseLocators:
     PAGE_HEADER = "#page-title-heading"
     BREADCRUMBS_LIST = ".breadcrumbs li"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
+    BREADCRUMBS = ".breadcrumbs > ul"
     PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
     PRODUCT_ITEM_IN_CATALOG = 'li.product-item'  # каждый товар на любой странице в каталоге
     PRODUCT_PRICE = 'price-label'
