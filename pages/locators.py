@@ -170,6 +170,8 @@ class ErinRecommendLocators:
     FOOTER = "//footer[@class='page-footer']"
     PAGINATION_CONTROL = "//div[@class='pages']"
     PAGE_NEXT = "(//a[@title='Next'])[2]"
+    PAGE_DROPDOWN = "(//select[@data-role='limiter'])[2]"
+    PRODUCTS = browser.all(".product-item")
 
 
 class PerformanceSportswear:
@@ -199,3 +201,8 @@ class PerformanceSportswear:
     TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
     IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
     ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
+
+    
+class YogaPageLocators:
+    PAGE_TITLE = '#page-title-heading > span'
+
