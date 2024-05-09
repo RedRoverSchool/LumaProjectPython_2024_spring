@@ -208,4 +208,6 @@ class YogaPageLocators:
     PAGE_TITLE = '#page-title-heading > span'
     LIST_BUTTON = '.modes-mode.mode-list'
     WRAPPER_LIST_VIEW = '.products.wrapper.list'
+    GRID_BUTTON = '.modes-mode.mode-grid'
+    WRAPPER_GRID_VIEW = '.products.wrapper.grid'
 

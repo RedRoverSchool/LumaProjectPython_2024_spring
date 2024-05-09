@@ -48,3 +48,14 @@ class TestYoga:
         page.list_button_click()
         assert page.check_current_url() == YOGA_LIST_URL
         assert s(YPL.WRAPPER_LIST_VIEW).should(be.visible)
+
+    @allure.link("https://trello.com/c/k2lE2NmK")
+    @allure.title("TC_006.007.005| What`s new page > New Luma Yoga Collection "
+                  "> The \"Grid\" button is displayed and changes a page view type")
+    def test_yoga_grid_button_visibility_and_redirection(self, browser_management):
+        page = YogaPage(browser=browser)
+        page.open_list_view_page()
+        page.is_grid_button_visible()
+        page.grid_button_click()
+        assert page.check_current_url() == YOGA_URL
+        assert s(YPL.WRAPPER_GRID_VIEW).should(be.visible)
