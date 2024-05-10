@@ -1,22 +1,22 @@
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 from data.links import MAIN_PAGE_LINK
+from data.page_data import MainPageData
+from pages.base_page import BasePage
 from pages.locators import BaseLocators as BL, HomeLocators
 from pages.locators import NavigatorLocators as Nav
 from pages.locators import HomeLocators as HL
-from pages.components.nav_wigdet import NavComponent
 from pages.locators import ErinRecommendLocators as ERL
 
 
-
-class MainPage:
+class MainPage(BasePage):
 
     def __init__(self, browser):
+        super().__init__(browser)
         self.browser = browser
-        self.nav = NavComponent(browser)
 
     def open_page(self):
-        self.browser.open(MAIN_PAGE_LINK)
+        self.visit(MAIN_PAGE_LINK)
 
     @property
     def privacy_cookie_policy_link(self):
@@ -45,11 +45,8 @@ class MainPage:
     def find_whats_new_link(self):
         return s(Nav.NAV_NEW)
 
-    def get_current_url(self):
-        return self.browser.driver.current_url
-
     def is_loaded(self):
-        assert self.get_current_url() == MAIN_PAGE_LINK, "Home page did not load successfully"
+        assert self.get_current_url() == MAIN_PAGE_LINK, MainPageData.error_message
 
     def find_cart_icon(self):
         return s(HL.CART_ICON)

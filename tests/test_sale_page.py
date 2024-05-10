@@ -1,10 +1,10 @@
 from selene import browser, be, have
-from selene.support.shared.jquery_style import s, ss
+from selene.support.shared.jquery_style import ss
 
-from pages import sale_page
 from pages.locators import SalePageLocators, BaseLocators
-from pages.sale_page import visit, redirect
 import allure
+
+from pages.sale_page import SalePage
 
 
 @allure.feature("Sale")
@@ -70,7 +70,7 @@ def test_bags_link_correct_redirection():
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/pyqtpSob')
 def test_011_007_002_clickability_button():
-    sale_page.visit()
+    sale_page = SalePage(browser)
+    sale_page.open_page()
     sale_page.check_page_title()
-    redirect()
-
+    sale_page.redirect()

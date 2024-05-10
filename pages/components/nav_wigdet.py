@@ -15,9 +15,8 @@ class NavComponent:
     def is_have_text(locator, value):
         locator.should(have.text(value))
 
-    @staticmethod
-    def goto_men_page():
-        s(Nav.NAV_MEN).click()
+    def goto_men_page(self):
+        self.find_men_link().click()
 
     @staticmethod
     def find_men_link():
@@ -56,8 +55,7 @@ class NavComponent:
     def verify_sub_men_bottoms():
         submenus = s(Nav.NAV_MEN_BOTTOMS_SUBMENU)
         submenus.should(be.visible)
-        navs = list(MenUrls.men_bottoms_urls.keys())
-        for expected_element in navs:
+        for expected_element in list(MenUrls.men_bottoms_urls.keys()):
             submenus.should(have.text(expected_element))
 
     def verify_dropdown_menu(self):
@@ -86,18 +84,11 @@ class NavComponent:
         self.is_have_text(locator, title)
 
     def verify_sub_men_tops_href_elements(self):
-        links = list(MenUrls.men_top_urls.values())
-        navs = list(MenUrls.men_top_urls.keys())
-        submenus = ss(Nav.NAV_MEN_TOPS_SUBMENU_HREFS)
-        for i, element in enumerate(submenus):
-            self.verify_nav(element, navs[i])
-            self.is_clickable(element, links[i])
+        for i, element in enumerate(ss(Nav.NAV_MEN_TOPS_SUBMENU_HREFS)):
+            self.verify_nav(element, list(MenUrls.men_top_urls.keys())[i])
+            self.is_clickable(element, list(MenUrls.men_top_urls.values())[i])
 
     def verify_sub_men_bottoms_href_elements(self):
-        links = list(MenUrls.men_bottoms_urls.values())
-        navs = list(MenUrls.men_bottoms_urls.keys())
-        submenus = ss(Nav.NAV_MEN_BOTTOMS_SUBMENU_HREFS)
-        for i, element in enumerate(submenus):
-            self.verify_nav(element, navs[i])
-            self.is_clickable(element, links[i])
-
+        for i, element in enumerate(ss(Nav.NAV_MEN_BOTTOMS_SUBMENU_HREFS)):
+            self.verify_nav(element, list(MenUrls.men_bottoms_urls.keys())[i])
+            self.is_clickable(element, list(MenUrls.men_bottoms_urls.values())[i])
