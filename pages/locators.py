@@ -198,6 +198,7 @@ class CartLocators:
 class TrainingPageLocators:
     VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'
     VIDEO_DOWNLOAD_TRAINING_TITLE = 'span[data-ui-id="page-title-wrapper"'
+    BLOCK_1 = '.blocks-promo a:first-child'
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"

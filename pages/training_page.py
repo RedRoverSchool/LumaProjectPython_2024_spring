@@ -1,6 +1,5 @@
 from selene import be
 from selene.support.shared.jquery_style import s
-
 from pages.base_page import BasePage
 from pages.locators import TrainingPageLocators
 

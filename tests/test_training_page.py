@@ -1,5 +1,5 @@
 import allure
-from selene import have, browser
+from selene import browser
 from data.links import *
 from pages.locators import TrainingPageLocators as TPL
 from pages.training_page import TrainingPage
@@ -22,3 +22,10 @@ class TestTrainingPage:
         page.visit(TRAINING_PAGE_URL)
         page.click_video_download_link()
         page.assert_text_of_element(TPL.VIDEO_DOWNLOAD_TRAINING_TITLE, 'Video Download')
+
+    @allure.feature("Training page")
+    @allure.title('Block-promo training-main>Verify visibility "Block 1"')
+    def test_verify_visibility_block_1(self):
+        page = TrainingPage(browser=browser)
+        page.visit(TRAINING_PAGE_URL)
+        page.assert_visible_of_element(TPL.BLOCK_1)
