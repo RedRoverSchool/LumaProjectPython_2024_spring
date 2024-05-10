@@ -14,3 +14,12 @@ def test_verify_bread_crumbs_display():
     page.are_bread_crumbs_present()
     breadcrumbs = page.get_bread_crumbs()
     assert breadcrumbs == data.breadcrumbs_path
+
+
+@allure.link('https://trello.com/c/2hWLV7Cf')
+@allure.title('Verify page title')
+def test_verify_page_title():
+    page = MenSalePage(browser)
+    page.open_page()
+    page.is_page_title_present()
+    page.is_page_title_correct()

@@ -1,8 +1,9 @@
 from pages.components.nav_wigdet import NavComponent
 from data.links import MEN_SALE_PAGE_URL
-from selene.support.conditions import be
+from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
-from pages.locators import BaseLocators as Header
+from pages.locators import BaseLocators as Header, MenSaleLocators as ms_locators
+from data.page_data import MenSalePageData as data
 
 
 class MenSalePage:
@@ -24,3 +25,11 @@ class MenSalePage:
     @staticmethod
     def are_bread_crumbs_present():
         return s(Header.BREADCRUMBS).should(be.present)
+
+    @staticmethod
+    def is_page_title_present():
+        return s(ms_locators.PAGE_TITLE).should(be.present)
+
+    @staticmethod
+    def is_page_title_correct():
+        return s(ms_locators.PAGE_TITLE).should(have.text(data.page_title))

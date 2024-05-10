@@ -215,3 +215,6 @@ class YogaPageLocators:
     GRID_BUTTON = '.modes-mode.mode-grid'
     WRAPPER_GRID_VIEW = '.products.wrapper.grid'
 
+
+class MenSaleLocators:
+    PAGE_TITLE = "[data-ui-id='page-title-wrapper']"
