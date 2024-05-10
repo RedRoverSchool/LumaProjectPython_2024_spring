@@ -19,3 +19,8 @@ class WishListData:
 
 class MenSalePageData:
     breadcrumbs_path = ['Home', 'Sale', 'Men Sale']
+
+
+class SetYogaStrapsData:
+    qty_is_not_available_message = 'The requested qty is not available'
+

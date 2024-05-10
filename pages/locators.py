@@ -215,3 +215,7 @@ class YogaPageLocators:
     GRID_BUTTON = '.modes-mode.mode-grid'
     WRAPPER_GRID_VIEW = '.products.wrapper.grid'
 
+
+class SetYogaStrapsLocators:
+    SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
+    NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
