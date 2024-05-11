@@ -1,5 +1,3 @@
-import time
-
 import allure
 import pytest
 from pages.locators import SearchTermsLocators as ST
@@ -51,7 +49,7 @@ def test_015_001_006_check_if_search_terms_are_sorted():
     list_of_goods_from_terms = []  # words from terms applied lower()
     terms = ss(ST.LIST_OF_SEARCH_TERMS)
     for keyword in terms:
-        keyword = keyword.get(query.attribute("text")).strip().replace(" ","").lower()
+        keyword = keyword.get(query.attribute("text")).strip().replace(" ", "").lower()
         list_of_goods_from_terms.append(keyword.lower())
         list_of_goods.append(keyword)
     list_of_goods_sorted = sorted(list_of_goods)
@@ -65,3 +63,12 @@ def test_015_002_005_unique_search_terms():
     keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
     keywords_set = set(keyword_texts)
     assert len(keyword_texts) == len(keywords_set)
+
+
+@allure.link('https://trello.com/c/9VW3bwiJ')
+def test_015_002_003_keywords_clickable():
+    browser.open(ST.LINK_SEARCH_TERMS)
+    keyword_elements = ss(ST.LIST_OF_SEARCH_TERMS)
+    [k.should(be.visible).should(be.clickable) for k in keyword_elements]
+
+

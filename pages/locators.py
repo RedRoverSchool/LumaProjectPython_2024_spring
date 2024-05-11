@@ -94,7 +94,7 @@ class BaseLocators:
                "https://magento.softwaretestingboard.com/what-is-new.html",
                "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
                "https://magento.softwaretestingboard.com/training.html"
-                ]
+               ]
     NEW_LUMA_YOGA_COLLECTION_BLOCK_LOCATOR = "//a[contains(@class,'home-main')]/span"
     NEW_LUMA_YOGA_COLLECTION_BLOCK_INFO_TEXT_LOCATOR = "//a[contains(@class,'home-main')]//span[@class='info']"
 
@@ -191,14 +191,18 @@ class WishListLocators:
     SIZES = "div.swatch-attribute.size .swatch-option.text"
     UPDATED = "a.action.towishlist.updated"
 
+
 class CartLocators:
     QTY = '.input-text.qty'
     UPDATE_SHOPPING_CART_BUTTON = '.action.update'
+
 
 class TrainingPageLocators:
     VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'
     VIDEO_DOWNLOAD_TRAINING_TITLE = 'span[data-ui-id="page-title-wrapper"'
     BLOCK_1 = '.blocks-promo a:first-child'
+    CONTENT_BLOCK_1 = '.blocks-promo a:first-child .title'
+
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
@@ -208,7 +212,7 @@ class PerformanceSportswear:
     IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
     ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
 
-    
+
 class YogaPageLocators:
     PAGE_TITLE = '#page-title-heading > span'
     LIST_BUTTON = '.modes-mode.mode-list'
