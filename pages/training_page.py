@@ -31,6 +31,5 @@ class TrainingPage(BasePage):
         return found_texts, expected_text
 
     def check_size(self, expected_height, expected_width):
-        Height = s(TPLoc.IMG_BLOCK_1).should(have.css_property('height', expected_height))
-        Width = s(TPLoc.IMG_BLOCK_1).should(have.css_property('width', expected_width))
-        return Height, Width
+        s(TPLoc.IMG_BLOCK_1).should(have.css_property('height', expected_height))
+        s(TPLoc.IMG_BLOCK_1).should(have.css_property('width', expected_width))
