@@ -24,7 +24,6 @@ class TestPurchaseOfGoodsWithDiscount:
                 page = ErinRecommendsPage(browser=browser)
                 page.open_page()
                 size = len(page.find_products())
-                print(size)
             count = 0
             for i in range(0, size):
                 page.add_product_to_cart(products[i])
@@ -32,7 +31,6 @@ class TestPurchaseOfGoodsWithDiscount:
                 page.find_counter_number().should(have.text(str(count)))
                 if page.get_subtotal() > 200:
                     break
-            page.find_counter_number().should(have.text(str(count)))
         with (allure.step("Go to checkout card with products item")):
             card = CartPage(browser).open_page()
             card.goto_card_page()
