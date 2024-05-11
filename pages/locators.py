@@ -225,3 +225,8 @@ class MenSaleLocators:
     PAGE_TITLE = "[data-ui-id='page-title-wrapper']"
     LIST_ITEM = "li.product-item"
     TOOLBAR_NUMBER = "#toolbar-amount>span"
+
+
+class SetYogaStrapsLocators:
+    SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
+    NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
