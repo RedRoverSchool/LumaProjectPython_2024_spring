@@ -29,7 +29,7 @@ class TestWhatsNew:
             link.click()
         page = WhatsNewPage(browser=browser)
         with allure.step("Assert current url == What's New Page url"):
-            assert page.check_current_url() == WHATS_NEW_PAGE_LINK
+            assert page.get_current_url() == WHATS_NEW_PAGE_LINK
         with allure.step("Find header"):
             header = page.is_header_present()
         with allure.step("Assert header contains text \'What's New\'"):

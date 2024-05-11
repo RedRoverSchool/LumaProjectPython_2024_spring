@@ -25,7 +25,7 @@ class TestYoga:
         page = WhatsNewPage(browser=browser)
         page.open_page()
         page.new_yoga_link_click()
-        assert page.check_current_url() == YOGA_URL
+        assert page.get_current_url() == YOGA_URL
         assert s(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
 
     @allure.link("https://trello.com/c/oTH09O30")
@@ -35,7 +35,7 @@ class TestYoga:
         page = WhatsNewPage(browser=browser)
         page.open_page()
         page.click_button_shop_new_yoga()
-        assert page.check_current_url() == YOGA_URL
+        assert page.get_current_url() == YOGA_URL
         assert s(YPL.PAGE_TITLE).should(have.text('New Luma Yoga Collection'))
 
     @allure.link("https://trello.com/c/jRy1WrCH")
