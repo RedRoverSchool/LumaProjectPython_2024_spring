@@ -202,6 +202,7 @@ class TrainingPageLocators:
     VIDEO_DOWNLOAD_TRAINING_TITLE = 'span[data-ui-id="page-title-wrapper"'
     BLOCK_1 = '.blocks-promo a:first-child'
     CONTENT_BLOCK_1 = '.blocks-promo a:first-child .title'
+    IMG_BLOCK_1 = 'a[class="block-promo training-main"] img'
 
 
 class PerformanceSportswear:
