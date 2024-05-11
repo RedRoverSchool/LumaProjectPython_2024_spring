@@ -23,3 +23,11 @@ def test_verify_page_title():
     page.open_page()
     page.is_page_title_present()
     page.is_page_title_correct()
+
+
+@allure.link("https://trello.com/c/wnMvuIUl")
+@allure.title("Verify total number of items on the page")
+def test_verify_total_number_of_items():
+    page = MenSalePage(browser)
+    page.open_page()
+    page.is_number_of_items_in_toolbar_corresponds_to_amount_in_list()

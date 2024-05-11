@@ -223,3 +223,5 @@ class YogaPageLocators:
 
 class MenSaleLocators:
     PAGE_TITLE = "[data-ui-id='page-title-wrapper']"
+    LIST_ITEM = "li.product-item"
+    TOOLBAR_NUMBER = "#toolbar-amount>span"
