@@ -76,7 +76,9 @@ class MainPage(BasePage):
         s(add_to_cart_button).click()
 
     def goto_card_page(self):
+        self.is_cart_icon_present()
         self.find_cart_icon().hover().click()
+        self.mini_card.is_minicart_visible()
         self.mini_card.find_minicart().hover().click()
         return CartPage(self.browser).open_page()
 
