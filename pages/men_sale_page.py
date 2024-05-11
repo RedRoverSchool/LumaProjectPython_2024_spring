@@ -9,7 +9,7 @@ from data.page_data import MenSalePageData as data
 class MenSalePage:
     def __init__(self, browser):
         self.browser = browser
-        self.nav = NavComponent(browser)
+        self.nav = NavComponent()
 
     def open_page(self):
         self.browser.open(MEN_SALE_PAGE_URL)

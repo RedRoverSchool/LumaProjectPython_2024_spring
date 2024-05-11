@@ -1,9 +1,11 @@
-from selene.support.conditions import be, have
+from selene import Element
+from selene.support.conditions import be
 from selene.support.shared.jquery_style import s, ss
 from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
-from pages.locators import BaseLocators as BL, HomeLocators
+from pages.cart_page import CartPage
+from pages.locators import BaseLocators as BL, HomeLocators, ProductItemLocators
 from pages.locators import NavigatorLocators as Nav
 from pages.locators import HomeLocators as HL
 from pages.locators import ErinRecommendLocators as ERL
@@ -60,32 +62,6 @@ class MainPage(BasePage):
     def is_counter_number_present(self):
         return self.find_counter_number().should(be.present)
 
-    def find_minicart(self):
-        return s(HL.MINICART)
-
-    def is_minicart_present(self):
-        return self.find_minicart().should(be.present)
-
-    def is_minicart_visible(self):
-        return self.find_minicart().should(be.visible)
-
-    def find_minicart_view(self):
-        return s(HL.MINICART_VIEW)
-
-    @property
-    def is_minicart_view_present(self):
-        return self.find_minicart_view().should(be.present)
-
-    def is_minicart_view_enable(self):
-        return self.find_minicart_view().should(be.enabled)
-
-    def is_minicart_view_visible(self):
-        return self.find_minicart_view().should(be.visible)
-
-    def is_minicart_have_link(self):
-        return self.find_minicart_view().should(
-            have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
-
     def is_erin_block_present(self):
         return s(ERL.HOME_ERIN_BLOCK).should(be.present)
 
@@ -98,3 +74,35 @@ class MainPage(BasePage):
         s(size).click()
         s(color).click()
         s(add_to_cart_button).click()
+
+    def goto_card_page(self):
+        self.find_cart_icon().hover().click()
+        self.mini_card.find_minicart().hover().click()
+        return CartPage(self.browser).open_page()
+
+    def add_product_to_cart(self, product: Element):
+        product.hover()
+        self.set_color(product)
+        self.set_size(product)
+        product.s(HL.TO_CART_BUTTON).should(be.visible).should(be.clickable).click()
+        self.is_visible_success_message()
+        self.find_cart_icon().hover().click()
+
+    def scroll_to_hot_sellers(self):
+        self.scroll_to(s(ProductItemLocators.PRODUCTS_GRID))
+
+    @staticmethod
+    def set_size(product: Element):
+        size_options = product.ss(HL.SIZES)
+        if len(size_options) > 0:
+            size_options.first.click()
+
+    @staticmethod
+    def set_color(product: Element):
+        color_options = product.ss(HL.COLORS)
+        if len(color_options) > 0:
+            color_options.first.click()
+
+    @staticmethod
+    def find_products():
+        return ss(ProductItemLocators.ITEM_INFO)

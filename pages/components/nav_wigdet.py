@@ -8,9 +8,6 @@ from data.links import MenUrls, MEN_PAGE_URL
 
 class NavComponent:
 
-    def __init__(self, browser):
-        self.browser = browser
-
     @staticmethod
     def is_have_text(locator, value):
         locator.should(have.text(value))
@@ -47,8 +44,7 @@ class NavComponent:
     def verify_sub_men_tops():
         submenus = s(Nav.NAV_MEN_SUBMENU)
         submenus.should(be.visible)
-        navs = list(MenUrls.men_top_urls.keys())
-        for expected_element in navs:
+        for expected_element in list(MenUrls.men_top_urls.keys()):
             submenus.should(have.text(expected_element))
 
     @staticmethod
