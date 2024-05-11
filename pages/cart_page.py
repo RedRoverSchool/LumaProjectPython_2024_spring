@@ -14,12 +14,6 @@ class CartPage(BasePage):
         self.visit(CART_LINK)
         return self
 
-    def find_cart_icon(self):
-        return s(HL.CART_ICON)
-
-    def is_cart_icon_clickable(self):
-        return self.find_cart_icon().should(be.clickable)
-
     def find_qty(self):
         return s(Cart.QTY)
 
@@ -56,6 +50,3 @@ class CartPage(BasePage):
         subtotal = self.get_text(HL.SUB_TOTAL)
         total = self.get_text(HL.GRAND_TOTALS)
         return f"Total: {total}, Price: {discount}, tax: {tax}, subtotal: {subtotal}"
-
-    def get_text(self, selector):
-        return s(selector).get(query.attribute('innerText'))

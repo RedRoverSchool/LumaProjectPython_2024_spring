@@ -1,14 +1,12 @@
-from selene import Element
 from selene.support.conditions import be
 from selene.support.shared.jquery_style import s, ss
+
 from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
-from pages.cart_page import CartPage
 from pages.locators import BaseLocators as BL, HomeLocators, ProductItemLocators
-from pages.locators import NavigatorLocators as Nav
-from pages.locators import HomeLocators as HL
 from pages.locators import ErinRecommendLocators as ERL
+from pages.locators import NavigatorLocators as Nav
 
 
 class MainPage(BasePage):
@@ -50,18 +48,6 @@ class MainPage(BasePage):
     def is_loaded(self):
         assert self.get_current_url() == MAIN_PAGE_LINK, MainPageData.error_message
 
-    def find_cart_icon(self):
-        return s(HL.CART_ICON)
-
-    def is_cart_icon_present(self):
-        return self.find_cart_icon().should(be.present)
-
-    def find_counter_number(self):
-        return s(HL.MINICART_COUNTER)
-
-    def is_counter_number_present(self):
-        return self.find_counter_number().should(be.present)
-
     def is_erin_block_present(self):
         return s(ERL.HOME_ERIN_BLOCK).should(be.present)
 
@@ -69,42 +55,3 @@ class MainPage(BasePage):
     def handle_cookies_popup():
         if ss(HomeLocators.COOKIES_MSG):
             s(HomeLocators.CONSENT_COOKIES_BTN).click()
-
-    def add_item_to_cart(self, size, color, add_to_cart_button):
-        s(size).click()
-        s(color).click()
-        s(add_to_cart_button).click()
-
-    def goto_card_page(self):
-        self.is_cart_icon_present()
-        self.find_cart_icon().hover().click()
-        self.mini_card.is_minicart_visible()
-        self.mini_card.find_minicart().hover().click()
-        return CartPage(self.browser).open_page()
-
-    def add_product_to_cart(self, product: Element):
-        product.hover()
-        self.set_color(product)
-        self.set_size(product)
-        product.s(HL.TO_CART_BUTTON).should(be.visible).should(be.clickable).click()
-        self.is_visible_success_message()
-        self.find_cart_icon().hover().click()
-
-    def scroll_to_hot_sellers(self):
-        self.scroll_to(s(ProductItemLocators.PRODUCTS_GRID))
-
-    @staticmethod
-    def set_size(product: Element):
-        size_options = product.ss(HL.SIZES)
-        if len(size_options) > 0:
-            size_options.first.click()
-
-    @staticmethod
-    def set_color(product: Element):
-        color_options = product.ss(HL.COLORS)
-        if len(color_options) > 0:
-            color_options.first.click()
-
-    @staticmethod
-    def find_products():
-        return ss(ProductItemLocators.ITEM_INFO)

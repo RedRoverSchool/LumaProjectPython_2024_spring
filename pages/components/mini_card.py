@@ -1,4 +1,3 @@
-from selene.core import query
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s
 from pages.locators import HomeLocators as Home
@@ -32,11 +31,3 @@ class MiniCard:
     def is_minicart_have_link(self):
         return self.find_minicart_view().should(
             have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
-
-    @staticmethod
-    def find_cart_subtotal():
-        return s(Home.MINI_CART_PRICE)
-
-    def get_subtotal(self):
-        price = self.find_cart_subtotal().get(query.attribute('innerText'))
-        return float(price.replace('$', ''))

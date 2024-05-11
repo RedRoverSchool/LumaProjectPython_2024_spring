@@ -48,6 +48,7 @@ class HomeLocators:
     MINICART_VIEW = '.action.viewcart'
     MINICART_COUNTER = '.counter-label'
     MINI_CART_PRICE = '.price-wrapper'
+    AMOUNT_PRICE = ".amount.price-container"
     TO_CART_BUTTON = "button.action.tocart.primary"
     SIZES = ".swatch-attribute.size .swatch-option"
     COLORS = ".swatch-attribute.color .swatch-option"

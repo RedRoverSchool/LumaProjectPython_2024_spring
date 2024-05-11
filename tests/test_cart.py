@@ -4,6 +4,7 @@ from selene import browser, have, be
 from pages.main_page import MainPage
 from pages.cart_page import CartPage
 
+
 @allure.title("Test Checking the quantity of item in the cart is able to change")
 class TestCart:
     def test_the_quantity_of_item_in_the_cart_is_able_to_change(self):
