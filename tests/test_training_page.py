@@ -43,5 +43,5 @@ class TestTrainingPage:
     def test_verify_block1_consists_text(self):
         page = TrainingPage(browser=browser)
         page.visit(TRAINING_PAGE_URL)
-        Height, Width = page.check_size()
+        Height, Width = page.check_size('372px', '1280px')
         assert Height, Width
