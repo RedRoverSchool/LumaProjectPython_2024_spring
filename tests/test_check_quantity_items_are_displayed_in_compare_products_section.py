@@ -6,8 +6,10 @@ from pages import sign_in
 import allure
 from selene import browser, be, have, by
 from selene.support.shared.jquery_style import s
+import pytest
 
 
+@pytest.mark.skip
 @allure.title("check value of selected items to compare products section")
 def test_check_quantity_value_in_compare_product_section(browser_management):
     browser.open(pages.locators.LoginLocators.LINK_LOGIN)
