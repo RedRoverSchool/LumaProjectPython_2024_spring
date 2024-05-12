@@ -101,3 +101,7 @@ class BasePage:
     @staticmethod
     def get_text(selector):
         return s(selector).get(query.attribute('innerText'))
+
+    @staticmethod
+    def click_on_link(locator):
+        s(locator).click()

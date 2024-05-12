@@ -260,3 +260,8 @@ class MenSaleLocators:
 class SetYogaStrapsLocators:
     SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
     NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
+
+
+class PopularSearchTermsLocators:
+    HOODIE_LINK = '//a[contains(text(),"HOODIE")]'
+    SEARCH_RESULTS_HEADER = '//h1/span[@data-ui-id="page-title-wrapper"]'

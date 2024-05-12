@@ -39,3 +39,8 @@ class TrainingPageData:
 
 class SetYogaStrapsData:
     qty_is_not_available_message = 'The requested qty is not available'
+
+
+class PopularSearchTermsData:
+    result_page_header = 'Search results for: \'HOODIE\''
+
