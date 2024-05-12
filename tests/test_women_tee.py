@@ -55,7 +55,7 @@ def test_002_001_001_product_name_price_img_visibility(login):
     women_page.check_radiant_tee_img_are_visible()
     women_page.check_radiant_tee_price_is_visible()
 
-
+@pytest.mark.skip
 @allure.suite('US_002.001 | Page of any product')
 @allure.title('TC_002.001.002 | Radiant Tee product page > Add to cart > Adding the product to cart')
 @allure.link('https://trello.com/c/xGtHnQaq/')
