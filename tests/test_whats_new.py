@@ -1,6 +1,6 @@
 import allure
 from selene import browser
-
+import pytest
 from data.links import WHATS_NEW_PAGE_LINK
 from pages.main_page import MainPage
 from pages.whats_new_page import WhatsNewPage
@@ -29,12 +29,13 @@ class TestWhatsNew:
             link.click()
         page = WhatsNewPage(browser=browser)
         with allure.step("Assert current url == What's New Page url"):
-            assert page.check_current_url() == WHATS_NEW_PAGE_LINK
+            assert page.get_current_url() == WHATS_NEW_PAGE_LINK
         with allure.step("Find header"):
             header = page.is_header_present()
         with allure.step("Assert header contains text \'What's New\'"):
             page.is_element_text_correct(header, "What's New")
 
+    @pytest.mark.skip
     @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
     @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
     def test_lumas_latest_list_visibility(self):

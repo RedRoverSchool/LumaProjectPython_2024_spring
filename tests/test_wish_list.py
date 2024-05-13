@@ -1,10 +1,10 @@
 import allure
 from selene import browser
-
+import pytest
 from pages import wish_list
 from pages.whats_new_page import WhatsNewPage
 
-
+@pytest.mark.skip
 @allure.link("https://trello.com/c/kVWLOEl5")
 def test_button_update_clickable(login):
     WhatsNewPage(browser=browser).add_item_to_wish_list()

@@ -1,5 +1,3 @@
-import time
-
 import allure
 import pytest
 from pages.locators import SearchTermsLocators as ST
@@ -51,7 +49,7 @@ def test_015_001_006_check_if_search_terms_are_sorted():
     list_of_goods_from_terms = []  # words from terms applied lower()
     terms = ss(ST.LIST_OF_SEARCH_TERMS)
     for keyword in terms:
-        keyword = keyword.get(query.attribute("text")).strip().replace(" ","").lower()
+        keyword = keyword.get(query.attribute("text")).strip().replace(" ", "").lower()
         list_of_goods_from_terms.append(keyword.lower())
         list_of_goods.append(keyword)
     list_of_goods_sorted = sorted(list_of_goods)
@@ -65,3 +63,28 @@ def test_015_002_005_unique_search_terms():
     keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
     keywords_set = set(keyword_texts)
     assert len(keyword_texts) == len(keywords_set)
+
+
+@allure.link('https://trello.com/c/9VW3bwiJ')
+def test_015_002_003_keywords_clickable():
+    browser.open(ST.LINK_SEARCH_TERMS)
+    keyword_elements = ss(ST.LIST_OF_SEARCH_TERMS)
+    [k.should(be.visible).should(be.clickable) for k in keyword_elements]
+
+
+@allure.link("https://trello.com/c/I0RafTpi")
+def test_015_001_005_check_if_specified_words_is_bigger_than_88():
+    words = ["hoodie", "jacket", "pants", "shirt"]
+    browser.open(ST.LINK_SEARCH_TERMS)
+    list_of_goods = []
+    list_font_sizes = []
+    terms = ss(ST.LIST_OF_SEARCH_TERMS)
+    for keyword in terms:
+        word = keyword.get(query.attribute("text")).strip().replace(" ", "").lower()
+        if word in words:
+            list_of_goods.append(word)
+            g_font, g_size = keyword.get(query.attribute("style")).split(": ")
+            g_size = float(g_size.replace("%;", ""))
+            list_font_sizes.append(g_size)
+    assert set(list_of_goods) == set(words) and all(
+        [size > 88 for size in list_font_sizes]), "Selected words have font size bigger than 88%"

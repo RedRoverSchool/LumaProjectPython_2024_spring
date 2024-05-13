@@ -4,6 +4,7 @@ from selene import browser, have, be
 from pages.main_page import MainPage
 from pages.cart_page import CartPage
 
+
 @allure.title("Test Checking the quantity of item in the cart is able to change")
 class TestCart:
     def test_the_quantity_of_item_in_the_cart_is_able_to_change(self):
@@ -33,3 +34,4 @@ class TestCart:
         page_cart.find_remove_item_icon().click()
         page_cart.should_be_message_no_items('You have no items in your shopping cart.')
         page_cart.should_be_message_click('Click here to continue shopping.')
+

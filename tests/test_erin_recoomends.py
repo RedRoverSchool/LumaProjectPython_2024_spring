@@ -1,14 +1,13 @@
 import allure
-from selene import browser
 
-from data.links import *
-from pages.main_page import MainPage
 from pages.erin_recommends_page import *
+from pages.main_page import MainPage
+
 
 @allure.suite("US_001.002 | Testing Erin Recommends Page")
 class TestErinRecommends:
     @allure.title("TC_001.002.002 | Check redirection to 'Shop Erin Recommends' page by clicking block")
-    def test_erin_block_link_redirection(self, browser_management):
+    def test_erin_block_link_redirection(self):
         with allure.step("Open home page"):
             page = MainPage(browser=browser)
             page.open_page()
@@ -18,7 +17,7 @@ class TestErinRecommends:
             link.click()
         page = ErinRecommendsPage(browser=browser)
         with allure.step("Assert current url == Erin Recommends Page url"):
-            assert page.check_current_url() == ERIN_RECOMMENDS_URL
+            assert page.get_current_url() == ERIN_RECOMMENDS_URL
         with allure.step("Find header"):
             header = page.is_header_present()
         with allure.step("Assert header contains text 'Erin Recommends'"):
@@ -50,9 +49,3 @@ class TestErinRecommends:
             page.select_per_page_option(24)
         with allure.step("Assert number of product displayed matches to selection"):
             page.verify_number_of_product_displayed(13,24)
-
-
-
-
-
-
