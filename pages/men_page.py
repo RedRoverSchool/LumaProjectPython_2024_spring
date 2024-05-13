@@ -28,5 +28,5 @@ class MenPage(BasePage):
     def is_active():
         underline = Color.from_string('#ff5501').rgb
         font = Color.from_string('#333').rgba
-        assert s(Nav.NAV_MEN).should(have.css_property('color', font))
-        assert s(Nav.NAV_MEN).should(have.css_property('border-color', underline))
+        assert s(Nav.NAV_MEN).should(have.css_property('color').value(font))
+        assert s(Nav.NAV_MEN).should(have.css_property('border-color').value(underline))

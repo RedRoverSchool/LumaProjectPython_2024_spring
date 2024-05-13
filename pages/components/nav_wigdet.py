@@ -34,7 +34,7 @@ class NavComponent:
     @staticmethod
     def is_clickable(locator: Element, url: str):
         locator.should(be.clickable)
-        locator.should(have.attribute("href", url))
+        locator.should(have.attribute("href").value(url))
 
     @staticmethod
     def is_have_header(header):
