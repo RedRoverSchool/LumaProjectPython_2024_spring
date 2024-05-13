@@ -1,4 +1,4 @@
-from selene import browser, have
+from selene import browser, have, be
 from selene.support.shared.jquery_style import s
 
 from pages.locators import CreateAccountLocators
@@ -56,3 +56,6 @@ def page_title():
 
 def redirect():
     browser.should(have.url(url))
+
+def is_create_account_link_clickable():
+    return s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).should(be.clickable)
