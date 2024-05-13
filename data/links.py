@@ -25,6 +25,7 @@ YOGA_LIST_URL = BASE_URL + '/collections/yoga-new.html?product_list_mode=list'
 SET_YOGA_STRAPS_URL = BASE_URL + '/set-of-sprite-yoga-straps.html'
 POPULAR_SEARCH_TERMS = BASE_URL + '/search/term/popular/'
 LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+LINK_LOGIN = 'https://magento.softwaretestingboard.com/customer/account/login'
 
 
 class MenUrls:

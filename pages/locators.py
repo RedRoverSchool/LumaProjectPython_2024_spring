@@ -226,6 +226,11 @@ class ErinRecommendLocators:
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+    BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
+    SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
+    TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
+    IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
+    ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
 
 
 class WishListLocators:
