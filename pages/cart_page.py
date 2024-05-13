@@ -1,11 +1,11 @@
-from selene import be
-from selene.core import query
+from selene import be, have
 from selene.support.shared.jquery_style import s
 
 from data.links import CART_LINK
 from pages.base_page import BasePage
-from pages.locators import CartLocators as Cart
+from pages.locators import CartLocators as Cart, HomeLocators
 from pages.locators import HomeLocators as HL
+from pages.locators import ProductLocators as PL
 
 
 class CartPage(BasePage):
@@ -50,3 +50,22 @@ class CartPage(BasePage):
         subtotal = self.get_text(HL.SUB_TOTAL)
         total = self.get_text(HL.GRAND_TOTALS)
         return f"Total: {total}, Price: {discount}, tax: {tax}, subtotal: {subtotal}"
+
+    def checking_product_name_are_correct_in_checkout_cart_page(self):
+        s(PL.NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text("Argus All-Weather Tank"))
+
+    def checking_size_are_correct_in_checkout_cart_page(self, size):
+        s(PL.SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text(size))
+
+    def checking_color_are_correct_in_checkout_cart_page(self, color):
+        s(PL.COLOR_GRAY_ARGUS_CHECKOUT_CART).should(have.text(color))
+
+
+    def check_price_present_in_checkout_cart_page(self, price):
+        s(PL.PRICE_ITEM_CHECKOUT_CART).should(be.present).should(have.text(price))
+
+    def check_qty_present_in_checkout_cart_page(self):
+        s(PL.QTY_FIELD_CHECKOUT_CART).should(be.present)
+
+    def check_subtotal_present_in_checkout_cart_page(self):
+        s(PL.CART_SUBTOTAL_CHECKOUT_CART).should(be.present).should(have.text("$"))

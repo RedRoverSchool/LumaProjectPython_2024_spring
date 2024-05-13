@@ -5,9 +5,10 @@ from selene.support.shared.jquery_style import s, ss
 from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
+from pages.cart_page import CartPage
 from pages.locators import BaseLocators as BL, HomeLocators, ProductItemLocators
 from pages.locators import ErinRecommendLocators as ERL
-from pages.locators import NavigatorLocators as Nav
+from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
 
 
 class MainPage(BasePage):
@@ -96,3 +97,14 @@ class MainPage(BasePage):
         s(color).click()
         s(add_to_cart_button).click()
 
+    def add_to_cart_from_main_page(self):
+        s(PL.ARGUS_All_WEATHER_TANK_SIZE).click()
+        s(PL.ARGUS_All_WEATHER_TANK_COLOR).click()
+        s(PL.ARGUS_All_WEATHER_TANK_ADD_TO_CARD).click()
+
+    def go_to_mini_cart(self):
+        s(PL.MINI_BASKET_WINDOW).should(be.clickable).click()
+
+    def go_to_checkout_cart(self):
+        s(PL.VIEW_AND_EDIT_CART_LINK).click()
+        return CartPage(browser=self.browser)
