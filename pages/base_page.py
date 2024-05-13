@@ -44,6 +44,9 @@ class BasePage:
     def is_counter_number_present(self):
         return self.find_counter_number().should(be.present)
 
+    def is_counter_number_visible(self):
+        return self.find_counter_number().should(be.visible)
+
     def add_product_to_cart(self, product: Element):
         product.hover()
         self.set_color(product)

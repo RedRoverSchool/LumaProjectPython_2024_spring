@@ -30,6 +30,24 @@ class ProductLocators:
     ARGUS_All_WEATHER_TANK_COLOR = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="Gray"]'
     ARGUS_All_WEATHER_TANK_ADD_TO_CARD = '//*[@title="Argus All-Weather Tank"]/../..//*[@title="Add to Cart"]'
     MINI_BASKET_WINDOW = '[class="action showcart"]'
+    VIEW_AND_EDIT_CART_LINK = "//*[text()='View and Edit Cart']"
+    VIEW_AND_EDIT_CART_HREF = "[class='action viewcart']"
+    SEE_DETAILS = '[data-role="title"]'
+    SIZE_M = '//*[@class="product options list"]//*[text()="M"]'
+    COLOR_GRAY = '//*[@class="product options list"]//*[text()="Gray"]'
+    NAME_ITEM = '//*[text()="Argus All-Weather Tank"]'
+    PRICE_ITEM = '//*[@class="minicart-price"]//*[@class="price"]'
+    CART_SUBTOTAL = '.subtotal .price'
+    QTY_FIELD = ".details-qty input"
+    UPDATE = '[title="Update"]'
+
+    NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '//*[@id="shopping-cart-table"] //*[text()="Argus All-Weather Tank"]'
+    SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART = '// *[contains(text(), "M")]/../..// *[ @ id = "shopping-cart-table"]'
+    COLOR_GRAY_ARGUS_CHECKOUT_CART = '//*[@id="shopping-cart-table"]//*[contains(text(),"Gray")]'
+    PRICE_ITEM_CHECKOUT_CART = '//*[@class="col price"] //*[text()="$22.00"]'
+    CART_SUBTOTAL_CHECKOUT_CART = '//*[@class="col subtotal"] //*[text()="$22.00"]'
+    QTY_FIELD_CHECKOUT_CART = '[class="field qty"] input'
+
     RADIANT_TEE_LINK = "//a[contains(text(), 'Radiant Tee ')]"
     RADIANT_TEE_IMG = '//div[1]/div[3]/div[1]/img[@alt="Radiant Tee"]'
     RADIANT_TEE_TITLE = 'span[data-ui-id="page-title-wrapper"]'
