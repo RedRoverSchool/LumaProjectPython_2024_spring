@@ -65,7 +65,7 @@ class MainPage(BasePage):
 
     @staticmethod
     def check_product_qty_inside_minicart(value):
-        s(HomeLocators.MINICART_PRODUCT_QTY).should(have.attribute('data-item-qty', value))
+        s(HomeLocators.MINICART_PRODUCT_QTY).should(have.attribute('data-item-qty').value(value))
 
 
     @staticmethod
