@@ -1,6 +1,6 @@
 import os
 from time import time
-
+from selenium.webdriver.chrome.options import Options
 import allure
 import allure_commons
 import pytest
@@ -110,3 +110,19 @@ def visit_page():
         browser.open(url)
 
     return visit
+
+
+@pytest.fixture(scope="function")
+def driver():
+    # for selenium
+    options = Options()
+    options.add_argument("--window-size=1920,1080")
+    # options.add_argument('--headless=new')
+    options.add_argument("--lang=en")
+    if os.environ.get("CI_RUN"):
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)
+    yield driver
+    driver.quit()

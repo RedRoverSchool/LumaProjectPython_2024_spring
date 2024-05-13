@@ -106,10 +106,10 @@ class BaseLocators:
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
     BREADCRUMBS = ".breadcrumbs > ul"
     PRIVACY_COOKIE_POLICY_LOCATOR = "//a[contains(@href, 'privacy-policy-cookie')]"
-    PRODUCT_ITEM_IN_CATALOG = 'li.product-item'
-    PRODUCT_PRICE = 'price-label'
-    PRODUCT_NAME = 'product-item-link'
-    PRODUCT_IMAGE = 'product-image-photo'
+    PRODUCT_ITEM_IN_CATALOG = '.product-item-info'  # каждый товар в целом на любой странице
+    PRODUCT_PRICE = '.price-label'
+    PRODUCT_NAME = '.product-item-link'
+    PRODUCT_IMAGE = '.product-image-photo'
     ALL_URL = ["https://magento.softwaretestingboard.com/",
                "https://magento.softwaretestingboard.com/what-is-new.html",
                "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
