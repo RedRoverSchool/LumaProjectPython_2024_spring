@@ -194,6 +194,9 @@ class WishListLocators:
 class CartLocators:
     QTY = '.input-text.qty'
     UPDATE_SHOPPING_CART_BUTTON = '.action.update'
+    REMOVE_ITEM_ICON = '.action.action-delete'
+    NO_ITEMS_MESSAGE = '//p[text()="You have no items in your shopping cart."]'
+    CLICK_MESSAGE = '//p[contains(text(), "Click")]'
 
 class TrainingPageLocators:
     VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'

@@ -1,5 +1,5 @@
 from selene.support.shared.jquery_style import s
-from selene import be
+from selene import be, have
 
 from data.links import CART_LINK
 from pages.locators import CartLocators as Cart
@@ -50,3 +50,21 @@ class CartPage:
 
     def is_counter_number_visible(self):
         return self.find_counter_number().should(be.visible)
+
+    def find_remove_item_icon(self):
+        return s(Cart.REMOVE_ITEM_ICON)
+
+    def is_find_remove_item_icon_present(self):
+        return self.find_remove_item_icon().should(be.present)
+
+    def find_no_items_message(self):
+        return s(Cart.NO_ITEMS_MESSAGE)
+
+    def should_be_message_no_items(self, text):
+        return s(Cart.NO_ITEMS_MESSAGE).should(have.text(text))
+
+    def find_click_message(self):
+        return s(Cart.CLICK_MESSAGE)
+
+    def should_be_message_click(self, text):
+        return s(Cart.CLICK_MESSAGE).should(have.text(text))
