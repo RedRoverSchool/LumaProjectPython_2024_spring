@@ -1,11 +1,9 @@
 import pytest
-
 from pages.locators import SalePageLocators, BaseLocators, ProductLocators as PL
 from pages import women_page, main_page, product_page
 from selene import browser, be, have, by, query
 from selene.support.shared.jquery_style import s, ss
 import allure
-from data.links import *
 
 
 @allure.link('https://trello.com/c/fhLdyS1l')
@@ -55,6 +53,7 @@ def test_002_001_001_product_name_price_img_visibility(login):
     women_page.check_radiant_tee_img_are_visible()
     women_page.check_radiant_tee_price_is_visible()
 
+
 @pytest.mark.skip
 @allure.suite('US_002.001 | Page of any product')
 @allure.title('TC_002.001.002 | Radiant Tee product page > Add to cart > Adding the product to cart')
@@ -84,9 +83,3 @@ def test_002_001_002_adding_product_to_cart(login):
         main_page.MainPage.close_minicart()
     with allure.step('Clearing mini-cart'):
         main_page.MainPage.clear_minicart()
-
-
-
-
-
-
