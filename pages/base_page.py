@@ -4,7 +4,7 @@ from selene.support.shared.jquery_style import s, ss
 
 from pages.components.mini_card import MiniCard
 from pages.components.nav_wigdet import NavComponent
-from pages.locators import BaseLocators, ProductItemLocators, HomeLocators
+from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, CreateAccountLocators
 
 
 class BasePage:
@@ -108,3 +108,10 @@ class BasePage:
     @staticmethod
     def click_on_link(locator):
         s(locator).click()
+
+    def is_create_account_link_visible(self) -> bool:
+        try:
+            s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).should(have.text('Create an Account')).should(be.visible)
+            return True
+        except AssertionError:
+            return False
