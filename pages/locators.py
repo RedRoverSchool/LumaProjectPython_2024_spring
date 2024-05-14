@@ -275,6 +275,7 @@ class TrainingPageLocators:
     IMG_BLOCK_1 = 'a[class="block-promo training-main"] img'
 
 
+
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
     BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
