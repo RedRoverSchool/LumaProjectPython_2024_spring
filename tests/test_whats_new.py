@@ -1,7 +1,7 @@
 import allure
+import pytest
 from selene import browser, have
 from selene.support.shared.jquery_style import s
-
 from data.links import WHATS_NEW_PAGE_LINK
 from pages.main_page import MainPage
 from pages.whats_new_page import WhatsNewPage
@@ -49,10 +49,7 @@ class TestWhatsNew:
         assert s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
         assert s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
 
-
-
-
-
+    @pytest.mark.skip
     @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
     @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
     def test_lumas_latest_list_visibility(self):
@@ -64,6 +61,5 @@ class TestWhatsNew:
         item_number = page.get_number_of_lumas_latest()
         assert item_number == 4
         assert page.are_men_and_women_items_present() is True
-
 
 

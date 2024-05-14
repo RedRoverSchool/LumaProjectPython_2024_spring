@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-
+from selene import browser
 
 class SalePageLocators:
     GEAR_DEALS_TITLE = "//*[text()='Gear Deals']"
@@ -117,6 +117,24 @@ class WhatsNewPageLocators:
 
 
 
+    LUMAS_LATEST_IMAGES = '.product-image-photo'
+    NEW_YOGA_LINK = "//*[text()='New Luma Yoga Collection']"
+    BRAS_TANKS = '.categories-menu ul:nth-child(2) li:nth-child(4) a'
+    ADD_TO_CART_BUTTON = '//*[@id="product-addtocart-button"]/span'
+    ERROR_MASSAGE_UNDER_SIZE = '//*[@id="super_attribute[143]-error"]'
+    ERROR_MASSAGE_UNDER_COLOR = '//*[@id="super_attribute[93]-error"]'
+    BREATHE_EASY_TANK = "a.product-item-link[href*='breathe-easy-tank']"
+    ADD_TO_COMPARE = '.product-social-links a:last-child'
+    YOU_ADDED_PRODUCT_MASSAGE = '.message-success'
+    ADD_TO_WISH_LIST_BUTTON = '.product-social-links a:first-child'
+    ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
+
+
+
+
+
+
+
 
 
 class PrivacyPolicyPageLocators:
@@ -132,7 +150,7 @@ class LoginPage:
     PAGE_TITLE_WRAPPER = "span.base[data-ui-id='page-title-wrapper']"
     MESSAGE_TEXT = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"
 
-    
+
 class LoginLocators:
     LINK_LOGIN = 'https://magento.softwaretestingboard.com/customer/account/login'
     FIELD_NAME = 'div.login-container #email'
@@ -155,3 +173,92 @@ class ContactUsLocators:
 class PrivacyPolicy:
     GO_BACK_LINK = "//*[@id='maincontent']/div[3]/div[1]/dl[2]/dd[2]/ul/li[1]/a"
     PRIVACY_POLICY_TITLE = "span[data-ui-id='page-title-wrapper']"
+
+
+class SaleWomenDealsLocators:
+    JACKETS = "//*[@id='maincontent']/div[4]/div[2]/div/div/ul[1]/li[2]/a"
+    ADD_TO_COMPARE_BTN_ONE = ".actions-secondary a[data-post*='1396']:nth-child(2)"
+    ADD_TO_COMPARE_BTN_ONE_TWO = ".actions-secondary a[data-post*='1380']:nth-child(2)"
+    ELEMENT_ONE = "img[alt='Olivia 1/4 Zip Light Jacket']"
+    ELEMENT_TWO = "img[alt='Juno Jacket']"
+    QUANTITY_ITEMS = "div[class='block-title'] span[class='counter qty']"
+
+
+class CreateAccountLocators:
+    CREATE_AN_ACCOUNT_LINK = "(//a[.='Create an Account'])[1]"
+
+
+class ErinRecommendLocators:
+    HOME_ERIN_BLOCK = "//a[@class='block-promo home-erin']"
+    PAGE_HEADER = "//span[@data-ui-id='page-title-wrapper']"
+    FOOTER = "//footer[@class='page-footer']"
+    PAGINATION_CONTROL = "//div[@class='pages']"
+    PAGE_NEXT = "(//a[@title='Next'])[2]"
+    PAGE_DROPDOWN = "(//select[@data-role='limiter'])[2]"
+    PRODUCTS = browser.all(".product-item")
+
+
+class PerformanceSportswear:
+    LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+    BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
+    SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
+    TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
+    IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
+    ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
+
+
+class WishListLocators:
+    EMPTY_MESSAGE = '.message.info.empty span'
+    DELETE_BUCKET = '.btn-remove.action.delete'
+    PRODUCT_ITEM = '.products-grid.wishlist .product-item'
+    ITEM_ACTIONS = ".product-item-actions"
+    QUALITY = "input[name='qty']"
+    COLORS = "div.swatch-attribute.color .swatch-option.color"
+    SIZES = "div.swatch-attribute.size .swatch-option.text"
+    UPDATED = "a.action.towishlist.updated"
+
+
+class CartLocators:
+    QTY = '.input-text.qty'
+    UPDATE_SHOPPING_CART_BUTTON = '.action.update'
+
+
+class TrainingPageLocators:
+    VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'
+    VIDEO_DOWNLOAD_TRAINING_TITLE = 'span[data-ui-id="page-title-wrapper"'
+    BLOCK_1 = '.blocks-promo a:first-child'
+    CONTENT_BLOCK_1 = '.blocks-promo a:first-child .title'
+    IMG_BLOCK_1 = 'a[class="block-promo training-main"] img'
+
+
+class PerformanceSportswear:
+    LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+    BUTTON_ADD_ITEM2 = '#maincontent li:nth-child(2) button'
+    SUCCESS_MESSAGE = '#maincontent > div.page.messages > div:nth-child(2) > div > div > div'
+    TEXT_SUCCESS_MESSAGE = 'You added Helios Endurance Tank to your shopping cart'
+    IMAGE_2 = '#maincontent ol > li:nth-child(2) .product-image-container'
+    ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
+
+
+class YogaPageLocators:
+    PAGE_TITLE = '#page-title-heading > span'
+    LIST_BUTTON = '.modes-mode.mode-list'
+    WRAPPER_LIST_VIEW = '.products.wrapper.list'
+    GRID_BUTTON = '.modes-mode.mode-grid'
+    WRAPPER_GRID_VIEW = '.products.wrapper.grid'
+
+
+class MenSaleLocators:
+    PAGE_TITLE = "[data-ui-id='page-title-wrapper']"
+    LIST_ITEM = "li.product-item"
+    TOOLBAR_NUMBER = "#toolbar-amount>span"
+
+
+class SetYogaStrapsLocators:
+    SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
+    NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
+
+
+class PopularSearchTermsLocators:
+    HOODIE_LINK = '//a[contains(text(),"HOODIE")]'
+    SEARCH_RESULTS_HEADER = '//h1/span[@data-ui-id="page-title-wrapper"]'
