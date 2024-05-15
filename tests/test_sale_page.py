@@ -2,9 +2,12 @@ from selene import browser, be, have
 from selene.support.shared.jquery_style import s, ss
 
 from pages import sale_page
-from pages.locators import SalePageLocators, BaseLocators
+from pages.locators import SalePageLocators, BaseLocators, NavigatorLocators
 from pages.sale_page import visit, redirect
+from pages.main_page import MainPage
+from data.links import *
 import allure
+import pytest
 
 
 @allure.feature("Sale")
@@ -74,3 +77,22 @@ def test_011_007_002_clickability_button():
     sale_page.check_page_title()
     redirect()
 
+
+@allure.feature("Sale")
+@allure.link('https://trello.com/c/4slhRo2E')
+@pytest.mark.parametrize("URL", [MAIN_PAGE_LINK, LOGIN_URL, CREATE_ACCOUNT_URL, WHATS_NEW_PAGE_LINK,
+                                 WOMEN_PAGE_LINK, WOMEN_TOPS_URL, WOMEN_TOPS_JACKETS_URL, WOMEN_TOPS_HOODIES_URL,
+                                 WOMEN_TOPS_TEES_URL, WOMEN_TOPS_BRAS_URL, WOMEN_BOTTOMS_URL, WOMEN_BOTTOMS_PANTS_URL,
+                                 WOMEN_BOTTOMS_SHORTS_URL,
+                                 MEN_PAGE_URL, MEN_TOPS_URL, MEN_TOPS_JACKETS_URL, MEN_TOPS_HOODIES_URL,
+                                 MEN_TOPS_TEES_URL, MEN_TOPS_TANKS_URL, MEN_BOTTOMS_URL, MEN_BOTTOMS_PANTS_URL,
+                                 MEN_BOTTOMS_SHORTS_URL,
+                                 GEAR_PAGE_URL, GEAR_BAGS_URL, GEAR_FITNESS_URL, GEAR_WATCHES_URL,
+                                 TRAINING_URL, VIDEO_DOWNLOAD_URL, SALE_PAGE_URL, random_product_url,
+                                 POPULAR_SEARCH_TERMS_URL, PRIVACY_POLICY_PAGE_LINK, ADVANCED_SEARCH_URL,
+                                 ORDERS_RETURNS_URL, ERIN_RECOMMENDS_URL, YOGA_URL, PERFORMANCE_FABRICS_URL,
+                                 ECO_FRIENDLY_URL, CART_URL])
+def test_011_001_004_user_can_see_sale_page(URL):
+    browser.open(URL)
+    MainPage.handle_cookies_popup()
+    s(NavigatorLocators.NAV_SALE).should(be.visible)
