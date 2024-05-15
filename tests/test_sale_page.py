@@ -3,7 +3,7 @@ from selene.support.shared.jquery_style import s, ss
 
 from pages import sale_page
 from pages.locators import SalePageLocators, BaseLocators, NavigatorLocators
-from pages.sale_page import visit, redirect
+from pages.sale_page import redirect
 from pages.main_page import MainPage
 from data.links import *
 import allure
@@ -80,7 +80,7 @@ def test_011_007_002_clickability_button():
 
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/4slhRo2E')
-@pytest.mark.parametrize("URL", [MAIN_PAGE_LINK, LOGIN_URL, CREATE_ACCOUNT_URL, WHATS_NEW_PAGE_LINK,
+@pytest.mark.parametrize("url", [MAIN_PAGE_LINK, LOGIN_URL, CREATE_ACCOUNT_URL, WHATS_NEW_PAGE_LINK,
                                  WOMEN_PAGE_LINK, WOMEN_TOPS_URL, WOMEN_TOPS_JACKETS_URL, WOMEN_TOPS_HOODIES_URL,
                                  WOMEN_TOPS_TEES_URL, WOMEN_TOPS_BRAS_URL, WOMEN_BOTTOMS_URL, WOMEN_BOTTOMS_PANTS_URL,
                                  WOMEN_BOTTOMS_SHORTS_URL,
@@ -92,7 +92,7 @@ def test_011_007_002_clickability_button():
                                  POPULAR_SEARCH_TERMS_URL, PRIVACY_POLICY_PAGE_LINK, ADVANCED_SEARCH_URL,
                                  ORDERS_RETURNS_URL, ERIN_RECOMMENDS_URL, YOGA_URL, PERFORMANCE_FABRICS_URL,
                                  ECO_FRIENDLY_URL, CART_URL])
-def test_011_001_004_user_can_see_sale_page(URL):
-    browser.open(URL)
+def test_011_001_004_user_can_see_sale_page(url):
+    browser.open(url)
     MainPage.handle_cookies_popup()
     s(NavigatorLocators.NAV_SALE).should(be.visible)
