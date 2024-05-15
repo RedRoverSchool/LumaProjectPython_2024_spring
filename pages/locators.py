@@ -313,3 +313,32 @@ class SetYogaStrapsLocators:
 class PopularSearchTermsLocators:
     HOODIE_LINK = '//a[contains(text(),"HOODIE")]'
     SEARCH_RESULTS_HEADER = '//h1/span[@data-ui-id="page-title-wrapper"]'
+
+
+class WomenLocators:
+    TANK_SIZE = '//*[@title="Breathe-Easy Tank"]/../..//*[@option-label="M"]'
+    TANK_COLOR = '//*[@title="Breathe-Easy Tank"]/../..//*[@option-label="Yellow"]'
+    TANK_BUTTON_ADD = '//*[@title="Breathe-Easy Tank"]/../..//*[@title="Add to Cart"]'
+    MESSAGE_SUCCESS_ADD = "div.messages [data-bind ^='html']"
+    SHOW_BASKET = ".action.showcart"
+    CHECKOUT_BUTTON = '#top-cart-btn-checkout'
+
+
+class Shipping:
+    FIELD_EMAIL = '#customer-email-fieldset #customer-email'
+    FIELD_FIRST_NAME = '[name="firstname"]'
+    FIELD_LAST_NAME = '[name="lastname"]'
+    FIELD_STREET = '[name="street[0]"]'
+    FIELD_CITY = '[name="city"]'
+    FIELD_REGION = '[name="region_id"]'
+    FIELD_COUNTRY = '[name="country_id"]'
+    FIELD_ZIPCODE = '[name="postcode"]'
+    FIELD_PHONE = '[name="telephone"]'
+    SHIPPING_METHOD = '#checkout-shipping-method-load input'
+    CONTINUE_BUTTON = '.continue'
+
+
+class Order:
+    BUTTON_PLACE_ORDER = '.primary.checkout'
+    MESSAGE_SUCCEES = '.checkout-success'
+    ORDER_PAGE_TITLE = '.page-title'
