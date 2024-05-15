@@ -17,11 +17,10 @@ def test_check_count_of_products(login):
 
 @allure.feature("What's new > Performance Sportswear> NewEach product card contains buttons for adding to cart, adding to wishlist and adding to comparison list")
 @allure.link("https://trello.com/c/YuNxu4x4")
-def test_product_card_buttons(login, product_card_button:
+def test_product_card_buttons(login):
     performans_new_page.visit()
-    add_to_cart_button.should(be.visible)
-    add_to_wishlist_button.should(be.visible)
-    add_to_comparison_button.should(be.visible)
+    performans_new_page.check_buttons()
+
 
 @allure.link("https://trello.com/c/9B5bXFEP")
 def test_006_008_001_visibility_of_price_photo_name():

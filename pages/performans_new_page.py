@@ -13,13 +13,11 @@ def items_count():
     return len(ss('.product-item-info'))
 
 
-def product_card_buttons():
-    global product_card
-    product_cards = ss('.product-image-container')
-    for i, product_card in enumerate(product_cards[:5]):
+def check_buttons():
+    for product_card in ss('.product-item'):
         product_card.hover()
-    add_to_cart_button = product_card.s(".actions-primary")
-    add_to_wishlist_button = product_card.s(".actions-secondary")
-    add_to_comparison_button = product_card.s(".action.tocompare")
+        product_card.s(".actions-primary").should(be.visible)
+        product_card.s(".actions-secondary").should(be.visible)
+        product_card.s(".action.tocompare").should(be.visible)
 
 
