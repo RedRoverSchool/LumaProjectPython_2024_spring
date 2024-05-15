@@ -15,6 +15,12 @@ class SalePageLocators:
     BREADCRUMBS_LINKS_ON_PAGE_WOMEN_SALE = ['https://magento.softwaretestingboard.com/',
                                             'https://magento.softwaretestingboard.com/sale.html']
     SALE_TAP = "//*[@id='ui-id-8']"
+    BLOCK_PROMO_SALE_20_OFF_TITLE = "a[class='block-promo sale-20-off'] strong[class='title']"
+    BLOCK_PROMO_SALE_20_OFF_INFO = "a[class='block-promo sale-20-off'] span[class='info']"
+    BLOCK_PROMO_SALE_FREE_SHIPPING_TITLE = "a[class='block-promo sale-free-shipping'] strong[class='title']"
+    BLOCK_PROMO_SALE_FREE_SHIPPING_INFO = "a[class='block-promo sale-free-shipping'] span[class='info']"
+    BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_TITLE = "a[class='block-promo sale-womens-t-shirts'] strong[class='title']"
+    BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_INFO = "a[class='block-promo sale-womens-t-shirts'] span[class='info']"
 
 
 class ProductLocators:
