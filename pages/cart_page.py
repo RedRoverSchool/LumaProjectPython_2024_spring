@@ -1,25 +1,24 @@
+
 from selene.support.shared.jquery_style import s
-from selene import be
+from selene import be, have
+from selene.core import query
+
+from selene import be, have
+
+from selene.support.shared.jquery_style import s
 
 from data.links import CART_LINK
-from pages.locators import CartLocators as Cart
+from pages.base_page import BasePage
+from pages.locators import CartLocators as Cart, HomeLocators
 from pages.locators import HomeLocators as HL
-from pages.components.nav_wigdet import NavComponent
+from pages.locators import ProductLocators as PL
 
 
-class CartPage:
-    def __init__(self, browser):
-        self.browser = browser
-        self.nav = NavComponent(browser)
+class CartPage(BasePage):
 
     def open_page(self):
-        self.browser.open(CART_LINK)
-
-    def find_cart_icon(self):
-        return s(HL.CART_ICON)
-
-    def is_cart_icon_clickable(self):
-        return self.find_cart_icon().should(be.clickable)
+        self.visit(CART_LINK)
+        return self
 
     def find_qty(self):
         return s(Cart.QTY)
@@ -50,3 +49,49 @@ class CartPage:
 
     def is_counter_number_visible(self):
         return self.find_counter_number().should(be.visible)
+
+    def find_remove_item_icon(self):
+        return s(Cart.REMOVE_ITEM_ICON)
+
+    def is_find_remove_item_icon_present(self):
+        return self.find_remove_item_icon().should(be.present)
+
+    def find_no_items_message(self):
+        return s(Cart.NO_ITEMS_MESSAGE)
+
+    def should_be_message_no_items(self, text):
+        return s(Cart.NO_ITEMS_MESSAGE).should(have.text(text))
+
+    def find_click_message(self):
+        return s(Cart.CLICK_MESSAGE)
+
+    def should_be_message_click(self, text):
+        return s(Cart.CLICK_MESSAGE).should(have.text(text))
+
+    def get_cart_totals(self):
+        tax = self.get_text(HL.TAX_AMOUNT)
+        discount = self.get_text(HL.TOTALS)
+        subtotal = self.get_text(HL.SUB_TOTAL)
+        total = self.get_text(HL.GRAND_TOTALS)
+        return f"Total: {total}, Price: {discount}, tax: {tax}, subtotal: {subtotal}"
+
+
+    def checking_product_name_are_correct_in_checkout_cart_page(self):
+        s(PL.NAME_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text("Argus All-Weather Tank"))
+
+    def checking_size_are_correct_in_checkout_cart_page(self, size):
+        s(PL.SIZE_M_ARGUS_ALL_WEATHER_TANK_CHECKOUT_CART).should(have.text(size))
+
+    def checking_color_are_correct_in_checkout_cart_page(self, color):
+        s(PL.COLOR_GRAY_ARGUS_CHECKOUT_CART).should(have.text(color))
+
+
+    def check_price_present_in_checkout_cart_page(self, price):
+        s(PL.PRICE_ITEM_CHECKOUT_CART).should(be.present).should(have.text(price))
+
+    def check_qty_present_in_checkout_cart_page(self):
+        s(PL.QTY_FIELD_CHECKOUT_CART).should(be.present)
+
+    def check_subtotal_present_in_checkout_cart_page(self):
+        s(PL.CART_SUBTOTAL_CHECKOUT_CART).should(be.present).should(have.text("$"))
+

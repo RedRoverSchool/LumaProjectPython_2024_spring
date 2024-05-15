@@ -2,19 +2,17 @@ from selene import browser, command, Element
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
 
-from data.links import WHATS_NEW_PAGE_LINK
+from data.links import WHATS_NEW_PAGE_LINK, LAYLA_TEE_URL
 from data.page_data import WishListData as Data
-from pages.locators import ProductItemLocators as Product
-from pages.locators import WishListLocators as WishList
+from pages.base_page import BasePage
+from pages.locators import ProductItemLocators as Product, BaseLocators
 from pages.locators import WhatsNewPageLocators as WNL
 
 
-class WhatsNewPage:
-    def __init__(self, browser):
-        self.browser = browser
+class WhatsNewPage(BasePage):
 
     def open_page(self):
-        self.browser.open(WHATS_NEW_PAGE_LINK)
+        self.visit(WHATS_NEW_PAGE_LINK)
 
     def is_element_text_correct(self, element, text):
         return element.should(have.text(text))
@@ -28,9 +26,6 @@ class WhatsNewPage:
     def get_lumas_latest_items(self):
         return ss(WNL.LUMAS_LATEST_ITEMS)
 
-    def check_current_url(self):
-        return browser.driver.current_url
-
     @staticmethod
     def find_button_new_yoga():
         return s(WNL.BUTTON_MORE)
@@ -42,14 +37,10 @@ class WhatsNewPage:
         return self.find_button_new_yoga().should(be.visible)
 
     def is_current_link(self):
-        return self.check_current_url() == WHATS_NEW_PAGE_LINK
+        return self.get_current_url() == WHATS_NEW_PAGE_LINK
 
     def click_button_shop_new_yoga(self):
         self.find_button_new_yoga().click()
-
-    @staticmethod
-    def scroll_to(element: Element):
-        element.perform(command.js.scroll_into_view)
 
     def add_items_to_wish_list(self, size):
         self.click_button_shop_new_yoga()
@@ -58,7 +49,7 @@ class WhatsNewPage:
             self.scroll_to(products[i])
             products[i].hover()
             products[i].s(Product.WISH_LIST).click()
-            s(WishList.SUCCESS_MESSAGE).should(have.text(Data.add_wish_list_message))
+            s(BaseLocators.SUCCESS_MESSAGE).should(have.text(Data.add_wish_list_message))
             self.browser.driver.back()
 
     def add_item_to_wish_list(self):
@@ -93,3 +84,37 @@ class WhatsNewPage:
 
     def new_yoga_link_click(self):
         return s(WNL.NEW_YOGA_LINK).click()
+
+
+    def open_eco_collection_url(self):
+        self.open_page()
+        s(BaseLocators.ECO_COLLECTION_NAME).click()
+
+    def click_layla_tee_name(self):
+        s(Product.LAYLA_TEE_PRODUCT_NAME).click()
+
+    def check_redirection_to_layla_tee_pdp(self):
+        return self.get_current_url() == LAYLA_TEE_URL
+
+    def layla_tee_title_is_displayed(self):
+        return s(Product.LAYLA_TEE_TITLE).should(be.visible)
+
+    def click_layla_tee_img(self):
+        s(Product.LAYLA_TEE_IMG).click()
+
+    @staticmethod
+    def click_bras_and_tank_link():
+        return s(WNL.BRAS_TANKS).click()
+
+    def click_breathe_easy_tank_item(self):
+        return s(WNL.BREATHE_EASY_TANK).click()
+
+    def add_to_cart_button(self):
+        return s(WNL.ADD_TO_CART_BUTTON).click()
+
+    def add_to_compare_button(self):
+        return s(WNL.ADD_TO_COMPARE).click()
+
+    def add_to_wish_list_button(self):
+        return s(WNL.ADD_TO_WISH_LIST_BUTTON).click()
+

@@ -1,22 +1,20 @@
 from selene import browser, command
 from selene.support.conditions import have, be
+from selene.support.conditions.have import attribute
 from selene.support.shared.jquery_style import s
+
+from pages.base_page import BasePage
 from pages.locators import ErinRecommendLocators as ERL
-from data.links import *
+from data.links import ERIN_RECOMMENDS_URL
 
 
-class ErinRecommendsPage:
-    def __init__(self, browser):
-        self.browser = browser
+class ErinRecommendsPage(BasePage):
 
     def open_page(self):
-        self.browser.open(ERIN_RECOMMENDS_URL)
+        self.visit(ERIN_RECOMMENDS_URL)
 
     def move_to_erin_page(self):
         s(ERL.HOME_ERIN_BLOCK).click()
-
-    def check_current_url(self):
-        return browser.driver.current_url
 
     def is_header_present(self):
         return s(ERL.PAGE_HEADER).should(be.present)
@@ -25,7 +23,7 @@ class ErinRecommendsPage:
         return element.should(have.text(text))
 
     def scroll_to_footer(self):
-        s(ERL.FOOTER).perform(command.js.scroll_into_view)
+        self.scroll_to(s(ERL.FOOTER))
 
     def is_pagination_visible(self):
         return s(ERL.PAGINATION_CONTROL).should(be.visible)
@@ -49,4 +47,9 @@ class ErinRecommendsPage:
         products_count = len(ERL.PRODUCTS)
         assert min_count <= products_count <= max_count, f"Number of displayed products {products_count} is not within the expected range {min_count}-{max_count}"
 
+    def switch_to_list_view(self):
+        return s(ERL.LIST_VIEW_BUTTON).click()
+
+    def is_list_view_activate(self):
+        return s(ERL.PRODUCT_LIST).should(have.css_class("products-list"))
 

@@ -1,3 +1,4 @@
+from selene import browser, be, have
 from selene import browser, be, have, Element
 from selene.support.shared.jquery_style import s, ss
 
@@ -20,3 +21,5 @@ def product_card_buttons():
     add_to_cart_button = product_card.s(".actions-primary")
     add_to_wishlist_button = product_card.s(".actions-secondary")
     add_to_comparison_button = product_card.s(".action.tocompare")
+
+
