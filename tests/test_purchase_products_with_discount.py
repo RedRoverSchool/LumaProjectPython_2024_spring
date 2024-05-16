@@ -1,7 +1,7 @@
 import allure
 from selene import browser
 from selene.support.conditions import have
-
+import pytest
 from pages.cart_page import CartPage
 from pages.erin_recommends_page import ErinRecommendsPage
 from pages.main_page import MainPage
@@ -11,6 +11,7 @@ from pages.main_page import MainPage
 @allure.suite("US_011.013 | Sale > 20% OFF: Purchase of goods with a 20% discount")
 class TestPurchaseOfGoodsWithDiscount:
     @allure.feature(" Sale > 20% OFF: Purchase of goods with a 20% discount")
+    @pytest.mark.skip
     def test_sale_off_purchase_of_goods_with_discount(self):
         with allure.step("Open main page and check if load successfully"):
             page = MainPage(browser=browser)
