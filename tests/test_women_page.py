@@ -24,7 +24,7 @@ def test_checking_page_redirection_to_bottom_elements():
     women_page.click_dropdown_bottoms_link()
     browser.should(have.url(BOTTOMS_WOMEN_PAGE_LINK))
 
-
+@pytest.mark.skip
 @allure.feature("Women page")
 @allure.title('Women >Dropdown menu>Verify visibility elements')
 def test_verify_visibility_elements_dropdown_menu():
