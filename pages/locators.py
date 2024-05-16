@@ -138,6 +138,9 @@ class BaseLocators:
     NEW_LUMA_YOGA_COLLECTION_BLOCK_LOCATOR = "//a[contains(@class,'home-main')]/span"
     NEW_LUMA_YOGA_COLLECTION_BLOCK_INFO_TEXT_LOCATOR = "//a[contains(@class,'home-main')]//span[@class='info']"
     ECO_COLLECTION_NAME = "//span[contains (text(), 'Shop Eco Friendly')]"
+    BUTTON_COMPARE_ITEM_1 = 'li:nth-child(1) a.action.tocompare'  # кнопка сравнить на любой странице для товара 1
+    BUTTON_COMPARE_ITEM_2 = 'li:nth-child(2) a.action.tocompare'  # кнопка сравнить на любой странице для товара 2
+    BUTTON_COMPARE_ITEM_3 = 'li:nth-child(3) a.action.tocompare'  # кнопка сравнить на любой странице для товара 3
 
 
 class SearchTermsLocators:
@@ -346,3 +349,10 @@ class Order:
     BUTTON_PLACE_ORDER = '.primary.checkout'
     MESSAGE_SUCCEES = '.checkout-success'
     ORDER_PAGE_TITLE = '.page-title'
+
+
+class Compare:
+    BUTTON_CLEAR_FROM_COMPARE = '#compare-clear-all'
+    PRODUCT_ITEM = '.product-item-link'
+    BUTTON_PUT_TO_COMPARE = '.compare.primary'
+    QTY_IN_COMPARE_LIST ='div.block.block-compare > div.block-title > span'

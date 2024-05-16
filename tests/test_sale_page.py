@@ -1,6 +1,6 @@
 from selene import browser, be, have
 import allure
-from pages import sale_page
+from pages import sale_page, compare_side_panel
 from selene.support.shared.jquery_style import s
 from pages.sale_page import SalePage
 from pages.locators import SalePageLocators, BaseLocators, NavigatorLocators
@@ -111,3 +111,19 @@ def test_011_001_004_user_can_see_sale_page(url):
     browser.open(url)
     MainPage.handle_cookies_popup()
     s(NavigatorLocators.NAV_SALE).should(be.visible)
+
+
+@allure.link("https://trello.com/c/hSe3gPsx")
+def test_11_005_003_check_items_in_list_for_compare():
+    sale_page.visit_women_jackets()
+    items_to_be_compared = compare_side_panel.collect_item_names_to_be_compared(1, 2, 3)
+    compare_side_panel.choose_to_compare_item_nr(1)
+    compare_side_panel.choose_to_compare_item_nr(2)
+    compare_side_panel.choose_to_compare_item_nr(3)
+    sale_page.visit_sale()
+    compare_side_panel.should_be_3_items_to_compare()
+    compare_side_panel.button_compare_is_clickable()
+    compare_side_panel.link_clearall_is_clickable()
+    compared_items = compare_side_panel.collect_items_list_compare()
+    compare_side_panel.compare_lists_from_page_and_from_compare(items_to_be_compared, compared_items)
+

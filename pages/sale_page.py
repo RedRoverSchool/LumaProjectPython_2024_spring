@@ -1,7 +1,7 @@
 from selene import have
 from selene.support.shared.jquery_style import ss
 
-from data.links import SALE_PAGE_URL
+from data.links import SALE_PAGE_URL, WOMEN_JACKET_LINK
 from pages.base_page import BasePage
 from pages.locators import SalePageLocators, BaseLocators
 from selene import browser, have
@@ -14,6 +14,14 @@ def visit():
 
 def check_if_breadcrumbs_have_all_parts():
     ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Sale'))
+
+
+def visit_women_jackets():
+    browser.open(WOMEN_JACKET_LINK)
+
+
+def visit_sale():
+    browser.open(SALE_PAGE_URL)
 
 
 class SalePage(BasePage):
