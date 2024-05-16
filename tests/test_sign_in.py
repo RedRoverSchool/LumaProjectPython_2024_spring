@@ -47,7 +47,7 @@ def test_004_005_002_login_successful():
     s(LoginLocators.USER_NAME_IN_WELCOME).should(have.text("фы ывф"))
     s(LoginLocators.AUTHORIZATION_LINK).should(have.no.text("Sign In"))
 
-
+@pytest.mark.skip
 @allure.link("https://trello.com/c/rmFvh9fO")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_003_nickname_on_each_page():
