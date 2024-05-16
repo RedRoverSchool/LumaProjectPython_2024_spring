@@ -5,7 +5,7 @@ from selene import browser, have, command
 from selene.support.shared.jquery_style import s, ss
 from selene.support.conditions import be, have
 
-from pages import performans_new_page
+from pages import performans_new_page, sign_in
 from selenium.webdriver.common.by import By
 
 
@@ -24,61 +24,49 @@ def test_product_card_buttons(login):
 
 @allure.link("https://trello.com/c/9B5bXFEP")
 def test_006_008_001_visibility_of_price_photo_name():
-    browser.open(LINK_SPORT)
-    nr_of_items_on_page = len(ss(BaseLocators.PRODUCT_ITEM_IN_CATALOG))
-    ss(BaseLocators.PRODUCT_NAME).should(have.size(nr_of_items_on_page))
-    ss(BaseLocators.PRODUCT_PRICE).should(have.size(nr_of_items_on_page))
-    ss(BaseLocators.PRODUCT_IMAGE).should(have.size(nr_of_items_on_page))
+    performans_new_page.visit()
+    nr = performans_new_page.items_count()
+    performans_new_page.compare_nr_of_items_and_nr_of_names(nr)
+    performans_new_page.compare_nr_of_items_and_nr_of_images(nr)
+    performans_new_page.compare_nr_of_items_and_nr_of_prices(nr)
 
 
 @allure.link("https://trello.com/c/cmwZ3A6P")
 def test_006_008_002_add_to_cart_from_catalog_without_color_and_size():
-    browser.open(LINK_LOGIN)
-    s(LoginLocators.FIELD_NAME).type("ahahah1@gmail.com")
-    s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
-    s(LoginLocators.BUTTON_SUBMIT).click()
-    browser.open(LINK_SPORT)
+    sign_in.visit()
+    sign_in.login("ahahah1@gmail.com", "jk$34_tor")
+    performans_new_page.visit()
     # кликнуть невидимую кнопку - она за пределами экрана и/или не отрисована
-    s(PerformanceSportswear.BUTTON_ADD_ITEM2).perform(command.js.click)
-    s(PerformanceSportswear.SUCCESS_MESSAGE).should(have.no.text(PerformanceSportswear.TEXT_SUCCESS_MESSAGE))
+    performans_new_page.click_button_add_to_cart_with_js()
+    performans_new_page.check_no_success_message()
 
 
 @allure.link("https://trello.com/c/cmwZ3A6P")
 def test_006_008_002_add_to_cart_from_catalog_without_color_and_size_with_hover():
     # another variant
-    browser.open(LINK_LOGIN)
-    s(LoginLocators.FIELD_NAME).type("ahahah1@gmail.com")
-    s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
-    s(LoginLocators.BUTTON_SUBMIT).click()
-    browser.open(LINK_SPORT)
-    s(PerformanceSportswear.IMAGE_2).should(be.visible).hover()
-    s(PerformanceSportswear.BUTTON_ADD_ITEM2).should(be.clickable).click()
-    s(PerformanceSportswear.SUCCESS_MESSAGE).should(have.no.text(PerformanceSportswear.TEXT_SUCCESS_MESSAGE))
+    sign_in.visit()
+    sign_in.login("ahahah1@gmail.com", "jk$34_tor")
+    performans_new_page.visit()
+    performans_new_page.click_button_add_to_cart_with_hover()
+    performans_new_page.check_no_success_message()
 
 
 @allure.link("https://trello.com/c/WjUokO7r")
 def test_006_008_003_color_and_size_can_be_checked():
-    browser.open(LINK_LOGIN)
-    s(LoginLocators.FIELD_NAME).type("ahahah1@gmail.com")
-    s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
-    s(LoginLocators.BUTTON_SUBMIT).click()
-    browser.open(LINK_SPORT)
-    s(PerformanceSportswear.IMAGE_2).click()
-    s(ProductLocators.SIZE_XS).click()
-    s(ProductLocators.COLOR_BLUE).click()
-    selected = ss('[aria-checked="true"]')
-    assert len(selected) == 2
+    sign_in.visit()
+    sign_in.login("ahahah1@gmail.com", "jk$34_tor")
+    performans_new_page.visit()
+    performans_new_page.go_to_product_helios_endurance_tank()
+    performans_new_page.select_size_XS()
+    performans_new_page.select_color_blue()
+    performans_new_page.verify_if_color_and_size_were_selected()
 
 
 @allure.link("https://trello.com/c/dYQgmbfJ")
 def test_006_008_004_add_to_cart_from_product_page_without_color_and_size():
-    browser.open(LINK_LOGIN)
-    s(LoginLocators.FIELD_NAME).type("ahahah1@gmail.com")
-    s(LoginLocators.FIELD_PASSWORD).type("jk$34_tor")
-    s(LoginLocators.BUTTON_SUBMIT).click()
-    browser.open(LINK_SPORT)
-    s(PerformanceSportswear.IMAGE_2).click()
-    s(ProductLocators.ADD_TO_CART_BUTTON).click()
-    chooses = ss(ProductLocators.SHOULD_CHOOSE_SIZE_AND_COLOR)
-    for choose in chooses:
-        assert choose.text == ProductLocators.TEXT_REQUIRED_FIELD
+    sign_in.visit()
+    sign_in.login("ahahah1@gmail.com", "jk$34_tor")
+    performans_new_page.visit()
+    performans_new_page.go_to_product_helios_endurance_tank()
+    performans_new_page.press_button_add_to_cart()
+    performans_new_page.check_msg_no_required_field()
