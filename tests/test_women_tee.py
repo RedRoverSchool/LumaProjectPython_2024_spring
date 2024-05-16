@@ -1,8 +1,7 @@
 import pytest
-from pages.locators import SalePageLocators, BaseLocators, ProductLocators as PL
+from pages.locators import ProductLocators
 from pages import women_page, main_page, product_page
-from selene import browser, be, have, by, query
-from selene.support.shared.jquery_style import s, ss
+from selene import browser
 import allure
 
 
@@ -51,7 +50,7 @@ def test_002_001_001_product_name_price_img_visibility(login):
 @allure.link('https://trello.com/c/xGtHnQaq/')
 def test_002_001_002_adding_product_to_cart(login):
     with allure.step('Opening Radiant Tee product page'):
-        browser.open(PL.RADIANT_TEE_URL)
+        browser.open(ProductLocators.RADIANT_TEE_URL)
     with allure.step('Checking whether the cart is empty, if not - clearing the cart'):
         main_page.MainPage.clear_minicart()
     with allure.step('Selecting product size'):

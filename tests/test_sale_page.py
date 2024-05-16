@@ -1,10 +1,7 @@
 from selene import browser, be, have
-from selene.support.shared.jquery_style import ss
-from data.links import SALE_SECTION_LINK
-from pages.locators import SalePageLocators, BaseLocators
 import allure
 from pages import sale_page
-from selene.support.shared.jquery_style import s, ss
+from selene.support.shared.jquery_style import s
 from pages.sale_page import SalePage
 from pages.locators import SalePageLocators, BaseLocators, NavigatorLocators
 from pages.main_page import MainPage

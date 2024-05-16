@@ -3,8 +3,8 @@ import pytest
 from selene import browser, have
 from data.links import *
 from pages import women_page
-from selene.support.shared.jquery_style import s, ss
-from pages.locators import WomenPageLocators as WPL
+from selene.support.shared.jquery_style import s
+from pages.locators import WomenPageLocators
 
 
 @allure.feature("Women page")
@@ -30,6 +30,6 @@ def test_checking_page_redirection_to_bottom_elements():
 def test_verify_visibility_elements_dropdown_menu():
     women_page.visit()
     women_page.move_to_woman_menu()
-    assert s(WPL.DROPDOWN_BLOCK).should(have.text('Tops') and have.text('Bottoms'))
+    assert s(WomenPageLocators.DROPDOWN_BLOCK).should(have.text('Tops') and have.text('Bottoms'))
 
 

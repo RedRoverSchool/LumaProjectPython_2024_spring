@@ -1,8 +1,8 @@
 import allure
 import pytest
-from pages.locators import SearchTermsLocators as ST
-from selene import browser, be, have, query
-from selene.support.shared.jquery_style import s, ss
+from pages.locators import SearchTermsLocators
+from selene import be, query
+from selene.support.shared.jquery_style import ss
 from pages import search_terms_page
 
 
@@ -45,7 +45,7 @@ def test_015_001_006_check_if_search_terms_are_sorted():
 @allure.link('https://trello.com/c/RGOSzLMa')
 def test_015_002_005_unique_search_terms():
     search_terms_page.visit()
-    keyword_elements = ss(ST.LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
     keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
     keywords_set = set(keyword_texts)
     assert len(keyword_texts) == len(keywords_set)
@@ -54,7 +54,7 @@ def test_015_002_005_unique_search_terms():
 @allure.link('https://trello.com/c/9VW3bwiJ')
 def test_015_002_003_keywords_clickable():
     search_terms_page.visit()
-    keyword_elements = ss(ST.LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
     [k.should(be.visible).should(be.clickable) for k in keyword_elements]
 
 

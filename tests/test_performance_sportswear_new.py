@@ -1,12 +1,5 @@
 import allure
-from data.links import *
-from pages.locators import BaseLocators, LoginLocators, PerformanceSportswear, ProductLocators
-from selene import browser, have, command
-from selene.support.shared.jquery_style import s, ss
-from selene.support.conditions import be, have
-
 from pages import performans_new_page, sign_in
-from selenium.webdriver.common.by import By
 
 
 @allure.feature(" What's new > Performance Sportswear New > Check count of products")

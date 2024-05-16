@@ -1,28 +1,28 @@
 from selene import query, have, browser
 from selene.support.shared.jquery_style import s, ss
-from pages.locators import SearchTermsLocators as ST, BaseLocators as BL
+from pages.locators import SearchTermsLocators, BaseLocators
 
 
 def order_search_terms():
-    keyword_elements = ss(ST.LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
     keyword_texts = [k.get(query.attribute("text")).replace('\n', '') for k in keyword_elements]
     keyword_elements.should(have.exact_texts(sorted(keyword_texts)))
 
 
 def visit():
-    browser.open(ST.LINK_SEARCH_TERMS)
+    browser.open(SearchTermsLocators.LINK_SEARCH_TERMS)
 
 
 def title_is_correct():
-    s(BL.PAGE_TITLE).should(have.text("Popular Search Terms"))
+    s(BaseLocators.PAGE_TITLE).should(have.text("Popular Search Terms"))
 
 
 def search_terms_list_have_100():
-    ss(ST.TERMS_FOR_SEARCH_LIST_QTY).should(have.size(100))
+    ss(SearchTermsLocators.TERMS_FOR_SEARCH_LIST_QTY).should(have.size(100))
 
 
 def collect_all_search_terms():
-    terms = ss(ST.LIST_OF_SEARCH_TERMS)
+    terms = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
     return terms
 
 
