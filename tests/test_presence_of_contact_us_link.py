@@ -1,19 +1,36 @@
 from selene.support.shared import browser
 from selene import be, have
-from selene.support.shared.jquery_style import s, ss
+from selene.support.shared.jquery_style import s
 
 
-def test_contact_us_link_presence():
-    # Open the Privacy Policy page
-    browser.open('https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode#privacy-policy-title-2')
+class PrivacyPolicyPage:
+    def __init__(self):
+        self.questions_section = s('#privacy-policy-title-14')
+        self.contact_us_link = self.questions_section.element('//*[@id="maincontent"]/div[3]/div/div[2]/div[1]/p[33]/a')
 
-    # Scroll to the bottom of the page
-    browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    def open(self):
+        browser.open('https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode#privacy-policy-title-2')
+        return self
 
-    # Checking the presence of the 'Questions for Luma?' section at the bottom
-    questions_section = s('//*[@id="privacy-policy-title-14"]')
-    questions_section.should(be.visible)
+    def scroll_to_bottom(self):
+        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        return self
 
-    # Verify the presence and correctness of the "Contact Us" link
-    contact_us_link = questions_section.element('//*[@id="maincontent"]/div[3]/div/div[2]/div[1]/p[33]/a')
-    contact_us_link.should(be.visible).should(have.text('Contact Us'))
+    def verify_questions_section(self):
+        self.questions_section.should(be.visible)
+        return self
+
+    def verify_contact_us_link(self):
+        self.contact_us_link.should(be.visible).should(have.text('Contact Us'))
+        return self
+
+
+def test_presence_of_contact_us_link():
+    privacy_policy_page = PrivacyPolicyPage()
+    (
+        privacy_policy_page
+        .open()
+        .scroll_to_bottom()
+        .verify_questions_section()
+        .verify_contact_us_link()
+    )
