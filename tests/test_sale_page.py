@@ -1,9 +1,8 @@
 from selene import browser, be, have
 from selene.support.shared.jquery_style import s, ss
 
-from pages import sale_page
+from pages.sale_page import SalePage
 from pages.locators import SalePageLocators, BaseLocators, NavigatorLocators
-from pages.sale_page import redirect
 from pages.main_page import MainPage
 from data.links import *
 import allure
@@ -73,9 +72,25 @@ def test_bags_link_correct_redirection():
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/pyqtpSob')
 def test_011_007_002_clickability_button():
-    sale_page.visit()
+    sale_page = SalePage(browser)
+    sale_page.open_page()
     sale_page.check_page_title()
-    redirect()
+    sale_page.redirect()
+
+
+@allure.feature("Sale")
+@allure.link('https://trello.com/c/O0iYXhy1')
+def test_each_image_includes_short_description_of_the_promotion():
+    browser.open(SALE_SECTION_LINK)
+    browser.element(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_TITLE).should(have.text('20% OFF'))
+    browser.element(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_INFO).should(have.text('Every $200-plus purchase!'))
+    browser.element(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_TITLE).should(
+        have.text('Spend $50 or more — shipping is free!'))
+    browser.element(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_INFO).should(have.text('Buy more, save more'))
+    browser.element(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_TITLE).should(
+        have.text('You can\'t have too many tees'))
+    browser.element(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_INFO).should(
+        have.text('4 tees for the price of 3. Right now'))
 
 
 @allure.feature("Sale")

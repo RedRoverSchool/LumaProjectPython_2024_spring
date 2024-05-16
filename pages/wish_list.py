@@ -1,7 +1,7 @@
 from selene import browser, be, have, command
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.common.by import By
-from pages.locators import WishListLocators as WishList
+from pages.locators import WishListLocators as WishList, BaseLocators
 from data.page_data import WishListData as Data
 
 url = "https://magento.softwaretestingboard.com/wishlist/"
@@ -46,7 +46,7 @@ def verify_trash_bin_icon_present():
 
 
 def has_success_message():
-    assert s(WishList.SUCCESS_MESSAGE).should(have.text(Data.removed_message))
+    assert s(BaseLocators.SUCCESS_MESSAGE).should(have.text(Data.removed_message))
 
 
 def remove_item_from_wish_list(index):
