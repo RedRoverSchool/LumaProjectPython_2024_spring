@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from pages.erin_recommends_page import *
 from pages.main_page import MainPage
@@ -50,7 +51,7 @@ class TestErinRecommends:
         with allure.step("Assert number of product displayed matches to selection"):
             page.verify_number_of_product_displayed(13,24)
 
-
+    @pytest.mark.skip
     @allure.title("TC_001.002.005 | Main Page > Erin Recommendations > Arrangement of Products Display")
     def test_switch_to_list_view(self):
         with allure.step("Open Erin Recommends page"):

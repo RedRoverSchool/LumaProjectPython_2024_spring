@@ -69,29 +69,6 @@ class MainPage(BasePage):
         s(HomeLocators.MINICART_PRODUCT_QTY).should(have.attribute('data-item-qty').value(value))
 
 
-    @staticmethod
-    def clear_minicart():
-        if s(HomeLocators.CART_COUNTER).get(query.text) != "0":
-            s(HomeLocators.CART_ICON).click()
-            s(HomeLocators.MINICART_DELETE_BUTTONS).wait_until(be.visible)
-            delete_btns = ss(HomeLocators.MINICART_DELETE_BUTTONS)
-            if len(delete_btns) > 1:
-                for btn in delete_btns:
-                    btn.click()
-                    s(HomeLocators.DELETE_ITEM_CONFIRM_OK).wait_until(be.visible)
-                    s(HomeLocators.DELETE_ITEM_CONFIRM_OK).click()
-            elif len(delete_btns) == 1:
-                s(HomeLocators.MINICART_DELETE_BUTTONS).click()
-                s(HomeLocators.DELETE_ITEM_CONFIRM_OK).wait_until(be.visible)
-                s(HomeLocators.DELETE_ITEM_CONFIRM_OK).click()
-            s(HomeLocators.MINICART_CLOSE).click()
-
-
-    @staticmethod
-    def close_minicart():
-        s(HomeLocators.MINICART_CLOSE).click()
-
-
     def add_item_to_cart(self, size, color, add_to_cart_button):
         s(size).click()
         s(color).click()

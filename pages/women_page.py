@@ -17,34 +17,8 @@ def click_dropdown_tops_link():
     s(WomenPageLocators.TOPS_LINK).click()
 
 
-def move_to_tops_menu():
-    s(WomenPageLocators.TOPS_LINK).hover()
-
-
 def click_dropdown_bottoms_link():
     s(WomenPageLocators.BOTTOMS_LINK).click()
-
-
-def click_dropdown_tees():
-    s(WomenPageLocators.TEES_LINK).wait_until(be.clickable)
-    s(WomenPageLocators.TEES_LINK).click()
-
-
-def click_radiant_tee():
-    s(ProductLocators.RADIANT_TEE_LINK).wait_until(be.visible)
-    s(ProductLocators.RADIANT_TEE_LINK).click()
-
-
-def check_radiant_tee_title_is_visible():
-    browser.element(ProductLocators.RADIANT_TEE_TITLE).should(be.visible)
-
-
-def check_radiant_tee_img_are_visible():
-    browser.element(ProductLocators.RADIANT_TEE_IMG).should(be.visible)
-
-
-def check_radiant_tee_price_is_visible():
-    browser.element(ProductLocators.RADIANT_TEE_PRICE).should(be.visible)
 
 
 def visit_women_tee():
@@ -117,5 +91,4 @@ def open_minicart():
 def open_checkout():
     s(WomenLocators.CHECKOUT_BUTTON).should(be.visible)
     s(WomenLocators.CHECKOUT_BUTTON).should(be.clickable).click()
-
 

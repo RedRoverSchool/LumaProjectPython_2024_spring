@@ -26,7 +26,7 @@ class ProductLocators:
     RADIANT_TEE_URL = 'https://magento.softwaretestingboard.com/radiant-tee.html'
     RADIANT_TEE_SIZE = '[option-label="XS"]'
     RADIANT_TEE_COLOR = '[option-label="Orange"]'
-    RADIANT_TEE_QTY = '#qty'
+    PRODUCT_QTY = '#qty'
     ADD_TO_CART_BUTTON = '#product-addtocart-button'
     ADD_TO_CART_BUTTON_FROM_MAINPAGE = 'form[data-product-sku="WS12"] button'
     ARGUS_All_WEATHER_TANK = '[alt="Argus All-Weather Tank"]'
@@ -54,7 +54,9 @@ class ProductLocators:
     RADIANT_TEE_IMG = '//div[1]/div[3]/div[1]/img[@alt="Radiant Tee"]'
     RADIANT_TEE_TITLE = 'span[data-ui-id="page-title-wrapper"]'
     RADIANT_TEE_PRICE = '#product-price-1556'
-    PRODUCT_PRICE = '//div[2]/main/div[2]/div/div[2]/div[3]/div/span/span/span[2]/span'
+    PRODUCT_PRICE = 'span[id="product-price-1556"] span'
+    PRODUCT_DETAILS_TEXT = 'div.product.attribute.description div p'
+    MORE_INFO_TAB = '#tab-label-additional-title'
     ADDING_TO_CART_SUCCESSFULL_MSG = "//div[contains(text(), 'You added')]"
     SIZE_XS = '#option-label-size-143-item-166'
     COLOR_BLUE = '#option-label-color-93-item-50'
@@ -69,13 +71,13 @@ class HomeLocators:
     CART_ICON = 'a.showcart'
     MINICART = '#ui-id-1'
     EMPTY_MINICART_MSG = 'strong[class="subtitle empty"]'
+    EMPTY_MINICART = 'span.counter.qty.empty'
     MINICART_RADIANT_TEE_NAME = "//*[@id='mini-cart']/li/div/div/strong/a[contains(text(), 'Radiant Tee')]"
     MINICART_PRODUCT_QTY = 'input[class="item-qty cart-item-qty"]'
     MINICART_SUBTOTAL = '//*[@id="minicart-content-wrapper"]/div[2]/div[2]/div/span/span'
-    MINICART_DELETE_BUTTONS = "a[class='action delete']"
-    DELETE_ITEM_CONFIRM_OK = 'button[class="action-primary action-accept"]'
-    MINICART_CLOSE = '#btn-minicart-close'
-    CART_COUNTER = 'span[class="counter-number"]'
+    MINICART_DELETE_BUTTON = "a[class='action delete']"
+    DELETE_ITEM_CONFIRM_OK = 'button.action-primary.action-accept'
+    MINICART_CLOSE = 'button#btn-minicart-close.action.close'
     MINICART_VIEW = '.action.viewcart'
     MINICART_COUNTER = '.counter-label'
     MINI_CART_PRICE = '.price-wrapper'
@@ -153,7 +155,7 @@ class SearchTermsLocators:
 
 class WomenPageLocators:
     WOMEN_MENU = "//*[@id='ui-id-4']"
-    TOPS_LINK = "//*[@id='ui-id-9']"
+    TOPS_LINK = 'a#ui-id-9'
     TOPS_TITLE = ".page-title-wrapper"
     BOTTOMS_LINK = "//*[@id='ui-id-10']"
     BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
@@ -356,3 +358,10 @@ class Compare:
     PRODUCT_ITEM = '.product-item-link'
     BUTTON_PUT_TO_COMPARE = '.compare.primary'
     QTY_IN_COMPARE_LIST ='div.block.block-compare > div.block-title > span'
+
+    
+class AdvancedSearchLocators:
+    BUTTON_SEARCH = '//button[contains(@class, "primary")]'
+    ERROR_MESSAGE = '//div[contains(@class, "error")]/div'
+    
+

@@ -1,9 +1,12 @@
 from selene import have, be, Element
 from selene.core import command, query
+from selene.core.exceptions import ConditionNotMatchedError
 from selene.support.shared.jquery_style import s, ss
+from data.links import CART_LINK
 from pages.components.mini_card import MiniCard
 from pages.components.nav_wigdet import NavComponent
-from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, CreateAccountLocators
+from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, \
+    CreateAccountLocators
 
 
 class BasePage:
@@ -107,6 +110,47 @@ class BasePage:
     @staticmethod
     def click_on_link(locator):
         s(locator).click()
+
+    def is_cart_empty(self):
+        self.visit(CART_LINK)
+        s(Cart.NO_ITEMS_MESSAGE).should(be.visible)
+        s(HomeLocators.MINICART_COUNTER).wait_until(be.visible)
+
+    def clear_cart(self):
+        self.visit(CART_LINK)
+        try:
+            self.delete_product_from_cart()
+        except:
+            pass
+
+    def delete_product_from_cart(self):
+        self.visit(CART_LINK)
+        s(Cart.REMOVE_ITEM_ICON).click()
+        s(Cart.NO_ITEMS_MESSAGE).wait_until(be.visible)
+
+    def add_product_to_cart_with_qty(self, size, color, qty):
+        s(f'[option-label={size}]').click()
+        s(f'[option-label={color}]').click()
+        s(PL.PRODUCT_QTY).click()
+        s(PL.PRODUCT_QTY).clear()
+        s(PL.PRODUCT_QTY).type(qty)
+        s(PL.ADD_TO_CART_BUTTON).click()
+        self.is_visible_success_message()
+
+    def is_minicart_subtotal_correct(self, qty):
+        product_price = float(s(PL.PRODUCT_PRICE).get(query.text).strip('$'))
+        subtotal = self.get_subtotal()
+        assert subtotal == round(product_price * int(qty), 2)
+
+    @staticmethod
+    def is_minicart_quantity_correct(qty):
+        s(HomeLocators.MINICART).wait_until(be.visible)
+        minicart_qty = s(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
+        assert minicart_qty == qty
+
+    def is_cart_counter_shows_correct_number(self, qty):
+        cart_icon_qty = self.find_counter_number().get(query.text)
+        assert cart_icon_qty == qty
 
     def is_create_account_link_visible(self) -> bool:
         try:
