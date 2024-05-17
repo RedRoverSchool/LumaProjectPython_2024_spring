@@ -60,4 +60,4 @@ class MiniCard:
         s(PL.CART_SUBTOTAL).should(have.text(total))
 
     def click_mini_cart(self):
-        self.mini_cart.click()
+        self.mini_cart.should(be.clickable).click()
