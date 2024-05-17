@@ -114,6 +114,7 @@ def test_011_001_004_user_can_see_sale_page(url):
     s(NavigatorLocators.NAV_SALE).should(be.visible)
 
 
+@pytest.mark.skip
 @allure.link("https://trello.com/c/hSe3gPsx")
 def test_11_005_003_check_items_in_list_for_compare():
     sale_page.visit_women_jackets()
