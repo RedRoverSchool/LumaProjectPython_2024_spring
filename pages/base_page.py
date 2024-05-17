@@ -131,8 +131,7 @@ class BasePage:
     def is_minicart_subtotal_correct(self, qty):
         s(HomeLocators.MINICART).wait_until(be.visible)
         product_price = float(s(PL.PRODUCT_PRICE).get(query.text).strip('$'))
-        subtotal = self.get_subtotal()
-        assert subtotal == product_price * int(qty)
+        assert self.get_subtotal() == product_price * int(qty)
 
     @staticmethod
     def is_minicart_quantity_correct(qty):
@@ -141,8 +140,7 @@ class BasePage:
         assert mini_cart_qty == qty
 
     def is_cart_counter_shows_correct_number(self, qty):
-        cart_icon_qty = self.find_counter_number().get(query.text)
-        assert cart_icon_qty == qty
+        assert self.mini_cart_counter.get(query.text) == qty
 
     def is_create_account_link_visible(self) -> bool:
         try:

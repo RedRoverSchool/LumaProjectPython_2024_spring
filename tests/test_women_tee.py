@@ -1,7 +1,5 @@
 from pages.product_page import ProductPage
-import pytest
-from pages.locators import ProductLocators
-from pages import women_page, main_page, product_page
+from pages import women_page
 from selene import browser
 import allure
 

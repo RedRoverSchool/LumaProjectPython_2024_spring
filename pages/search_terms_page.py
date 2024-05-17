@@ -22,8 +22,7 @@ def search_terms_list_have_100():
 
 
 def collect_all_search_terms():
-    terms = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
-    return terms
+    return ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
 
 
 def extract_font_sizes_from_search_terms(terms):
