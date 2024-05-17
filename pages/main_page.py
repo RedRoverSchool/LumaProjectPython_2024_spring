@@ -1,4 +1,3 @@
-from selene import query
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 
@@ -6,16 +5,14 @@ from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
 from pages.cart_page import CartPage
-from pages.locators import BaseLocators as BL, HomeLocators, ProductItemLocators
+from pages.locators import BaseLocators as BL, HomeLocators
 from pages.locators import ErinRecommendLocators as ERL
 from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
 
 
 class MainPage(BasePage):
 
-    def __init__(self, browser):
-        super().__init__(browser)
-        self.browser = browser
+    whats_new = s(Nav.NAV_NEW)
 
     def open_page(self):
         self.visit(MAIN_PAGE_LINK)
@@ -39,13 +36,10 @@ class MainPage(BasePage):
         self.privacy_cookie_policy_link.click()
 
     def is_menu_present(self):
-        return s(Nav.NAV_MENU).should(be.present)
+        s(Nav.NAV_MENU).should(be.present)
 
     def is_whats_new_link_present(self):
-        return s(Nav.NAV_NEW).should(be.present)
-
-    def find_whats_new_link(self):
-        return s(Nav.NAV_NEW)
+        self.whats_new.should(be.present)
 
     def is_loaded(self):
         assert self.get_current_url() == MAIN_PAGE_LINK, MainPageData.error_message
