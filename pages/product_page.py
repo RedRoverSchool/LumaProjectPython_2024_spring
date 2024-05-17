@@ -1,4 +1,5 @@
 from selene import query
+from selene.support.conditions import be
 from selene.support.shared.jquery_style import s, ss
 from pages.base_page import BasePage
 from pages.locators import ProductLocators as PL, HomeLocators as HL
@@ -26,7 +27,7 @@ class ProductPage(BasePage):
         assert s(PL.PRODUCT_DETAILS_TEXT).get(query.text) != 0
 
     def click_more_information_tab(self):
-        s(PL.MORE_INFO_TAB).click()
+        s(PL.MORE_INFO_TAB).should(be.clickable).click()
 
     def is_more_information_visible(self):
         text = []

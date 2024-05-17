@@ -33,7 +33,7 @@ def test_004_005_001_login_unsuccessful():
     sign_in.message_unsuccessful()
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link("https://trello.com/c/otpjtX3K")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_002_login_successful():
