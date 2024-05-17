@@ -12,6 +12,10 @@ from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
 
 class MainPage(BasePage):
 
+    def __init__(self, browser):
+        super().__init__(browser)
+        self.browser = browser
+
     whats_new = s(Nav.NAV_NEW)
 
     def open_page(self):

@@ -37,7 +37,6 @@ class TestCart:
         page_cart.should_be_message_click('Click here to continue shopping.')
 
 
-
     @allure.link("https://trello.com/c/lvLslLGD")
     def test_size_color_and_product_name_are_correct_in_the_checkout_cart_page_tc_005_001_016(self):
         page = MainPage(browser=browser)
@@ -61,4 +60,3 @@ class TestCart:
         cart_page.check_price_present_in_checkout_cart_page("$22.00")
         cart_page.check_subtotal_present_in_checkout_cart_page()
         cart_page.check_qty_present_in_checkout_cart_page()
-

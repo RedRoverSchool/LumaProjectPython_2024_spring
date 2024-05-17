@@ -11,6 +11,11 @@ from selenium.webdriver.support.color import Color
 
 class MenPage(BasePage):
 
+    def __init__(self, browser):
+        super().__init__(browser)
+        self.browser = browser
+        self.open_page()
+
     def open_page(self):
         self.visit(MEN_PAGE_URL)
 

@@ -1,11 +1,11 @@
 from selene import have, be, Element
 from selene.core import command, query
 from selene.support.shared.jquery_style import s, ss
+
 from data.links import CART_LINK
 from pages.components.mini_card import MiniCard
 from pages.components.nav_wigdet import NavComponent
-from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, \
-    CreateAccountLocators
+from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
 
 
 class BasePage:
