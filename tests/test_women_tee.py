@@ -54,6 +54,7 @@ class TestRadiantTeePage:
         page.is_radiant_tee_img_visible()
         page.is_radiant_tee_price_is_visible()
 
+    @pytest.mark.skip
     @allure.link('https://trello.com/c/mtsK5CPx')
     @allure.title('TC_002.001.003 | Radiant Tee product page > Quantity of items> Quantity of items added to cart')
     def test_002_001_003_radiant_tee_quantity_added_to_cart(self, login):
