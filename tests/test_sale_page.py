@@ -107,6 +107,9 @@ def test_each_image_includes_short_description_of_the_promotion():
                                  POPULAR_SEARCH_TERMS_URL, PRIVACY_POLICY_PAGE_LINK, ADVANCED_SEARCH_URL,
                                  ORDERS_RETURNS_URL, ERIN_RECOMMENDS_URL, YOGA_URL, PERFORMANCE_FABRICS_URL,
                                  ECO_FRIENDLY_URL, CART_URL])
+
+
+@pytest.mark.fail
 def test_011_001_004_user_can_see_sale_page(url):
     browser.open(url)
     MainPage.handle_cookies_popup()
