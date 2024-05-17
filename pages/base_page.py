@@ -1,6 +1,5 @@
 from selene import have, be, Element
 from selene.core import command, query
-from selene.core.exceptions import ConditionNotMatchedError
 from selene.support.shared.jquery_style import s, ss
 from data.links import CART_LINK
 from pages.components.mini_card import MiniCard
@@ -10,6 +9,9 @@ from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, Prod
 
 
 class BasePage:
+
+    cart_icon = s(HomeLocators.CART_ICON)
+    mini_cart_counter = s(HomeLocators.MINICART_COUNTER)
 
     def __init__(self, browser):
         self.browser = browser
@@ -31,23 +33,17 @@ class BasePage:
     def get_current_url(self):
         return self.browser.driver.current_url
 
-    def find_cart_icon(self):
-        return s(HomeLocators.CART_ICON)
-
-    def find_counter_number(self):
-        return s(HomeLocators.MINICART_COUNTER)
-
     def is_cart_icon_present(self):
-        return self.find_cart_icon().should(be.present)
+        self.cart_icon.should(be.present)
 
     def is_cart_icon_clickable(self):
-        return self.find_cart_icon().should(be.clickable)
+        return self.cart_icon.should(be.clickable)
 
     def is_counter_number_present(self):
-        return self.find_counter_number().should(be.present)
+        self.mini_cart_counter.should(be.present)
 
     def is_counter_number_visible(self):
-        return self.find_counter_number().should(be.visible)
+        self.mini_cart_counter.should(be.visible)
 
     def add_product_to_cart(self, product: Element):
         product.hover()
@@ -55,7 +51,7 @@ class BasePage:
         self.set_size(product)
         product.s(HomeLocators.TO_CART_BUTTON).should(be.visible).should(be.clickable).click()
         self.is_visible_success_message()
-        self.find_cart_icon().hover().click()
+        self.cart_icon.should(be.clickable).hover().click()
 
     def add_item_to_cart(self, size, color, add_to_cart_button):
         s(size).click()
@@ -64,9 +60,9 @@ class BasePage:
 
     def goto_card_page(self):
         self.is_cart_icon_present()
-        self.find_cart_icon().hover().click()
+        self.cart_icon.hover().click()
         self.mini_card.is_minicart_visible()
-        self.mini_card.find_minicart().hover().click()
+        self.mini_card.click_mini_cart()
 
     def scroll_to_hot_sellers(self):
         self.scroll_to(s(ProductItemLocators.PRODUCTS_GRID))
@@ -141,8 +137,8 @@ class BasePage:
     @staticmethod
     def is_minicart_quantity_correct(qty):
         s(HomeLocators.MINICART).wait_until(be.visible)
-        minicart_qty = s(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
-        assert minicart_qty == qty
+        mini_cart_qty = s(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
+        assert mini_cart_qty == qty
 
     def is_cart_counter_shows_correct_number(self, qty):
         cart_icon_qty = self.find_counter_number().get(query.text)

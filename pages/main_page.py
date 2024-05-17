@@ -85,3 +85,9 @@ class MainPage(BasePage):
     def go_to_checkout_cart(self):
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
         return CartPage(browser=self.browser)
+
+    def click_cart_icon(self):
+        self.cart_icon.click()
+
+    def verify_counter(self, count):
+        self.mini_cart_counter.should(be.visible).should(have.text(count))
