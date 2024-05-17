@@ -1,7 +1,8 @@
-from pages.product_page import ProductPage
-from pages import women_page
-from selene import browser
 import allure
+from selene import browser
+
+from pages import women_page
+from pages.product_page import ProductPage
 
 
 @allure.link('https://trello.com/c/fhLdyS1l')

@@ -17,12 +17,12 @@ class TestPurchaseOfGoodsWithDiscount:
             page.is_loaded()
             page.scroll_to_hot_sellers()
         with (allure.step("Add to products item to card until sub total > 200")):
-            products = page.find_products()
+            products = page.products
             size = len(products)
             if size == 0:
                 page = ErinRecommendsPage(browser=browser)
                 page.open_page()
-                size = len(page.find_products())
+                size = len(page.products)
             count = 0
             for i in range(0, size):
                 page.add_product_to_cart(products[i])

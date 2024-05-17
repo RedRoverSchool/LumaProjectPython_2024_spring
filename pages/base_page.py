@@ -10,8 +10,11 @@ from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, Prod
 
 class BasePage:
 
+    mini_cart = s(HomeLocators.MINICART)
     cart_icon = s(HomeLocators.CART_ICON)
+    products = ss(ProductItemLocators.ITEM_INFO)
     mini_cart_counter = s(HomeLocators.MINICART_COUNTER)
+    message = s(BaseLocators.SUCCESS_MESSAGE)
 
     def __init__(self, browser):
         self.browser = browser
@@ -83,19 +86,13 @@ class BasePage:
         if len(param) > 0:
             param.first.click()
 
-    @staticmethod
-    def is_visible_success_message():
-        message = s(BaseLocators.SUCCESS_MESSAGE)
-        message.should(be.visible)
-        message.should(have.text('You added')).should(have.text('to your shopping cart'))
+    def is_visible_success_message(self):
+        self.message.should(be.visible)
+        self.message.should(have.text('You added')).should(have.text('to your shopping cart'))
 
     @staticmethod
     def scroll_to(element: Element):
         element.perform(command.js.scroll_into_view)
-
-    @staticmethod
-    def find_products():
-        return ss(ProductItemLocators.ITEM_INFO)
 
     @staticmethod
     def get_text(selector):
@@ -127,13 +124,12 @@ class BasePage:
         self.is_visible_success_message()
 
     def is_minicart_subtotal_correct(self, qty):
-        s(HomeLocators.MINICART).wait_until(be.visible)
+        self.mini_cart.wait_until(be.visible)
         product_price = float(s(PL.PRODUCT_PRICE).get(query.text).strip('$'))
         assert self.get_subtotal() == product_price * int(qty)
 
-    @staticmethod
-    def is_minicart_quantity_correct(qty):
-        s(HomeLocators.MINICART).wait_until(be.visible)
+    def is_minicart_quantity_correct(self, qty):
+        self.mini_cart.wait_until(be.visible)
         mini_cart_qty = s(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
         assert mini_cart_qty == qty
 
