@@ -1,6 +1,5 @@
 import allure
 from selene import browser
-from selene.support.conditions import have
 from pages.cart_page import CartPage
 from pages.erin_recommends_page import ErinRecommendsPage
 from pages.main_page import MainPage

@@ -73,17 +73,15 @@ class BasePage:
         price = amount_price.get(query.attribute('innerText'))
         return float(price.replace('$', ''))
 
-    @staticmethod
-    def set_size(product: Element):
-        size_options = product.ss(HomeLocators.SIZES)
-        if len(size_options) > 0:
-            size_options.first.click()
+    def set_size(self, product: Element):
+        self.choose_first(product.ss(HomeLocators.SIZES))
 
-    @staticmethod
-    def set_color(product: Element):
-        color_options = product.ss(HomeLocators.COLORS)
-        if len(color_options) > 0:
-            color_options.first.click()
+    def set_color(self, product: Element):
+        self.choose_first(product.ss(HomeLocators.COLORS))
+
+    def choose_first(self, param):
+        if len(param) > 0:
+            param.first.click()
 
     @staticmethod
     def is_visible_success_message():
