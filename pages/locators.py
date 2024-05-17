@@ -212,6 +212,7 @@ class LoginLocators:
 
 class FooterLocators:
     FOOTER_LINKS = ('xpath', '//footer[@class="page-footer"]//li')
+    LINK_SEARCH_TERMS = 'footer > div > ul > li:nth-child(1)'
 
 
 class ContactUsLocators:

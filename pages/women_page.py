@@ -1,5 +1,5 @@
 from selene.support.shared.jquery_style import s, ss
-from pages.locators import WomenLocators, WomenPageLocators, ProductLocators
+from pages.locators import WomenLocators, WomenPageLocators, FooterLocators
 from pages.locators import BaseLocators, SalePageLocators
 from data.links import *
 from selene import browser, be, have, query
@@ -92,3 +92,14 @@ def open_checkout():
     s(WomenLocators.CHECKOUT_BUTTON).should(be.visible)
     s(WomenLocators.CHECKOUT_BUTTON).should(be.clickable).click()
 
+
+def find_link_in_footer():
+    s(FooterLocators.LINK_SEARCH_TERMS).should(be.visible)
+
+
+def click_link_in_footer():
+    s(FooterLocators.LINK_SEARCH_TERMS).should(be.clickable).click()
+
+
+def title_is_correct():
+    s(BaseLocators.PAGE_TITLE).should(have.text("Popular Search Terms"))
