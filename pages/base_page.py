@@ -136,7 +136,7 @@ class BasePage:
     @staticmethod
     def is_minicart_quantity_correct(qty):
         s(HomeLocators.MINICART).wait_until(be.visible)
-        mini_cart_qty = s(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
+        mini_cart_qty = ss(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
         assert mini_cart_qty == qty
 
     def is_cart_counter_shows_correct_number(self, qty):

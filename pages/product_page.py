@@ -9,7 +9,6 @@ class ProductPage(BasePage):
 
     def open_radiant_tee_page(self):
         self.visit(PL.RADIANT_TEE_URL)
-        return self
 
     def is_radiant_tee_title_visible(self):
         self.assert_visible_of_element(PL.RADIANT_TEE_TITLE)

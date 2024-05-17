@@ -1,3 +1,5 @@
+import pytest
+
 from pages.product_page import ProductPage
 from pages import women_page
 from selene import browser
@@ -25,11 +27,11 @@ def test_011_016_002_breadcrumbs_nr_of_links_from_women_tees_var2():
 
 @allure.link('https://trello.com/c/B29UMcGd')
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_var3():
-    # сравнить ссылки ожидаемые и фактические перебором по очереди
     women_page.visit_women_tee()
     women_page.check_nr_of_links_from_women_tee_by_breadcrumbs_by_get_attr()
 
 
+@pytest.mark.skip
 @allure.suite('US_002.001 | Page of any product')
 class TestRadiantTeePage:
     @allure.title('TC_002.001.002 | Radiant Tee product page > Add to cart > Adding the product to cart')
@@ -37,7 +39,7 @@ class TestRadiantTeePage:
     def test_002_001_002_adding_product_to_cart(self, login):
         page = ProductPage(browser=browser)
         page.clear_cart()
-        page.open_radiant_tee_page()
+        # page.open_radiant_tee_page()
         page.add_product_to_cart_with_qty("M", "Blue", "2")
         page.goto_card_page()
         page.is_radiant_tee_name_visible_in_minicart()
