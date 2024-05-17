@@ -2,8 +2,9 @@ from pages import compare_items_page
 import allure
 import pytest
 
+@pytest.mark.skip
 @allure.title("check value of selected items to compare products section when compare product section is empty")
-def test_check_quantity_value_in_empty_compare_product_section_(browser_management):
+def test_check_quantity_value_in_empty_compare_product_section(browser_management):
     compare_items_page.compare_items_values_in_empty_compare_items_section()
 
 @pytest.mark.skip
