@@ -1,4 +1,5 @@
 import allure
+import pytest
 from selene import browser
 
 from pages import women_page
