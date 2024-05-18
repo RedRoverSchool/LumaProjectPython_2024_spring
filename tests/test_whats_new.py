@@ -1,9 +1,14 @@
 import allure
-from selene import browser
+from selene import browser, have
 import pytest
+from selene.support.shared.jquery_style import s
+
 from data.links import WHATS_NEW_PAGE_LINK
 from pages.main_page import MainPage
 from pages.whats_new_page import WhatsNewPage
+from pages.locators import WhatsNewPageLocators as WNPL
+
+
 
 
 @allure.suite("US_006.006 | Testing What's New Page")
@@ -23,11 +28,9 @@ class TestWhatsNew:
         with allure.step("Open home page"):
             page = MainPage(browser=browser)
             page.open_page()
-        with allure.step("Find What's New link in  the menu"):
-            link = page.find_whats_new_link()
         with allure.step("Click on What's New link"):
-            link.click()
-        page = WhatsNewPage(browser=browser)
+            page.whats_new.click()
+            page = WhatsNewPage(browser=browser)
         with allure.step("Assert current url == What's New Page url"):
             assert page.get_current_url() == WHATS_NEW_PAGE_LINK
         with allure.step("Find header"):
@@ -38,12 +41,54 @@ class TestWhatsNew:
     @pytest.mark.skip
     @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
     @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
-    def test_lumas_latest_list_visibility(self):
+    def test_luma_latest_list_visibility(self):
         page = MainPage(browser=browser)
         page.open_page()
-        page.find_whats_new_link().click()
+        page.whats_new.click()
         page = WhatsNewPage(browser=browser)
         page.is_lumas_latest_present()
         item_number = page.get_number_of_lumas_latest()
         assert item_number == 4
         assert page.are_men_and_women_items_present() is True
+
+
+    @allure.title(
+        "TC_006.002.004 I What's new > Eco Collection New* > Redirection to the product page by clicking on the product name")
+    @allure.link('https://trello.com/c/GO8VRlcn')
+    def test_eco_collection_redirection_to_pdp(self, login, browser_management):
+        with allure.step('Opening Eco Collection New page'):
+            page = WhatsNewPage(browser=browser)
+            page.open_eco_collection_url()
+        with allure.step('Opening Layla Tee page'):
+            page.click_layla_tee_name()
+        with allure.step('Checking redirection'):
+            page.check_redirection_to_layla_tee_pdp()
+        with allure.step('Checking Layla Tee title is visible'):
+            page.layla_tee_title_is_displayed()
+
+
+    @allure.title("TC_006.002.003 I What's new > Eco Collection New* > Redirection to the product page by clicking on the image")
+    @allure.link('https://trello.com/c/aj3EgeOa')
+    def test_eco_collection_redirection_to_pdp_by_clicking_on_img(self, login, browser_management):
+        with allure.step('Opening Eco Collection New page'):
+            page = WhatsNewPage(browser=browser)
+            page.open_eco_collection_url()
+        with allure.step('Opening Layla Tee page'):
+            page.click_layla_tee_img()
+        with allure.step('Checking redirection'):
+            page.check_redirection_to_layla_tee_pdp()
+        with allure.step('Checking Layla Tee title is visible'):
+            page.layla_tee_title_is_displayed()
+
+
+    @allure.title('TC_006.005.001 | Verify that User gets error message This this is required field in red color')
+    def test_user_gets_error_message(self):
+        page = MainPage(browser=browser)
+        page.open_page()
+        page.whats_new.click()
+        whats_new_page = WhatsNewPage(browser=browser)
+        whats_new_page.click_bras_and_tank_link()
+        whats_new_page.click_breathe_easy_tank_item()
+        whats_new_page.add_to_cart_button()
+        s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
+        s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))

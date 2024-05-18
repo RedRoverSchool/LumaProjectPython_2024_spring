@@ -2,7 +2,7 @@ from selene import browser, command, Element
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
 
-from data.links import WHATS_NEW_PAGE_LINK
+from data.links import WHATS_NEW_PAGE_LINK, LAYLA_TEE_URL
 from data.page_data import WishListData as Data
 from pages.base_page import BasePage
 from pages.locators import ProductItemLocators as Product, BaseLocators
@@ -84,3 +84,37 @@ class WhatsNewPage(BasePage):
 
     def new_yoga_link_click(self):
         return s(WNL.NEW_YOGA_LINK).click()
+
+
+    def open_eco_collection_url(self):
+        self.open_page()
+        s(BaseLocators.ECO_COLLECTION_NAME).click()
+
+    def click_layla_tee_name(self):
+        s(Product.LAYLA_TEE_PRODUCT_NAME).click()
+
+    def check_redirection_to_layla_tee_pdp(self):
+        return self.get_current_url() == LAYLA_TEE_URL
+
+    def layla_tee_title_is_displayed(self):
+        return s(Product.LAYLA_TEE_TITLE).should(be.visible)
+
+    def click_layla_tee_img(self):
+        s(Product.LAYLA_TEE_IMG).click()
+
+    @staticmethod
+    def click_bras_and_tank_link():
+        return s(WNL.BRAS_TANKS).click()
+
+    def click_breathe_easy_tank_item(self):
+        return s(WNL.BREATHE_EASY_TANK).click()
+
+    def add_to_cart_button(self):
+        return s(WNL.ADD_TO_CART_BUTTON).click()
+
+    def add_to_compare_button(self):
+        return s(WNL.ADD_TO_COMPARE).click()
+
+    def add_to_wish_list_button(self):
+        return s(WNL.ADD_TO_WISH_LIST_BUTTON).click()
+

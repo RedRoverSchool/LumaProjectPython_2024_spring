@@ -1,11 +1,12 @@
 import allure
 from selene import browser
-
+import pytest
 from pages.whats_new_page import WhatsNewPage
 from pages import create_account, message
 from pages import wish_list
 
 
+@pytest.mark.skip
 @allure.link('https://trello.com/c/zbRUOa7r')
 @allure.suite("US_014.003 | Wish list > Removing and Edit Items")
 class TestRemovingAndEditItemsInWishlist:

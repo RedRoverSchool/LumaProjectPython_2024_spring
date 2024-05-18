@@ -1,5 +1,6 @@
 from selene import browser, command
 from selene.support.conditions import have, be
+from selene.support.conditions.have import attribute
 from selene.support.shared.jquery_style import s
 
 from pages.base_page import BasePage
@@ -45,3 +46,16 @@ class ErinRecommendsPage(BasePage):
     def verify_number_of_product_displayed(self, min_count, max_count):
         products_count = len(ERL.PRODUCTS)
         assert min_count <= products_count <= max_count, f"Number of displayed products {products_count} is not within the expected range {min_count}-{max_count}"
+
+    def switch_to_list_view(self):
+        return s(ERL.LIST_VIEW_BUTTON).click()
+
+    def is_list_view_activate(self):
+        return s(ERL.PRODUCT_LIST).should(have.css_class("products-list"))
+
+    def hover_click_item(self):
+        s(ERL.ITEM_JADE_YOGA_JACKET).hover()
+        s(ERL.ADD_TO_COMPARE).click()
+
+    def click_text_compare_products(self):
+        s(ERL.TEXT_COMPARE_ITEMS).click()

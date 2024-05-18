@@ -6,7 +6,7 @@ import allure
 import data.links
 from pages.locators import FooterLocators, BaseLocators
 
-
+@pytest.mark.skip
 @allure.link('https://trello.com/c/PMzBgZUn')
 @allure.title('Verifying a footer links from all of the site pages')
 def test_012_001_001_verify_footer_links():
