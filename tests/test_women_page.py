@@ -1,5 +1,4 @@
 import allure
-import pytest
 from selene import browser, have
 from data.links import *
 from pages import women_page
@@ -24,12 +23,12 @@ def test_checking_page_redirection_to_bottom_elements():
     women_page.click_dropdown_bottoms_link()
     browser.should(have.url(BOTTOMS_WOMEN_PAGE_LINK))
 
-@pytest.mark.skip
+
 @allure.feature("Women page")
 @allure.title('Women >Dropdown menu>Verify visibility elements')
 def test_verify_visibility_elements_dropdown_menu():
     women_page.visit()
     women_page.move_to_woman_menu()
-    assert s(WomenPageLocators.DROPDOWN_BLOCK).should(have.text('Tops') and have.text('Bottoms'))
+    s(WomenPageLocators.DROPDOWN_BLOCK).should(have.text('Tops') and have.text('Bottoms'))
 
 

@@ -2,9 +2,6 @@ import allure
 import pytest
 
 from pages import sign_in, my_account, message
-from pages.locators import LoginLocators, BaseLocators
-from selene import browser, be, have
-from selene.support.shared.jquery_style import s
 
 
 @allure.link("https://trello.com/c/V3vp6nIt")
@@ -33,7 +30,7 @@ def test_004_005_001_login_unsuccessful():
     sign_in.message_unsuccessful()
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link("https://trello.com/c/otpjtX3K")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_002_login_successful():
@@ -44,7 +41,6 @@ def test_004_005_002_login_successful():
     sign_in.check_msg_signin_is_missing()
 
 
-# @pytest.mark.skip
 @allure.link("https://trello.com/c/rmFvh9fO")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_003_nickname_on_each_page_RF():

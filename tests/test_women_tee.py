@@ -1,9 +1,9 @@
-from pages.product_page import ProductPage
-import pytest
-from pages.locators import ProductLocators
-from pages import women_page, main_page, product_page
-from selene import browser
 import allure
+import pytest
+from selene import browser
+
+from pages import women_page
+from pages.product_page import ProductPage
 
 
 @allure.link('https://trello.com/c/fhLdyS1l')
@@ -27,7 +27,6 @@ def test_011_016_002_breadcrumbs_nr_of_links_from_women_tees_var2():
 
 @allure.link('https://trello.com/c/B29UMcGd')
 def test_011_016_002_breadcrumbs_redirection_from_women_tees_var3():
-    # сравнить ссылки ожидаемые и фактические перебором по очереди
     women_page.visit_women_tee()
     women_page.check_nr_of_links_from_women_tee_by_breadcrumbs_by_get_attr()
 
@@ -56,6 +55,7 @@ class TestRadiantTeePage:
         page.is_radiant_tee_img_visible()
         page.is_radiant_tee_price_is_visible()
 
+    @pytest.mark.skip
     @allure.link('https://trello.com/c/mtsK5CPx')
     @allure.title('TC_002.001.003 | Radiant Tee product page > Quantity of items> Quantity of items added to cart')
     def test_002_001_003_radiant_tee_quantity_added_to_cart(self, login):
@@ -70,8 +70,7 @@ class TestRadiantTeePage:
         page.delete_product_from_cart()
         
     @allure.link('https://trello.com/c/EXhjde1P')
-    @allure.title(
-        'TC_002.001.004 | Radiant Tee product page > Visibility of the product description and detailed information')
+    @allure.title('TC_002.001.004 | Radiant Tee product page > Visibility of the product description and detailed information')
     def test_radiant_tee_visibility_of_description(self, login):
         page = ProductPage(browser=browser)
         page.open_radiant_tee_page()

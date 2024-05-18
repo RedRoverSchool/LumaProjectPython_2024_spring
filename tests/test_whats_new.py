@@ -28,11 +28,9 @@ class TestWhatsNew:
         with allure.step("Open home page"):
             page = MainPage(browser=browser)
             page.open_page()
-        with allure.step("Find What's New link in  the menu"):
-            link = page.find_whats_new_link()
         with allure.step("Click on What's New link"):
-            link.click()
-        page = WhatsNewPage(browser=browser)
+            page.whats_new.click()
+            page = WhatsNewPage(browser=browser)
         with allure.step("Assert current url == What's New Page url"):
             assert page.get_current_url() == WHATS_NEW_PAGE_LINK
         with allure.step("Find header"):
@@ -43,10 +41,10 @@ class TestWhatsNew:
     @pytest.mark.skip
     @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
     @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
-    def test_lumas_latest_list_visibility(self):
+    def test_luma_latest_list_visibility(self):
         page = MainPage(browser=browser)
         page.open_page()
-        page.find_whats_new_link().click()
+        page.whats_new.click()
         page = WhatsNewPage(browser=browser)
         page.is_lumas_latest_present()
         item_number = page.get_number_of_lumas_latest()
@@ -69,8 +67,7 @@ class TestWhatsNew:
             page.layla_tee_title_is_displayed()
 
 
-    @allure.title(
-        "TC_006.002.003 I What's new > Eco Collection New* > Redirection to the product page by clicking on the image")
+    @allure.title("TC_006.002.003 I What's new > Eco Collection New* > Redirection to the product page by clicking on the image")
     @allure.link('https://trello.com/c/aj3EgeOa')
     def test_eco_collection_redirection_to_pdp_by_clicking_on_img(self, login, browser_management):
         with allure.step('Opening Eco Collection New page'):
@@ -85,14 +82,13 @@ class TestWhatsNew:
 
 
     @allure.title('TC_006.005.001 | Verify that User gets error message This this is required field in red color')
-    def test_user_gets_error_message(self, browser_management):
+    def test_user_gets_error_message(self):
         page = MainPage(browser=browser)
         page.open_page()
-        page.find_whats_new_link().click()
+        page.whats_new.click()
         whats_new_page = WhatsNewPage(browser=browser)
         whats_new_page.click_bras_and_tank_link()
         whats_new_page.click_breathe_easy_tank_item()
         whats_new_page.add_to_cart_button()
-        assert s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
-        assert s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
-
+        s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
+        s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))

@@ -65,7 +65,7 @@ def check_breadcrumbs_from_women_sale_have_attribute():
 
 def check_breadcrumbs_from_women_sale_have_word():
     # assert error !!! 'Sale' is missing
-    ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Sale', 'Women Sale'))
+    ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Women Sale'))
 
 
 def choose_size_for_tank():

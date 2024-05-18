@@ -22,7 +22,7 @@ def compare_items_values_in_empty_compare_items_section():
     s(SaleWomenDealsLocators.ELEMENT_TWO).should(be.visible)
     s(SaleWomenDealsLocators.ELEMENT_TWO).hover()
     s(SaleWomenDealsLocators.ADD_TO_COMPARE_BTN_ONE_TWO).should(be.visible)
-    s(SaleWomenDealsLocators.ADD_TO_COMPARE_BTN_ONE_TWO).hover().click()
+    s(SaleWomenDealsLocators.ADD_TO_COMPARE_BTN_ONE_TWO).should(be.clickable).hover().click()
     s(SaleWomenDealsLocators.QUANTITY_ITEMS).should(have.text("2 items"))
 
 

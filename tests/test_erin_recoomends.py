@@ -12,11 +12,9 @@ class TestErinRecommends:
         with allure.step("Open home page"):
             page = MainPage(browser=browser)
             page.open_page()
-        with allure.step("Assert Erin recommends block presence"):
-            link = page.is_erin_block_present()
-        with allure.step("Click on Erin recommends block"):
-            link.click()
-        page = ErinRecommendsPage(browser=browser)
+        with allure.step("Assert Erin recommends block presence and Click"):
+            page.is_erin_block_present().click()
+            page = ErinRecommendsPage(browser=browser)
         with allure.step("Assert current url == Erin Recommends Page url"):
             assert page.get_current_url() == ERIN_RECOMMENDS_URL
         with allure.step("Find header"):
@@ -62,7 +60,6 @@ class TestErinRecommends:
         with allure.step("Assert that the layout is now in list view"):
             assert page.is_list_view_activate(), "The product layout did not switch to list view."
 
-    
 
     @allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")
     def test_add_item_to_compare(self):

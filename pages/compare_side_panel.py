@@ -8,7 +8,7 @@ def choose_to_compare_item_nr(nr):
     s(f'li:nth-child({nr}) a.action.tocompare').perform(command.js.click)
 
 
-def collect_item_names_to_be_compared(nr1, nr2, nr3):
+def collect_item_names_to_be_compared():
     lst = []
     item1 = s('li:nth-child(1) strong > a')
     lst.append(item1.get(query.attribute("text")).strip())
@@ -16,7 +16,6 @@ def collect_item_names_to_be_compared(nr1, nr2, nr3):
     lst.append(item2.get(query.attribute("text")).strip())
     item3 = s('li:nth-child(3) strong > a')
     lst.append(item3.get(query.attribute("text")).strip())
-    # print(lst)
     return lst
 
 
@@ -43,8 +42,3 @@ def collect_items_list_compare():
     lst = list_to_compare[::-1]
     # print(lst)
     return lst
-
-
-def compare_lists_from_page_and_from_compare(items_to_be_compared, compared_items):
-    assert items_to_be_compared == compared_items
-

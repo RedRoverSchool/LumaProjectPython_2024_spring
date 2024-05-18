@@ -241,7 +241,12 @@ class SaleWomenDealsLocators:
 
 class CreateAccountLocators:
     CREATE_AN_ACCOUNT_LINK = "(//a[.='Create an Account'])[1]"
-
+    FIRST_NAME = '//input[@id="firstname"]'
+    LAST_NAME = '//input[@id="lastname"]'
+    EMAIL_FIELD = '//input[@id="email_address"]'
+    PASSWORD = '//input[@id="password"]'
+    CONF_PASS = '//input[@id="password-confirmation"]'
+    CREATE_BUTTON = '//button[@title="Create an Account"]'
 
 class ErinRecommendLocators:
     HOME_ERIN_BLOCK = "//a[@class='block-promo home-erin']"
