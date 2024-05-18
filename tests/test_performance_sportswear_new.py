@@ -62,4 +62,5 @@ def test_006_008_004_add_to_cart_from_product_page_without_color_and_size():
     performans_new_page.visit()
     performans_new_page.go_to_product_helios_endurance_tank()
     performans_new_page.press_button_add_to_cart()
-    performans_new_page.check_msg_no_required_field()
+    performans_new_page.check_msg_no_required_field_color()
+    performans_new_page.check_msg_no_required_field_size()

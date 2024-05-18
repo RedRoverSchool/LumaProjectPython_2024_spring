@@ -64,7 +64,9 @@ class ProductLocators:
     ADDING_TO_CART_SUCCESSFULL_MSG = "//div[contains(text(), 'You added')]"
     SIZE_XS = '#option-label-size-143-item-166'
     COLOR_BLUE = '#option-label-color-93-item-50'
-    SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input super-attribute-select'
+    SHOULD_CHOOSE_COLOR = '//*[@id="super_attribute[93]-error"]'
+    SHOULD_CHOOSE_SIZE = '//*[@id="super_attribute[143]-error"]'
+    # SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input.super-attribute-select'
     TEXT_REQUIRED_FIELD = 'This is a required field.'
 
 
@@ -147,7 +149,7 @@ class BaseLocators:
     BUTTON_COMPARE_ITEM_1 = 'li:nth-child(1) a.action.tocompare'  # кнопка сравнить на любой странице для товара 1
     BUTTON_COMPARE_ITEM_2 = 'li:nth-child(2) a.action.tocompare'  # кнопка сравнить на любой странице для товара 2
     BUTTON_COMPARE_ITEM_3 = 'li:nth-child(3) a.action.tocompare'  # кнопка сравнить на любой странице для товара 3
-
+    QTY_OF_ITEMS_IN_MINICART = '.counter-number'
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
@@ -310,6 +312,7 @@ class MenSaleLocators:
 class SetYogaStrapsLocators:
     SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
     NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
+    SPRITE_YOGA_STRAP_8_FOOT = '//input[@data-selector = "super_group[34]"]'
 
 
 class PopularSearchTermsLocators:

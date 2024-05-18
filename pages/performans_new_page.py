@@ -1,7 +1,7 @@
-from selene import browser, be, have, command
+from selene import browser, be, have, command, query
 from selene import browser, be, have, Element
 from selene.support.shared.jquery_style import s, ss
-from pages.locators import BaseLocators as BL, PerformanceSportswear as PSW, ProductLocators as PrL
+from pages.locators import BaseLocators, PerformanceSportswear, ProductLocators
 
 URL_PERFORMANCE = "https://magento.softwaretestingboard.com/collections/performance-new.html"
 
@@ -22,40 +22,40 @@ def check_buttons():
 
 
 def compare_nr_of_items_and_nr_of_names(items_count):
-    ss(BL.PRODUCT_NAME).should(have.size(items_count))
+    ss(BaseLocators.PRODUCT_NAME).should(have.size(items_count))
 
 
 def compare_nr_of_items_and_nr_of_images(items_count):
-    ss(BL.PRODUCT_IMAGE).should(have.size(items_count))
+    ss(BaseLocators.PRODUCT_IMAGE).should(have.size(items_count))
 
 
 def compare_nr_of_items_and_nr_of_prices(items_count):
-    ss(BL.PRODUCT_PRICE).should(have.size(items_count))
+    ss(BaseLocators.PRODUCT_PRICE).should(have.size(items_count))
 
 
 def click_button_add_to_cart_with_js():
     # кликнуть невидимую кнопку - она за пределами экрана и/или не отрисована
-    s(PSW.BUTTON_ADD_ITEM2).perform(command.js.click)
+    s(PerformanceSportswear.BUTTON_ADD_ITEM2).perform(command.js.click)
 
 
 def check_no_success_message():
-    s(PSW.SUCCESS_MESSAGE).should(have.no.text(PSW.TEXT_SUCCESS_MESSAGE))
+    s(PerformanceSportswear.SUCCESS_MESSAGE).should(have.no.text(PerformanceSportswear.TEXT_SUCCESS_MESSAGE))
 
 
 def click_button_add_to_cart_with_hover():
-    s(PSW.IMAGE_2).should(be.visible).hover()
-    s(PSW.BUTTON_ADD_ITEM2).should(be.clickable).click()
+    s(PerformanceSportswear.IMAGE_2).should(be.visible).hover()
+    s(PerformanceSportswear.BUTTON_ADD_ITEM2).should(be.clickable).click()
 
 
 def go_to_product_helios_endurance_tank():
-    s(PSW.IMAGE_2).click()
+    s(PerformanceSportswear.IMAGE_2).click()
 
 
 def select_size_XS():
-    s(PrL.SIZE_XS).click()
+    s(ProductLocators.SIZE_XS).click()
 
 def select_color_blue():
-    s(PrL.COLOR_BLUE).click()
+    s(ProductLocators.COLOR_BLUE).click()
 
 
 def verify_if_color_and_size_were_selected():
@@ -64,10 +64,15 @@ def verify_if_color_and_size_were_selected():
 
 
 def press_button_add_to_cart():
-    s(PrL.ADD_TO_CART_BUTTON).click()
+    s(ProductLocators.ADD_TO_CART_BUTTON).click()
 
 
-def check_msg_no_required_field():
-    chooses = ss(PrL.SHOULD_CHOOSE_SIZE_AND_COLOR)
-    for choose in chooses:
-        assert choose.text == PrL.TEXT_REQUIRED_FIELD
+def check_msg_no_required_field_color():
+    choose_color = s(ProductLocators.SHOULD_CHOOSE_COLOR)
+    assert choose_color.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+
+
+def check_msg_no_required_field_size():
+    choose_size = s(ProductLocators.SHOULD_CHOOSE_SIZE)
+    assert choose_size.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+
