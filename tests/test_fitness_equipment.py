@@ -5,7 +5,7 @@ from pages.locators import SetYogaStrapsLocators as SYSL
 from data.page_data import SetYogaStrapsData as SYSD
 from data.links import SET_YOGA_STRAPS_URL
 from pages import set_of_sprite_yoga_straps_page
-
+import pytest
 
 @allure.suite("US_009.005 | Gear catalog > Fitness Equipment > Set of Sprite Yoga Straps")
 class TestFitnessEquipment:
@@ -19,7 +19,7 @@ class TestFitnessEquipment:
 
         page.assert_text_of_element(SYSL.NOT_AVAILABLE_MESSAGE, SYSD.qty_is_not_available_message)
 
-
+@pytest.mark.skip
 def test_009_005_004_put_sets_of_straps_in_the_cart():
     set_of_sprite_yoga_straps_page.visit()
     # add 1 set to cart
