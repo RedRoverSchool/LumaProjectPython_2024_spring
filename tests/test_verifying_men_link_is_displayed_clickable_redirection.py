@@ -25,7 +25,6 @@ class TestVerifyingMenLink:
     @allure.feature("Verifying Men > Displayed, Clickable, Redirection for Men navigator")
     def test_verifying_men_link_is_displayed_clickable_redirection_in_the_men_page(self):
         men = MenPage(browser=browser)
-        men.open_page()
         with allure.step("Assert there is the Men page is load successfully"):
             men.is_loaded()
             men.is_active()
@@ -77,6 +76,5 @@ class TestVerifyingMenLink:
     @staticmethod
     def hover_men_nav():
         men = MenPage(browser=browser)
-        men.open_page()
         men.nav.find_men_link().hover()
         return men

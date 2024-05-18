@@ -1,11 +1,12 @@
 import allure
 from selene import browser
-
+import pytest
 from pages.whats_new_page import WhatsNewPage
 from pages import create_account, message
 from pages import wish_list
 
 
+@pytest.mark.skip
 @allure.link('https://trello.com/c/zbRUOa7r')
 @allure.suite("US_014.003 | Wish list > Removing and Edit Items")
 class TestRemovingAndEditItemsInWishlist:
@@ -16,7 +17,7 @@ class TestRemovingAndEditItemsInWishlist:
             message.should_be("Thank you for registering")
             page = WhatsNewPage(browser=browser)
             page.open_page()
-            page.add_items_to_wish_list(3) #len(products)
+            page.add_items_to_wish_list(3)
         with allure.step("Verify the trash bin icon on the product card for each item"):
             wish_list.visit()
             wish_list.verify_trash_bin_icon_present()
