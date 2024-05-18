@@ -69,10 +69,10 @@ def press_button_add_to_cart():
 
 def check_msg_no_required_field_color():
     choose_color = s(ProductLocators.SHOULD_CHOOSE_COLOR)
-    assert choose_color.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+    choose_color.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
 
 
 def check_msg_no_required_field_size():
     choose_size = s(ProductLocators.SHOULD_CHOOSE_SIZE)
-    assert choose_size.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+    choose_size.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
 
