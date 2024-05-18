@@ -16,6 +16,7 @@ class SetYogaStraps(BasePage):
 
 
 def add_to_cart_set_8_foot(count):
+    s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_8_FOOT).clear()
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_8_FOOT).click().send_keys(count)
     s(ProductLocators.ADD_TO_CART_BUTTON).click()
 
