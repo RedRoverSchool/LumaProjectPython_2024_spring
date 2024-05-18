@@ -19,7 +19,7 @@ class TestFitnessEquipment:
 
         page.assert_text_of_element(SYSL.NOT_AVAILABLE_MESSAGE, SYSD.qty_is_not_available_message)
 
-@pytest.mark.skip
+
 def test_009_005_004_put_sets_of_straps_in_the_cart():
     set_of_sprite_yoga_straps_page.visit()
     # add 1 set to cart
@@ -29,5 +29,5 @@ def test_009_005_004_put_sets_of_straps_in_the_cart():
     # add 3 sets to cart
     set_of_sprite_yoga_straps_page.add_to_cart_set_8_foot(3)
     set_of_sprite_yoga_straps_page.is_visible_success_message()
-    set_of_sprite_yoga_straps_page.check_nr_of_items_in_cart(3)
+    set_of_sprite_yoga_straps_page.check_nr_of_items_in_cart(4)
 
