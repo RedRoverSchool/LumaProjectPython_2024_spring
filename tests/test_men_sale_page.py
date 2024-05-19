@@ -58,7 +58,7 @@ def test_check_card_arrangement():
 def test_verify_sorting_product_cards_by_position():
     page = MenSalePage(browser)
     page.is_product_list_present()
-    page.check_selected_sorting_option(data.sorting_options[0])
-    page.switch_to_sorting_option(data.sorting_options[2])
-    page.switch_to_sorting_option(data.sorting_options[0])
-    page.check_product_arrangement_according_to_sort_option(data.sorting_options[0])
+    page.check_selected_sorting_option("Position")
+    page.switch_to_sorting_option("Price")
+    page.switch_to_sorting_option("Position")
+    page.check_product_arrangement_according_to_sort_option("Position")
