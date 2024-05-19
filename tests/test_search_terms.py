@@ -1,30 +1,75 @@
-from pages.locators import SearchTermsLocators as ST
-from pages.locators import BaseLocators as Base
-from selene import browser, be, have, query
-from selene.support.shared.jquery_style import s, ss
 import allure
+import pytest
+from pages.locators import SearchTermsLocators
+from selene import be, query
+from selene.support.shared.jquery_style import ss
+from pages import search_terms_page
 
 
 @allure.link('https://trello.com/c/tnpU7rqU')
 def test_015_001_001_search_terms_title_is_visible():
-    browser.open(ST.LINK_SEARCH_TERMS)
-    s(Base.PAGE_TITLE).should(have.text("Popular Search Terms"))
+    search_terms_page.visit()
+    search_terms_page.title_is_correct()
 
 
 @allure.link('https://trello.com/c/9oDGaMAB')
 def test_015_001_002_count_search_terms():
-    browser.open(ST.LINK_SEARCH_TERMS)
-    ss(ST.TERMS_FOR_SEARCH_LIST_QTY).should(have.size(100))
+    search_terms_page.visit()
+    search_terms_page.search_terms_list_have_100()
 
 
 @allure.link('https://trello.com/c/VwsOnXB6')
-def test_015_001_003_check_if_search_terms_has_size_from_76_till_136():
-    # assert from selenium - how to check sizes
-    browser.open(ST.LINK_SEARCH_TERMS)
-    list_font_sizes = []
-    terms = ss(ST.LIST_OF_SEARCH_TERMS)
-    for g in terms:
-        g_font, g_size = g.get(query.attribute("style")).split(": ")
-        g_size = float(g_size.replace("%;", ""))
-        list_font_sizes.append(g_size)
-    assert min(list_font_sizes) <= 76 and max(list_font_sizes) >= 136, "Font sizes not between 76 and 136"
+def test_015_001_003_check_if_search_terms_has_size_from_76_till_136RF():
+    search_terms_page.visit()
+    terms = search_terms_page.collect_all_search_terms()
+    list_font_sizes = search_terms_page.extract_font_sizes_from_search_terms(terms)
+    search_terms_page.check_min_and_max_font_sizes(list_font_sizes)
+
+
+@pytest.mark.skip('Test have a bug')
+@allure.link('https://trello.com/c/8jDgYDYW')
+def test_015_002_006_order_search_terms():
+    search_terms_page.visit()
+    search_terms_page.order_search_terms()
+
+
+@allure.link('https://trello.com/c/XL8szgwc')
+def test_015_001_006_check_if_search_terms_are_sorted():
+    search_terms_page.visit()
+    terms = search_terms_page.collect_all_search_terms()
+    lst_nonsorted = search_terms_page.extract_keywords_from_search_terms_as_it_is(terms)
+    lst_sorted = search_terms_page.extract_keywords_from_search_terms_sorted(terms)
+    search_terms_page.compare_list_sorted_stripped_and_original(lst_nonsorted, lst_sorted)
+
+
+@allure.link('https://trello.com/c/RGOSzLMa')
+def test_015_002_005_unique_search_terms():
+    search_terms_page.visit()
+    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
+    keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
+    keywords_set = set(keyword_texts)
+    assert len(keyword_texts) == len(keywords_set)
+
+
+@allure.link('https://trello.com/c/9VW3bwiJ')
+def test_015_002_003_keywords_clickable():
+    search_terms_page.visit()
+    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
+    [k.should(be.visible).should(be.clickable) for k in keyword_elements]
+
+
+@allure.link("https://trello.com/c/I0RafTpi")
+def test_015_001_005_check_if_specified_words_is_bigger_than_88():
+    search_terms_page.visit()
+    terms = search_terms_page.collect_all_search_terms()
+    specific_words_and_sizes = search_terms_page.select_specific_words_and_terms(terms)
+    search_terms_page.compare_selected_words_and_their_sizes(specific_words_and_sizes)
+
+
+@allure.link("https://trello.com/c/4DgqawVv")
+def test_015_001_004_check_if_5_search_terms_is_bigger():
+    search_terms_page.visit()
+    terms = search_terms_page.collect_all_search_terms()
+    list_font_sizes = search_terms_page.extract_font_sizes_from_search_terms(terms)
+    search_terms_page.check_size_of_5_last_words_in_sorted_list(list_font_sizes)
+

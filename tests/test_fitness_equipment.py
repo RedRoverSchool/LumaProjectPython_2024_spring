@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import time
+
+>>>>>>> main
 import allure
 from selene import browser
 from pages.set_of_sprite_yoga_straps_page import SetYogaStraps
@@ -7,6 +12,10 @@ from data.links import SET_YOGA_STRAPS_URL
 from pages import set_of_sprite_yoga_straps_page
 import pytest
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 @allure.suite("US_009.005 | Gear catalog > Fitness Equipment > Set of Sprite Yoga Straps")
 class TestFitnessEquipment:
     @allure.link("https://trello.com/c/sLFXvIMH")
