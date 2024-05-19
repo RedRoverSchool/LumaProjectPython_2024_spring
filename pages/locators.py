@@ -96,7 +96,7 @@ class HomeLocators:
     SUB_TOTAL = 'tr.totals.sub .amount .price'
     TAX_AMOUNT = 'tr.totals-tax .amount .price'
     GRAND_TOTALS = 'tr.grand.totals .amount .price'
-
+    DISCOUNT = '#cart-totals tr:nth-child(2) span > span'
 
 class NavigatorLocators:
     NAV_NEW = '#ui-id-3'
@@ -327,6 +327,7 @@ class SetYogaStrapsLocators:
     SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
     NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
     SPRITE_YOGA_STRAP_8_FOOT = '//input[@data-selector = "super_group[34]"]'
+    SPRITE_YOGA_STRAP_6_FOOT = '//input[@data-selector = "super_group[33]"]'
 
 
 class PopularSearchTermsLocators:
@@ -385,3 +386,8 @@ class Compare:
 class AdvancedSearchLocators:
     BUTTON_SEARCH = '//button[contains(@class, "primary")]'
     ERROR_MESSAGE = '//div[contains(@class, "error")]/div'
+
+
+class ProductPageLocators:
+    WINDOW_MORE_INFO = '#tab-label-additional-title'
+    DESCRIBE_MATERIAL = '[data-th="Material"]'
