@@ -42,6 +42,17 @@ def test_verify_only_cards_with_men_products_are_present():
     page.are_only_product_cards_for_men_present()
 
 
+@allure.link("https://trello.com/c/XCyyXog8")
+@allure.title("Check card arrangement according to chosen option")
+def test_check_card_arrangement():
+    page = MenSalePage(browser)
+    page.is_product_list_present()
+    page.check_selected_view_option("grid")
+    page.check_products_in_list_arrangement("grid")
+    page.switch_to_display_option("list")
+    page.check_products_in_list_arrangement("list")
+
+
 @allure.link("https://trello.com/c/bDV6XGTp")
 @allure.title("Verify sorting product cards by position")
 def test_verify_sorting_product_cards_by_position():

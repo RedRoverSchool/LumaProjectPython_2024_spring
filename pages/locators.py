@@ -96,7 +96,7 @@ class HomeLocators:
     SUB_TOTAL = 'tr.totals.sub .amount .price'
     TAX_AMOUNT = 'tr.totals-tax .amount .price'
     GRAND_TOTALS = 'tr.grand.totals .amount .price'
-
+    DISCOUNT = '#cart-totals tr:nth-child(2) span > span'
 
 class NavigatorLocators:
     NAV_NEW = '#ui-id-3'
@@ -152,6 +152,7 @@ class BaseLocators:
     BUTTON_COMPARE_ITEM_3 = 'li:nth-child(3) a.action.tocompare'  # кнопка сравнить на любой странице для товара 3
     QTY_OF_ITEMS_IN_MINICART = '.counter-number'
 
+
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
     TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
@@ -188,6 +189,7 @@ class WhatsNewPageLocators:
     ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
     LAYLA_TEE_NAME = "//a[@title='Layla Tee']"
     LAYLA_TEE_IMG = '//li[2]//img[@class="product-image-photo"]'
+
 
 class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
@@ -317,6 +319,10 @@ class MenSaleLocators:
     TOOLBAR_NUMBER = "#toolbar-amount>span"
     PRODUCT_IMAGE = "img.product-image-photo"
     PRODUCT_LIST = "ol.product-items"
+    GRID_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > #mode-grid"
+    LIST_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > #mode-list"
+    SELECTED_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > strong[data-value]"
+    PRODUCTS_WRAPPER = "div.products.wrapper"
     SORTER = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter"
     POSITION_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='position']"
     PRODUCT_NAME_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='name']"
@@ -328,6 +334,7 @@ class SetYogaStrapsLocators:
     SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
     NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
     SPRITE_YOGA_STRAP_8_FOOT = '//input[@data-selector = "super_group[34]"]'
+    SPRITE_YOGA_STRAP_6_FOOT = '//input[@data-selector = "super_group[33]"]'
 
 
 class PopularSearchTermsLocators:
@@ -386,3 +393,8 @@ class Compare:
 class AdvancedSearchLocators:
     BUTTON_SEARCH = '//button[contains(@class, "primary")]'
     ERROR_MESSAGE = '//div[contains(@class, "error")]/div'
+
+
+class ProductPageLocators:
+    WINDOW_MORE_INFO = '#tab-label-additional-title'
+    DESCRIBE_MATERIAL = '[data-th="Material"]'
