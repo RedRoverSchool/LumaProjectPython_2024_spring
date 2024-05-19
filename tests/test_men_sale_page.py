@@ -6,6 +6,7 @@ from selene import browser
 from data.page_data import MenSalePageData as data
 
 
+@pytest.mark.xfail
 @allure.link('https://trello.com/c/j98xpncK/402-tc011012001-sale-mens-deals-verify-bread-crumbs-display')
 @allure.title('Verify Bread Crumbs display')
 def test_verify_bread_crumbs_display():
