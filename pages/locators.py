@@ -74,9 +74,10 @@ class BaseLocators:
                "https://magento.softwaretestingboard.com/what-is-new.html",
                "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
                "https://magento.softwaretestingboard.com/training.html"
-                ]
+               ]
     NEW_LUMA_YOGA_COLLECTION_BLOCK_LOCATOR = "//a[contains(@class,'home-main')]/span"
     NEW_LUMA_YOGA_COLLECTION_BLOCK_INFO_TEXT_LOCATOR = "//a[contains(@class,'home-main')]//span[@class='info']"
+
 
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
@@ -91,6 +92,9 @@ class WomenPageLocators:
     BOTTOMS_LINK = "//*[@id='ui-id-10']"
     BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
     DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
+    RADIANT_TEE_HOTSELLERS_SECT = "//a[contains(text(), 'Radiant Tee')]"
+    ADD_TO_COMPARE_ICON = "(//a[@title='Add to Compare'])[1]"
+    COMPARE_BTN = "//span[text()='Compare']"
 
 
 class WhatsNewPageLocators:
@@ -150,3 +154,6 @@ class ErinRecommendLocators:
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
 
+
+class CompareProductsPage:
+    COMP_LIST_RADIANT_TEE = "//a[contains(text(), 'Radiant Tee')]"

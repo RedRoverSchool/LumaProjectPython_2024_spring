@@ -1,3 +1,5 @@
+import time
+
 import allure
 import pytest
 from selene import browser, have, be
@@ -44,3 +46,31 @@ def test_011_011_002_breadcrumbs_redirection_from_women_sale():
                       'https://magento.softwaretestingboard.com/sale.html']
     for i, element in enumerate(elements):
         element.should(have.attribute('href').value(expected_links[i]))
+
+
+"""Scroll down to the “Hot Sellers“ section.
+
+Hover over the product card
+
+Click on the “Add to Compare“ icon in the bottom right corner of the card => the name of selected product  appears on the left side under the “Compare Products” section.
+
+Click on the [Compare] button, on the left side under the “Compare Products” section.
+
+Expected results:
+
+“Compare Products” page appeared.
+
+Previously added product is present on the page."""
+
+
+@allure.title("Compare products | From any catalog's page > Verify after clicking on the compare button user is "
+              "redirected to the Compare Products page.")
+@allure.link("https://trello.com/c/fvMCdJ97")
+def test_checking_page_redirection_to_tops_elements():
+    women_page.visit()
+    women_page.hover_product_card()
+    women_page.click_add_to_compare_icon()
+    women_page.click_compare_btn()
+    women_page.assert_page_title()
+    women_page.assert_comp_list_item()
+    # time.sleep(3)
