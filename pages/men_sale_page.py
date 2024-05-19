@@ -1,3 +1,4 @@
+from selene import Collection
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 
@@ -8,10 +9,14 @@ from pages.locators import BaseLocators as Header, MenSaleLocators as ms_locator
 
 
 class MenSalePage:
-
     title_page = s(ms_locators.PAGE_TITLE)
     list_items = ss(ms_locators.LIST_ITEM)
     product_images = ss(ms_locators.PRODUCT_IMAGE)
+    position_sort_option = s(ms_locators.POSITION_SORT_OPTION)
+    product_name_sort_option = s(ms_locators.PRODUCT_NAME_SORT_OPTION)
+    price_sort_option = s(ms_locators.PRICE_SORT_OPTION)
+    sorter = s(ms_locators.SORTER)
+    product_titles = ss(ms_locators.PRODUCT_TITLE)
 
     def __init__(self, browser):
         self.browser = browser
@@ -49,6 +54,33 @@ class MenSalePage:
     def is_number_of_items_in_toolbar_corresponds_to_amount_in_list(self):
         s(ms_locators.TOOLBAR_NUMBER).should(have.text(self.get_number_of_items_in_te_list()))
 
+    def check_selected_sorting_option(self, option: str):
+        if option == "Position":
+            return self.position_sort_option.should(have.attribute("selected"))
+        elif option == "Product Name":
+            return self.product_name_sort_option.should(have.attribute("selected"))
+        elif option == "Price":
+            return self.price_sort_option.should(have.attribute("selected"))
 
-    def check_selected_sorting_option(self, option):
+    def switch_to_sorting_option(self, option: str):
+        self.sorter.click()
+        if option == "Position":
+            self.position_sort_option.click()
+        elif option == "Product Name":
+            self.product_name_sort_option.click()
+        elif option == "Price":
+            self.price_sort_option.click()
+
+    def check_product_arrangement_according_to_sort_option(self, option: str):
+        if option == "Position":
+            self.check_products_arrangement_sorted_by_position(self.product_titles)
+
+    @staticmethod
+    def check_products_arrangement_sorted_by_position(products: Collection):
+        position_list = []
+        for el in products:
+            position_title = el.locate().text
+            position_list.append(position_title.split()[-1])
+        sorted_list = sorted(position_list)
+        assert position_list == sorted_list
 

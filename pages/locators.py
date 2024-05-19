@@ -321,6 +321,7 @@ class MenSaleLocators:
     POSITION_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='position']"
     PRODUCT_NAME_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='name']"
     PRICE_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='price']"
+    PRODUCT_TITLE = "a.product-item-link"
 
 
 class SetYogaStrapsLocators:
