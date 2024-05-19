@@ -26,6 +26,7 @@ class WishListData:
 class MenSalePageData:
     breadcrumbs_path = ['Home', 'Men Sale']
     page_title = "Men Sale"
+    display_options = ["grid", "list"]
 
     
 class MenPageData:

@@ -317,6 +317,10 @@ class MenSaleLocators:
     TOOLBAR_NUMBER = "#toolbar-amount>span"
     PRODUCT_IMAGE = "img.product-image-photo"
     PRODUCT_LIST = "ol.product-items"
+    GRID_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > #mode-grid"
+    LIST_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > #mode-list"
+    SELECTED_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > strong[data-value]"
+    PRODUCTS_WRAPPER = "div.products.wrapper"
 
 
 class SetYogaStrapsLocators:

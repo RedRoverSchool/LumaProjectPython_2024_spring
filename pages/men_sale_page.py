@@ -12,6 +12,10 @@ class MenSalePage:
     title_page = s(ms_locators.PAGE_TITLE)
     list_items = ss(ms_locators.LIST_ITEM)
     product_images = ss(ms_locators.PRODUCT_IMAGE)
+    grid_mode_option = s(ms_locators.GRID_MODE_OPTION)
+    list_mode_option = s(ms_locators.LIST_MODE_OPTION)
+    selected_view_option = s(ms_locators.SELECTED_MODE_OPTION)
+    products_wrapper = s(ms_locators.PRODUCTS_WRAPPER)
 
     def __init__(self, browser):
         self.browser = browser
@@ -48,3 +52,12 @@ class MenSalePage:
 
     def is_number_of_items_in_toolbar_corresponds_to_amount_in_list(self):
         s(ms_locators.TOOLBAR_NUMBER).should(have.text(self.get_number_of_items_in_te_list()))
+
+    def check_selected_view_option(self, option: str):
+        return self.selected_view_option.should(have.attribute("data-value").value_containing(option))
+
+    def check_products_in_list_arrangement(self, option: str):
+        return self.products_wrapper.should(have.attribute("class").value_containing(option))
+
+    def switch_to_display_option(self, option: str):
+        return self.list_mode_option.click() if option == 'list' else self.grid_mode_option.click()
