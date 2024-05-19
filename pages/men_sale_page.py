@@ -48,3 +48,7 @@ class MenSalePage:
 
     def is_number_of_items_in_toolbar_corresponds_to_amount_in_list(self):
         s(ms_locators.TOOLBAR_NUMBER).should(have.text(self.get_number_of_items_in_te_list()))
+
+
+    def check_selected_sorting_option(self, option):
+

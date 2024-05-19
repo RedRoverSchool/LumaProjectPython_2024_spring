@@ -317,6 +317,10 @@ class MenSaleLocators:
     TOOLBAR_NUMBER = "#toolbar-amount>span"
     PRODUCT_IMAGE = "img.product-image-photo"
     PRODUCT_LIST = "ol.product-items"
+    SORTER = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter"
+    POSITION_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='position']"
+    PRODUCT_NAME_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='name']"
+    PRICE_SORT_OPTION = "div.toolbar-products:nth-child(3) div.toolbar-sorter #sorter option[value='price']"
 
 
 class SetYogaStrapsLocators:
