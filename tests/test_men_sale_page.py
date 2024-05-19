@@ -46,7 +46,7 @@ def test_verify_only_cards_with_men_products_are_present():
 def test_check_card_arrangement():
     page = MenSalePage(browser)
     page.is_product_list_present()
-    page.check_selected_view_option(data.display_options[0])
-    page.check_products_in_list_arrangement(data.display_options[0])
-    page.switch_to_display_option(data.display_options[1])
-    page.check_products_in_list_arrangement(data.display_options[1])
+    page.check_selected_view_option("grid")
+    page.check_products_in_list_arrangement("grid")
+    page.switch_to_display_option("list")
+    page.check_products_in_list_arrangement("list")
