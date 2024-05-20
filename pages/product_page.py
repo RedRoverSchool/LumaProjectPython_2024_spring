@@ -33,3 +33,9 @@ class ProductPage(BasePage):
         for n in range(1, 5):
             text.append(s(f'//tbody/tr[{n}]/td').get(query.text))
         assert text != []
+
+    def click_reviews_tab(self):
+        self.click_on_link(PL.REVIEWS_TAB)
+
+    def is_reviews_content_visible(self):
+        s(PL.REVIEWS_CONTENT).should(be.visible)

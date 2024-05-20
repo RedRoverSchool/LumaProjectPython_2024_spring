@@ -62,6 +62,8 @@ class ProductLocators:
     PRODUCT_PRICE = 'span[id="product-price-1556"] span'
     PRODUCT_DETAILS_TEXT = 'div.product.attribute.description div p'
     MORE_INFO_TAB = '#tab-label-additional-title'
+    REVIEWS_TAB = '#tab-label-reviews-title'
+    REVIEWS_CONTENT = 'div#reviews.data.item.content'
     ADDING_TO_CART_SUCCESSFULL_MSG = "//div[contains(text(), 'You added')]"
     SIZE_XS = '#option-label-size-143-item-166'
     COLOR_BLUE = '#option-label-color-93-item-50'
@@ -97,6 +99,7 @@ class HomeLocators:
     TAX_AMOUNT = 'tr.totals-tax .amount .price'
     GRAND_TOTALS = 'tr.grand.totals .amount .price'
     DISCOUNT = '#cart-totals tr:nth-child(2) span > span'
+
 
 class NavigatorLocators:
     NAV_NEW = '#ui-id-3'
@@ -152,6 +155,7 @@ class BaseLocators:
     BUTTON_COMPARE_ITEM_3 = 'li:nth-child(3) a.action.tocompare'  # кнопка сравнить на любой странице для товара 3
     QTY_OF_ITEMS_IN_MINICART = '.counter-number'
 
+
 class SearchTermsLocators:
     LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
     TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
@@ -188,6 +192,7 @@ class WhatsNewPageLocators:
     ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
     LAYLA_TEE_NAME = "//a[@title='Layla Tee']"
     LAYLA_TEE_IMG = '//li[2]//img[@class="product-image-photo"]'
+
 
 class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"

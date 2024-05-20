@@ -55,7 +55,7 @@ class TestRadiantTeePage:
         page.is_radiant_tee_img_visible()
         page.is_radiant_tee_price_is_visible()
 
-    @pytest.mark.skip
+
     @allure.link('https://trello.com/c/mtsK5CPx')
     @allure.title('TC_002.001.003 | Radiant Tee product page > Quantity of items> Quantity of items added to cart')
     def test_002_001_003_radiant_tee_quantity_added_to_cart(self, login):
@@ -77,3 +77,11 @@ class TestRadiantTeePage:
         page.is_product_details_visible()
         page.click_more_information_tab()
         page.is_more_information_visible()
+
+    @allure.link('https://trello.com/c/PChP2lY4')
+    @allure.title('TC_002.001.005 | Radiant Tee product page > Reviews > Reviews visibility')
+    def test_radiant_tee_reviews_visibility(self, login):
+        page = ProductPage(browser=browser)
+        page.open_radiant_tee_page()
+        page.click_reviews_tab()
+        page.is_reviews_content_visible()
