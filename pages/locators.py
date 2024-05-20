@@ -69,6 +69,7 @@ class ProductLocators:
     SHOULD_CHOOSE_SIZE = '//*[@id="super_attribute[143]-error"]'
     # SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input.super-attribute-select'
     TEXT_REQUIRED_FIELD = 'This is a required field.'
+    SIZE_INDICATOR = '.swatch-attribute.size span.swatch-attribute-selected-option'
 
 
 class HomeLocators:
@@ -96,6 +97,7 @@ class HomeLocators:
     SUB_TOTAL = 'tr.totals.sub .amount .price'
     TAX_AMOUNT = 'tr.totals-tax .amount .price'
     GRAND_TOTALS = 'tr.grand.totals .amount .price'
+    DISCOUNT = '#cart-totals tr:nth-child(2) span > span'
 
 
 class NavigatorLocators:
@@ -168,10 +170,10 @@ class WomenPageLocators:
     BOTTOMS_LINK = "//*[@id='ui-id-10']"
     BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
     DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
+    TEES_LINK = '//*[@id="ui-id-13"]'
     RADIANT_TEE_HOTSELLERS_SECT = "//a[contains(text(), 'Radiant Tee')]"
     ADD_TO_COMPARE_ICON = "(//a[@title='Add to Compare'])[1]"
     COMPARE_BTN = "//span[text()='Compare']"
-    TEES_LINK = '//*[@id="ui-id-13"]'
 
 
 class WhatsNewPageLocators:
@@ -192,6 +194,7 @@ class WhatsNewPageLocators:
     ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
     LAYLA_TEE_NAME = "//a[@title='Layla Tee']"
     LAYLA_TEE_IMG = '//li[2]//img[@class="product-image-photo"]'
+
 
 class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
@@ -280,8 +283,6 @@ class PerformanceSportswear:
     ITEM_2_IN_GENERAL = 'li.product-item:nth-child(2)'
 
 
-class CompareProductsPage:
-    COMP_LIST_RADIANT_TEE = "//a[contains(text(), 'Radiant Tee')]"
 class WishListLocators:
     EMPTY_MESSAGE = '.message.info.empty span'
     DELETE_BUCKET = '.btn-remove.action.delete'
@@ -321,12 +322,19 @@ class MenSaleLocators:
     PAGE_TITLE = "[data-ui-id='page-title-wrapper']"
     LIST_ITEM = "li.product-item"
     TOOLBAR_NUMBER = "#toolbar-amount>span"
+    PRODUCT_IMAGE = "img.product-image-photo"
+    PRODUCT_LIST = "ol.product-items"
+    GRID_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > #mode-grid"
+    LIST_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > #mode-list"
+    SELECTED_MODE_OPTION = ".toolbar.toolbar-products:nth-child(3) > .modes > strong[data-value]"
+    PRODUCTS_WRAPPER = "div.products.wrapper"
 
 
 class SetYogaStrapsLocators:
     SPRITE_YOGA_STRAP_10_FOOT = '//input[@data-selector = "super_group[35]"]'
     NOT_AVAILABLE_MESSAGE = '//div[contains(text(),"The requested qty is not available")]'
     SPRITE_YOGA_STRAP_8_FOOT = '//input[@data-selector = "super_group[34]"]'
+    SPRITE_YOGA_STRAP_6_FOOT = '//input[@data-selector = "super_group[33]"]'
 
 
 class PopularSearchTermsLocators:
@@ -337,13 +345,24 @@ class PopularSearchTermsLocators:
 class TeesPageLocators:
     FOUR_TEES_DISCOUNT_TAB = '//span[contains(text(),"4 tees for the price of 3. Right now")]'
     TEES = 'img[alt="Desiree Fitness Tee"]'
-    TEES_SIZE = '#option-label-size-143-item-166'
-    TEES_COLORS = '#option-label-color-93-item-49'
+    TEES_SIZE_XS = '#option-label-size-143-item-166'
+    TEES_COLOR_BLACK = '#option-label-color-93-item-49'
+    TEES_COLOR_GREEN = '#option-label-color-93-item-53'
+    TEES_COLOR_ORANGE = '#option-label-color-93-item-56'
+    TEES_COLOR_YELLOW = '#option-label-color-93-item-60'
     TEES_QTY = "#qty"
     VIEW_AND_EDIT_CART_LINK = '//span[contains(text(),"View and Edit Cart")]'
     DISCOUNT_SUMM = 'td[data-th="Discount"] span.price'
     REMOVE_TEES_BTN_FROM_CART_AFTER_TEST = 'a[class="action action-delete"]'
     COUNT_NUMBER = 'span.counter-number'
+    TEES_ONE = 'img[alt="Gwyn Endurance Tee"]'
+    TEES_TWO = 'img[alt="Radiant Tee"]'
+    TEES_THREE = 'img[alt="Diva Gym Tee"]'
+    TEES_SIZE_S = "#option-label-size-143-item-167"
+    TEES_SIZE_M = "#option-label-size-143-item-168"
+    TEES_SIZE_L = "#option-label-size-143-item-169"
+    TEES_TAB = "ul.items li.item.category:nth-child(4)"
+
 
 
 class WomenLocators:
@@ -385,3 +404,12 @@ class Compare:
 class AdvancedSearchLocators:
     BUTTON_SEARCH = '//button[contains(@class, "primary")]'
     ERROR_MESSAGE = '//div[contains(@class, "error")]/div'
+
+
+class ProductPageLocators:
+    WINDOW_MORE_INFO = '#tab-label-additional-title'
+    DESCRIBE_MATERIAL = '[data-th="Material"]'
+
+
+class CompareProductsPage:
+    COMP_LIST_RADIANT_TEE = "//a[contains(text(), 'Radiant Tee')]"
