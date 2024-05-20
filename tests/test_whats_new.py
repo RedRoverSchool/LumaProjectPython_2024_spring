@@ -105,10 +105,9 @@ class TestWhatsNew:
         page.open_eco_collection_url()
         page.check_buttons_visibility_on_product_card()
 
-
     @allure.link('https://trello.com/c/dGGLziIU')
     @allure.title("TC_006.005.002 | What's new > Eco Collection New*> Verify User gets error message")
-    def test_user_gets_error_massage(self,browser_management):
+    def test_user_gets_error_massage(self, browser_management):
         page = MainPage(browser=browser)
         page.open_page()
         page.whats_new.click()
@@ -116,7 +115,17 @@ class TestWhatsNew:
         whats_new_page.click_bras_and_tank_link()
         whats_new_page.click_breathe_easy_tank_item()
         whats_new_page.add_to_wish_list_button()
-        assert s(WNPL.ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER).should(have.text('You must login or register to add items to your wishlist.'))
+        assert s(WNPL.ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER).should(
+            have.text('You must login or register to add items to your wishlist.'))
 
-
-
+    @allure.link('https://trello.com/c/g5xgzhu7')
+    @allure.title("TC_006.005.003| What's new > Eco Collection New*> Verify user gets successful message")
+    def test_user_gets_successful_massage(self, browser_management):
+        page = MainPage(browser=browser)
+        page.open_page()
+        page.whats_new.click()
+        whats_new_page = WhatsNewPage(browser=browser)
+        whats_new_page.click_bras_and_tank_link()
+        whats_new_page.click_breathe_easy_tank_item()
+        whats_new_page.add_to_compare_button()
+        assert s(WNPL.YOU_ADDED_PRODUCT).should(have.text('You added product Breathe-Easy Tank to the comparison list.'))

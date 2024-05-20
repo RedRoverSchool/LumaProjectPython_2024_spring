@@ -186,7 +186,7 @@ class WhatsNewPageLocators:
     ERROR_MASSAGE_UNDER_COLOR = '//*[@id="super_attribute[93]-error"]'
     BREATHE_EASY_TANK = "a.product-item-link[href*='breathe-easy-tank']"
     ADD_TO_COMPARE = '.product-social-links a:last-child'
-    YOU_ADDED_PRODUCT = '.product-social-links a:last-child'
+    YOU_ADDED_PRODUCT = '.message-success'
     ADD_TO_WISH_LIST_BUTTON = '.product-social-links a:first-child'
     ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER = '//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
     LAYLA_TEE_NAME = "//a[@title='Layla Tee']"
