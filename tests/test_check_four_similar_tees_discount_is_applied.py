@@ -1,6 +1,6 @@
 import allure
+
 from pages import tees_page
-import pytest
 
 
 @allure.title("Check four tees for three with similar tess is applied")

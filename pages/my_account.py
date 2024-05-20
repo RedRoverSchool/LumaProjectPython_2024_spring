@@ -8,5 +8,5 @@ def visit():
     browser.open(url)
 
 
-def page_title(partial_text):
+def should_be_page_title(partial_text):
     s("h1.page-title").should(have.text(partial_text))

@@ -5,7 +5,7 @@ from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
 from pages.cart_page import CartPage
-from pages.locators import BaseLocators as BL, HomeLocators
+from pages.locators import BaseLocators as BL, HomeLocators, CreateAccountLocators
 from pages.locators import ErinRecommendLocators as ERL
 from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
 
@@ -56,16 +56,13 @@ class MainPage(BasePage):
         if ss(HomeLocators.COOKIES_MSG):
             s(HomeLocators.CONSENT_COOKIES_BTN).click()
 
-            
     @staticmethod
     def open_mini_cart():
         s(HomeLocators.CART_ICON).click()
 
-
     @staticmethod
     def check_product_qty_inside_minicart(value):
         s(HomeLocators.MINICART_PRODUCT_QTY).should(have.attribute('data-item-qty').value(value))
-
 
     def add_item_to_cart(self, size, color, add_to_cart_button):
         s(size).click()
@@ -89,3 +86,6 @@ class MainPage(BasePage):
 
     def verify_counter(self, count):
         self.mini_cart_counter.should(be.visible).should(have.text(count))
+
+    def should_be_clickable_create_account(self):
+        s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).should(be.clickable)
