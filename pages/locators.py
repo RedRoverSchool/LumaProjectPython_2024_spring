@@ -289,6 +289,7 @@ class WishListLocators:
     COLORS = "div.swatch-attribute.color .swatch-option.color"
     SIZES = "div.swatch-attribute.size .swatch-option.text"
     UPDATED = "a.action.towishlist.updated"
+    MESSAGE_WISH_LIST_IS_EMPTY = 'div.block.block-wishlist > div.block-content > div'
 
 
 class CartLocators:
