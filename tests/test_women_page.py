@@ -32,3 +32,13 @@ def test_verify_visibility_elements_dropdown_menu():
     s(WomenPageLocators.DROPDOWN_BLOCK).should(have.text('Tops') and have.text('Bottoms'))
 
 
+@allure.title("Compare products | From any catalog's page > Verify after clicking on the compare button user is "
+              "redirected to the Compare Products page.")
+@allure.link("https://trello.com/c/fvMCdJ97")
+def test_checking_page_redirection_to_tops_elements():
+    women_page.visit()
+    women_page.hover_product_card()
+    women_page.click_add_to_compare_icon()
+    women_page.click_compare_btn()
+    women_page.assert_page_title()
+    women_page.assert_comp_list_item()
