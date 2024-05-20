@@ -1,4 +1,3 @@
-
 # from pages.locators import WomenPageLocators as WPL
 from pages.locators import BaseLocators as BL
 from pages.locators import CompareProductsPage as CPP
@@ -7,7 +6,6 @@ from pages.locators import WomenLocators, WomenPageLocators, FooterLocators
 from pages.locators import BaseLocators, SalePageLocators
 from data.links import *
 from selene import browser, be, have, query
-
 
 
 def visit():
@@ -44,8 +42,6 @@ def assert_page_title():
 
 def assert_comp_list_item():
     assert s(CPP.COMP_LIST_RADIANT_TEE).should(have.text('Radiant Tee')), "wrong item"
-
-    s(WomenPageLocators.BOTTOMS_LINK).click()
 
 
 def visit_women_tee():
@@ -130,4 +126,3 @@ def click_link_in_footer():
 
 def title_is_correct():
     s(BaseLocators.PAGE_TITLE).should(have.text("Popular Search Terms"))
-
