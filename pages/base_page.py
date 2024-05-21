@@ -6,7 +6,7 @@ from data.links import CART_LINK
 from pages.components import mini_card
 
 from pages.components import nav
-from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
+from pages.locators import ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
 
 
 class BasePage:

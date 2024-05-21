@@ -3,7 +3,7 @@ from selene.support.shared.jquery_style import s, ss
 
 from data.links import MEN_SALE_PAGE_URL
 from data.page_data import MenSalePageData as data
-from pages.components.nav_wigdet import NavComponent
+from pages.components import nav
 from pages.locators import BaseLocators as Header, MenSaleLocators as ms_locators
 
 
@@ -19,7 +19,7 @@ class MenSalePage:
 
     def __init__(self, browser):
         self.browser = browser
-        self.nav = NavComponent()
+        self.nav = nav
         self.browser.open(MEN_SALE_PAGE_URL)
 
     @staticmethod
