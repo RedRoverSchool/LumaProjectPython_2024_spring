@@ -23,6 +23,7 @@ def test_verify_page_title():
     page.is_page_title_present()
     page.is_page_title_correct()
 
+
 @pytest.mark.skip
 @allure.link("https://trello.com/c/wnMvuIUl")
 @allure.title("Verify total number of items on the page")

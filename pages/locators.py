@@ -45,7 +45,10 @@ class ProductLocators:
     SIZE_M = '//*[@class="product options list"]//*[text()="M"]'
     COLOR_GRAY = '//*[@class="product options list"]//*[text()="Gray"]'
     NAME_ITEM = '//*[text()="Argus All-Weather Tank"]'
+    ARGUS_ALL_WEATHER_TANK_PRODUCT_NAME_TEXT = 'Argus All-Weather Tank'
     PRICE_ITEM = '//*[@class="minicart-price"]//*[@class="price"]'
+    PRODUCT_PRICE_BASE = '//*[@class="price"]'
+    PRODUCT_IMAGE_BASE = '//img[@class="fotorama__img"]'
     CART_SUBTOTAL = '.subtotal .price'
     QTY_FIELD = ".details-qty input"
     UPDATE = '[title="Update"]'
@@ -59,6 +62,7 @@ class ProductLocators:
     RADIANT_TEE_IMG = '//div[1]/div[3]/div[1]/img[@alt="Radiant Tee"]'
     RADIANT_TEE_TITLE = 'span[data-ui-id="page-title-wrapper"]'
     RADIANT_TEE_PRICE = '#product-price-1556'
+    PRODUCT_TITLE = 'span[data-ui-id="page-title-wrapper"]'
     PRODUCT_PRICE = 'span[id="product-price-1556"] span'
     PRODUCT_DETAILS_TEXT = 'div.product.attribute.description div p'
     MORE_INFO_TAB = '#tab-label-additional-title'
@@ -69,6 +73,7 @@ class ProductLocators:
     SHOULD_CHOOSE_SIZE = '//*[@id="super_attribute[143]-error"]'
     # SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input.super-attribute-select'
     TEXT_REQUIRED_FIELD = 'This is a required field.'
+    ADD_TO_WISHLIST_LINK = 'a.action.towishlist'
     SIZE_INDICATOR = '.swatch-attribute.size span.swatch-attribute-selected-option'
 
 
@@ -171,6 +176,9 @@ class WomenPageLocators:
     BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
     DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
     TEES_LINK = '//*[@id="ui-id-13"]'
+    RADIANT_TEE_HOTSELLERS_SECT = "//a[contains(text(), 'Radiant Tee')]"
+    ADD_TO_COMPARE_ICON = "(//a[@title='Add to Compare'])[1]"
+    COMPARE_BTN = "//span[text()='Compare']"
 
 
 class WhatsNewPageLocators:
@@ -290,6 +298,7 @@ class WishListLocators:
     SIZES = "div.swatch-attribute.size .swatch-option.text"
     UPDATED = "a.action.towishlist.updated"
     MESSAGE_WISH_LIST_IS_EMPTY = 'div.block.block-wishlist > div.block-content > div'
+    SUCCESS_MESSAGE = 'div.message-success.success.message div'
 
 
 class CartLocators:
@@ -362,7 +371,6 @@ class TeesPageLocators:
     TEES_TAB = "ul.items li.item.category:nth-child(4)"
 
 
-
 class WomenLocators:
     TANK_SIZE = '//*[@title="Breathe-Easy Tank"]/../..//*[@option-label="M"]'
     TANK_COLOR = '//*[@title="Breathe-Easy Tank"]/../..//*[@option-label="Yellow"]'
@@ -407,3 +415,7 @@ class AdvancedSearchLocators:
 class ProductPageLocators:
     WINDOW_MORE_INFO = '#tab-label-additional-title'
     DESCRIBE_MATERIAL = '[data-th="Material"]'
+
+
+class CompareProductsPage:
+    COMP_LIST_RADIANT_TEE = "//a[contains(text(), 'Radiant Tee')]"

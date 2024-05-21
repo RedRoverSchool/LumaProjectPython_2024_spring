@@ -28,10 +28,6 @@ class MenSalePageData:
     page_title = "Men Sale"
 
     
-class MenPageData:
-    error_message = "Men's page did not load successfully"
-
-    
 class TrainingPageData:
     block_promo_contains = ["Motivate yourself.", "Reach goals.", "Boost ambition.", "Max fitness.",
                             "Upgrade lifestyle."]

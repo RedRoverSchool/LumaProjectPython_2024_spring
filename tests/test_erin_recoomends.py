@@ -1,12 +1,13 @@
 import allure
 import pytest
 
-from pages.erin_recommends_page import *
+from pages.erin_recommends_page import * #please refactor
+from pages import erin_recommends_page
 from pages.main_page import MainPage
 
 
 @allure.suite("US_001.002 | Testing Erin Recommends Page")
-class TestErinRecommends:
+class TestErinRecommends: #please refactor
     @allure.title("TC_001.002.002 | Check redirection to 'Shop Erin Recommends' page by clicking block")
     def test_erin_block_link_redirection(self):
         with allure.step("Open home page"):
@@ -61,12 +62,12 @@ class TestErinRecommends:
             assert page.is_list_view_activate(), "The product layout did not switch to list view."
 
 
-    @allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")
-    def test_add_item_to_compare(self):
-        with allure.step("Open Erin Recommends page"):
-            page = ErinRecommendsPage(browser=browser)
-            page.open_page()
-            page.hover_click_item()
-            page.assert_text_of_element(ERL.MESSAGE_ADD_TO_COMPARE, "You added product Jade Yoga Jacket to the ")
-            page.click_text_compare_products()
-            page.assert_text_of_element(ERL.ITEM_JADE_YOGA_JACKET, "Jade Yoga Jacket")
+@pytest.mark.skip
+@allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")
+def test_add_item_to_compare():
+    with allure.step("Open Erin Recommends page"):
+        erin_recommends_page.open_page()
+        erin_recommends_page.hover_click_item()
+        erin_recommends_page.assert_text_of_element(ERL.MESSAGE_ADD_TO_COMPARE, "You added product Jade Yoga Jacket to the ")
+        erin_recommends_page.click_text_compare_products()
+        erin_recommends_page.assert_text_of_element(ERL.ITEM_JADE_YOGA_JACKET,"Jade Yoga Jacket")

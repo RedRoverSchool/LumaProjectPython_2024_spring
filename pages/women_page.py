@@ -1,3 +1,6 @@
+# from pages.locators import WomenPageLocators as WPL
+from pages.locators import BaseLocators as BL
+from pages.locators import CompareProductsPage as CPP
 from selene.support.shared.jquery_style import s, ss
 from pages.locators import WomenLocators, WomenPageLocators, FooterLocators
 from pages.locators import BaseLocators, SalePageLocators
@@ -19,6 +22,26 @@ def click_dropdown_tops_link():
 
 def click_dropdown_bottoms_link():
     s(WomenPageLocators.BOTTOMS_LINK).click()
+
+
+def hover_product_card():
+    s(WomenPageLocators.RADIANT_TEE_HOTSELLERS_SECT).hover()
+
+
+def click_add_to_compare_icon():
+    s(WomenPageLocators.ADD_TO_COMPARE_ICON).click()
+
+
+def click_compare_btn():
+    s(WomenPageLocators.COMPARE_BTN).click()
+
+
+def assert_page_title():
+    assert s(BaseLocators.PAGE_TITLE).should(have.text('Compare Products')), "wrong title"
+
+
+def assert_comp_list_item():
+    assert s(CPP.COMP_LIST_RADIANT_TEE).should(have.text('Radiant Tee')), "wrong item"
 
 
 def visit_women_tee():
