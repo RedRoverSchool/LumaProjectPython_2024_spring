@@ -53,9 +53,19 @@ class ErinRecommendsPage(BasePage):
     def is_list_view_activate(self):
         return s(ERL.PRODUCT_LIST).should(have.css_class("products-list"))
 
-    def hover_click_item(self):
-        s(ERL.ITEM_JADE_YOGA_JACKET).hover()
-        s(ERL.ADD_TO_COMPARE).click()
 
-    def click_text_compare_products(self):
-        s(ERL.TEXT_COMPARE_ITEMS).click()
+def hover_click_item():
+    s(ERL.ITEM_JADE_YOGA_JACKET).hover()
+    s(ERL.ADD_TO_COMPARE).click()
+
+
+def click_text_compare_products():
+    s(ERL.TEXT_COMPARE_ITEMS).click()
+
+
+def open_page():
+    browser.open(ERIN_RECOMMENDS_URL)
+
+
+def assert_text_of_element(locator, expected_text):
+    s(locator).should(have.text(expected_text))

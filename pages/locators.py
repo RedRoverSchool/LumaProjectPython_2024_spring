@@ -69,6 +69,7 @@ class ProductLocators:
     SHOULD_CHOOSE_SIZE = '//*[@id="super_attribute[143]-error"]'
     # SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input.super-attribute-select'
     TEXT_REQUIRED_FIELD = 'This is a required field.'
+    ADD_TO_WISHLIST_LINK = 'a.action.towishlist'
     SIZE_INDICATOR = '.swatch-attribute.size span.swatch-attribute-selected-option'
 
 
@@ -292,6 +293,7 @@ class WishListLocators:
     COLORS = "div.swatch-attribute.color .swatch-option.color"
     SIZES = "div.swatch-attribute.size .swatch-option.text"
     UPDATED = "a.action.towishlist.updated"
+    SUCCESS_MESSAGE = 'div.message-success.success.message div'
 
 
 class CartLocators:
@@ -362,7 +364,6 @@ class TeesPageLocators:
     TEES_SIZE_M = "#option-label-size-143-item-168"
     TEES_SIZE_L = "#option-label-size-143-item-169"
     TEES_TAB = "ul.items li.item.category:nth-child(4)"
-
 
 
 class WomenLocators:

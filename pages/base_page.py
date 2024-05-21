@@ -5,11 +5,11 @@ from selene.support.shared.jquery_style import s, ss
 from data.links import CART_LINK
 from pages.components.mini_card import MiniCard
 from pages.components.nav_wigdet import NavComponent
-from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
+from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, \
+    CreateAccountLocators
 
 
 class BasePage:
-
     mini_cart = s(HomeLocators.MINICART)
     cart_icon = s(HomeLocators.CART_ICON)
     products = ss(ProductItemLocators.ITEM_INFO)
@@ -142,3 +142,7 @@ class BasePage:
             return True
         except AssertionError:
             return False
+
+    def assert_current_url_containing(self, text):
+        url = self.get_current_url()
+        assert text in url
