@@ -4,7 +4,7 @@ from selene.support.shared.jquery_style import s, ss
 
 from data.links import CART_LINK
 from pages.components.mini_card import MiniCard
-from pages.components.nav_wigdet import NavComponent
+from pages.components import nav
 from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
 
 
@@ -18,7 +18,7 @@ class BasePage:
 
     def __init__(self, browser):
         self.browser = browser
-        self.nav = NavComponent()
+        self.nav = nav
         self.mini_card = MiniCard()
 
     def visit(self, url):
