@@ -28,6 +28,7 @@ MEN_TOPS_TANKS_URL = BASE_URL + '/men/tops-men/tanks-men.html'
 MEN_BOTTOMS_URL = BASE_URL + '/men/bottoms-men.html'
 MEN_BOTTOMS_PANTS_URL = BASE_URL + '/men/bottoms-men/pants-men.html'
 MEN_BOTTOMS_SHORTS_URL = BASE_URL + '/men/bottoms-men/shorts-men.html'
+ARGUS_ALL_WEATHER_TANK_URL = BASE_URL + '/argus-all-weather-tank.html'
 
 GEAR_PAGE_URL = BASE_URL + '/gear.html'
 GEAR_BAGS_URL = BASE_URL + '/gear/bags.html'

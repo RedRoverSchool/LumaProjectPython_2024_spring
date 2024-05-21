@@ -79,12 +79,23 @@ class TestRadiantTeePage:
         page.click_more_information_tab()
         page.is_more_information_visible()
 
+    @allure.link('https://trello.com/c/IR9y4zwY/')
+    @allure.title('TC_002.001.009 | Radiant Tee product page > Adding the product to the wish list')
+    def test_adding_radiant_tee_to_wish_list(self, login):
+        page = ProductPage(browser=browser)
+        page.open_radiant_tee_page()
+        page.add_product_to_wishlist()
+        page.assert_current_url_containing('wishlist')
+        page.is_success_message_adding_to_wishlist_visible()
+        page.is_product_title_visible_in_wishlist('Radiant Tee')
+ 
     @allure.link('https://trello.com/c/5xoWR2Ef/')
     @allure.title('TC_002.001.007 | Radiant Tee product page > Product parameters > Changing the product size')
     def test_radiant_tee_changing_size(self, login):
         page = ProductPage(browser=browser)
         page.open_radiant_tee_page()
         page.select_size('XS')
+        page.is_size_indicator_correct('XS')
         page.select_size('M')
         page.is_size_selected('M', '#ff5501')
         page.is_size_indicator_correct('M')
