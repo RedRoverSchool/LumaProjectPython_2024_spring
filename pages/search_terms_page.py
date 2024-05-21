@@ -1,28 +1,35 @@
 from selene import query, have, browser
 from selene.support.shared.jquery_style import s, ss
-from pages.locators import SearchTermsLocators, BaseLocators
+
+LIST_OF_SEARCH_TERMS = '[class="item"] a'
+LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
+TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
+LIST_OF_SEARCH_TERMS = '[class="item"] a'
+PRODUCT_ITEM_NAMES = '[class=product-item-link]'
+BASE_TITLE = '[class=base]'
+PAGE_TITLE = "h1"
 
 
 def order_search_terms():
-    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
     keyword_texts = [k.get(query.attribute("text")).replace('\n', '') for k in keyword_elements]
     keyword_elements.should(have.exact_texts(sorted(keyword_texts)))
 
 
 def visit():
-    browser.open(SearchTermsLocators.LINK_SEARCH_TERMS)
+    browser.open(LINK_SEARCH_TERMS)
 
 
 def title_is_correct():
-    s(BaseLocators.PAGE_TITLE).should(have.text("Popular Search Terms"))
+    s(PAGE_TITLE).should(have.text("Popular Search Terms"))
 
 
 def search_terms_list_have_100():
-    ss(SearchTermsLocators.TERMS_FOR_SEARCH_LIST_QTY).should(have.size(100))
+    ss(TERMS_FOR_SEARCH_LIST_QTY).should(have.size(100))
 
 
 def collect_all_search_terms():
-    return ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
+    return ss(LIST_OF_SEARCH_TERMS)
 
 
 def extract_font_sizes_from_search_terms(terms):

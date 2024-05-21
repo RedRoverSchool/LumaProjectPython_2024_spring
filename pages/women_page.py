@@ -8,6 +8,22 @@ from data.links import *
 from selene import browser, be, have, query
 
 
+LINK_WOMEN_SALE = "https://magento.softwaretestingboard.com/promotions/women-sale.html"
+WOMEN_PAGE_LINK = 'https://magento.softwaretestingboard.com/women.html'
+LINK_TEES_WOMEN = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
+BREADCRUMBS_LIST = ".breadcrumbs li"
+BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
+TANK_SIZE = '//*[@title="Breathe-Easy Tank"]/../..//*[@option-label="M"]'
+TANK_COLOR = '//*[@title="Breathe-Easy Tank"]/../..//*[@option-label="Yellow"]'
+TANK_BUTTON_ADD = '//*[@title="Breathe-Easy Tank"]/../..//*[@title="Add to Cart"]'
+MESSAGE_SUCCESS_ADD = "div.messages [data-bind ^='html']"
+SHOW_BASKET = ".action.showcart"
+CHECKOUT_BUTTON = '#top-cart-btn-checkout'
+FOOTER_LINKS = ('xpath', '//footer[@class="page-footer"]//li')
+LINK_SEARCH_TERMS = 'footer > div > ul > li:nth-child(1)'
+PAGE_TITLE = "h1"
+
+
 def visit():
     browser.open(WOMEN_PAGE_LINK)
 
@@ -45,15 +61,15 @@ def assert_comp_list_item():
 
 
 def visit_women_tee():
-    browser.open(SalePageLocators.LINK_TEES_WOMEN)
+    browser.open(LINK_TEES_WOMEN)
 
 
 def check_if_breadcrumbs_have_all_parts():
-    ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Women', 'Tops', 'Tees'))
+    ss(BREADCRUMBS_LIST).should(have.texts('Home', 'Women', 'Tops', 'Tees'))
 
 
 def check_nr_of_links_from_women_tee_by_breadcrumbs():
-    elements = ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))
+    elements = ss(BREADCRUMBS_LINKS).by(have.attribute('href'))
     expected_links = ['https://magento.softwaretestingboard.com/',
                       'https://magento.softwaretestingboard.com/women.html',
                       'https://magento.softwaretestingboard.com/women/tops-women.html']
@@ -62,7 +78,7 @@ def check_nr_of_links_from_women_tee_by_breadcrumbs():
 
 
 def check_nr_of_links_from_women_tee_by_breadcrumbs_by_count():
-    elements = ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))
+    elements = ss(BREADCRUMBS_LINKS).by(have.attribute('href'))
     elements.should(have.size(3))
 
 
@@ -75,11 +91,11 @@ def check_nr_of_links_from_women_tee_by_breadcrumbs_by_get_attr():
 
 
 def visit_women_sale():
-    browser.open(SalePageLocators.LINK_WOMEN_SALE)
+    browser.open(LINK_WOMEN_SALE)
 
 
 def check_breadcrumbs_from_women_sale_have_attribute():
-    elements = ss(BaseLocators.BREADCRUMBS_LINKS).by(have.attribute('href'))
+    elements = ss(BREADCRUMBS_LINKS).by(have.attribute('href'))
     expected_links = ['https://magento.softwaretestingboard.com/',
                       'https://magento.softwaretestingboard.com/sale.html']
     for i, element in enumerate(elements):
@@ -88,41 +104,41 @@ def check_breadcrumbs_from_women_sale_have_attribute():
 
 def check_breadcrumbs_from_women_sale_have_word():
     # assert error !!! 'Sale' is missing
-    ss(BaseLocators.BREADCRUMBS_LIST).should(have.texts('Home', 'Women Sale'))
+    ss(BREADCRUMBS_LIST).should(have.texts('Home', 'Women Sale'))
 
 
 def choose_size_for_tank():
-    s(WomenLocators.TANK_SIZE).click()
+    s(TANK_SIZE).click()
 
 
 def choose_color_for_tank():
-    s(WomenLocators.TANK_COLOR).click()
+    s(TANK_COLOR).click()
 
 
 def button_add_to_cart_tank():
-    s(WomenLocators.TANK_BUTTON_ADD).click()
+    s(TANK_BUTTON_ADD).click()
 
 
 def success_msg_is_present():
-    s(WomenLocators.MESSAGE_SUCCESS_ADD).should(have.text("You added"))
+    s(MESSAGE_SUCCESS_ADD).should(have.text("You added"))
 
 
 def open_minicart():
-    s(WomenLocators.SHOW_BASKET).should(be.clickable).click()
+    s(SHOW_BASKET).should(be.clickable).click()
 
 
 def open_checkout():
-    s(WomenLocators.CHECKOUT_BUTTON).should(be.visible)
-    s(WomenLocators.CHECKOUT_BUTTON).should(be.clickable).click()
+    s(CHECKOUT_BUTTON).should(be.visible)
+    s(CHECKOUT_BUTTON).should(be.clickable).click()
 
 
 def find_link_in_footer():
-    s(FooterLocators.LINK_SEARCH_TERMS).should(be.visible)
+    s(LINK_SEARCH_TERMS).should(be.visible)
 
 
 def click_link_in_footer():
-    s(FooterLocators.LINK_SEARCH_TERMS).should(be.clickable).click()
+    s(LINK_SEARCH_TERMS).should(be.clickable).click()
 
 
 def title_is_correct():
-    s(BaseLocators.PAGE_TITLE).should(have.text("Popular Search Terms"))
+    s(PAGE_TITLE).should(have.text("Popular Search Terms"))
