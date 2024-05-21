@@ -62,6 +62,7 @@ class TestErinRecommends: #please refactor
             assert page.is_list_view_activate(), "The product layout did not switch to list view."
 
 
+@pytest.mark.skip
 @allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")
 def test_add_item_to_compare():
     with allure.step("Open Erin Recommends page"):

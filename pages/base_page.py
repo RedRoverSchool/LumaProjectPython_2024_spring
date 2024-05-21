@@ -3,10 +3,10 @@ from selene.core import command, query
 from selene.support.shared.jquery_style import s, ss
 
 from data.links import CART_LINK
-from pages.components.mini_card import MiniCard
-from pages.components.nav_wigdet import NavComponent
-from pages.locators import BaseLocators, ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, \
-    CreateAccountLocators
+from pages.components import mini_card
+
+from pages.components import nav
+from pages.locators import ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
 
 
 class BasePage:
@@ -14,12 +14,12 @@ class BasePage:
     cart_icon = s(HomeLocators.CART_ICON)
     products = ss(ProductItemLocators.ITEM_INFO)
     mini_cart_counter = s(HomeLocators.MINICART_COUNTER)
-    message = s(BaseLocators.SUCCESS_MESSAGE)
+    message = s(".success.message")
 
     def __init__(self, browser):
         self.browser = browser
-        self.nav = NavComponent()
-        self.mini_card = MiniCard()
+        self.nav = nav
+        self.mini_card = mini_card
 
     def visit(self, url):
         self.browser.open(url)
@@ -64,7 +64,7 @@ class BasePage:
     def goto_card_page(self):
         self.is_cart_icon_present()
         self.cart_icon.hover().click()
-        self.mini_card.is_minicart_visible()
+        self.mini_card.is_mini_cart_visible()
         self.mini_card.click_mini_cart()
 
     def scroll_to_hot_sellers(self):

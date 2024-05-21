@@ -69,23 +69,3 @@ LAYLA_TEE_URL = 'https://magento.softwaretestingboard.com/layla-tee.html'
 LINK_WOMEN = "https://magento.softwaretestingboard.com/women.html"
 LINK_SHIPPING = "https://magento.softwaretestingboard.com/checkout/#shipping"
 LINK_PAYMENT = "https://magento.softwaretestingboard.com/checkout/#payment"
-
-
-class MenUrls:
-
-    men_sub_urls = {
-        'Tops': BASE_URL + '/men/tops-men.html',
-        'Bottoms': BASE_URL + '/men/bottoms-men.html'
-    }
-
-    men_top_urls = {
-        "Jackets": BASE_URL + '/men/tops-men/jackets-men.html',
-        "Hoodies & Sweatshirts": BASE_URL + '/men/tops-men/hoodies-and-sweatshirts-men.html',
-        "Tees": BASE_URL + '/men/tops-men/tees-men.html',
-        "Tanks": BASE_URL + '/men/tops-men/tanks-men.html'
-    }
-
-    men_bottoms_urls = {
-        "Pants": BASE_URL + '/men/bottoms-men/pants-men.html',
-        "Shorts": BASE_URL + '/men/bottoms-men/shorts-men.html'
-    }

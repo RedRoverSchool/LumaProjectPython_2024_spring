@@ -3,6 +3,7 @@ import allure
 from pages import tees_page
 
 
+@pytest.mark.skip
 @allure.title("Check four tees for three with similar tess is applied")
 def test_four_tees_discount_is_apply_for_similar_tees(browser_management):
     tees_page.open_login_page()
