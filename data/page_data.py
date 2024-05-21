@@ -23,6 +23,13 @@ class WishListData:
     add_wish_list_message = "added to your Wish List"
 
 
+class ComparisonListData:
+    success_message = "You added product Wayfarer Messenger Bag to the comparison list."
+    warning_message = "Are you sure you want to remove this item from your Compare Products list?"
+    empty_message1 = "You removed product Wayfarer Messenger Bag from the comparison list."
+    empty_message2 = "You have no items to compare."
+    
+
 class MenSalePageData:
     breadcrumbs_path = ['Home', 'Sale', 'Men Sale']
     page_title = "Men Sale"
