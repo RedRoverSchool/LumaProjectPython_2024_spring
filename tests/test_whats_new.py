@@ -9,8 +9,6 @@ from pages.whats_new_page import WhatsNewPage
 from pages.locators import WhatsNewPageLocators as WNPL
 
 
-
-
 @allure.suite("US_006.006 | Testing What's New Page")
 class TestWhatsNew:
     @allure.title("TC_006.006.001 | Test visibility of What's New link on the home page")
@@ -28,11 +26,9 @@ class TestWhatsNew:
         with allure.step("Open home page"):
             page = MainPage(browser=browser)
             page.open_page()
-        with allure.step("Find What's New link in  the menu"):
-            link = page.find_whats_new_link()
         with allure.step("Click on What's New link"):
-            link.click()
-        page = WhatsNewPage(browser=browser)
+            page.whats_new.click()
+            page = WhatsNewPage(browser=browser)
         with allure.step("Assert current url == What's New Page url"):
             assert page.get_current_url() == WHATS_NEW_PAGE_LINK
         with allure.step("Find header"):
@@ -43,16 +39,15 @@ class TestWhatsNew:
     @pytest.mark.skip
     @allure.link("https://trello.com/c/bCZOe2Tp/97-tc006006003-whats-new-page-check-lumas-latest-list-visibility")
     @allure.title("TC_006.006.003 | Check Luma`s latest list visibility")
-    def test_lumas_latest_list_visibility(self):
+    def test_luma_latest_list_visibility(self):
         page = MainPage(browser=browser)
         page.open_page()
-        page.find_whats_new_link().click()
+        page.whats_new.click()
         page = WhatsNewPage(browser=browser)
         page.is_lumas_latest_present()
         item_number = page.get_number_of_lumas_latest()
         assert item_number == 4
         assert page.are_men_and_women_items_present() is True
-
 
     @allure.title(
         "TC_006.002.004 I What's new > Eco Collection New* > Redirection to the product page by clicking on the product name")
@@ -83,14 +78,45 @@ class TestWhatsNew:
             page.layla_tee_title_is_displayed()
 
     @allure.title('TC_006.005.001 | Verify that User gets error message This this is required field in red color')
-    def test_user_gets_error_message(self, browser_management):
+    def test_user_gets_error_message(self):
         page = MainPage(browser=browser)
         page.open_page()
-        page.find_whats_new_link().click()
+        page.whats_new.click()
         whats_new_page = WhatsNewPage(browser=browser)
         whats_new_page.click_bras_and_tank_link()
         whats_new_page.click_breathe_easy_tank_item()
         whats_new_page.add_to_cart_button()
-        assert s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
-        assert s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
+        s(WNPL.ERROR_MASSAGE_UNDER_SIZE).should(have.text('This is a required field.'))
+        s(WNPL.ERROR_MASSAGE_UNDER_COLOR).should(have.text('This is a required field.'))
+
+    @allure.link('https://trello.com/c/lbjGjlg5/')
+    @allure.title("TC_006.002.001| What's new > Eco Collection New* > Changing the color in product list")
+    def test_eco_collection_change_color_in_product_list(self, login):
+        page = WhatsNewPage(browser=browser)
+        page.open_eco_collection_url()
+        page.change_layla_tee_color('Blue')
+        page.is_color_selected('Blue', '#ff5501')
+        page.is_layla_tee_img_color_correct('blue')
+
+    @allure.link('https://trello.com/c/E9ZewRUB')
+    @allure.title("TC_006.002.002| What's new > Eco Collection New* > Visibility of buttons on product card")
+    def test_eco_collections_new_products_buttons_visibility(self, login):
+        page = WhatsNewPage(browser=browser)
+        page.open_eco_collection_url()
+        page.check_buttons_visibility_on_product_card()
+
+
+    @allure.link('https://trello.com/c/dGGLziIU')
+    @allure.title("TC_006.005.002 | What's new > Eco Collection New*> Verify User gets error message")
+    def test_user_gets_error_massage(self,browser_management):
+        page = MainPage(browser=browser)
+        page.open_page()
+        page.whats_new.click()
+        whats_new_page = WhatsNewPage(browser=browser)
+        whats_new_page.click_bras_and_tank_link()
+        whats_new_page.click_breathe_easy_tank_item()
+        whats_new_page.add_to_wish_list_button()
+        assert s(WNPL.ERROR_MASSAGE_YOU_MUST_LOGIN_OR_REGISTER).should(have.text('You must login or register to add items to your wishlist.'))
+
+
 

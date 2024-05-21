@@ -36,6 +36,4 @@ class TestPrivacyAndCookiePolicy:
         main_page.click_privacy_cookie_policy_link()
 
         assert privacy_policy_page.get_privacy_policy_url == PRIVACY_POLICY_PAGE_LINK
-        privacy_policy_page.page_main_header.should(
-            have.text(PPPD.page_main_header)
-        )
+        privacy_policy_page.page_main_header.should(have.text(PPPD.page_main_header))

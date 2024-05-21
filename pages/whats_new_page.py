@@ -1,6 +1,7 @@
-from selene import browser, command, Element
+from selene import browser, command, Element, query
 from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
+from selenium.webdriver.support.color import Color
 
 from data.links import WHATS_NEW_PAGE_LINK, LAYLA_TEE_URL
 from data.page_data import WishListData as Data
@@ -85,7 +86,6 @@ class WhatsNewPage(BasePage):
     def new_yoga_link_click(self):
         return s(WNL.NEW_YOGA_LINK).click()
 
-
     def open_eco_collection_url(self):
         self.open_page()
         s(BaseLocators.ECO_COLLECTION_NAME).click()
@@ -118,3 +118,26 @@ class WhatsNewPage(BasePage):
     def add_to_wish_list_button(self):
         return s(WNL.ADD_TO_WISH_LIST_BUTTON).click()
 
+    def change_layla_tee_color(self, color):
+        layla_tee = s(WNL.LAYLA_TEE_NAME)
+        layla_tee.hover()
+        s(f"//li[2]//div[@option-label='{color}']").click()
+        layla_tee.hover()
+
+    def is_color_selected(self, color_name, color_hex):
+        color_selector = f"//li[2]//div[@option-label='{color_name}']"
+        s(color_selector).should(have.css_property('outline-color').value(Color.from_string(color_hex).rgba))
+
+    def is_layla_tee_img_color_correct(self, color):
+        img_url = f"https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/7c4c1ed835fbbf2269f24539582c6d44/w/s/ws04-{color}_main_1.jpg"
+        s(WNL.LAYLA_TEE_IMG).wait_until(have.attribute('src').value(img_url))
+        color_img_name = f'ws04-{color}_main_1.jpg'
+        img_src_name = s(WNL.LAYLA_TEE_IMG).get(query.attribute('src'))
+        assert color_img_name in img_src_name
+
+    def check_buttons_visibility_on_product_card(self):
+        for i in range(1, 6):
+            s(f"//li[{i}]/div/div").hover()
+            s(f'//li[{i}]//button[@class="action tocart primary"]').should(be.visible)
+            s(f'//li[{i}]//a[@class="action towishlist"]').should(be.visible)
+            s(f'//li[{i}]//a[@class="action tocompare"]').should(be.visible)
