@@ -1,8 +1,10 @@
-from selene import query
+from selene import query, have
 from selene.support.conditions import be
 from selene.support.shared.jquery_style import s, ss
+from selenium.webdriver.support.color import Color
+
 from pages.base_page import BasePage
-from pages.locators import ProductLocators as PL, HomeLocators as HL
+from pages.locators import ProductLocators as PL, HomeLocators as HL, WishListLocators as WLL
 
 
 class ProductPage(BasePage):
@@ -39,3 +41,30 @@ class ProductPage(BasePage):
 
     def is_reviews_content_visible(self):
         s(PL.REVIEWS_CONTENT).should(be.visible)
+
+    @staticmethod
+    def add_product_to_wishlist():
+        s(PL.ADD_TO_WISHLIST_LINK).click()
+
+    @staticmethod
+    def is_success_message_adding_to_wishlist_visible():
+        s(WLL.SUCCESS_MESSAGE).should(have.text('has been added to your Wish List.'))
+
+    @staticmethod
+    def is_product_title_visible_in_wishlist(title):
+        s(f'a.product-item-link[title="{title}"]').should(be.visible)
+        
+    @staticmethod
+    def select_size(size):
+        s(f'[option-label="{size}"]').click()
+        s(PL.SIZE_INDICATOR).should(be.visible).hover()
+
+    @staticmethod
+    def is_size_selected(size, color_hex):
+        size_selector = s(f'[option-label={size}]')
+        size_selector.should(have.css_property('outline-color').value(Color.from_string(color_hex).rgba))
+        size_selector.should(have.attribute('aria-checked').value('true'))
+
+    @staticmethod
+    def is_size_indicator_correct(size):
+        s(PL.SIZE_INDICATOR).should(have.text(size))

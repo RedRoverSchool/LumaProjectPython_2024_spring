@@ -68,15 +68,17 @@ class TestRadiantTeePage:
         page.is_minicart_quantity_correct("2")
         page.is_minicart_subtotal_correct("2")
         page.delete_product_from_cart()
-        
+
     @allure.link('https://trello.com/c/EXhjde1P')
-    @allure.title('TC_002.001.004 | Radiant Tee product page > Visibility of the product description and detailed information')
+    @allure.title(
+        'TC_002.001.004 | Radiant Tee product page > Visibility of the product description and detailed information')
     def test_radiant_tee_visibility_of_description(self, login):
         page = ProductPage(browser=browser)
         page.open_radiant_tee_page()
         page.is_product_details_visible()
         page.click_more_information_tab()
         page.is_more_information_visible()
+
 
     @allure.link('https://trello.com/c/PChP2lY4')
     @allure.title('TC_002.001.005 | Radiant Tee product page > Reviews > Reviews visibility')
@@ -85,3 +87,25 @@ class TestRadiantTeePage:
         page.open_radiant_tee_page()
         page.click_reviews_tab()
         page.is_reviews_content_visible()
+
+    @allure.link('https://trello.com/c/IR9y4zwY/')
+    @allure.title('TC_002.001.009 | Radiant Tee product page > Adding the product to the wish list')
+    def test_adding_radiant_tee_to_wish_list(self, login):
+        page = ProductPage(browser=browser)
+        page.open_radiant_tee_page()
+        page.add_product_to_wishlist()
+        page.assert_current_url_containing('wishlist')
+        page.is_success_message_adding_to_wishlist_visible()
+        page.is_product_title_visible_in_wishlist('Radiant Tee')
+ 
+    @allure.link('https://trello.com/c/5xoWR2Ef/')
+    @allure.title('TC_002.001.007 | Radiant Tee product page > Product parameters > Changing the product size')
+    def test_radiant_tee_changing_size(self, login):
+        page = ProductPage(browser=browser)
+        page.open_radiant_tee_page()
+        page.select_size('XS')
+        page.is_size_indicator_correct('XS')
+        page.select_size('M')
+        page.is_size_selected('M', '#ff5501')
+        page.is_size_indicator_correct('M')
+
