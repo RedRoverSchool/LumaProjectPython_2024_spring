@@ -1,6 +1,6 @@
 from selene import query, have
 from selene.support.conditions import be
-from selene.support.shared.jquery_style import s, ss
+from selene.support.shared.jquery_style import s
 from selenium.webdriver.support.color import Color
 
 from pages.base_page import BasePage

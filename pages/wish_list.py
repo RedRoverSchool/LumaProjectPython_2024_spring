@@ -56,8 +56,10 @@ def remove_item_from_wish_list(index):
 
 
 def edit_item_in_wish_list(index, qty, color, size):
-    get_products()[index].hover().s(WishList.ITEM_ACTIONS).click()
-    s(WishList.QUALITY).clear().send_keys(qty)
+    p = get_products()[index]
+    p.hover().s(WishList.ITEM_ACTIONS).click()
+    ss(".input-text.qty").second.clear().send_keys(qty)
+    p.s('.actions-primary').click()
     ss(WishList.COLORS)[color].click()
     ss(WishList.SIZES)[size].click()
     s(WishList.UPDATED).click()
