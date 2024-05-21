@@ -85,6 +85,7 @@ class HomeLocators:
     SUB_TOTAL = 'tr.totals.sub .amount .price'
     TAX_AMOUNT = 'tr.totals-tax .amount .price'
     GRAND_TOTALS = 'tr.grand.totals .amount .price'
+    SIGN_IN = '//header//li[@class="authorization-link"]/a'
 
 
 class NavigatorLocators:

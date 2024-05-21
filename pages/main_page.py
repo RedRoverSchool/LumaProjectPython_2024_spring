@@ -108,3 +108,6 @@ class MainPage(BasePage):
     def go_to_checkout_cart(self):
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
         return CartPage(browser=self.browser)
+
+    def sign_in_click(self):
+        s(HomeLocators.SIGN_IN).click()
