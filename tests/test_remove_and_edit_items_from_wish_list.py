@@ -11,8 +11,8 @@ class TestRemovingAndEditItemsInWishlist:
     def test_button_update_clickable(self, first_name, last_name, user_email, password):
         with allure.step("Precondition: login, add items to with list"):
             create_account.visit()
-            create_account.new_one(first_name, last_name, last_name + user_email, password)
-            message.should_be("Thank you for registering")
+            create_account.create_account(first_name, last_name, last_name + user_email, password)
+            message.should_be_message("Thank you for registering")
             page = WhatsNewPage(browser=browser)
             page.open_page()
             page.add_items_to_wish_list(3)

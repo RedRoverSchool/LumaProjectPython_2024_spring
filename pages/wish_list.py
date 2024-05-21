@@ -13,6 +13,10 @@ ITEM_CARD = "(//div[@class='product-item-info'])[1]"
 REMOVE_ITEM = "//div[@class='product-item-actions']/a[@class='btn-remove action delete']"
 ITEM_TITLE = "(//div[@class='products-grid wishlist']//a[@class='product-item-link'])[1]"
 
+ITEM_6_ADD_TO_WISH_LIST = 'ol > li:nth-child(6) a.action.towishlist'
+ITEM_8_ADD_TO_WISH_LIST = 'ol > li:nth-child(8) a.action.towishlist'
+ITEM_9_ADD_TO_WISH_LIST = 'ol > li:nth-child(9) a.action.towishlist'
+
 
 def visit(url=url):
     browser.open(url)
@@ -87,3 +91,31 @@ def hover_over_item():
 
 def is_item_removed(item):
     s(ITEM_TITLE).should(have.no.text(item))
+
+
+def wish_list_is_empty():
+    s(WishList.MESSAGE_WISH_LIST_IS_EMPTY).should(have.text(Data.empty_message))
+
+
+def wish_list_is_not_empty():
+    s(WishList.MESSAGE_WISH_LIST_IS_EMPTY).should(have.no.text(Data.empty_message))
+
+
+def add_to_wish_list_from_catalog(item_nr):
+    s(item_nr).perform(command.js.click)
+
+
+def go_to_wish_list():
+    s('.action.details').should(be.clickable).click()
+
+
+def title_is_correct():
+    s(BaseLocators.PAGE_TITLE).should(have.text("My Wish List"))
+
+
+def clear_wish_list():
+    if wish_list_is_not_empty():
+        items_in_wish_list = ss('.btn-remove.action.delete')
+        for item in items_in_wish_list:
+            item.should(be.clickable).click()
+

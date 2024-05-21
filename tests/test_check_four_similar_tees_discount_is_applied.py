@@ -1,6 +1,7 @@
 import allure
-from pages import tees_page
 import pytest
+
+from pages import tees_page
 
 
 @pytest.mark.skip

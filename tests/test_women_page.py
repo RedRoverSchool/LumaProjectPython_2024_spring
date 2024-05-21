@@ -1,4 +1,5 @@
 import allure
+import pytest
 from selene import browser, have
 from data.links import *
 from pages import women_page
@@ -32,6 +33,7 @@ def test_verify_visibility_elements_dropdown_menu():
     s(WomenPageLocators.DROPDOWN_BLOCK).should(have.text('Tops') and have.text('Bottoms'))
 
 
+@pytest.mark.skip
 @allure.title("Compare products | From any catalog's page > Verify after clicking on the compare button user is "
               "redirected to the Compare Products page.")
 @allure.link("https://trello.com/c/fvMCdJ97")

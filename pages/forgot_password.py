@@ -3,10 +3,12 @@ from selene.support.shared.jquery_style import s
 
 url = "https://magento.softwaretestingboard.com/customer/account/forgotpassword/"
 
+user_email_input = s("#email_address")
+
 
 def visit():
     browser.open(url)
 
 
 def reset(user_email):
-    s("#email_address").type(user_email).press_enter()
+    user_email_input.type(user_email).press_enter()
