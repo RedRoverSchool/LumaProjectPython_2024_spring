@@ -82,7 +82,12 @@ def test_011_007_002_clickability_button():
 @allure.link('https://trello.com/c/O0iYXhy1')
 def test_each_image_includes_short_description_of_the_promotion():
     sale_page.visit_sale()
-    sale_page.is_the_promotion_text_of_each_image_presented()
+    s(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_TITLE).should(have.text('20% OFF'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_INFO).should(have.text('Every $200-plus purchase!'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_TITLE).should(have.text('Spend $50 or more — shipping is free!'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_INFO).should(have.text('Buy more, save more'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_TITLE).should(have.text('You can\'t have too many tees'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_INFO).should(have.text('4 tees for the price of 3. Right now'))
 
 
 @allure.feature("Sale")
