@@ -17,7 +17,7 @@ class TestMiniCart:
         s(PL.ADD_TO_CART_BUTTON_FROM_MAINPAGE).click()
         page.is_cart_icon_present()
         page.click_cart_icon()
-        page.mini_card.is_minicart_present()
+        page.mini_card.is_mini_cart_present()
         page.mini_card.is_minicart_have_link()
 
     @allure.link('https://trello.com/c/WVaLK93g')
