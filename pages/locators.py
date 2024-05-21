@@ -409,6 +409,14 @@ class Compare:
 class AdvancedSearchLocators:
     BUTTON_SEARCH = '//button[contains(@class, "primary")]'
     ERROR_MESSAGE = '//div[contains(@class, "error")]/div'
+    FIELD_PRODUCT_NAME = '#name'
+    FIELD_SKU = '#sku'
+    FIELD_DESCRIPTION = '#description'
+    FIELD_SHORT_DESC = '#short_description'
+    FIELD_PRICE_FROM = '#price'
+    FIELD_PRICE_TO = '#price_to'
+    PRICE_ERROR_MESSAGE = '#price-error'
+    PRICE_TO_ERROR_MESSAGE = '#price_to-error'
 
 
 class ProductPageLocators:
