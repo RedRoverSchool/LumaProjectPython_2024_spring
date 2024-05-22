@@ -20,7 +20,7 @@ def test_sign_in_with_bad_credentials():
     message.should_be_message("account sign-in was incorrect")
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.link("https://trello.com/c/FxDGeQYY")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_001_login_unsuccessful():
@@ -29,7 +29,7 @@ def test_004_005_001_login_unsuccessful():
     sign_in.message_unsuccessful("This is a required field.")
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.link("https://trello.com/c/otpjtX3K")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_002_login_successful():
@@ -42,7 +42,7 @@ def test_004_005_002_login_successful():
 
 @allure.link("https://trello.com/c/rmFvh9fO")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
-def test_004_005_003_nickname_on_each_page_RF():
+def test_004_005_003_nickname_on_each_page():
     # I used only 4 links, otherwise test will take too much time
     sign_in.visit()
     sign_in.login("ahahah1@gmail.com", "jk$34_tor")
