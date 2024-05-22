@@ -1,32 +1,39 @@
-from data.links import MEN_PAGE_URL
+from selene import browser
 from selene.support.conditions import have
 from selene.support.shared.jquery_style import s
-
-from data.page_data import MenPageData
-from pages.base_page import BasePage
-from pages.locators import NavigatorLocators as Nav
-from pages.locators import BaseLocators as Header
 from selenium.webdriver.support.color import Color
 
+from pages.components.nav import men_top_urls, men_bottoms_urls
 
-class MenPage(BasePage):
+nav_men = s('#ui-id-5')
+page_header = s("#page-title-heading")
+error_message = "Men's page did not load successfully"
+men_page_url = 'https://magento.softwaretestingboard.com/men.html'
 
-    def __init__(self, browser):
-        super().__init__(browser)
-        self.browser = browser
-        self.open_page()
 
-    def open_page(self):
-        self.visit(MEN_PAGE_URL)
+def get_current_url():
+    return browser.driver.current_url
 
-    def is_loaded(self):
-        s(Header.PAGE_HEADER).should(have.text("Men"))
-        is_current_page_men = self.get_current_url() == MEN_PAGE_URL
-        assert is_current_page_men, MenPageData.error_message
 
-    @staticmethod
-    def is_active():
-        underline = Color.from_string('#ff5501').rgb
-        font = Color.from_string('#333').rgba
-        assert s(Nav.NAV_MEN).should(have.css_property('color').value(font))
-        assert s(Nav.NAV_MEN).should(have.css_property('border-color').value(underline))
+def open_page():
+    browser.open(men_page_url)
+
+
+def check_current_page():
+    page_header.should(have.text("Men"))
+    assert get_current_url() == men_page_url, error_message
+
+
+def is_active():
+    underline = Color.from_string('#ff5501').rgb
+    font = Color.from_string('#333').rgba
+    assert nav_men.should(have.css_property('color').value(font))
+    assert nav_men.should(have.css_property('border-color').value(underline))
+
+
+def verify_top_urls(name):
+    assert get_current_url() == men_top_urls[name]
+
+
+def verify_bottoms_urls(name):
+    assert get_current_url() == men_bottoms_urls[name]

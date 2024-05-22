@@ -1,12 +1,12 @@
-from selene import query
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 
 from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
-from pages.cart_page import CartPage
-from pages.locators import BaseLocators as BL, HomeLocators, ProductItemLocators
+
+from pages import cart_page
+from pages.locators import BaseLocators as BL, HomeLocators, CreateAccountLocators
 from pages.locators import ErinRecommendLocators as ERL
 from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
 
@@ -16,6 +16,8 @@ class MainPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.browser = browser
+
+    whats_new = s(Nav.NAV_NEW)
 
     def open_page(self):
         self.visit(MAIN_PAGE_LINK)
@@ -39,13 +41,10 @@ class MainPage(BasePage):
         self.privacy_cookie_policy_link.click()
 
     def is_menu_present(self):
-        return s(Nav.NAV_MENU).should(be.present)
+        s(Nav.NAV_MENU).should(be.present)
 
     def is_whats_new_link_present(self):
-        return s(Nav.NAV_NEW).should(be.present)
-
-    def find_whats_new_link(self):
-        return s(Nav.NAV_NEW)
+        self.whats_new.should(be.present)
 
     def is_loaded(self):
         assert self.get_current_url() == MAIN_PAGE_LINK, MainPageData.error_message
@@ -58,39 +57,13 @@ class MainPage(BasePage):
         if ss(HomeLocators.COOKIES_MSG):
             s(HomeLocators.CONSENT_COOKIES_BTN).click()
 
-            
     @staticmethod
     def open_mini_cart():
         s(HomeLocators.CART_ICON).click()
 
-
     @staticmethod
     def check_product_qty_inside_minicart(value):
         s(HomeLocators.MINICART_PRODUCT_QTY).should(have.attribute('data-item-qty').value(value))
-
-
-    @staticmethod
-    def clear_minicart():
-        if s(HomeLocators.CART_COUNTER).get(query.text) != "0":
-            s(HomeLocators.CART_ICON).click()
-            s(HomeLocators.MINICART_DELETE_BUTTONS).wait_until(be.visible)
-            delete_btns = ss(HomeLocators.MINICART_DELETE_BUTTONS)
-            if len(delete_btns) > 1:
-                for btn in delete_btns:
-                    btn.click()
-                    s(HomeLocators.DELETE_ITEM_CONFIRM_OK).wait_until(be.visible)
-                    s(HomeLocators.DELETE_ITEM_CONFIRM_OK).click()
-            elif len(delete_btns) == 1:
-                s(HomeLocators.MINICART_DELETE_BUTTONS).click()
-                s(HomeLocators.DELETE_ITEM_CONFIRM_OK).wait_until(be.visible)
-                s(HomeLocators.DELETE_ITEM_CONFIRM_OK).click()
-            s(HomeLocators.MINICART_CLOSE).click()
-
-
-    @staticmethod
-    def close_minicart():
-        s(HomeLocators.MINICART_CLOSE).click()
-
 
     def add_item_to_cart(self, size, color, add_to_cart_button):
         s(size).click()
@@ -107,4 +80,13 @@ class MainPage(BasePage):
 
     def go_to_checkout_cart(self):
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
-        return CartPage(browser=self.browser)
+        return cart_page
+
+    def click_cart_icon(self):
+        self.cart_icon.click()
+
+    def verify_counter(self, count):
+        self.mini_cart_counter.should(be.visible).should(have.text(count))
+
+    def should_be_clickable_create_account(self):
+        s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).should(be.clickable)

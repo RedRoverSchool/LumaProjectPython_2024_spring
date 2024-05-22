@@ -23,5 +23,4 @@ def test_link_on_different_pages():
 def test_create_account_link_clickable():
     main_page = MainPage(browser)
     main_page.open_page()
-
-    assert create_account.is_create_account_link_clickable(), "Create an account link is not clickable"
+    main_page.should_be_clickable_create_account()

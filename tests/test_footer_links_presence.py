@@ -1,9 +1,9 @@
-import pytest
 from selene import browser
 from selene.support.conditions import have
 from selene.support.shared.jquery_style import s, ss
 import allure
 import data.links
+from pages.components.nav import men_sub_urls
 from pages.locators import FooterLocators, BaseLocators
 
 
@@ -52,11 +52,11 @@ def test_012_001_001_verify_footer_links():
     check_header("Men")
     check_links_texts()
 
-    visit(data.links.MenUrls.men_sub_urls['Tops'])
+    visit(men_sub_urls['Tops'])
     check_header("Tops")
     check_links_texts()
 
-    visit(data.links.MenUrls.men_sub_urls['Bottoms'])
+    visit(men_sub_urls['Bottoms'])
     check_header("Bottoms")
     check_links_texts()
 

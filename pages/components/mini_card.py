@@ -3,69 +3,60 @@ from selene.support.shared.jquery_style import s
 from selenium.webdriver import Keys
 from selenium.webdriver.support.color import Color
 
-from pages.locators import HomeLocators as Home, ProductLocators as PL
+CART_URL = 'https://magento.softwaretestingboard.com/checkout/cart/'
 
+action = s('a.action')
+quantity = s(".details-qty input")
+message = s(".message-success")
+mini_cart = s('#ui-id-1')
+update = s('[title="Update"]')
+cart_subtotal = s('.subtotal .price')
+mini_cart_view = s('.action.viewcart')
+see_details = s('[data-role="title"]')
+view_and_edit_cart_href = s("[class='action viewcart']")
+view_and_edit_cart_link = s("//*[text()='View and Edit Cart']")
+size_m = s('//*[@class="product options list"]//*[text()="M"]')
+color_gray = s('//*[@class="product options list"]//*[text()="Gray"]')
+price_item = s('//*[@class="minicart-price"]//*[@class="price"]')
+argus_all_weather = s('//*[text()="Argus All-Weather Tank"]')
 
-class MiniCard:
+def is_mini_cart_present():
+    mini_cart.should(be.present)
 
-    def find_minicart(self):
-        return s(Home.MINICART)
+def is_mini_cart_visible():
+    mini_cart.should(be.visible)
 
-    def is_minicart_present(self):
-        return self.find_minicart().should(be.present)
+def is_mini_cart_have_link():
+    mini_cart_view.should(have.attribute('href').value(CART_URL))
 
-    def is_minicart_visible(self):
-        return self.find_minicart().should(be.visible)
+def check_color_of_in_the_mini_cart(color):
+    action.should(have.css_property("color").value(Color.from_string(color).rgba))
 
-    @staticmethod
-    def find_minicart_view():
-        return s(Home.MINICART_VIEW)
+def check_edit_cart_link_in_the_mini_cart():
+    view_and_edit_cart_href.should(have.attribute("href"))
 
-    @property
-    def is_minicart_view_present(self):
-        return self.find_minicart_view().should(be.present)
+def check_the_link_opens_checkout_cart_page():
+    view_and_edit_cart_link.click()
 
-    def is_minicart_view_enable(self):
-        return self.find_minicart_view().should(be.enabled)
+def checking_the_size_color_and_product_name_are_correct():
+    see_details.click()
+    size_m.should(have.text("M"))
+    color_gray.should(have.text("Gray"))
+    argus_all_weather.should(have.text("Argus All-Weather Tank"))
 
-    def is_minicart_view_visible(self):
-        return self.find_minicart_view().should(be.visible)
+def change_qty(qty):
+    quantity.should(be.clickable).send_keys(Keys.BACKSPACE + qty)
+    update.click()
 
-    def is_minicart_have_link(self):
-        return self.find_minicart_view().should(
-            have.attribute('href').value('https://magento.softwaretestingboard.com/checkout/cart/'))
+def should_be_quantity_change(qty):
+    quantity.should(have.value(qty))
 
-    def check_color_of_view_and_edit_cart_link_in_the_mini_cart(self):
-        s('a.action').should(have.css_property("color").value(Color.from_string("#006bb4").rgba))
+def should_be_success_message():
+    message.should(be.visible)
 
-    def check_clickability_of_view_and_edit_cart_link_in_the_mini_cart(self):
-        edit = s(PL.VIEW_AND_EDIT_CART_HREF)
-        edit.should(have.attribute("href"))
+def should_be_change_subtotal(price, total):
+    price_item.should(have.text(price))
+    cart_subtotal.should(have.text(total))
 
-    def checking_the_link_opens_checkout_cart_page(self):
-        s(PL.VIEW_AND_EDIT_CART_LINK).click()
-
-    def checking_the_size_color_and_product_name_are_correct(self):
-        s(PL.SEE_DETAILS).click()
-        s(PL.SIZE_M).should(have.text("M"))
-        s(PL.COLOR_GRAY).should(have.text("Gray"))
-        s(PL.NAME_ITEM).should(have.text("Argus All-Weather Tank"))
-
-    def checking_present_price_item_and_cart_subtotal_in_the_mini_cart(self, price, total):
-        s(PL.PRICE_ITEM).should(have.text(price))
-        s(PL.CART_SUBTOTAL).should(have.text(total))
-
-    def change_qty(self):
-        s(PL.QTY_FIELD).should(be.clickable).send_keys(Keys.BACKSPACE + "7")
-        s(PL.UPDATE).click()
-
-    def should_be_quantity_change(self):
-        s(PL.QTY_FIELD).should(have.value("7"))
-
-
-    def should_be_success_message(self):
-        s(".message-success").should(be.visible)
-
-    def should_be_change_subtotal(self, price, total):
-        s(PL.PRICE_ITEM).should(have.text(price))
-        s(PL.CART_SUBTOTAL).should(have.text(total))
+def click_mini_cart():
+    mini_cart.should(be.clickable).click()
