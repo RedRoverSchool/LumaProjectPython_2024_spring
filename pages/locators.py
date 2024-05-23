@@ -410,3 +410,13 @@ class ProductPageLocators:
 
 class CompareProductsPage:
     COMP_LIST_RADIANT_TEE = "//a[contains(text(), 'Radiant Tee')]"
+
+
+class NotesLocators:
+    NOTES = "//a[contains(text(), 'Notes')]"
+    NOTES_LINK = "https://softwaretestingboard.com/magento-store-notes/?utm_source=magento_store&utm_medium=banner" \
+                 "&utm_campaign=notes_promo&utm_id=notes_promotion"
+    NOTES_PAGE_TITLE = "/html/body/div[1]/main/div[1]/h1"
+    ee = "//h1[contains(text(), 'Magento 2 Store(Sandbox site) – Notes')]"
+    COOKIE_MSG = "/html/body/div[2]/div[2]/div[1]/div[1]/div/div[1]/h1"
+    COOKIE_ACCEPT_BTN = "/html/body/div[2]/div[2]/div[1]/div[2]/div[2]/button[1]/p"

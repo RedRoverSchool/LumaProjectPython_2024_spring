@@ -1,14 +1,17 @@
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 
+import data.links
 from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
-
+from selene.support.shared import browser
 from pages import cart_page
 from pages.locators import BaseLocators as BL, HomeLocators, CreateAccountLocators
 from pages.locators import ErinRecommendLocators as ERL
 from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
+from pages.locators import FooterLocators as FL
+from pages.locators import NotesLocators as Nl
 
 
 class MainPage(BasePage):
@@ -90,3 +93,21 @@ class MainPage(BasePage):
 
     def should_be_clickable_create_account(self):
         s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).should(be.clickable)
+
+    def hover_down_footer(self):
+        s(FL.FOOTER_LINKS).hover()
+
+    def click_notes_link(self):
+        s(Nl.NOTES).click()
+
+    def accept_cookies(self):
+        window_handles = browser.driver.window_handles
+        browser.switch_to.window(window_handles[-1])
+        browser.with_(timeout=10).element(Nl.COOKIE_MSG).should(be.visible)
+        s(Nl.COOKIE_ACCEPT_BTN).click()
+
+    def assert_notes_page_title(self):
+        assert s(Nl.NOTES_PAGE_TITLE).should(have.text('Notes')), "wrong title"
+
+    def assert_notes_page_url(self):
+        assert data.links.BASE_URL != data.links.NOTES_PAGE_URL, "Not redirected"
