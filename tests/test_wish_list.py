@@ -32,14 +32,13 @@ def test_011_006_001_message_no_items_is_displayed():
     wish_list.visit_login()
     wish_list.login("ahahah1@gmail.com", "jk$34_tor")
     wish_list.visit_sale()
-    time.sleep(2)
     wish_list.wish_list_is_empty()
 
 
 @allure.link('https://trello.com/c/ygmonlgs')
 def test_011_006_003_redirection_from_wish_list():
     wish_list.visit_login()
-    wish_list.login("ahahah1@gmail.com", "jk$34_tor")
+    wish_list.login("ahahah1@gmail1.com", "jk$34_tor1")
     wish_list.visit_women_jackets()
     wish_list.add_to_wish_list_from_catalog(wish_list.ITEM_9_ADD_TO_WISH_LIST)
     wish_list.go_to_wish_list()
@@ -50,7 +49,7 @@ def test_011_006_003_redirection_from_wish_list():
 @allure.link('https://trello.com/c/cMjsLvWj')
 def test_011_006_002_check_info_in_wish_list():
     wish_list.visit_login()
-    wish_list.login("ahahah1@gmail.com", "jk$34_tor")
+    wish_list.login("ahahah1@gmail1.com", "jk$34_tor1")
     wish_list.visit_women_jackets()
     wish_list.add_to_wish_list_from_catalog(wish_list.ITEM_6_ADD_TO_WISH_LIST)
     wish_list.visit_women_jackets()
