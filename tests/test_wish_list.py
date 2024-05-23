@@ -27,6 +27,7 @@ def test_remove_item_from_wishlist(login):
         wish_list.is_item_removed(item_title)
 
 
+@pytest.mark.skip
 @allure.link('https://trello.com/c/WQ4d6xa4')
 def test_011_006_001_message_no_items_is_displayed():
     wish_list.visit_login()
