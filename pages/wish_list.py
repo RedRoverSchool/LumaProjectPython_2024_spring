@@ -17,7 +17,7 @@ sign_in_button = s("div.login-container #send2")
 ITEM_6_ADD_TO_WISH_LIST = 'ol > li:nth-child(6) a.action.towishlist'
 ITEM_8_ADD_TO_WISH_LIST = 'ol > li:nth-child(8) a.action.towishlist'
 ITEM_9_ADD_TO_WISH_LIST = 'ol > li:nth-child(9) a.action.towishlist'
-
+LINK_SALE = "https://magento.softwaretestingboard.com/sale.html"
 delete_bucket = '.btn-remove.action.delete'
 
 update = s(".update")
@@ -179,3 +179,6 @@ def count_images_in_wishlist(nr):
 # def check_link_go_to_wishlist_is_clickable():
 #     s('//*[@id="maincontent"]//div[3]/div[3]/div[2]/div/div/a').should(be.clickable)
 
+
+def visit_sale():
+    browser.open(LINK_SALE)
