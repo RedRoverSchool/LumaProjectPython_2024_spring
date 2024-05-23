@@ -3,141 +3,189 @@ from selene.support.conditions import have, be
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.support.color import Color
 
-from data.links import WHATS_NEW_PAGE_LINK, LAYLA_TEE_URL
-from data.page_data import WishListData as Data
-from pages.base_page import BasePage
-from pages.locators import ProductItemLocators as Product, BaseLocators
-from pages.locators import WhatsNewPageLocators as WNL
+product = s(".product-item-info")
+products = ss(".product-item-info")
+button_new_yoga = s('span.more.button')
+layla_tee = s("//a[@title='Layla Tee']")
+luma_latest_items = ss('.products-grid>ol>li')
+collection_luma_latest_items = ss('.product-image-photo')
+new_yoga_link = s("//*[text()='New Luma Yoga Collection']")
+
+add_wish_list = "[aria-label='Add to Wish List']"
+
+whats_new_page_link = 'https://magento.softwaretestingboard.com/what-is-new.html'
+yoga_url = 'https://magento.softwaretestingboard.com/collections/yoga-new.html'
+layla_tee_url = 'https://magento.softwaretestingboard.com/layla-tee.html'
+
+message = "You must login or register to add items to your wishlist"
+add_wish_list_message = "added to your Wish List"
 
 
-class WhatsNewPage(BasePage):
+def open_page():
+    browser.open(whats_new_page_link)
 
-    def open_page(self):
-        self.visit(WHATS_NEW_PAGE_LINK)
 
-    def is_element_text_correct(self, element, text):
-        return element.should(have.text(text))
+def get_current_url():
+    return browser.driver.current_url
 
-    def is_header_present(self):
-        return s(WNL.HEADER).should(be.present)
 
-    def is_lumas_latest_present(self):
-        return s(WNL.LUMAS_LATEST_LIST).should(be.present)
+def is_current_url_yoga():
+    return browser.driver.current_url == yoga_url
 
-    def get_lumas_latest_items(self):
-        return ss(WNL.LUMAS_LATEST_ITEMS)
 
-    @staticmethod
-    def find_button_new_yoga():
-        return s(WNL.BUTTON_MORE)
+def is_element_text_correct(element, text):
+    element.should(have.text(text))
 
-    def is_button_present(self):
-        return self.find_button_new_yoga().should(be.present)
 
-    def is_button_visible(self):
-        return self.find_button_new_yoga().should(be.visible)
+def is_header_present():
+    return s('h1>span').should(be.present)
 
-    def is_current_link(self):
-        return self.get_current_url() == WHATS_NEW_PAGE_LINK
 
-    def click_button_shop_new_yoga(self):
-        self.find_button_new_yoga().click()
+def is_luma_latest_present():
+    s('.products-grid>ol').should(be.present)
 
-    def add_items_to_wish_list(self, size):
-        self.click_button_shop_new_yoga()
-        products = ss(Product.ITEM_INFO)
-        for i in range(size):
-            self.scroll_to(products[i])
-            products[i].hover()
-            products[i].s(Product.WISH_LIST).click()
-            s(BaseLocators.SUCCESS_MESSAGE).should(have.text(Data.add_wish_list_message))
-            self.browser.driver.back()
 
-    def add_item_to_wish_list(self):
-        self.open_page()
-        self.click_button_shop_new_yoga()
-        product = s(Product.ITEM_INFO)
-        self.scroll_to(product)
-        product.hover()
-        s(Product.WISH_LIST).click()
+def is_button_present():
+    return button_new_yoga.should(be.present)
 
-    def get_number_of_lumas_latest(self):
-        collection = self.get_lumas_latest_items()
-        return len(collection)
 
-    @staticmethod
-    def get_collection_lumas_latest_items():
-        return ss(WNL.LUMAS_LATEST_IMAGES)
+def is_button_visible():
+    button_new_yoga.should(be.visible)
 
-    def are_men_and_women_items_present(self):
-        collection = self.get_collection_lumas_latest_items()
-        m = 0
-        w = 0
-        for item in collection:
-            if item.matching(have.attribute("src").value_containing('/m/')):
-                m += 1
-            elif item.matching(have.attribute("src").value_containing('/w/')):
-                w += 1
-        return True if (m > 0 and w > 0) and m + w == 4 else False
 
-    def is_yoga_link_visible(self):
-        return s(WNL.NEW_YOGA_LINK).should(be.visible)
+def is_current_link():
+    return get_current_url() == whats_new_page_link
 
-    def new_yoga_link_click(self):
-        return s(WNL.NEW_YOGA_LINK).click()
 
-    def open_eco_collection_url(self):
-        self.open_page()
-        s(BaseLocators.ECO_COLLECTION_NAME).click()
+def click_button_shop_new_yoga():
+    button_new_yoga.click()
 
-    def click_layla_tee_name(self):
-        s(Product.LAYLA_TEE_PRODUCT_NAME).click()
 
-    def check_redirection_to_layla_tee_pdp(self):
-        return self.get_current_url() == LAYLA_TEE_URL
+def scroll_to(element: Element):
+    element.perform(command.js.scroll_into_view)
 
-    def layla_tee_title_is_displayed(self):
-        return s(Product.LAYLA_TEE_TITLE).should(be.visible)
 
-    def click_layla_tee_img(self):
-        s(Product.LAYLA_TEE_IMG).click()
+def add_items_to_wish_list(size):
+    click_button_shop_new_yoga()
+    for i in range(size):
+        scroll_to(products[i])
+        products[i].hover()
+        products[i].s(add_wish_list).click()
+        s('.message-success.success.message').should(have.text(add_wish_list_message))
+        browser.driver.back()
 
-    @staticmethod
-    def click_bras_and_tank_link():
-        return s(WNL.BRAS_TANKS).click()
 
-    def click_breathe_easy_tank_item(self):
-        return s(WNL.BREATHE_EASY_TANK).click()
+def click_on_wish_list():
+    s(add_wish_list).click()
 
-    def add_to_cart_button(self):
-        return s(WNL.ADD_TO_CART_BUTTON).click()
 
-    def add_to_compare_button(self):
-        return s(WNL.ADD_TO_COMPARE).click()
+def add_item_to_wish_list():
+    open_page()
+    click_button_shop_new_yoga()
+    scroll_to(product)
+    product.hover()
+    click_on_wish_list()
 
-    def add_to_wish_list_button(self):
-        return s(WNL.ADD_TO_WISH_LIST_BUTTON).click()
 
-    def change_layla_tee_color(self, color):
-        layla_tee = s(WNL.LAYLA_TEE_NAME)
-        layla_tee.hover()
-        s(f"//li[2]//div[@option-label='{color}']").click()
-        layla_tee.hover()
+def are_men_and_women_items_present():
+    m = 0
+    w = 0
+    for item in collection_luma_latest_items:
+        if item.matching(have.attribute("src").value_containing('/m/')):
+            m += 1
+        elif item.matching(have.attribute("src").value_containing('/w/')):
+            w += 1
+    return True if (m > 0 and w > 0) and m + w == 4 else False
 
-    def is_color_selected(self, color_name, color_hex):
-        color_selector = f"//li[2]//div[@option-label='{color_name}']"
-        s(color_selector).should(have.css_property('outline-color').value(Color.from_string(color_hex).rgba))
 
-    def is_layla_tee_img_color_correct(self, color):
-        img_url = f"https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/7c4c1ed835fbbf2269f24539582c6d44/w/s/ws04-{color}_main_1.jpg"
-        s(WNL.LAYLA_TEE_IMG).wait_until(have.attribute('src').value(img_url))
-        color_img_name = f'ws04-{color}_main_1.jpg'
-        img_src_name = s(WNL.LAYLA_TEE_IMG).get(query.attribute('src'))
-        assert color_img_name in img_src_name
+def is_yoga_link_visible():
+    new_yoga_link.should(be.visible)
 
-    def check_buttons_visibility_on_product_card(self):
-        for i in range(1, 6):
-            s(f"//li[{i}]/div/div").hover()
-            s(f'//li[{i}]//button[@class="action tocart primary"]').should(be.visible)
-            s(f'//li[{i}]//a[@class="action towishlist"]').should(be.visible)
-            s(f'//li[{i}]//a[@class="action tocompare"]').should(be.visible)
+
+def new_yoga_link_click():
+    new_yoga_link.click()
+
+
+def open_eco_collection_url():
+    open_page()
+    s("//span[contains (text(), 'Shop Eco Friendly')]").click()
+
+
+def click_layla_tee_name():
+    s("a[title='Layla Tee']").click()
+
+
+def check_redirection_to_layla_tee_pdp():
+    return get_current_url() == layla_tee_url
+
+
+def layla_tee_title_is_displayed():
+    s("h1.page-title span").should(be.visible)
+
+
+def click_layla_tee_img():
+    s("img[alt='Layla Tee']").click()
+
+
+def click_bras_and_tank_link():
+    s('.categories-menu ul:nth-child(2) li:nth-child(4) a').click()
+
+
+def click_breathe_easy_tank_item():
+    s("a.product-item-link[href*='breathe-easy-tank']").click()
+
+
+def add_to_cart_button():
+    s('//*[@id="product-addtocart-button"]/span').click()
+
+
+def add_to_compare_button():
+    s('.product-social-links a:last-child').click()
+
+
+def add_to_wish_list_button():
+    s('.product-social-links a:first-child').click()
+
+
+def change_layla_tee_color(color):
+    layla_tee.hover()
+    s(f"//li[2]//div[@option-label='{color}']").click()
+    layla_tee.hover()
+
+
+def is_color_selected(color_name, color_hex):
+    color_selector = f"//li[2]//div[@option-label='{color_name}']"
+    s(color_selector).should(have.css_property('outline-color').value(Color.from_string(color_hex).rgba))
+
+
+def is_layla_tee_img_color_correct(color):
+    img_url = f"https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/7c4c1ed835fbbf2269f24539582c6d44/w/s/ws04-{color}_main_1.jpg"
+    s('//li[2]//img[@class="product-image-photo"]').wait_until(have.attribute('src').value(img_url))
+    color_img_name = f'ws04-{color}_main_1.jpg'
+    assert color_img_name in s('//li[2]//img[@class="product-image-photo"]').get(query.attribute('src'))
+
+
+def check_buttons_visibility_on_product_card():
+    for i in range(1, 6):
+        s(f"//li[{i}]/div/div").hover()
+        s(f'//li[{i}]//button[@class="action tocart primary"]').should(be.visible)
+        s(f'//li[{i}]//a[@class="action towishlist"]').should(be.visible)
+        s(f'//li[{i}]//a[@class="action tocompare"]').should(be.visible)
+
+
+def verify_header_text(text):
+    s('#page-title-heading > span').should(have.text(text))
+
+
+def hover_on_product():
+    scroll_to(product)
+    product.hover()
+
+
+def check_redirection_to_login():
+    s("span.base[data-ui-id='page-title-wrapper']").should(have.text("Customer Login"))
+    s("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']").should(have.text(message))
+
+
+def get_number_of_luma_latest():
+    return len(luma_latest_items)

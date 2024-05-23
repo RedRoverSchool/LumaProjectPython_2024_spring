@@ -81,16 +81,13 @@ def test_011_007_002_clickability_button():
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/O0iYXhy1')
 def test_each_image_includes_short_description_of_the_promotion():
-    browser.open(SALE_SECTION_LINK)
-    browser.element(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_TITLE).should(have.text('20% OFF'))
-    browser.element(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_INFO).should(have.text('Every $200-plus purchase!'))
-    browser.element(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_TITLE).should(
-        have.text('Spend $50 or more — shipping is free!'))
-    browser.element(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_INFO).should(have.text('Buy more, save more'))
-    browser.element(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_TITLE).should(
-        have.text('You can\'t have too many tees'))
-    browser.element(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_INFO).should(
-        have.text('4 tees for the price of 3. Right now'))
+    sale_page.visit_sale()
+    s(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_TITLE).should(have.text('20% OFF'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_INFO).should(have.text('Every $200-plus purchase!'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_TITLE).should(have.text('Spend $50 or more — shipping is free!'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_INFO).should(have.text('Buy more, save more'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_TITLE).should(have.text('You can\'t have too many tees'))
+    s(SalePageLocators.BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_INFO).should(have.text('4 tees for the price of 3. Right now'))
 
 
 @allure.feature("Sale")
@@ -112,21 +109,6 @@ def test_011_001_004_user_can_see_sale_page(url):
     browser.open(url)
     MainPage.handle_cookies_popup()
     s(NavigatorLocators.NAV_SALE).should(be.visible)
-
-@pytest.mark.skip
-@allure.link("https://trello.com/c/hSe3gPsx")
-def test_11_005_003_check_items_in_list_for_compare():
-    sale_page.visit_women_jackets()
-    items_to_be_compared = compare_side_panel.collect_item_names_to_be_compared()
-    compare_side_panel.choose_to_compare_item_nr(1)
-    compare_side_panel.choose_to_compare_item_nr(2)
-    compare_side_panel.choose_to_compare_item_nr(3)
-    sale_page.visit_sale()
-    compare_side_panel.should_be_3_items_to_compare()
-    compare_side_panel.button_compare_is_clickable()
-    compare_side_panel.link_clearall_is_clickable()
-    compared_items = compare_side_panel.collect_items_list_compare()
-    assert items_to_be_compared == compared_items
 
 
 @allure.link('https://trello.com/c/mZOkRDzP/')

@@ -13,7 +13,7 @@ class PrivacyPolicyPage:
         return self
 
     def scroll_to_bottom(self):
-        browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        browser.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         return self
 
     def verify_questions_section(self):

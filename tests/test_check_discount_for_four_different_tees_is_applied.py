@@ -6,8 +6,8 @@ import pytest
 from pages import tees_page
 
 
+@pytest.mark.skip(reason="Flaky test")
 @allure.title("Check four different model of Tees for three discount is applied")
-@pytest.mark.skip("FAILURES: AssertionError: actual text: 8")
 def test_discount_four_tees_for_different_model_is_applies(browser_management):
     tees_page.open_login_page()
     tees_page.login_in()

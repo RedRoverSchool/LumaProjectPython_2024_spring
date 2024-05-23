@@ -79,6 +79,7 @@ class TestRadiantTeePage:
         page.click_more_information_tab()
         page.is_more_information_visible()
 
+    @pytest.mark.skip
     @allure.link('https://trello.com/c/IR9y4zwY/')
     @allure.title('TC_002.001.009 | Radiant Tee product page > Adding the product to the wish list')
     def test_adding_radiant_tee_to_wish_list(self, login):

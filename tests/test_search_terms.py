@@ -73,3 +73,10 @@ def test_015_001_004_check_if_5_search_terms_is_bigger():
     list_font_sizes = search_terms_page.extract_font_sizes_from_search_terms(terms)
     search_terms_page.check_size_of_5_last_words_in_sorted_list(list_font_sizes)
 
+
+@allure.title('TC_015.002.007 Popular Search Terms > Visibility and clickability> Verify the visibility of the list')
+@allure.feature('Popular Search Terms')
+@allure.link('https://trello.com/c/MAmB9buH')
+def test_015_002_007_visibility_of_the_list():
+    search_terms_page.visit()
+    search_terms_page.visibility_of_the_list()
