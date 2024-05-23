@@ -159,13 +159,6 @@ class SearchTermsLocators:
 
 
 class WomenPageLocators:
-    WOMEN_MENU = "//*[@id='ui-id-4']"
-    TOPS_LINK = 'a#ui-id-9'
-    TOPS_TITLE = ".page-title-wrapper"
-    BOTTOMS_LINK = "//*[@id='ui-id-10']"
-    BOTTOMS_TITLE = ".ui-corner-all ui-state-focus"
-    DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
-    TEES_LINK = '//*[@id="ui-id-13"]'
     RADIANT_TEE_HOTSELLERS_SECT = "//a[contains(text(), 'Radiant Tee')]"
     ADD_TO_COMPARE_ICON = "(//a[@title='Add to Compare'])[1]"
     COMPARE_BTN = "//span[text()='Compare']"
@@ -288,14 +281,6 @@ class CartLocators:
     REMOVE_ITEM_ICON = '.action.action-delete'
     NO_ITEMS_MESSAGE = '//p[text()="You have no items in your shopping cart."]'
     CLICK_MESSAGE = '//p[contains(text(), "Click")]'
-
-
-class TrainingPageLocators:
-    VIDEO_DOWNLOAD_LINK = '#narrow-by-list2 li a'
-    VIDEO_DOWNLOAD_TRAINING_TITLE = 'span[data-ui-id="page-title-wrapper"'
-    BLOCK_1 = '.blocks-promo a:first-child'
-    CONTENT_BLOCK_1 = '.blocks-promo a:first-child .title'
-    IMG_BLOCK_1 = 'a[class="block-promo training-main"] img'
 
 
 class MenSaleLocators:

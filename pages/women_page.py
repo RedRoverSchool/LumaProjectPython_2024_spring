@@ -20,12 +20,12 @@ FOOTER_LINKS = ('xpath', '//footer[@class="page-footer"]//li')
 LINK_SEARCH_TERMS = 'footer > div > ul > li:nth-child(1)'
 PAGE_TITLE = "h1"
 BASE_URL = 'https://magento.softwaretestingboard.com'
-LINK_TOP_WOMEN = BASE_URL + '/women/tops-women.html'
-WOMEN_MENU = "//*[@id='ui-id-4']"
-TOPS_LINK = 'a#ui-id-9'
-BOTTOMS_LINK = "//*[@id='ui-id-10']"
-BOTTOMS_WOMEN_PAGE_LINK = BASE_URL + '/women/bottoms-women.html'
-DROPDOWN_BLOCK = "//*[@id='ui-id-2']/li[2]/ul"
+link_top_women = BASE_URL + '/women/tops-women.html'
+women_menu = s("//*[@id='ui-id-4']")
+tops_link = s('a#ui-id-9')
+bottoms_link = s("//*[@id='ui-id-10']")
+bottoms_women_page_link = BASE_URL + '/women/bottoms-women.html'
+dropdown_block = "//*[@id='ui-id-2']/li[2]/ul"
 tops_page_title = '.page-title-wrapper'
 bottoms_page_title = '.page-title-wrapper span'
 
@@ -35,15 +35,15 @@ def visit():
 
 
 def move_to_woman_menu():
-    s(WOMEN_MENU).hover()
+    women_menu.hover()
 
 
 def click_dropdown_tops_link():
-    s(TOPS_LINK).click()
+    tops_link.click()
 
 
 def click_dropdown_bottoms_link():
-    s(BOTTOMS_LINK).click()
+    bottoms_link.click()
 
 
 def hover_product_card():
@@ -155,7 +155,7 @@ def should_be_redirect_to(link):
 
 
 def dropdown_menu_have_elements(first_elem, second_elem):
-    s(DROPDOWN_BLOCK).should(have.text(first_elem) and have.text(second_elem))
+    s(dropdown_block).should(have.text(first_elem) and have.text(second_elem))
 
 
 def should_have_page_title(locator, title):
