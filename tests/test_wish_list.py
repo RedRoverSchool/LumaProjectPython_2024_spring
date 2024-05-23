@@ -32,6 +32,7 @@ def test_011_006_001_message_no_items_is_displayed():
     wish_list.visit_login()
     wish_list.login("ahahah1@gmail.com", "jk$34_tor")
     wish_list.visit_sale()
+    time.sleep(2)
     wish_list.wish_list_is_empty()
 
 
