@@ -17,3 +17,12 @@ def test_incorrect_price_range():
     advanced_search.fill_wrong_price_range()
     advanced_search.click_button()
     advanced_search.price_range_error_message()
+
+@allure.link('https://trello.com/c/HCQ997pb/')
+@allure.feature('Advanced Search')
+@allure.title('Entering prohibited characters in the “Price from” and “Price to” fields')
+def test_prohibited_characters_in_price():
+    advanced_search.open()
+    advanced_search.fill_prohibited_characters_in_price()
+    advanced_search.click_button()
+    advanced_search.invalid_number_price_error_message()

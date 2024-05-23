@@ -42,13 +42,11 @@ def test_015_001_006_check_if_search_terms_are_sorted():
     search_terms_page.compare_list_sorted_stripped_and_original(lst_nonsorted, lst_sorted)
 
 
+@allure.feature('Popular Search Terms')
 @allure.link('https://trello.com/c/RGOSzLMa')
 def test_015_002_005_unique_search_terms():
     search_terms_page.visit()
-    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
-    keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
-    keywords_set = set(keyword_texts)
-    assert len(keyword_texts) == len(keywords_set)
+    search_terms_page.unique_search_terms()
 
 
 @allure.link('https://trello.com/c/9VW3bwiJ')
@@ -73,3 +71,10 @@ def test_015_001_004_check_if_5_search_terms_is_bigger():
     list_font_sizes = search_terms_page.extract_font_sizes_from_search_terms(terms)
     search_terms_page.check_size_of_5_last_words_in_sorted_list(list_font_sizes)
 
+
+@allure.title('TC_015.002.007 Popular Search Terms > Visibility and clickability> Verify the visibility of the list')
+@allure.feature('Popular Search Terms')
+@allure.link('https://trello.com/c/MAmB9buH')
+def test_015_002_007_visibility_of_the_list():
+    search_terms_page.visit()
+    search_terms_page.visibility_of_the_list()

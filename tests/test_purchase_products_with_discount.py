@@ -1,6 +1,6 @@
 import allure
 from selene import browser
-from pages import cart_page
+from pages import cart
 from pages.erin_recommends_page import ErinRecommendsPage
 from pages.main_page import MainPage
 
@@ -31,4 +31,4 @@ class TestPurchaseOfGoodsWithDiscount:
                 if page.get_subtotal() > 200:
                     break
         with (allure.step("Go to checkout card with products item")):
-            cart_page.open_page()
+            cart.open_page()

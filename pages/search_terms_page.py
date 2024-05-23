@@ -1,4 +1,4 @@
-from selene import query, have, browser
+from selene import query, have, browser, be
 from selene.support.shared.jquery_style import s, ss
 
 LIST_OF_SEARCH_TERMS = '[class="item"] a'
@@ -97,3 +97,16 @@ def check_size_of_5_last_words_in_sorted_list(list_font_sizes):
     for size in range(0, 5):
         if sizes_sorted[size] < 88:
             assert False, "List of search terms has not 5 elements which size is bigger than 88%"
+
+
+def visibility_of_the_list():
+    list_items = ss(LIST_OF_SEARCH_TERMS)
+    for item in list_items:
+        item.should(be.visible)
+
+
+def unique_search_terms():
+    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
+    keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
+    keywords_set = set(keyword_texts)
+    assert len(keyword_texts) == len(keywords_set)

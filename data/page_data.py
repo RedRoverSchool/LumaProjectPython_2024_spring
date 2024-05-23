@@ -15,7 +15,7 @@ class FooterData:
 
 
 class MenSalePageData:
-    breadcrumbs_path = ['Home', 'Sale', 'Men Sale']
+    breadcrumbs_path = ['Home', 'Men Sale']
     page_title = "Men Sale"
 
     

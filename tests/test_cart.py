@@ -2,14 +2,14 @@ import allure
 
 from selene import browser, have
 from pages.main_page import MainPage
-from pages import cart_page
+from pages import cart
 
 
 @allure.title("Test Checking the quantity of item in the cart is able to change")
 class TestCart:
     def test_the_quantity_of_item_in_the_cart_is_able_to_change(self):
         value_of_qty = '2'
-        page_cart = cart_page
+        page_cart = cart
         page = MainPage(browser=browser)
 
         page.open_page()
@@ -24,7 +24,7 @@ class TestCart:
 
     def test_the_product_is_deleted_from_the_cart(self):
 
-        page_cart = cart_page
+        page_cart = cart
         page = MainPage(browser=browser)
 
         page.open_page()
