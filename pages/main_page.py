@@ -6,7 +6,7 @@ from data.links import MAIN_PAGE_LINK
 from data.page_data import MainPageData
 from pages.base_page import BasePage
 from selene.support.shared import browser
-from pages import cart_page
+from pages import cart
 from pages.locators import BaseLocators as BL, HomeLocators, CreateAccountLocators
 from pages.locators import ErinRecommendLocators as ERL
 from pages.locators import NavigatorLocators as Nav, ProductLocators as PL
@@ -83,7 +83,7 @@ class MainPage(BasePage):
 
     def go_to_checkout_cart(self):
         s(PL.VIEW_AND_EDIT_CART_LINK).click()
-        return cart_page
+        return cart
 
     def click_cart_icon(self):
         self.cart_icon.click()

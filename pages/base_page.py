@@ -1,12 +1,9 @@
 from selene import have, be, Element
 from selene.core import command, query
 from selene.support.shared.jquery_style import s, ss
-
-from data.links import CART_LINK
 from pages.components import mini_card
-
 from pages.components import nav
-from pages.locators import ProductItemLocators, HomeLocators, ProductLocators as PL, CartLocators as Cart, CreateAccountLocators
+from pages.locators import ProductItemLocators, HomeLocators, CreateAccountLocators
 
 
 class BasePage:
@@ -102,47 +99,9 @@ class BasePage:
     def click_on_link(locator):
         s(locator).click()
 
-    def clear_cart(self):
-        self.visit(CART_LINK)
-        try:
-            self.delete_product_from_cart()
-        except:
-            pass
-
-    def delete_product_from_cart(self):
-        self.visit(CART_LINK)
-        s(Cart.REMOVE_ITEM_ICON).click()
-        s(Cart.NO_ITEMS_MESSAGE).wait_until(be.visible)
-
-    def add_product_to_cart_with_qty(self, size, color, qty):
-        s(f'[option-label={size}]').click()
-        s(f'[option-label={color}]').click()
-        s(PL.PRODUCT_QTY).click()
-        s(PL.PRODUCT_QTY).clear()
-        s(PL.PRODUCT_QTY).type(qty)
-        s(PL.ADD_TO_CART_BUTTON).click()
-        self.is_visible_success_message()
-
-    def is_minicart_subtotal_correct(self, qty):
-        self.mini_cart.wait_until(be.visible)
-        product_price = float(s(PL.PRODUCT_PRICE).get(query.text).strip('$'))
-        assert self.get_subtotal() == product_price * int(qty)
-
-    def is_minicart_quantity_correct(self, qty):
-        self.mini_cart.wait_until(be.visible)
-        mini_cart_qty = s(HomeLocators.MINICART_PRODUCT_QTY).get(query.attribute("data-item-qty"))
-        assert mini_cart_qty == qty
-
-    def is_cart_counter_shows_correct_number(self, qty):
-        assert self.mini_cart_counter.get(query.text) == qty
-
     def is_create_account_link_visible(self) -> bool:
         try:
             s(CreateAccountLocators.CREATE_AN_ACCOUNT_LINK).should(have.text('Create an Account')).should(be.visible)
             return True
         except AssertionError:
             return False
-
-    def assert_current_url_containing(self, text):
-        url = self.get_current_url()
-        assert text in url

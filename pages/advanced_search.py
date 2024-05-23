@@ -27,3 +27,12 @@ def fill_wrong_price_range():
 def price_range_error_message():
     s(AS.PRICE_ERROR_MESSAGE).should(have.text('Please enter a valid price range.'))
     s(AS.PRICE_TO_ERROR_MESSAGE).should(have.text('Please enter a valid price range.'))
+
+def fill_prohibited_characters_in_price():
+    chars = 'test'
+    s(AS.FIELD_PRICE_FROM).type(chars)
+    s(AS.FIELD_PRICE_TO).type(chars)
+
+def invalid_number_price_error_message():
+    s(AS.PRICE_ERROR_MESSAGE).should(have.text('Please enter a valid number.'))
+    s(AS.PRICE_TO_ERROR_MESSAGE).should(have.text('Please enter a valid number.'))
