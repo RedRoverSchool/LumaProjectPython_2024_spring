@@ -110,21 +110,6 @@ def test_011_001_004_user_can_see_sale_page(url):
     MainPage.handle_cookies_popup()
     s(NavigatorLocators.NAV_SALE).should(be.visible)
 
-@pytest.mark.skip
-@allure.link("https://trello.com/c/hSe3gPsx")
-def test_11_005_003_check_items_in_list_for_compare():
-    sale_page.visit_women_jackets()
-    items_to_be_compared = compare_side_panel.collect_item_names_to_be_compared()
-    compare_side_panel.choose_to_compare_item_nr(1)
-    compare_side_panel.choose_to_compare_item_nr(2)
-    compare_side_panel.choose_to_compare_item_nr(3)
-    sale_page.visit_sale()
-    compare_side_panel.should_be_3_items_to_compare()
-    compare_side_panel.button_compare_is_clickable()
-    compare_side_panel.link_clearall_is_clickable()
-    compared_items = compare_side_panel.collect_items_list_compare()
-    assert items_to_be_compared == compared_items
-
 
 @allure.link('https://trello.com/c/mZOkRDzP/')
 @allure.title('TC_011.008.001 | Sale > Block “Men’s Deals”>Visibility of image and text')

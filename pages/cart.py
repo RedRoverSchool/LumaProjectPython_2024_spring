@@ -16,6 +16,11 @@ tax = s('tr.totals-tax .amount .price')
 discount = s('tr.totals .amount .price')
 subtotal = s('tr.totals.sub .amount .price')
 total = s('tr.grand.totals .amount .price')
+cart_icon = s('a.showcart')
+mini_cart = s('#ui-id-1')
+mini_cart_qty = s('input[class="item-qty cart-item-qty"]')
+product_price = s('//div[@class="product-info-price"]//span[@data-price-type="finalPrice"]')
+minicart_subtotal = s('//*[@id="minicart-content-wrapper"]/div[2]/div[2]/div/span/span')
 
 
 def open_page():
@@ -91,3 +96,42 @@ def check_subtotal_present_in_checkout_cart_page():
 
 def get_text(selector):
     return selector.get(query.attribute('innerText'))
+
+
+def clear_cart():
+    open_page()
+    try:
+        delete_product_from_cart()
+    except:
+        pass
+
+
+def delete_product_from_cart():
+    open_page()
+    remove_item_icon.click()
+    no_items_message.wait_until(be.visible)
+
+
+def click_cart_icon():
+    cart_icon.click()
+    mini_cart.wait_until(be.visible)
+
+
+def product_in_minicart_should_have_name(name):
+    s(f"//*[@id='mini-cart']/li/div/div/strong/a[contains(text(), '{name}')]").should(be.visible)
+
+
+def minicart_quantity_should_be_equal(quantity):
+    mini_cart.wait_until(be.visible)
+    cart_qty = mini_cart_qty.get(query.attribute("data-item-qty"))
+    assert cart_qty == quantity
+
+
+def minicart_subtotal_should_be_calculated_with_qty_equal(quantity):
+    price = int(product_price.get(query.attribute('data-price-amount')))
+    cart_subtotal = float(minicart_subtotal.get(query.text).strip('$'))
+    assert cart_subtotal == price * int(quantity)
+
+
+def counter_should_be_equal(quantity):
+    counter_number.should(have.text(quantity))

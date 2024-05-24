@@ -1,9 +1,5 @@
 import allure
-import pytest
-from selene import browser
-
-from pages import women_page
-from pages.product_page import ProductPage
+from pages import women_page, product, cart, wish_list
 
 
 @allure.link('https://trello.com/c/fhLdyS1l')
@@ -32,71 +28,79 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees_var3():
 
 
 @allure.suite('US_002.001 | Page of any product')
-class TestRadiantTeePage:
-    @allure.title('TC_002.001.002 | Radiant Tee product page > Add to cart > Adding the product to cart')
-    @allure.link('https://trello.com/c/xGtHnQaq/')
-    def test_002_001_002_adding_product_to_cart(self, login):
-        page = ProductPage(browser=browser)
-        page.clear_cart()
-        page.open_radiant_tee_page()
-        page.add_product_to_cart_with_qty("M", "Blue", "2")
-        page.goto_card_page()
-        page.is_radiant_tee_name_visible_in_minicart()
-        page.is_minicart_quantity_correct("2")
-        page.is_minicart_subtotal_correct("2")
-        page.delete_product_from_cart()
+@allure.title('TC_002.001.002 | Radiant Tee product page > Add to cart > Adding the product to cart')
+@allure.link('https://trello.com/c/xGtHnQaq/')
+def test_adding_product_to_cart(login):
+    cart.clear_cart()
+    product.open('radiant-tee')
+    product.add_to_cart_with_qty("M", "Blue", "2")
+    cart.click_cart_icon()
+    cart.product_in_minicart_should_have_name('Radiant Tee')
+    cart.minicart_quantity_should_be_equal('2')
+    cart.minicart_subtotal_should_be_calculated_with_qty_equal('2')
+    cart.delete_product_from_cart()
 
-    @allure.title('TC_002.001.001 | Radiant Tee product page > Visibility of product name, price and photo')
-    @allure.link('https://trello.com/c/SKLAh5ku/')
-    def test_002_001_001_product_name_price_img_visibility(self, login):
-        page = ProductPage(browser=browser)
-        page.open_radiant_tee_page()
-        page.is_radiant_tee_title_visible()
-        page.is_radiant_tee_img_visible()
-        page.is_radiant_tee_price_is_visible()
 
-    @pytest.mark.skip
-    @allure.link('https://trello.com/c/mtsK5CPx')
-    @allure.title('TC_002.001.003 | Radiant Tee product page > Quantity of items> Quantity of items added to cart')
-    def test_002_001_003_radiant_tee_quantity_added_to_cart(self, login):
-        page = ProductPage(browser=browser)
-        page.clear_cart()
-        page.open_radiant_tee_page()
-        page.add_product_to_cart_with_qty("M", "Blue", "2")
-        page.goto_card_page()
-        page.is_cart_counter_shows_correct_number("2")
-        page.is_minicart_quantity_correct("2")
-        page.is_minicart_subtotal_correct("2")
-        page.delete_product_from_cart()
+@allure.suite('US_002.001 | Page of any product')
+@allure.title('TC_002.001.001 | Radiant Tee product page > Visibility of product name, price and photo')
+@allure.link('https://trello.com/c/SKLAh5ku/')
+def test_product_name_price_img_visibility(login):
+    product.open('radiant-tee')
+    product.title_should_have_text('Radiant Tee')
+    product.price_should_be_equal('22')
+    product.img_should_have_name('Radiant Tee')
 
-    @allure.link('https://trello.com/c/EXhjde1P')
-    @allure.title(
-        'TC_002.001.004 | Radiant Tee product page > Visibility of the product description and detailed information')
-    def test_radiant_tee_visibility_of_description(self, login):
-        page = ProductPage(browser=browser)
-        page.open_radiant_tee_page()
-        page.is_product_details_visible()
-        page.click_more_information_tab()
-        page.is_more_information_visible()
 
-    @pytest.mark.skip
-    @allure.link('https://trello.com/c/IR9y4zwY/')
-    @allure.title('TC_002.001.009 | Radiant Tee product page > Adding the product to the wish list')
-    def test_adding_radiant_tee_to_wish_list(self, login):
-        page = ProductPage(browser=browser)
-        page.open_radiant_tee_page()
-        page.add_product_to_wishlist()
-        page.assert_current_url_containing('wishlist')
-        page.is_success_message_adding_to_wishlist_visible()
-        page.is_product_title_visible_in_wishlist('Radiant Tee')
- 
-    @allure.link('https://trello.com/c/5xoWR2Ef/')
-    @allure.title('TC_002.001.007 | Radiant Tee product page > Product parameters > Changing the product size')
-    def test_radiant_tee_changing_size(self, login):
-        page = ProductPage(browser=browser)
-        page.open_radiant_tee_page()
-        page.select_size('XS')
-        page.is_size_indicator_correct('XS')
-        page.select_size('M')
-        page.is_size_selected('M', '#ff5501')
-        page.is_size_indicator_correct('M')
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/mtsK5CPx')
+@allure.title('TC_002.001.003 | Radiant Tee product page > Quantity of items> Quantity of items added to cart')
+def test_product_quantity_added_to_cart(login):
+    cart.clear_cart()
+    product.open('radiant-tee')
+    product.add_to_cart_with_qty("M", "Blue", "2")
+    cart.click_cart_icon()
+    cart.minicart_quantity_should_be_equal('2')
+    cart.counter_should_be_equal('2')
+    cart.minicart_subtotal_should_be_calculated_with_qty_equal('2')
+    cart.delete_product_from_cart()
+
+
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/EXhjde1P')
+@allure.title(
+    'TC_002.001.004 | Radiant Tee product page > Visibility of the product description and detailed information')
+def test_visibility_of_product_description(login):
+    product.open('radiant-tee')
+    product.details_should_contain_text('Radiant Tee')
+    product.more_information_tab_should_contain_text('Tee', 'Cotton', 'Solid', 'Indoor')
+
+
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/5xoWR2Ef/')
+@allure.title('TC_002.001.007 | Radiant Tee product page > Product parameters > Changing the product size')
+def test_changing_product_size(login):
+    product.open('radiant-tee')
+    product.select_size('XS')
+    product.select_size('M')
+    product.size_should_be_selected('M', 'true')
+    product.size_label_should_have_frame_with_color('M', '#ff5501')
+    product.size_indicator_should_have_text('M')
+
+
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/IR9y4zwY/')
+@allure.title('TC_002.001.009 | Radiant Tee product page > Adding the product to the wish list')
+def test_adding_product_to_wish_list(login):
+    product.open('radiant-tee')
+    product.add_to_wish_list()
+    wish_list.url_should_contain('wishlist')
+    wish_list.success_adding_msg_should_have_text('Radiant Tee')
+    wish_list.product_should_have_title('Radiant Tee')
+
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/PChP2lY4')
+@allure.title('TC_002.001.005 | Radiant Tee product page > Reviews > Reviews visibility')
+def test_product_reviews_visibility(login):
+    product.open('radiant-tee')
+    product.click_reviews_tab()
+    product.reviews_should_have_title('Customer Reviews', 'Radiant Tee')
