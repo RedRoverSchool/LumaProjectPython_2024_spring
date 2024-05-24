@@ -69,3 +69,4 @@ LAYLA_TEE_URL = 'https://magento.softwaretestingboard.com/layla-tee.html'
 LINK_WOMEN = "https://magento.softwaretestingboard.com/women.html"
 LINK_SHIPPING = "https://magento.softwaretestingboard.com/checkout/#shipping"
 LINK_PAYMENT = "https://magento.softwaretestingboard.com/checkout/#payment"
+
