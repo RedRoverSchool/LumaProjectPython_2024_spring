@@ -1,9 +1,7 @@
-import time
-from idlelib import config
-
-from selene import browser, be, have, command, query
-from selene import browser, be, have, Element
+from selene import browser, be, have
+from selene import command
 from selene.support.shared.jquery_style import s, ss
+
 from pages.locators import BaseLocators, PerformanceSportswear, ProductLocators
 
 URL_PERFORMANCE = "https://magento.softwaretestingboard.com/collections/performance-new.html"
