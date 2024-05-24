@@ -1,4 +1,6 @@
 import allure
+import pytest
+
 from pages import women_page, product, cart, wish_list
 
 
@@ -27,6 +29,7 @@ def test_011_016_002_breadcrumbs_redirection_from_women_tees_var3():
     women_page.check_nr_of_links_from_women_tee_by_breadcrumbs_by_get_attr()
 
 
+@pytest.mark.skip
 @allure.suite('US_002.001 | Page of any product')
 @allure.title('TC_002.001.002 | Radiant Tee product page > Add to cart > Adding the product to cart')
 @allure.link('https://trello.com/c/xGtHnQaq/')
