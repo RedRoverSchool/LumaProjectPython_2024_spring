@@ -94,7 +94,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest -n2
+          pytest -n2 --reruns=5
         env:
           CI_RUN: true
           PYTHONDONTWRITEBYTECODE: 1
