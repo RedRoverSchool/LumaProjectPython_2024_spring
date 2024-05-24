@@ -50,7 +50,7 @@ class TestErinRecommends: #please refactor
         with allure.step("Assert number of product displayed matches to selection"):
             page.verify_number_of_product_displayed(13,24)
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @allure.title("TC_001.002.005 | Main Page > Erin Recommendations > Arrangement of Products Display")
     def test_switch_to_list_view(self):
         with allure.step("Open Erin Recommends page"):
@@ -62,7 +62,7 @@ class TestErinRecommends: #please refactor
             assert page.is_list_view_activate(), "The product layout did not switch to list view."
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")
 def test_add_item_to_compare():
     with allure.step("Open Erin Recommends page"):

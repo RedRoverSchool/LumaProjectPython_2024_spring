@@ -4,7 +4,7 @@ from pages import wish_list, sale_page, sign_in
 from pages import whats_new_page
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.link("https://trello.com/c/kVWLOEl5")
 def test_button_update_clickable(login):
     whats_new_page.add_item_to_wish_list()
@@ -13,7 +13,7 @@ def test_button_update_clickable(login):
     wish_list.url_should_contain("wishlist_id")
 
 
-@pytest.mark.skip
+@pytest.mark.skip(reason="you shall not pass")
 @allure.link("https://trello.com/c/xP2eIJZq")
 @allure.feature("Wish list > Removing and Edit Items")
 @allure.title("TC_014.003.002 | Wish list > Removing items")
@@ -27,7 +27,7 @@ def test_remove_item_from_wishlist(login):
         wish_list.is_item_removed(item_title)
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.link('https://trello.com/c/WQ4d6xa4')
 def test_011_006_001_message_no_items_is_displayed():
     wish_list.visit_login()

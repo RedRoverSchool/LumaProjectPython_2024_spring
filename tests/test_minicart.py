@@ -46,7 +46,7 @@ class TestMiniCart:
         page.go_to_mini_cart()
         page.mini_card.check_the_link_opens_checkout_cart_page()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @allure.link("https://trello.com/c/v4hVrwzq")
     def test_size_color_and_product_name_are_correct_tc_005_001_013(self):
         page = MainPage(browser=browser)

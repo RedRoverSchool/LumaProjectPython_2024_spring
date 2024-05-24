@@ -23,7 +23,7 @@ def test_015_001_003_check_if_search_terms_has_size_from_76_till_136RF():
     search_terms_page.check_min_and_max_font_sizes(list_font_sizes)
 
 
-@pytest.mark.skip('Test have a bug')
+@pytest.mark.skip(reason='you shall not pass')
 @allure.link('https://trello.com/c/8jDgYDYW')
 def test_015_002_006_order_search_terms():
     search_terms_page.visit()

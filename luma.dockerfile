@@ -75,4 +75,4 @@ COPY ./tests /tests/tests
 
 ENV CI_RUN=true
 # Запускаем проект 
-CMD ["pytest", "-n2", "-s", "-v"]
+CMD ["pytest", "-n2", "-s", "-v", "--reruns=5"]

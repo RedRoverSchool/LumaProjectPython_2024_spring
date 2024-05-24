@@ -12,7 +12,7 @@ def test_verify_visibility_elements_dropdown_menu():
     women_page.dropdown_menu_have_elements('Tops', 'Bottoms')
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.title("Compare products | From any catalog's page > Verify after clicking on the compare button user is "
               "redirected to the Compare Products page.")
 @allure.link("https://trello.com/c/fvMCdJ97")
