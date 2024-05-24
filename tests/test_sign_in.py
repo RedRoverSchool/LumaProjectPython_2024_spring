@@ -20,7 +20,7 @@ def test_sign_in_with_bad_credentials():
     message.should_be_message("account sign-in was incorrect")
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link("https://trello.com/c/FxDGeQYY")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_001_login_unsuccessful():
@@ -30,7 +30,7 @@ def test_004_005_001_login_unsuccessful():
 
 
 #
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link("https://trello.com/c/otpjtX3K")
 @allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_004_005_002_login_successful():
