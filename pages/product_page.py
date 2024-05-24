@@ -62,3 +62,7 @@ class ProductPage(BasePage):
     @staticmethod
     def is_size_indicator_correct(size):
         s(PL.SIZE_INDICATOR).should(have.text(size))
+
+
+def assert_reviews_title_is_visible():
+    s("#tab-label-reviews-title").should(be.visible)

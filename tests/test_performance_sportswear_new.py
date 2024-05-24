@@ -1,5 +1,8 @@
 import allure
-from pages import performans_new_page, sign_in
+import pytest
+
+from pages import performans_new_page, sign_in, product_page
+
 
 
 @allure.feature(" What's new > Performance Sportswear New > Check count of products")
@@ -64,3 +67,13 @@ def test_006_008_004_add_to_cart_from_product_page_without_color_and_size():
     performans_new_page.press_button_add_to_cart()
     performans_new_page.check_msg_no_required_field_color()
     performans_new_page.check_msg_no_required_field_size()
+
+@allure.feature("TC_006.008.10 | What's new > Performance Sportswear New > Each product card displays the product rating and the number of reviews")
+@allure.link("https://trello.com/c/mjKfokpO")
+@pytest.mark.parametrize("product_name", ["Hyperion Elements Jacket", "Helios Endurance Tank", "Ingrid Running Jacket", "Juliana Short-Sleeve Tee", "Gwen Drawstring Bike Short"])
+def test_product_review_section(login, product_name):
+    performans_new_page.visit()
+    performans_new_page.click_product_review(product_name)
+    product_page.assert_reviews_title_is_visible()
+
+

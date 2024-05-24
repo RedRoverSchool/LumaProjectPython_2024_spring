@@ -1,9 +1,13 @@
+import time
+from idlelib import config
+
 from selene import browser, be, have, command, query
 from selene import browser, be, have, Element
 from selene.support.shared.jquery_style import s, ss
 from pages.locators import BaseLocators, PerformanceSportswear, ProductLocators
 
 URL_PERFORMANCE = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+
 
 def visit():
     browser.open(URL_PERFORMANCE)
@@ -54,6 +58,7 @@ def go_to_product_helios_endurance_tank():
 def select_size_XS():
     s(ProductLocators.SIZE_XS).click()
 
+
 def select_color_blue():
     s(ProductLocators.COLOR_BLUE).click()
 
@@ -75,4 +80,13 @@ def check_msg_no_required_field_color():
 def check_msg_no_required_field_size():
     choose_size = s(ProductLocators.SHOULD_CHOOSE_SIZE)
     choose_size.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+
+
+def click_product_review(product_name):
+    product_rating = s(f'//*[@title="{product_name}"]/../..')
+    product_rating.hover()
+    product_rating.s(".rating-result").should(be.visible)
+    product_rating.s("a.action.view").should(be.clickable).perform(command.js.click)
+
+
 
