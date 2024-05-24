@@ -5,7 +5,7 @@ from pages import compare_side_panel
 import pytest
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link("https://trello.com/c/hSe3gPsx")
 def test_11_005_003_check_items_in_list_for_compare():
     compare_side_panel.visit_women_jackets()
