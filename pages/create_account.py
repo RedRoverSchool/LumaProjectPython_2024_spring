@@ -1,4 +1,4 @@
-from selene import browser, have, be
+from selene import browser, have
 from selene.support.shared.jquery_style import s
 
 from pages.locators import CreateAccountLocators

@@ -1,5 +1,4 @@
 import allure
-import pytest
 from selene import browser, have
 from selene.support.shared.jquery_style import s
 

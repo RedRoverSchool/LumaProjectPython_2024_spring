@@ -1,7 +1,9 @@
+from selene import be, have
+from selene.support.shared import browser
+from selene.support.shared.jquery_style import s, ss
+
 from data.page_data import SignInData
 from pages import sign_in
-from selene import be, have
-from selene.support.shared.jquery_style import s, ss
 from pages.locators import *
 
 
@@ -19,7 +21,7 @@ def click_on_four_tees_discount_banner():
 
 
 def check_the_shopping_cart_is_empty():
-    s(HomeLocators.CART_ICON).click()
+    s('a.showcart').click()
     s(HomeLocators.EMPTY_MINICART_MSG).should(have.text("You have no items in your shopping cart."))
 
 
@@ -32,7 +34,7 @@ def add_four_same_model_tees():
 
 
 def click_on_add_to_cart_btn():
-    s(ProductLocators.ADD_TO_CART_BUTTON).click()
+    s('#product-addtocart-button').click()
     browser.driver.back()
     browser.should(have.url("https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"))
 
@@ -50,7 +52,7 @@ def check_discount_is_applied_for_four_different_tees():
 
 def click_on_the_shopping_cart_icon():
     s(TeesPageLocators.COUNT_NUMBER).should(be.visible)
-    s(HomeLocators.CART_ICON).click()
+    s('a.showcart').click()
     s(TeesPageLocators.VIEW_AND_EDIT_CART_LINK).should(be.visible).click()
 
 

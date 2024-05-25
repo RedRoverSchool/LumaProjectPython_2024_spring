@@ -2,9 +2,14 @@ from selene import browser, be, have
 from selene import command
 from selene.support.shared.jquery_style import s, ss
 
-from pages.locators import BaseLocators, PerformanceSportswear, ProductLocators
+from pages.locators import PerformanceSportswear
 
 URL_PERFORMANCE = "https://magento.softwaretestingboard.com/collections/performance-new.html"
+text_required_field = 'This is a required field.'
+
+product_price = '.price-label'
+product_name = '.product-item-link'
+product_image = '.product-image-photo'
 
 
 def visit():
@@ -23,20 +28,19 @@ def check_buttons():
         product_card.s(".action.tocompare").should(be.visible)
 
 
-def compare_nr_of_items_and_nr_of_names(items_count):
-    ss(BaseLocators.PRODUCT_NAME).should(have.size(items_count))
+def compare_nr_of_items_and_nr_of_names(count):
+    ss(product_name).should(have.size(count))
 
 
-def compare_nr_of_items_and_nr_of_images(items_count):
-    ss(BaseLocators.PRODUCT_IMAGE).should(have.size(items_count))
+def compare_nr_of_items_and_nr_of_images(count):
+    ss(product_image).should(have.size(count))
 
 
-def compare_nr_of_items_and_nr_of_prices(items_count):
-    ss(BaseLocators.PRODUCT_PRICE).should(have.size(items_count))
+def compare_nr_of_items_and_nr_of_prices(count):
+    ss(product_price).should(have.size(count))
 
 
 def click_button_add_to_cart_with_js():
-    # кликнуть невидимую кнопку - она за пределами экрана и/или не отрисована
     s(PerformanceSportswear.BUTTON_ADD_ITEM2).perform(command.js.click)
 
 
@@ -53,12 +57,12 @@ def go_to_product_helios_endurance_tank():
     s(PerformanceSportswear.IMAGE_2).click()
 
 
-def select_size_XS():
-    s(ProductLocators.SIZE_XS).click()
+def select_size_xs():
+    s('#option-label-size-143-item-166').click()
 
 
 def select_color_blue():
-    s(ProductLocators.COLOR_BLUE).click()
+    s('#option-label-color-93-item-50').click()
 
 
 def verify_if_color_and_size_were_selected():
@@ -67,17 +71,17 @@ def verify_if_color_and_size_were_selected():
 
 
 def press_button_add_to_cart():
-    s(ProductLocators.ADD_TO_CART_BUTTON).click()
+    s('//*[@id="product-addtocart-button"]/span').click()
 
 
 def check_msg_no_required_field_color():
-    choose_color = s(ProductLocators.SHOULD_CHOOSE_COLOR)
-    choose_color.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+    choose_color = s('//*[@id="super_attribute[93]-error"]')
+    choose_color.should(have.text(text_required_field))
 
 
 def check_msg_no_required_field_size():
-    choose_size = s(ProductLocators.SHOULD_CHOOSE_SIZE)
-    choose_size.should(have.text(ProductLocators.TEXT_REQUIRED_FIELD))
+    choose_size = s('//*[@id="super_attribute[143]-error"]')
+    choose_size.should(have.text(text_required_field))
 
 
 def click_product_review(product_name):
@@ -85,6 +89,3 @@ def click_product_review(product_name):
     product_rating.hover()
     product_rating.s(".rating-result").should(be.visible)
     product_rating.s("a.action.view").should(be.clickable).perform(command.js.click)
-
-
-

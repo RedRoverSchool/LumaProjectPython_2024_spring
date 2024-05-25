@@ -4,7 +4,6 @@ from selene.support.shared.jquery_style import s, ss
 LIST_OF_SEARCH_TERMS = '[class="item"] a'
 LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
 TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
-LIST_OF_SEARCH_TERMS = '[class="item"] a'
 PRODUCT_ITEM_NAMES = '[class=product-item-link]'
 BASE_TITLE = '[class=base]'
 PAGE_TITLE = "h1"
@@ -46,14 +45,11 @@ def check_min_and_max_font_sizes(list_font_sizes):
 
 
 def extract_keywords_from_search_terms_as_it_is(terms):
-    # список ключевых,вытаскиваемых с помощью selene, выглядит не так, как при selenium.
-    # Теперь есть лишние пробелы, перевод строки, слова с малой буквы неправильно сортируются.
-    # С selenium тест = ОК
-    list_of_goods_nonsorted = []  # words from terms applied lower()
+    list_of_goods_non_sorted = []
     for keyword in terms:
         keyword = keyword.get(query.attribute("text")).strip().replace(" ", "").lower()
-        list_of_goods_nonsorted.append(keyword.lower())
-    return list_of_goods_nonsorted
+        list_of_goods_non_sorted.append(keyword.lower())
+    return list_of_goods_non_sorted
 
 
 def extract_keywords_from_search_terms_sorted(terms):

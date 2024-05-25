@@ -1,7 +1,7 @@
 import allure
 from selene import browser
 from pages import cart
-from pages.erin_recommends_page import ErinRecommendsPage
+from pages import erin_recommends_page
 from pages.main_page import MainPage
 
 
@@ -9,7 +9,6 @@ from pages.main_page import MainPage
 @allure.suite("US_011.013 | Sale > 20% OFF: Purchase of goods with a 20% discount")
 class TestPurchaseOfGoodsWithDiscount:
     @allure.feature(" Sale > 20% OFF: Purchase of goods with a 20% discount")
-
     def test_sale_off_purchase_of_goods_with_discount(self):
         with allure.step("Open main page and check if load successfully"):
             page = MainPage(browser=browser)
@@ -20,7 +19,7 @@ class TestPurchaseOfGoodsWithDiscount:
             products = page.products
             size = len(products)
             if size == 0:
-                page = ErinRecommendsPage(browser=browser)
+                page = erin_recommends_page
                 page.open_page()
                 size = len(page.products)
             count = 0

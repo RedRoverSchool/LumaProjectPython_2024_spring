@@ -40,4 +40,3 @@ def items_amount():
 def item_page_item_next():
     s(next_page).click()
     s(item).should(be.visible)
-

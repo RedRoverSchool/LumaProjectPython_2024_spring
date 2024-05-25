@@ -28,7 +28,6 @@ MEN_TOPS_TANKS_URL = BASE_URL + '/men/tops-men/tanks-men.html'
 MEN_BOTTOMS_URL = BASE_URL + '/men/bottoms-men.html'
 MEN_BOTTOMS_PANTS_URL = BASE_URL + '/men/bottoms-men/pants-men.html'
 MEN_BOTTOMS_SHORTS_URL = BASE_URL + '/men/bottoms-men/shorts-men.html'
-ARGUS_ALL_WEATHER_TANK_URL = BASE_URL + '/argus-all-weather-tank.html'
 
 GEAR_PAGE_URL = BASE_URL + '/gear.html'
 GEAR_BAGS_URL = BASE_URL + '/gear/bags.html'
@@ -56,7 +55,6 @@ CART_URL = BASE_URL + '/checkout/cart/'
 
 CONTACT_US_LINK = BASE_URL + "/contact/"
 SALE_SECTION_LINK = "https://magento.softwaretestingboard.com/sale.html"
-WOMEN_JACKET_LINK = "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html"
 CART_LINK = BASE_URL + '/checkout/cart/'
 YOGA_URL = BASE_URL + '/collections/yoga-new.html'
 MEN_SALE_PAGE_URL = BASE_URL + '/promotions/men-sale.html'

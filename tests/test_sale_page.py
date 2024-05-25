@@ -1,8 +1,7 @@
 from selene import browser, be, have
 import allure
-from pages import sale_page, compare_side_panel
+from pages import sale_page
 from selene.support.shared.jquery_style import s
-from pages.sale_page import SalePage
 from pages.locators import SalePageLocators, BaseLocators, NavigatorLocators
 from pages.main_page import MainPage
 from data.links import *
@@ -12,7 +11,7 @@ import pytest
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/RF0vkTGW')
 def test_011_001_001_sale_breadcrumbs_is_correct():
-    sale_page.visit()
+    sale_page.open_page()
     sale_page.check_if_breadcrumbs_have_all_parts()
 
 
@@ -72,10 +71,9 @@ def test_bags_link_correct_redirection():
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/pyqtpSob')
 def test_011_007_002_clickability_button():
-    sale_page = SalePage(browser)
-    sale_page.open_page()
+    sale_page.visit_sale()
     sale_page.check_page_title()
-    sale_page.redirect()
+    sale_page.assert_redirect_url()
 
 
 @allure.feature("Sale")
@@ -119,6 +117,7 @@ def test_011_008_001_men_s_deals_img_and_text_visibility():
     sale_page.is_mens_bargains_text_visible()
     sale_page.is_stretch_your_budget_text_visible()
     sale_page.is_shop_mens_deals_text_visible()
+
 
 @allure.link('https://trello.com/c/kH80u6ta')
 @allure.title("TC_011.008.002 |Sale > Block 'Men’s Deals'>Verify clicking to 'Men's Bargains' image redirect to the 'Men Sale' page")

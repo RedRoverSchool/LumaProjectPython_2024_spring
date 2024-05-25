@@ -1,5 +1,5 @@
-from selene import browser, be, have
-from selene.support.shared.jquery_style import s, ss
+from selene import browser, have
+from selene.support.shared.jquery_style import s
 
 url = "https://magento.softwaretestingboard.com/customer/account/"
 

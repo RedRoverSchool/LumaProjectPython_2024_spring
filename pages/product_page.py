@@ -1,4 +1,3 @@
-from selene import query, have
 from selene.support.conditions import be
 from selene.support.shared.jquery_style import s
 
