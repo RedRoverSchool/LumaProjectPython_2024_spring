@@ -71,7 +71,7 @@ def test_bags_link_correct_redirection():
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/pyqtpSob')
 def test_011_007_002_clickability_button():
-    sale_page.visit_sale()
+    sale_page.open_page()
     sale_page.check_page_title()
     sale_page.assert_redirect_url()
 
@@ -79,7 +79,7 @@ def test_011_007_002_clickability_button():
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/O0iYXhy1')
 def test_each_image_includes_short_description_of_the_promotion():
-    sale_page.visit_sale()
+    sale_page.open_page()
     s(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_TITLE).should(have.text('20% OFF'))
     s(SalePageLocators.BLOCK_PROMO_SALE_20_OFF_INFO).should(have.text('Every $200-plus purchase!'))
     s(SalePageLocators.BLOCK_PROMO_SALE_FREE_SHIPPING_TITLE).should(have.text('Spend $50 or more — shipping is free!'))
@@ -112,7 +112,7 @@ def test_011_001_004_user_can_see_sale_page(url):
 @allure.link('https://trello.com/c/mZOkRDzP/')
 @allure.title('TC_011.008.001 | Sale > Block “Men’s Deals”>Visibility of image and text')
 def test_011_008_001_men_s_deals_img_and_text_visibility():
-    sale_page.visit_sale()
+    sale_page.open_page()
     sale_page.is_mens_deals_img_visible()
     sale_page.is_mens_bargains_text_visible()
     sale_page.is_stretch_your_budget_text_visible()
@@ -122,7 +122,7 @@ def test_011_008_001_men_s_deals_img_and_text_visibility():
 @allure.link('https://trello.com/c/kH80u6ta')
 @allure.title("TC_011.008.002 |Sale > Block 'Men’s Deals'>Verify clicking to 'Men's Bargains' image redirect to the 'Men Sale' page")
 def test_011_008_002_mens_deals_img_clickability_and_redirection():
-    sale_page.visit_sale()
+    sale_page.open_page()
     sale_page.is_mens_deals_img_clickable()
     sale_page.click_mens_deals_img()
     sale_page.check_redirection_mens_deals()
