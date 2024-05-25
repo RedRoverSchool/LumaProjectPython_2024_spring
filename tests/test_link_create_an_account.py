@@ -11,7 +11,7 @@ def test_link_on_different_pages():
     pages = [MainPage(browser), gear_page, sale_page]
 
     for page in pages:
-        page.open_page_women_sale()
+        page.open_page()
         page.should_be_clickable_create_account()
         page.has_create_account_text()
 
