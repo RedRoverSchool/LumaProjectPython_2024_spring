@@ -33,10 +33,10 @@ def test_luma_latest_list_visibility():
     page = MainPage(browser=browser)
     page.open_page()
     page.whats_new.click()
-    whats_new_page.is_luma_latest_present()
+    whats_new_page.luma_latest_should_be_present()
     item_number = whats_new_page.get_number_of_luma_latest()
     assert item_number == 4
-    assert whats_new_page.are_men_and_women_items_present() is True
+    assert whats_new_page.men_and_women_items_both_should_be_present() is True
 
 @allure.title(
     "TC_006.002.004 I What's new > Eco Collection New* > Redirection to the product page by clicking on the product name")
