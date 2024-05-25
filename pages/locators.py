@@ -24,7 +24,6 @@ class SalePageLocators:
     SHOP_MENS_DEALS = "//span[text()='Shop Men’s Deals']"
 
 
-
 class ProductLocators:
     RADIANT_TEE_SIZE = '[option-label="XS"]'
     RADIANT_TEE_COLOR = '[option-label="Orange"]'
@@ -136,6 +135,7 @@ class WhatsNewPageLocators:
     LAYLA_TEE_NAME = "//a[@title='Layla Tee']"
     LAYLA_TEE_IMG = '//li[2]//img[@class="product-image-photo"]'
 
+
 class PrivacyPolicyPageLocators:
     PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
 
@@ -189,6 +189,7 @@ class CreateAccountLocators:
     PASSWORD = '//input[@id="password"]'
     CONF_PASS = '//input[@id="password-confirmation"]'
     CREATE_BUTTON = '//button[@title="Create an Account"]'
+
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"
