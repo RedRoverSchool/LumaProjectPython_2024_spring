@@ -14,6 +14,13 @@ class SalePageLocators:
     BLOCK_PROMO_SALE_FREE_SHIPPING_INFO = "a[class='block-promo sale-free-shipping'] span[class='info']"
     BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_TITLE = "a[class='block-promo sale-womens-t-shirts'] strong[class='title']"
     BLOCK_PROMO_SALE_WOMENS_T_SHIRTS_INFO = "a[class='block-promo sale-womens-t-shirts'] span[class='info']"
+    MENS_DEALS_IMG = 'a.block-promo.sale-mens img'
+    MENS_DEALS_IMG_LINK = 'a.block-promo.sale-mens'
+    MENS_BARGAINS_TEXT = 'a.block-promo.sale-mens span strong'
+    STRETCH_YOUR_BUDGET_TEXT = "//span[text()='Stretch your budget with active attire']"
+    SHOP_MENS_DEALS = "//span[text()='Shop Men’s Deals']"
+    MENS_DEALS_BASE_LOCATOR = '//strong[@class="title"]/span[text()="Mens\'s Deals"]/../' \
+                              'following-sibling::ul[@class="items"]/li[@class="item"]/a[text()="{item}"]'
 
 
 class ProductLocators:
