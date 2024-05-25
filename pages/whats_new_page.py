@@ -33,11 +33,11 @@ def is_current_url_yoga():
     return browser.driver.current_url == yoga_url
 
 
-def is_element_text_correct(element, text):
+def element_should_have_correct_text(element, text):
     element.should(have.text(text))
 
 
-def is_header_present():
+def header_should_be_present():
     return s('h1>span').should(be.present)
 
 

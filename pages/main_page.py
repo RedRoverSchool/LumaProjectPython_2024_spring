@@ -118,10 +118,11 @@ class MainPage:
     def click_privacy_cookie_policy_link(self):
         self.privacy_cookie_policy_link.click()
 
-    def is_menu_present(self):
+    @staticmethod
+    def menu_should_be_present():
         s('#ui-id-2').should(be.present)
 
-    def is_whats_new_link_present(self):
+    def whats_new_link_should_be_present(self):
         self.whats_new.should(be.present)
 
     def is_loaded(self):
