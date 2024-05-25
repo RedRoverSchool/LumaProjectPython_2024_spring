@@ -1,35 +1,21 @@
-from selene import query
 from selene.support.conditions import be
-from selene.support.shared.jquery_style import s, ss
-from pages.base_page import BasePage
-from pages.locators import ProductLocators as PL, HomeLocators as HL
+from selene.support.shared.jquery_style import s
+
+product_qty = s('#qty')
+add_to_cart_button = s('#product-addtocart-button')
+add_to_cart_success_msg = s("//div[contains(text(), 'You added')]")
 
 
-class ProductPage(BasePage):
+def add_product_to_cart_with_qty(size, color, qty):
+    s(f'[option-label={size}]').click()
+    s(f'[option-label={color}]').click()
+    product_qty.click() \
+        .clear() \
+        .type(qty)
+    add_to_cart_button.click()
+    add_to_cart_success_msg.wait_until(be.visible)
 
-    def open_radiant_tee_page(self):
-        self.visit(PL.RADIANT_TEE_URL)
+    
+def assert_reviews_title_is_visible():
+    s("#tab-label-reviews-title").should(be.visible)
 
-    def is_radiant_tee_title_visible(self):
-        self.assert_visible_of_element(PL.RADIANT_TEE_TITLE)
-
-    def is_radiant_tee_img_visible(self):
-        self.assert_visible_of_element(PL.RADIANT_TEE_IMG)
-
-    def is_radiant_tee_price_is_visible(self):
-        self.assert_visible_of_element(PL.RADIANT_TEE_PRICE)
-
-    def is_radiant_tee_name_visible_in_minicart(self):
-        self.assert_visible_of_element(HL.MINICART_RADIANT_TEE_NAME)
-
-    def is_product_details_visible(self):
-        assert s(PL.PRODUCT_DETAILS_TEXT).get(query.text) != 0
-
-    def click_more_information_tab(self):
-        s(PL.MORE_INFO_TAB).should(be.clickable).click()
-
-    def is_more_information_visible(self):
-        text = []
-        for n in range(1, 5):
-            text.append(s(f'//tbody/tr[{n}]/td').get(query.text))
-        assert text != []

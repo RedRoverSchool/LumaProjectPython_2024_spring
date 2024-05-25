@@ -1,17 +1,35 @@
 from selene import browser, be, have, command
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.common.by import By
-from pages.locators import WishListLocators as WishList, BaseLocators
-from data.page_data import WishListData as Data
 
 url = "https://magento.softwaretestingboard.com/wishlist/"
 product_url = "https://magento.softwaretestingboard.com/aether-gym-pant.html?qty=1#143=&93="
-
-ADD_TO_WISHLIST = "a[class='action towishlist']"
-SUCCESS_MSG = "div[class='message-success success message']"
-ITEM_CARD = "(//div[@class='product-item-info'])[1]"
+WOMEN_JACKET_LINK = "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html"
+add_to_wishlist = "a[class='action towishlist']"
+success_msg = "div[class='message-success success message']"
+item_card = "(//div[@class='product-item-info'])[1]"
 REMOVE_ITEM = "//div[@class='product-item-actions']/a[@class='btn-remove action delete']"
-ITEM_TITLE = "(//div[@class='products-grid wishlist']//a[@class='product-item-link'])[1]"
+item_title = "(//div[@class='products-grid wishlist']//a[@class='product-item-link'])[1]"
+success_add_msg_text = s("div[class='message-success success message'] div")
+
+url_login = "https://magento.softwaretestingboard.com/customer/account/login"
+user_email = s("div.login-container #email")
+user_password = s("div.login-container #pass")
+sign_in_button = s("div.login-container #send2")
+
+ITEM_6_ADD_TO_WISH_LIST = 'ol > li:nth-child(6) a.action.towishlist'
+ITEM_8_ADD_TO_WISH_LIST = 'ol > li:nth-child(8) a.action.towishlist'
+ITEM_9_ADD_TO_WISH_LIST = 'ol > li:nth-child(9) a.action.towishlist'
+LINK_SALE = "https://magento.softwaretestingboard.com/sale.html"
+delete_bucket = '.btn-remove.action.delete'
+
+update = s(".update")
+products = ss('.products-grid.wishlist .product-item')
+message_wish_list_is_empty = s('div.block.block-wishlist > div.block-content > div')
+
+empty_message = 'You have no items in your wish list.'
+removed_message = 'has been removed from your Wish List.'
+add_wish_list_message = "added to your Wish List"
 
 
 def visit(url=url):
@@ -19,69 +37,161 @@ def visit(url=url):
 
 
 def click_update():
-    s(".update").click()
+    update.click()
 
 
 def should_be_clickable():
-    s(".update").should(be.clickable)
+    update.should(be.clickable)
 
 
 def url_should_contain(param):
     browser.should(have.url_containing(param))
 
 
-def get_products():
-    return ss(WishList.PRODUCT_ITEM)
-
-
 def verify_trash_bin_icon_present():
-    items = get_products()
+    items = products
     size = len(items)
     count = 0
     for i in range(size):
         items[i].perform(command.js.scroll_into_view).hover()
-        items[i].s(WishList.DELETE_BUCKET).should(be.visible).should(be.present)
+        items[i].s(delete_bucket).should(be.visible).should(be.present)
         count += 1
     assert count == size
 
 
 def has_success_message():
-    assert s(BaseLocators.SUCCESS_MESSAGE).should(have.text(Data.removed_message))
+    assert s('div.message-success.success.message div').should(have.text(removed_message))
 
 
 def remove_item_from_wish_list(index):
-    product = get_products()[index]
-    product.hover().s(WishList.DELETE_BUCKET).click()
+    product = products[index]
+    product.hover().s(delete_bucket).click()
     has_success_message()
 
 
 def edit_item_in_wish_list(index, qty, color, size):
-    get_products()[index].hover().s(WishList.ITEM_ACTIONS).click()
-    s(WishList.QUALITY).clear().send_keys(qty)
-    ss(WishList.COLORS)[color].click()
-    ss(WishList.SIZES)[size].click()
-    s(WishList.UPDATED).click()
+    p = products[index]
+    p.hover().s(".product-item-actions").click()
+    ss(".input-text.qty").second.clear().send_keys(qty)
+    p.s('.actions-primary').click()
+    ss("div.swatch-attribute.color .swatch-option.color")[color].click()
+    ss("div.swatch-attribute.size .swatch-option.text")[size].click()
+    s("a.action.towishlist.updated").click()
 
 
 def is_wish_list_empty():
-    s(WishList.EMPTY_MESSAGE).should(have.text(Data.empty_message))
+    s('.message.info.empty span').should(have.text(empty_message))
 
 
 def remove_item():
-    item_title = browser.driver.find_element(By.XPATH, ITEM_TITLE).text
     s(REMOVE_ITEM).should(be.visible).click()
-    return item_title
+    return browser.driver.find_element(By.XPATH, item_title).text
 
 
 def add_item_to_wish_list():
     visit(product_url)
-    s(ADD_TO_WISHLIST).should(be.clickable).click()
-    s(SUCCESS_MSG).should(be.visible)
+    s(add_to_wishlist).should(be.clickable).click()
+    s(success_msg).should(be.visible)
 
 
 def hover_over_item():
-    s(ITEM_CARD).should(be.present).hover()
+    s(item_card).should(be.present).hover()
 
 
 def is_item_removed(item):
-    s(ITEM_TITLE).should(have.no.text(item))
+    s(item_title).should(have.no.text(item))
+
+
+def wish_list_is_empty():
+    message_wish_list_is_empty.should(have.text(empty_message))
+
+
+def wish_list_is_not_empty():
+    message_wish_list_is_empty.should(have.no.text(empty_message))
+
+
+def add_to_wish_list_from_catalog(item):
+    s(item).perform(command.js.click)
+
+
+def go_to_wish_list():
+    s('.action.details').should(be.clickable).click()
+
+
+def title_is_correct():
+    s("h1").should(have.text("My Wish List"))
+
+
+def clear_wish_list():
+    if wish_list_is_not_empty():
+        items_in_wish_list = ss(delete_bucket)
+        for item in items_in_wish_list:
+            item.should(be.clickable).click()
+
+
+
+def success_adding_msg_should_have_text(text):
+    success_add_msg_text.should(have.text(text))
+
+
+def product_should_have_title(title):
+    s(f'a.product-item-link[title="{title}"]').should(be.visible)
+
+    
+def visit_women_jackets():
+    browser.open(WOMEN_JACKET_LINK)
+
+
+def visit_login():
+    browser.open(url_login)
+
+
+def login(user, password):
+    user_email.type(user)
+    user_password.type(password)
+    sign_in_button.click()
+
+
+def check_qty_in_wishlist():
+    s('div.block.block-wishlist > div.block-title > span').should(have.text('3 items'))
+
+
+def count_items_in_wishlist(nr):
+    title_items_nr = ss('[data-bind="text: product_name"]')
+    assert len(title_items_nr) == nr
+
+
+def count_button_add_tocart(nr):
+    buttons = ss('#wishlist-sidebar button')
+    assert len(buttons) == nr
+
+
+def count_prices_in_wishlist(nr):
+    prices = ss('.price-as-configured')
+    assert len(prices) == nr
+
+
+def items_name_in_wishlist_is_clickable():
+    links = ss('#wishlist-sidebar strong > a')
+    for ln in links:
+        ln.should(be.clickable)
+
+
+def images_in_wishlist_is_clickable():
+    images = ss('//*[@id="wishlist-sidebar"]/li[1]/div/a/span/span/img')
+    for ima in images:
+        ima.should(be.clickable)
+
+
+def count_images_in_wishlist(nr):
+    images = ss('#wishlist-sidebar div > a > span > span > img')
+    assert len(images) == nr
+
+
+# def check_link_go_to_wishlist_is_clickable():
+#     s('//*[@id="maincontent"]//div[3]/div[3]/div[2]/div/div/a').should(be.clickable)
+
+
+def visit_sale():
+    browser.open(LINK_SALE)
+

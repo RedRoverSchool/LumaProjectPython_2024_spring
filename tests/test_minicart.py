@@ -1,4 +1,5 @@
 import allure
+import pytest
 from selene import browser
 from selene.support.shared.jquery_style import s
 
@@ -17,8 +18,8 @@ class TestMiniCart:
         s(PL.ADD_TO_CART_BUTTON_FROM_MAINPAGE).click()
         page.is_cart_icon_present()
         page.click_cart_icon()
-        page.mini_card.is_minicart_present()
-        page.mini_card.is_minicart_have_link()
+        page.mini_card.is_mini_cart_present()
+        page.mini_card.is_mini_cart_have_link()
 
     @allure.link('https://trello.com/c/WVaLK93g')
     def test_add_to_cart_from_main(self):
@@ -45,6 +46,7 @@ class TestMiniCart:
         page.go_to_mini_cart()
         page.mini_card.check_the_link_opens_checkout_cart_page()
 
+    # @pytest.mark.skip
     @allure.link("https://trello.com/c/v4hVrwzq")
     def test_size_color_and_product_name_are_correct_tc_005_001_013(self):
         page = MainPage(browser=browser)

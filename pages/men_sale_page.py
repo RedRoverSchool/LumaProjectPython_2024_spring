@@ -4,52 +4,47 @@ from selene.support.shared.jquery_style import s, ss
 
 from data.links import MEN_SALE_PAGE_URL
 from data.page_data import MenSalePageData as data
-from pages.components.nav_wigdet import NavComponent
-from pages.locators import BaseLocators as Header, MenSaleLocators as ms_locators
+from pages.locators import BaseLocators as Header
+
+title_page = s("[data-ui-id='page-title-wrapper']")
+list_items = ss("li.product-item")
+product_images = ss("img.product-image-photo")
+grid_mode_option = s(".toolbar.toolbar-products:nth-child(3) > .modes > #mode-grid")
+list_mode_option = s(".toolbar.toolbar-products:nth-child(3) > .modes > #mode-list")
+selected_view_option = s(".toolbar.toolbar-products:nth-child(3) > .modes > strong[data-value]")
+products_wrapper = s("div.products.wrapper")
 
 
-class MenSalePage:
-    title_page = s(ms_locators.PAGE_TITLE)
-    list_items = ss(ms_locators.LIST_ITEM)
-    product_images = ss(ms_locators.PRODUCT_IMAGE)
-    grid_mode_option = s(ms_locators.GRID_MODE_OPTION)
-    list_mode_option = s(ms_locators.LIST_MODE_OPTION)
-    selected_view_option = s(ms_locators.SELECTED_MODE_OPTION)
-    products_wrapper = s(ms_locators.PRODUCTS_WRAPPER)
-    position_sort_option = s(ms_locators.POSITION_SORT_OPTION)
-    product_name_sort_option = s(ms_locators.PRODUCT_NAME_SORT_OPTION)
-    price_sort_option = s(ms_locators.PRICE_SORT_OPTION)
-    sorter = s(ms_locators.SORTER)
-    product_titles = ss(ms_locators.PRODUCT_TITLE)
+def open_page():
+    browser.open(MEN_SALE_PAGE_URL)
 
-    def __init__(self, browser):
-        self.browser = browser
-        self.nav = NavComponent()
-        self.browser.open(MEN_SALE_PAGE_URL)
 
-    @staticmethod
-    def get_bread_crumbs():
-        breadcrumbs_titles = []
-        for i in ss(Header.BREADCRUMBS_LIST):
-            breadcrumbs_titles.append(i.locate().text)
-        return breadcrumbs_titles
+def get_bread_crumbs():
+    breadcrumbs_titles = []
+    for i in ss(".breadcrumbs li"):
+        breadcrumbs_titles.append(i.locate().text)
+    return breadcrumbs_titles
 
-    @staticmethod
-    def are_bread_crumbs_present():
-        s(Header.BREADCRUMBS).should(be.present)
 
-    def is_page_title_present(self):
-        self.title_page.should(be.present)
+def are_bread_crumbs_present():
+    s(Header.BREADCRUMBS).should(be.present)
 
-    def is_page_title_correct(self):
-        self.title_page.should(have.text(data.page_title))
 
-    def get_number_of_items_in_te_list(self):
-        return str(len(self.list_items))
+def is_page_title_present():
+    title_page.should(be.present)
 
-    def are_only_product_cards_for_men_present(self):
-        for card in self.product_images:
-            card.should(have.attribute("src").value_containing("/m/"))
+
+def is_page_title_correct():
+    title_page.should(have.text(data.page_title))
+
+
+def get_number_of_items_in_te_list():
+    return str(len(list_items))
+
+
+def are_only_product_cards_for_men_present():
+    for card in product_images:
+        card.should(have.attribute("src").value_containing("/m/"))
 
     @staticmethod
     def is_product_list_present():
@@ -61,11 +56,12 @@ class MenSalePage:
     def check_selected_view_option(self, option: str):
         return self.selected_view_option.should(have.attribute("data-value").value_containing(option))
 
-    def check_products_in_list_arrangement(self, option: str):
-        return self.products_wrapper.should(have.attribute("class").value_containing(option))
+def check_products_in_list_arrangement(option: str):
+    return products_wrapper.should(have.attribute("class").value_containing(option))
 
-    def switch_to_display_option(self, option: str):
-        return self.list_mode_option.click() if option == 'list' else self.grid_mode_option.click()
+
+def switch_to_display_option(option: str):
+    return list_mode_option.click() if option == 'list' else grid_mode_option.click()
 
     def check_selected_sorting_option(self, option: str):
         if option == "Position":
