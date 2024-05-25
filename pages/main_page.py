@@ -3,12 +3,11 @@ from selene.core import command, query
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 
-from data.page_data import MainPageData
 from pages import cart
 from pages.components import mini_card
 from pages.components import nav
 
-main_page_link = 'https://magento.softwaretestingboard.com'
+main_page_link = 'https://magento.softwaretestingboard.com/'
 create_an_account = "(//a[.='Create an Account'])[1]"
 argus_all_weather_tank_size = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="M"]'
 argus_all_weather_tank_color = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="Gray"]'
@@ -126,7 +125,7 @@ class MainPage:
         self.whats_new.should(be.present)
 
     def is_loaded(self):
-        assert self.get_current_url() == main_page_link, MainPageData.error_message
+        assert self.get_current_url() == main_page_link
 
     @staticmethod
     def is_erin_block_present():

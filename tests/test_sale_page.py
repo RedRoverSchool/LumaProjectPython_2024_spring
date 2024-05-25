@@ -11,7 +11,7 @@ import pytest
 @allure.feature("Sale")
 @allure.link('https://trello.com/c/RF0vkTGW')
 def test_011_001_001_sale_breadcrumbs_is_correct():
-    sale_page.open_page()
+    sale_page.open_page_women_sale()
     sale_page.check_if_breadcrumbs_have_all_parts()
 
 

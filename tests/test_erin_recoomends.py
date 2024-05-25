@@ -57,7 +57,7 @@ class TestErinRecommends:
         with allure.step("Switch to list view"):
             page.switch_to_list_view()
         with allure.step("Assert that the layout is now in list view"):
-            assert page.is_list_view_activate(), "The product layout did not switch to list view."
+            page.is_list_view_activate()
 
 
 @allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")

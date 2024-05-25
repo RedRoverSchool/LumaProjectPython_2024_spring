@@ -32,7 +32,7 @@ def move_to_erin_page():
 
 
 def is_header_present():
-    s(PAGE_HEADER).should(be.present)
+    return s(PAGE_HEADER).should(be.present)
 
 
 def is_element_text_correct(element, text):

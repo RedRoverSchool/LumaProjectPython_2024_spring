@@ -1,5 +1,5 @@
 from selene import browser, have, command
-from selene.support.shared.jquery_style import s
+from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.support.color import Color
 
 url = "https://magento.softwaretestingboard.com/catalogsearch/advanced/"
@@ -53,5 +53,5 @@ def search_by_product_name():
 
 def check_search_result():
     product_name = 'Jacket'
-    for item in ss('product-item-link'):
+    for item in ss('.product-item-link'):
         item.should(have.text(product_name))

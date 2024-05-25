@@ -19,8 +19,7 @@ class SalePageLocators:
     MENS_BARGAINS_TEXT = 'a.block-promo.sale-mens span strong'
     STRETCH_YOUR_BUDGET_TEXT = "//span[text()='Stretch your budget with active attire']"
     SHOP_MENS_DEALS = "//span[text()='Shop Men’s Deals']"
-    MENS_DEALS_BASE_LOCATOR = '//strong[@class="title"]/span[text()="Mens\'s Deals"]/../' \
-                              'following-sibling::ul[@class="items"]/li[@class="item"]/a[text()="{item}"]'
+
 
 
 class ProductLocators:
@@ -86,7 +85,6 @@ class BaseLocators:
     SUCCESS_MESSAGE = '.message-success.success.message'
     PAGE_NAME = ".base"
     PAGE_TITLE = "h1"
-    PAGE_HEADER = "#page-title-heading"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
     BREADCRUMBS = ".breadcrumbs > ul"
     PRODUCT_ITEM_IN_CATALOG = '.product-item-info'
