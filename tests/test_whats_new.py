@@ -41,7 +41,7 @@ def test_luma_latest_list_visibility():
 @allure.title(
     "TC_006.002.004 I What's new > Eco Collection New* > Redirection to the product page by clicking on the product name")
 @allure.link('https://trello.com/c/GO8VRlcn')
-def test_eco_collection_redirection_to_pdp(self, login, browser_management):
+def test_eco_collection_redirection_to_pdp(login, browser_management):
     with allure.step('Opening Eco Collection New page'):
         whats_new_page.open_eco_collection_url()
     with allure.step('Opening Layla Tee page'):
