@@ -36,3 +36,12 @@ def test_correct_results_of_the_advanced_search():
     advanced_search.search_by_product_name()
     advanced_search.click_search_button()
     advanced_search.check_search_result()
+
+@allure.link('https://trello.com/c/Pz12v6Hs/')
+@allure.feature('Advanced Search')
+@allure.title('Filling out all input fields')
+def test_all_input_fields_are_filled_in():
+    advanced_search.open()
+    advanced_search.fill_in_all_input_fields('Jacket', 'MJ03', 'Adjustable hood.', 'Adjustable hood.', '40', '50')
+    advanced_search.click_search_button()
+    advanced_search.check_full_search_results('Jacket', 'MJ03', 'Adjustable hood.', 40, 50)
