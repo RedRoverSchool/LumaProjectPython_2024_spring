@@ -1,5 +1,3 @@
-from idlelib import browser
-
 import allure
 from pages import main_page
 from pages import sign_in
