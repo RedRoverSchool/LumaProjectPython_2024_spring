@@ -1,8 +1,5 @@
 import allure
 import pytest
-from pages.locators import SearchTermsLocators
-from selene import be, query
-from selene.support.shared.jquery_style import ss
 from pages import search_terms_page
 
 
@@ -26,7 +23,7 @@ def test_015_001_003_check_if_search_terms_has_size_from_76_till_136RF():
     search_terms_page.check_min_and_max_font_sizes(list_font_sizes)
 
 
-@pytest.mark.skip('Test have a bug')
+@pytest.mark.skip(reason='you shall not pass')
 @allure.link('https://trello.com/c/8jDgYDYW')
 def test_015_002_006_order_search_terms():
     search_terms_page.visit()
@@ -42,20 +39,19 @@ def test_015_001_006_check_if_search_terms_are_sorted():
     search_terms_page.compare_list_sorted_stripped_and_original(lst_nonsorted, lst_sorted)
 
 
+@allure.feature('Popular Search Terms')
 @allure.link('https://trello.com/c/RGOSzLMa')
 def test_015_002_005_unique_search_terms():
     search_terms_page.visit()
-    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
-    keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
-    keywords_set = set(keyword_texts)
+    keyword_texts, keywords_set = search_terms_page.unique_search_terms()
     assert len(keyword_texts) == len(keywords_set)
 
 
+@allure.feature('Popular Search Terms')
 @allure.link('https://trello.com/c/9VW3bwiJ')
-def test_015_002_003_keywords_clickable():
+def test_015_002_003_clickable_by_keywords():
     search_terms_page.visit()
-    keyword_elements = ss(SearchTermsLocators.LIST_OF_SEARCH_TERMS)
-    [k.should(be.visible).should(be.clickable) for k in keyword_elements]
+    search_terms_page.clickable_by_keywords()
 
 
 @allure.link("https://trello.com/c/I0RafTpi")
@@ -80,3 +76,4 @@ def test_015_001_004_check_if_5_search_terms_is_bigger():
 def test_015_002_007_visibility_of_the_list():
     search_terms_page.visit()
     search_terms_page.visibility_of_the_list()
+

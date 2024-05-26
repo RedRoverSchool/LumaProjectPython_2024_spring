@@ -18,5 +18,4 @@ class TestNewLumaYogaCollectionBlock:
 
         main_page.new_luma_yoga_collection_block.should(be.visible)
         main_page.new_luma_yoga_collection_block_info_text.should(
-            have.text(MainPageData.new_luma_yoga_collection_block_info_text)
-        )
+            have.text(MainPageData.new_luma_yoga_collection_block_info_text))

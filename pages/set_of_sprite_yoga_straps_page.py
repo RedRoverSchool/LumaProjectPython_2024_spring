@@ -1,24 +1,21 @@
 from selene import be, have, browser, query
 from data import links
-from pages.base_page import BasePage
 from selene.support.shared.jquery_style import s
-from pages.locators import SetYogaStrapsLocators, ProductLocators, BaseLocators, ProductPageLocators, HomeLocators
+from pages.locators import SetYogaStrapsLocators, BaseLocators, ProductPageLocators, HomeLocators
+
+add_to_cart_button = s('#product-addtocart-button')
+sprite_yoga_strap_10_foot = s('//input[@data-selector = "super_group[35]"]')
 
 
-class SetYogaStraps(BasePage):
-
-    def __init__(self, browser):
-        super().__init__(browser)
-
-    def add_to_cart_more(self, count):
-        s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_10_FOOT).click().send_keys(count)
-        s(ProductLocators.ADD_TO_CART_BUTTON).click()
+def add_to_cart_more(count):
+    sprite_yoga_strap_10_foot.click().send_keys(count)
+    add_to_cart_button.click()
 
 
 def add_to_cart_set_8_foot(count):
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_8_FOOT).clear()
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_8_FOOT).click().send_keys(count)
-    s(ProductLocators.ADD_TO_CART_BUTTON).click()
+    add_to_cart_button.click()
 
 
 def is_visible_success_message():
@@ -45,13 +42,13 @@ def check_details_about_material(material):
 def add_to_cart_set_6_foot(count):
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_6_FOOT).clear()
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_6_FOOT).click().send_keys(count)
-    s(ProductLocators.ADD_TO_CART_BUTTON).click()
+    add_to_cart_button.click()
 
 
 def add_to_cart_set_10_foot(count):
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_10_FOOT).clear()
     s(SetYogaStrapsLocators.SPRITE_YOGA_STRAP_10_FOOT).click().send_keys(count)
-    s(ProductLocators.ADD_TO_CART_BUTTON).click()
+    add_to_cart_button.click()
 
 
 def open_link_view_and_edit_cart():
@@ -81,3 +78,7 @@ def check_discount_amount_more_200():
     subtotal = s(HomeLocators.GRAND_TOTALS).get(query.attribute('innerText')).replace("$", "")
     # print(f"Total: {total}, Discount: {discount}, tax: {tax}, To pay: {subtotal}")
     return float(discount) == (float(total) / 5) and subtotal == (total - discount + tax)
+
+
+def assert_text_of_element(locator, expected_text):
+    s(locator).should(have.text(expected_text))

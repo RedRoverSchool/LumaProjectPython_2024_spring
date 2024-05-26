@@ -1,15 +1,18 @@
-from data.links import GEAR_PAGE_URL
-from pages.base_page import BasePage
 from selene import browser, have
+from selene.support.conditions import be
+from selene.support.shared.jquery_style import s
+
+create_an_account_link = s("(//a[.='Create an Account'])[1]")
+gear_page_url = 'https://magento.softwaretestingboard.com/gear.html'
 
 
-class GearPage(BasePage):
-
-    def open_page(self):
-        self.visit(GEAR_PAGE_URL)
+def open_page():
+    browser.open(gear_page_url)
 
 
-def visit():
-    browser.open(GEAR_PAGE_URL)
+def should_be_clickable_create_account():
+    create_an_account_link.should(be.clickable)
 
 
+def has_create_account_text():
+    create_an_account_link.should(have.text('Create an Account'))

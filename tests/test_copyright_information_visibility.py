@@ -15,7 +15,7 @@ links = [l.BASE_URL,
 FOOTER = "small[class='copyright']"
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 @allure.link("https://trello.com/c/AmBznN3p/160-tc012002001-footer-copyright-information-visibility")
 @allure.feature("Footer > Self > Copyright>visibility")
 @allure.title("TC_012.002.001 | Footer > Copyright information visibility")
