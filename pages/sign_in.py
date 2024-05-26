@@ -9,11 +9,14 @@ user_password = s("div.login-container #pass")
 sign_in_button = s("div.login-container #send2")
 AUTHORIZATION_LINK = 'authorization-link'
 USER_NAME_IN_WELCOME = '.logged-in'
+page_title = s("h1.page-title")
+customer_heading = s("div.login-container #block-customer-login-heading")
+new_customer_heading = s("div.login-container #block-new-customer-heading")
 MANY_URL = ["https://magento.softwaretestingboard.com/",
-           "https://magento.softwaretestingboard.com/what-is-new.html",
-           "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
-           "https://magento.softwaretestingboard.com/training.html"
-           ]
+            "https://magento.softwaretestingboard.com/what-is-new.html",
+            "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
+            "https://magento.softwaretestingboard.com/training.html"
+            ]
 
 
 def visit():
@@ -47,13 +50,14 @@ def check_all_pages_have_user_name(name):
         browser.open(lnk)
         s(USER_NAME_IN_WELCOME).should(have.text(name))
 
-def page_title(partial_text):
-    s("h1.page-title").should(have.text(partial_text))
+
+def check_page_title(partial_text):
+    page_title.should(have.text(partial_text))
 
 
-def registered_customers_blog(text):
-    s("div.login-container #block-customer-login-heading").should(have.text(text))
+def check_registered_customers_heading(text):
+    customer_heading.should(have.text(text))
 
 
-def new_customers_blog(text):
-    s("div.login-container #block-new-customer-heading").should(have.text(text))
+def check_new_customers_heading(text):
+    new_customer_heading.should(have.text(text))

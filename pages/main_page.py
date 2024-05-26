@@ -1,4 +1,4 @@
-from selene import have, be, Element
+from selene import have, be, Element, browser
 from selene.core import command, query
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
@@ -14,6 +14,7 @@ argus_all_weather_tank_color = '//*[@title="Argus All-Weather Tank"]/../..//*[@o
 argus_all_weather_tank_add_to_card = '//*[@title="Argus All-Weather Tank"]/../..//*[@title="Add to Cart"]'
 MINI_BASKET_WINDOW = '[class="action showcart"]'
 view_and_edit_cart_link = "//*[text()='View and Edit Cart']"
+sign_in = s('//header//li[@class="authorization-link"]/a')
 
 
 class MainPage:
@@ -176,5 +177,14 @@ class MainPage:
     def has_create_account_text():
         s(create_an_account).should(have.text('Create an Account'))
 
-    def sign_in_click(self):
-        s(HomeLocators.SIGN_IN).click()
+
+def open_page():
+    visit(main_page_link)
+
+
+def visit(url):
+    browser.open(url)
+
+
+def sign_in_click():
+    sign_in.click()
