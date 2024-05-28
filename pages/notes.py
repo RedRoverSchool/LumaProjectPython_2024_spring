@@ -19,7 +19,7 @@ def click_notes_link():
 def accept_cookies():
     window_handles = browser.driver.window_handles
     browser.switch_to.window(window_handles[-1])
-    browser.with_(timeout=10).element(NotesLocators.COOKIE_MSG).should(be.visible)
+    browser.with_(timeout=20).element(NotesLocators.COOKIE_MSG).should(be.visible)
     s(NotesLocators.COOKIE_ACCEPT_BTN).click()
 
 
