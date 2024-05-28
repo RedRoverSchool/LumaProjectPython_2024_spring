@@ -1,3 +1,6 @@
+from selene import browser
+
+
 class SalePageLocators:
     GEAR_DEALS_TITLE = "//*[text()='Gear Deals']"
     BAGS_LINK = "//a[text()='Bags']"
@@ -19,7 +22,6 @@ class SalePageLocators:
     MENS_BARGAINS_TEXT = 'a.block-promo.sale-mens span strong'
     STRETCH_YOUR_BUDGET_TEXT = "//span[text()='Stretch your budget with active attire']"
     SHOP_MENS_DEALS = "//span[text()='Shop Men’s Deals']"
-
 
 
 class ProductLocators:
@@ -135,6 +137,10 @@ class WhatsNewPageLocators:
     LAYLA_TEE_IMG = '//li[2]//img[@class="product-image-photo"]'
 
 
+class PrivacyPolicyPageLocators:
+    PAGE_MAIN_HEADER_LOCATOR = "span[data-ui-id='page-title-wrapper']"
+
+
 class ProductItemLocators:
     WISH_LIST = "[aria-label='Add to Wish List']"
     LAYLA_TEE_PRODUCT_NAME = "a[title='Layla Tee']"
@@ -184,6 +190,7 @@ class CreateAccountLocators:
     PASSWORD = '//input[@id="password"]'
     CONF_PASS = '//input[@id="password-confirmation"]'
     CREATE_BUTTON = '//button[@title="Create an Account"]'
+
 
 class PerformanceSportswear:
     LINK_SPORT = "https://magento.softwaretestingboard.com/collections/performance-new.html"

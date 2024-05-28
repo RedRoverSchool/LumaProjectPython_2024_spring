@@ -129,7 +129,6 @@ def clear_wish_list():
             item.should(be.clickable).click()
 
 
-
 def success_adding_msg_should_have_text(text):
     success_add_msg_text.should(have.text(text))
 

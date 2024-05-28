@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages import women_page, product, cart, wish_list
+from pages import women_page, product, cart, wish_list, compare_items
 
 
 @allure.link('https://trello.com/c/fhLdyS1l')
@@ -100,6 +100,7 @@ def test_adding_product_to_wish_list(login):
     wish_list.success_adding_msg_should_have_text('Radiant Tee')
     wish_list.product_should_have_title('Radiant Tee')
 
+
 @allure.suite('US_002.001 | Page of any product')
 @allure.link('https://trello.com/c/PChP2lY4')
 @allure.title('TC_002.001.005 | Radiant Tee product page > Reviews > Reviews visibility')
@@ -107,3 +108,16 @@ def test_product_reviews_visibility(login):
     product.open('radiant-tee')
     product.click_reviews_tab()
     product.reviews_should_have_title('Customer Reviews', 'Radiant Tee')
+
+
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/7Mn9d8Z4/')
+@allure.title('TC_002.001.010 | Radiant Tee product page > Adding the product to the comparison list')
+def test_adding_product_to_comparison_list(login):
+    product.open('radiant-tee')
+    product.add_to_comparison_list()
+    product.add_to_compare_success_msg_should_gave_text('Radiant Tee')
+    product.click_to_comparison_list_link()
+    compare_items.should_be_redirected_to_url_containing('product_compare')
+    compare_items.should_display_product_name('Radiant Tee')
+    compare_items.clear_comparison_list()

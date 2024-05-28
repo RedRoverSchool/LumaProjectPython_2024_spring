@@ -14,6 +14,7 @@ more_info_tab = s('#tab-label-additional-title')
 size_indicator = s('.swatch-attribute.size span.swatch-attribute-selected-option')
 reviews_block = s('#customer-reviews div.block-title strong')
 product_name_in_reviews = s('.legend.review-legend strong')
+comparison_list_link = s("//a[text()='comparison list']")
 
 
 def open(name):
@@ -89,3 +90,22 @@ def reviews_should_have_title(title, text):
         reviews_block.should(have.text(title))
     except:
         product_name_in_reviews.should(have.text(text))
+
+
+def assert_reviews_title_is_visible():
+    s("#tab-label-reviews-title").should(be.visible)
+
+
+def add_to_comparison_list():
+    s('a.action.tocompare').click()
+    s('.message-success').wait_until(be.visible)
+
+
+def click_to_comparison_list_link():
+    comparison_list_link.click()
+
+
+def add_to_compare_success_msg_should_gave_text(text):
+    s(".message-success div").should(have.text(f'You added product {text} to the '))
+
+

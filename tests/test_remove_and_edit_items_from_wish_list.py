@@ -1,5 +1,5 @@
 import allure
-from pages import whats_new_page
+from pages import whats_new
 from pages import create_account, message
 from pages import wish_list
 
@@ -13,8 +13,8 @@ class TestRemovingAndEditItemsInWishlist:
             create_account.create_account(first_name, last_name, last_name + user_email, password)
             message.should_be_message("Thank you for registering")
 
-            whats_new_page.open_page()
-            whats_new_page.add_items_to_wish_list(3)
+            whats_new.open_page()
+            whats_new.add_items_to_wish_list(3)
         with allure.step("Verify the trash bin icon on the product card for each item"):
             wish_list.visit()
             wish_list.verify_trash_bin_icon_present()

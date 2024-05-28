@@ -6,7 +6,6 @@ from selenium.webdriver.support.color import Color
 product = s(".product-item-info")
 products = ss(".product-item-info")
 button_new_yoga = s('span.more.button')
-layla_tee = s("//a[@title='Layla Tee']")
 luma_latest_items = ss('.products-grid>ol>li')
 collection_luma_latest_items = ss('.product-image-photo')
 new_yoga_link = s("//*[text()='New Luma Yoga Collection']")
@@ -15,7 +14,6 @@ add_wish_list = "[aria-label='Add to Wish List']"
 
 whats_new_page_link = 'https://magento.softwaretestingboard.com/what-is-new.html'
 yoga_url = 'https://magento.softwaretestingboard.com/collections/yoga-new.html'
-layla_tee_url = 'https://magento.softwaretestingboard.com/layla-tee.html'
 
 message = "You must login or register to add items to your wishlist"
 add_wish_list_message = "added to your Wish List"
@@ -106,25 +104,21 @@ def new_yoga_link_click():
     new_yoga_link.click()
 
 
-def open_eco_collection_url():
+def open_category(title):
     open_page()
-    s("//span[contains (text(), 'Shop Eco Friendly')]").click()
+    s(f"//span[contains (text(), '{title}')]").click()
 
 
-def click_layla_tee_name():
-    s("a[title='Layla Tee']").click()
+def click_to_product_name(name):
+    s(f"a[title='{name}']").click()
 
 
-def check_redirection_to_layla_tee_pdp():
-    return get_current_url() == layla_tee_url
+def url_should_contain(param):
+    browser.should(have.url_containing(param))
 
 
-def layla_tee_title_is_displayed():
-    s("h1.page-title span").should(be.visible)
-
-
-def click_layla_tee_img():
-    s("img[alt='Layla Tee']").click()
+def click_to_img_with_name(name):
+    s(f"img[alt='{name}']").click()
 
 
 def click_bras_and_tank_link():
@@ -147,30 +141,39 @@ def add_to_wish_list_button():
     s('.product-social-links a:first-child').click()
 
 
-def change_layla_tee_color(color):
-    layla_tee.hover()
-    s(f"//li[2]//div[@option-label='{color}']").click()
-    layla_tee.hover()
+def get_product_order_number(name):
+    products_lst = ss('.products-grid>ol>li')
+    for i in range(1, len(products_lst) + 1):
+        try:
+            s(f'//li[{i}]//a[@title="{name}"]').should(be.visible)
+            return i
+        except Exception:
+            pass
 
 
-def is_color_selected(color_name, color_hex):
-    color_selector = f"//li[2]//div[@option-label='{color_name}']"
-    s(color_selector).should(have.css_property('outline-color').value(Color.from_string(color_hex).rgba))
+def change_product_color(name, color):
+    s(f'//li[{get_product_order_number(name)}]//img').hover()
+    s(f"//li[{get_product_order_number(name)}]//div[@option-label='{color}']").click()
+    s(f'//li[{get_product_order_number(name)}]//img').hover()
 
 
-def is_layla_tee_img_color_correct(color):
-    img_url = f"https://magento.softwaretestingboard.com/pub/media/catalog/product/cache/7c4c1ed835fbbf2269f24539582c6d44/w/s/ws04-{color}_main_1.jpg"
-    s('//li[2]//img[@class="product-image-photo"]').wait_until(have.attribute('src').value(img_url))
-    color_img_name = f'ws04-{color}_main_1.jpg'
-    assert color_img_name in s('//li[2]//img[@class="product-image-photo"]').get(query.attribute('src'))
+def color_label_should_be_selected(product_name, color_name, outline_color):
+    color_selector = f"//li[{get_product_order_number(product_name)}]//div[@option-label='{color_name}']"
+    s(color_selector).should(have.css_property('outline-color').value(Color.from_string(outline_color).rgba))
 
 
-def check_buttons_visibility_on_product_card():
-    for i in range(1, 6):
-        s(f"//li[{i}]/div/div").hover()
-        s(f'//li[{i}]//button[@class="action tocart primary"]').should(be.visible)
-        s(f'//li[{i}]//a[@class="action towishlist"]').should(be.visible)
-        s(f'//li[{i}]//a[@class="action tocompare"]').should(be.visible)
+def product_img_should_be_color(product_name, color):
+    product_img_color = s(f'//li[{get_product_order_number(product_name)}]//img[@class="product-image-photo"]').get(query.attribute('src'))
+    assert color.lower() in product_img_color
+
+
+def should_be_visible_buttons_on_product_card(add_to_cart, add_to_wishlist, add_to_compare):
+    number_of_product_cards = len(ss('.products-grid>ol>li'))
+    for i in range(1, number_of_product_cards + 1):
+        s(f'//li[{i}]//img').hover()
+        s(f'//li[{i}]//button[@title="{add_to_cart}"]').should(be.visible)
+        s(f'//li[{i}]//a[@title="{add_to_wishlist}"]').should(be.visible)
+        s(f'//li[{i}]//a[@title="{add_to_compare}"]').should(be.visible)
 
 
 def verify_header_text(text):
