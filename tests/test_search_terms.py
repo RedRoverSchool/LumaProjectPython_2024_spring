@@ -23,7 +23,7 @@ def test_015_001_003_check_if_search_terms_has_size_from_76_till_136RF():
     search_terms_page.check_min_and_max_font_sizes(list_font_sizes)
 
 
-@pytest.mark.skip(reason='you shall not pass')
+@pytest.mark.skip(reason='you shall not')
 @allure.link('https://trello.com/c/8jDgYDYW')
 def test_015_002_006_order_search_terms():
     search_terms_page.visit()
@@ -76,4 +76,11 @@ def test_015_001_004_check_if_5_search_terms_is_bigger():
 def test_015_002_007_visibility_of_the_list():
     search_terms_page.visit()
     search_terms_page.visibility_of_the_list()
+
+
+@allure.feature('Popular Search Terms')
+@allure.link('https://trello.com/c/D9vY0jU3')
+def test_015_002_002_verify_keywords_hyperlink():
+    search_terms_page.visit()
+    search_terms_page.verify_keywords_hyperlink()
 

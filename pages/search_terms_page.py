@@ -111,3 +111,9 @@ def unique_search_terms():
 def clickable_by_keywords():
     keyword_elements = ss(LIST_OF_SEARCH_TERMS)
     [k.should(be.clickable) for k in keyword_elements]
+
+
+def verify_keywords_hyperlink():
+    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
+    for k in keyword_elements:
+        k.should(have.attribute('href'))
