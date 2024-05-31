@@ -126,8 +126,9 @@ def verify_keywords_hyperlink():
 def navigated_to_after_click_keyword():
     search_terms = browser.all(LIST_OF_SEARCH_TERMS)
     for i in range(100):
+        time.sleep(2)
         pop_sms.click()
+        time.sleep(2)
         search_terms[i].click()
         browser.driver.back()
-        time.sleep(2)
         Popular_Search_Terms.should(have.text("Popular Search Terms"))
