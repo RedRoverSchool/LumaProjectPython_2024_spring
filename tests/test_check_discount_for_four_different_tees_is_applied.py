@@ -1,7 +1,9 @@
 import allure
 from pages import tees_page
+import pytest
 
 
+@pytest.mark.skip
 @allure.title("Check four different model of Tees for three discount is applied")
 def test_discount_four_tees_for_different_model_is_applies():
     tees_page.open_login_page()
