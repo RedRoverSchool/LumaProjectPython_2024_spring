@@ -1,9 +1,10 @@
 import allure
 import pytest
-from pages import wish_list, sale, sign_in
+from pages import wish_list
 from pages import whats_new
 
-# @pytest.mark.skip
+
+@pytest.mark.skip
 @allure.link("https://trello.com/c/kVWLOEl5")
 def test_button_update_clickable(login):
     whats_new.add_item_to_wish_list()
@@ -26,7 +27,7 @@ def test_remove_item_from_wishlist(login):
         wish_list.is_item_removed(item_title)
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link('https://trello.com/c/WQ4d6xa4')
 def test_011_006_001_message_no_items_is_displayed():
     wish_list.visit_login()

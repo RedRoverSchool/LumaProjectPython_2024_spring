@@ -1,7 +1,6 @@
 from selene import Collection, browser
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
-
 from pages.locators import BaseLocators as Header
 
 title_page = s("[data-ui-id='page-title-wrapper']")
@@ -97,6 +96,7 @@ def switch_to_sorting_option(option: str):
 
 def product_arrangement_should_correspond_to_sort_option(option: str):
     if option == "Position":
+        browser.wait_until(have.url("expected_url"))
         products_arrangement_should_be_sorted_by_position(product_titles)
 
 
