@@ -1,4 +1,4 @@
-from selene import browser, be, have, command
+from selene import browser, be, have, command, query
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.common.by import By
 
@@ -17,6 +17,7 @@ user_email = s("div.login-container #email")
 user_password = s("div.login-container #pass")
 sign_in_button = s("div.login-container #send2")
 
+ITEM_1_ADD_TO_WISH_LIST = 'ol > li:nth-child(1) a.action.towishlist'
 ITEM_6_ADD_TO_WISH_LIST = 'ol > li:nth-child(6) a.action.towishlist'
 ITEM_8_ADD_TO_WISH_LIST = 'ol > li:nth-child(8) a.action.towishlist'
 ITEM_9_ADD_TO_WISH_LIST = 'ol > li:nth-child(9) a.action.towishlist'
@@ -30,6 +31,8 @@ message_wish_list_is_empty = s('div.block.block-wishlist > div.block-content > d
 empty_message = 'You have no items in your wish list.'
 removed_message = 'has been removed from your Wish List.'
 add_wish_list_message = "added to your Wish List"
+ITEMS_IN_WISHLIST = '#wishlist-sidebar > li strong > a > span'
+ITEMS_ON_WISH_PAGE = '.form-wishlist-items .product-item-info'
 
 
 def visit(url=url):
@@ -194,3 +197,16 @@ def count_images_in_wishlist(nr):
 def visit_sale():
     browser.open(LINK_SALE)
 
+
+def collect_items_for_wishpage():
+    links = ss('#wishlist-sidebar strong > a')
+    wishlist_page = []
+    for ln in links:
+        item_text = ln.get(query.attribute("text")).strip()
+        wishlist_page.append(item_text)
+    return wishlist_page
+
+
+def compare_side_panel_and_wishpage(wishlist):
+    for item in wishlist:
+        assert len(f'[alt={item}]')
