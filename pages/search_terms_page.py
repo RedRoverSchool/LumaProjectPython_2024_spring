@@ -1,34 +1,37 @@
 from selene import query, have, browser, be
 from selene.support.shared.jquery_style import s, ss
+from selene.core.exceptions import TimeoutException
 
-LIST_OF_SEARCH_TERMS = '[class="item"] a'
-LINK_SEARCH_TERMS = "https://magento.softwaretestingboard.com/search/term/popular/"
-TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
-PRODUCT_ITEM_NAMES = '[class=product-item-link]'
-BASE_TITLE = '[class=base]'
-PAGE_TITLE = "h1"
+list_of_search_terms = '[class="item"] a'
+link_search_terms = "https://magento.softwaretestingboard.com/search/term/popular/"
+terms_for_search_list_qty = '[class="item"]'
+product_item_names = '[class=product-item-link]'
+base_title = '[class=base]'
+page_title = "h1"
+pop_sms = s("//*[@class='ea-stickybox-hide']")
+Popular_Search_Terms = s(".base")
 
 
 def order_search_terms():
-    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(list_of_search_terms)
     keyword_texts = [k.get(query.attribute("text")).replace('\n', '') for k in keyword_elements]
     keyword_elements.should(have.exact_texts(sorted(keyword_texts)))
 
 
 def visit():
-    browser.open(LINK_SEARCH_TERMS)
+    browser.open(link_search_terms)
 
 
 def title_is_correct():
-    s(PAGE_TITLE).should(have.text("Popular Search Terms"))
+    s(page_title).should(have.text("Popular Search Terms"))
 
 
 def search_terms_list_have_100():
-    ss(TERMS_FOR_SEARCH_LIST_QTY).should(have.size(100))
+    ss(terms_for_search_list_qty).should(have.size(100))
 
 
 def collect_all_search_terms():
-    return ss(LIST_OF_SEARCH_TERMS)
+    return ss(list_of_search_terms)
 
 
 def extract_font_sizes_from_search_terms(terms):
@@ -96,18 +99,37 @@ def check_size_of_5_last_words_in_sorted_list(list_font_sizes):
 
 
 def visibility_of_the_list():
-    list_items = ss(LIST_OF_SEARCH_TERMS)
+    list_items = ss(list_of_search_terms)
     for item in list_items:
         item.should(be.visible)
 
 
 def unique_search_terms():
-    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(list_of_search_terms)
     keyword_texts = [k.get(query.attribute("text")).strip() for k in keyword_elements]
     keywords_set = set(keyword_texts)
     return keywords_set, keyword_texts
 
 
 def clickable_by_keywords():
-    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
+    keyword_elements = ss(list_of_search_terms)
     [k.should(be.clickable) for k in keyword_elements]
+
+
+def verify_keywords_hyperlink():
+    keyword_elements = ss(list_of_search_terms)
+    for k in keyword_elements:
+        k.should(have.attribute('href'))
+
+
+def navigated_to_after_click_keyword():
+    search_terms = browser.all(list_of_search_terms)
+    for i in range(100):
+        try:
+            pop_sms.click()
+            search_terms[i].click()
+            browser.driver.back()
+            Popular_Search_Terms.should(have.text("Popular Search Terms"))
+        except TimeoutException:
+            print(f'Try {i} failed, trying again')
+            browser.driver.refresh()
