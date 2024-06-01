@@ -77,3 +77,16 @@ def test_015_002_007_visibility_of_the_list():
     search_terms_page.visit()
     search_terms_page.visibility_of_the_list()
 
+
+@allure.feature('Popular Search Terms')
+@allure.link('https://trello.com/c/D9vY0jU3')
+def test_015_002_002_verify_keywords_hyperlink():
+    search_terms_page.visit()
+    search_terms_page.verify_keywords_hyperlink()
+
+
+@allure.feature('Popular Search Terms')
+@allure.link('https://trello.com/c/HKRodNvW')
+def test_015_002_004_navigated_to_after_click_keyword():
+    search_terms_page.visit()
+    search_terms_page.navigated_to_after_click_keyword()

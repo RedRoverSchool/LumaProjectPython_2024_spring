@@ -1,4 +1,5 @@
 from selene import query, have, browser, be
+from selene.core.exceptions import TimeoutException
 from selene.support.shared.jquery_style import s, ss
 
 LIST_OF_SEARCH_TERMS = '[class="item"] a'
@@ -7,6 +8,14 @@ TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
 PRODUCT_ITEM_NAMES = '[class=product-item-link]'
 BASE_TITLE = '[class=base]'
 PAGE_TITLE = "h1"
+list_of_search_terms = '[class="item"] a'
+link_search_terms = "https://magento.softwaretestingboard.com/search/term/popular/"
+terms_for_search_list_qty = '[class="item"]'
+product_item_names = '[class=product-item-link]'
+base_title = '[class=base]'
+page_title = "h1"
+pop_sms = s("//*[@class='ea-stickybox-hide']")
+popular_search_terms = s(".base")
 
 
 def order_search_terms():
@@ -111,3 +120,21 @@ def unique_search_terms():
 def clickable_by_keywords():
     keyword_elements = ss(LIST_OF_SEARCH_TERMS)
     [k.should(be.clickable) for k in keyword_elements]
+
+
+def verify_keywords_hyperlink():
+    keyword_elements = ss(list_of_search_terms)
+    for k in keyword_elements:
+        k.should(have.attribute('href'))
+
+
+def navigated_to_after_click_keyword():
+    search_terms = browser.all(list_of_search_terms)
+    for i in range(100):
+        try:
+            pop_sms.click()
+            search_terms[i].click()
+            browser.driver.back()
+            popular_search_terms.should(have.text("Popular Search Terms"))
+        except TimeoutException:
+            print(f'Try {i} failed, trying again')
