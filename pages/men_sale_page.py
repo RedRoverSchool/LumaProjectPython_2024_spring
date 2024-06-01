@@ -18,6 +18,7 @@ product_name_sort_option = s("option[value='name']")
 price_sort_option = s("option[value='price']")
 sorter = s("#sorter")
 product_titles = ss("a.product-item-link")
+product_prices = ss("span>span.price")
 product_title = ".product-item-link"
 product_cards = ss(".product-item-info")
 men_sale_page_url = 'https://magento.softwaretestingboard.com/promotions/men-sale.html'
@@ -100,6 +101,9 @@ def product_arrangement_should_correspond_to_sort_option(option: str):
     if option == "Position":
         browser.wait_until(have.url("expected_url"))
         products_arrangement_should_be_sorted_by_position(product_titles)
+    elif option == "Price":
+        browser.wait_until(have.url(men_sale_page_url + "?product_list_order=price"))
+        products_arrangement_should_be_sorted_by_price(product_prices)
 
 
 def products_arrangement_should_be_sorted_by_position(products: Collection):
@@ -109,6 +113,15 @@ def products_arrangement_should_be_sorted_by_position(products: Collection):
         position_list.append(position_title.split()[-1])
     sorted_list = sorted(position_list)
     assert position_list == sorted_list
+
+
+def products_arrangement_should_be_sorted_by_price(products: Collection):
+    prices_list = []
+    for el in products:
+        el_price = el.locate().text
+        prices_list.append(float(el_price[1:]))
+    sorted_list = sorted(prices_list)
+    assert prices_list == sorted_list
 
 
 def product_cards_should_have_correct_content():
