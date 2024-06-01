@@ -65,3 +65,17 @@ def test_verify_sorting_product_cards_by_position():
     page.switch_to_sorting_option("Price")
     page.switch_to_sorting_option("Position")
     page.product_arrangement_should_correspond_to_sort_option("Position")
+
+
+@allure.link("https://trello.com/c/f30xVqo3")
+@allure.title("Verify the contents of each product's card")
+def test_verify_contents_of_each_product_card():
+    page = men_sale_page
+    page.open()
+    page.product_list_should_be_present()
+    page.product_cards_should_have_title()
+    page.product_cards_should_have_price()
+    page.product_cards_should_have_image()
+    page.product_cards_should_have_available_sizes_list()
+    page.product_cards_should_have_available_colors_list()
+

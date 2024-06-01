@@ -18,6 +18,7 @@ product_name_sort_option = s("option[value='name']")
 price_sort_option = s("option[value='price']")
 sorter = s("#sorter")
 product_titles = ss("a.product-item-link")
+product_cards = ss()
 men_sale_page_url = 'https://magento.softwaretestingboard.com/promotions/men-sale.html'
 breadcrumbs_path = ['Home', 'Sale', 'Men Sale']
 page_title = "Men Sale"
@@ -107,3 +108,8 @@ def products_arrangement_should_be_sorted_by_position(products: Collection):
         position_list.append(position_title.split()[-1])
     sorted_list = sorted(position_list)
     assert position_list == sorted_list
+
+
+def product_cards_should_have_title(cards: Collection):
+    for card in cards:
+        card.element(s())
