@@ -9,7 +9,6 @@ TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
 PRODUCT_ITEM_NAMES = '[class=product-item-link]'
 BASE_TITLE = '[class=base]'
 PAGE_TITLE = "h1"
-pop_sms = s("//*[@class='ea-stickybox-hide']")
 Popular_Search_Terms = s(".base")
 
 
@@ -126,9 +125,6 @@ def verify_keywords_hyperlink():
 def navigated_to_after_click_keyword():
     search_terms = browser.all(LIST_OF_SEARCH_TERMS)
     for i in range(100):
-        time.sleep(2)
-        pop_sms.click()
-        time.sleep(2)
         search_terms[i].click()
         browser.driver.back()
         Popular_Search_Terms.should(have.text("Popular Search Terms"))
