@@ -107,6 +107,7 @@ def product_arrangement_should_correspond_to_sort_option(option: str):
         products_arrangement_should_be_sorted_by_name(product_titles)
 
 
+
 def products_arrangement_should_be_sorted_by_position(products: Collection):
     position_list = []
     for el in products:
