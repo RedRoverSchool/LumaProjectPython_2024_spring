@@ -19,6 +19,8 @@ price_sort_option = s("option[value='price']")
 sorter = s("#sorter")
 product_titles = ss("a.product-item-link")
 product_prices = ss("span>span.price")
+product_price = "span>span.price"
+as_low_as_title = ".price-label"
 product_title = ".product-item-link"
 product_cards = ss(".product-item-info")
 men_sale_page_url = 'https://magento.softwaretestingboard.com/promotions/men-sale.html'
@@ -126,6 +128,7 @@ def products_arrangement_should_be_sorted_by_price(products: Collection):
 
 def product_cards_should_have_correct_content():
     product_cards_should_have_title(product_cards)
+    product_cards_should_have_price(product_cards)
 
 
 def product_cards_should_have_title(cards: Collection):
@@ -137,6 +140,7 @@ def product_cards_should_have_title(cards: Collection):
 
 def product_cards_should_have_price(cards: Collection):
     for card in cards:
-        price = card.element(".product-price")
+        price = card.element(product_price)
         price.should(be.present)
-        assert price.locate().text!= ''
+        card.element(as_low_as_title).should(be.present)
+        assert price.locate().text != ''
