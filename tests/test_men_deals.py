@@ -1,6 +1,6 @@
 import allure
 
-from pages import sale_page
+from pages import sale
 
 
 class TestMenDeals:
@@ -9,7 +9,7 @@ class TestMenDeals:
     @allure.feature("TC_011.003.001 I Sale > MEN’s DEALS on side panel > Verify 'Hoodies and Sweatshirts' "
                     "link is visible and clickable, correct redirection")
     def test_verify_hoodies_clickability_visibility_redirection(self):
-        sale_page.open_page()
-        sale_page.click_men_deals()
-        sale_page.has_header_text("Hoodies & Sweatshirts")
-        sale_page.assert_tops_hoodies_url()
+        sale.open_page()
+        sale.click_men_deals()
+        sale.has_header_text("Hoodies & Sweatshirts")
+        sale.assert_tops_hoodies_url()

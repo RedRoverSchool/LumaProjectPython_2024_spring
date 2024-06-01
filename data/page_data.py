@@ -9,10 +9,16 @@ class SignInData():
     email = "yukkatest@gmail.com"
     password = "yukka83@@@"
 
+    email_s = 'second_test_acc@gmail.com'
+    password_s = "123AsDfGhJkL;'"
+
 
 class FooterData:
     copyright_info = "Copyright © 2013-present Magento, Inc. All rights reserved."
 
 
 class TrainingPageData:
-    block_promo_contains = ["Motivate yourself.", "Reach goals.", "Boost ambition.", "Max fitness.", "Upgrade lifestyle."]
+    block_promo_contains = ["Motivate yourself.", "Reach goals.", "Boost ambition.", "Max fitness.",
+                            "Upgrade lifestyle."]
+
+

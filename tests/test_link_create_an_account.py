@@ -1,14 +1,14 @@
 import allure
 from selene import browser
 from pages import gear_page
-from pages import sale_page
+from pages import sale
 from pages.main_page import MainPage
 
 
 @allure.link("TC_004.004.006")
 @allure.feature("Visibility 'Create an account' link")
 def test_link_on_different_pages():
-    pages = [MainPage(browser), gear_page, sale_page]
+    pages = [MainPage(browser), gear_page, sale]
 
     for page in pages:
         page.open_page()

@@ -21,7 +21,8 @@ mini_cart = s('#ui-id-1')
 mini_cart_qty = s('input[class="item-qty cart-item-qty"]')
 product_price = s('//div[@class="product-info-price"]//span[@data-price-type="finalPrice"]')
 minicart_subtotal = s('//*[@id="minicart-content-wrapper"]/div[2]/div[2]/div/span/span')
-
+product_price_cart = s('//td[@class="col price"]/span/span/span')
+subtotal_price_cart = s('//td[@class="col subtotal"]/span/span/span')
 
 def open_page():
     browser.open(CART_LINK)
@@ -130,6 +131,12 @@ def minicart_quantity_should_be_equal(quantity):
 def minicart_subtotal_should_be_calculated_with_qty_equal(quantity):
     price = int(product_price.get(query.attribute('data-price-amount')))
     cart_subtotal = float(minicart_subtotal.get(query.text).strip('$'))
+    assert cart_subtotal == price * int(quantity)
+
+
+def cart_subtotal_should_be_calculated_with_qty_equal(quantity):
+    price = float(product_price_cart.get(query.text).strip('$'))
+    cart_subtotal = float(subtotal_price_cart.get(query.text).strip('$'))
     assert cart_subtotal == price * int(quantity)
 
 

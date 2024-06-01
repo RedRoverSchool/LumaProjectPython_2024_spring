@@ -1,6 +1,6 @@
 import allure
 
-from pages import whats_new_page
+from pages import whats_new
 from pages import yoga_page
 
 
@@ -10,27 +10,27 @@ class TestYoga:
     @allure.title("TC_006.007.001 | The New Luma Yoga Collection link and Shop New Yoga button links"
                   " are displayed on the What's New page")
     def test_new_luma_yoga_collection_link_visibility(self, browser_management):
-        whats_new_page.open_page()
-        whats_new_page.is_yoga_link_visible()
-        whats_new_page.is_button_visible()
+        whats_new.open_page()
+        whats_new.is_yoga_link_visible()
+        whats_new.is_button_visible()
 
     @allure.link("https://trello.com/c/jqrXmRkR")
     @allure.title("TC_006.007.002| What`s new page > New Luma Yoga Collection > "
                   "The \"New Luma Yoga Collection\" link redirects to New Luma Yoga Collection page")
     def test_yoga_link_redirection(self):
-        whats_new_page.open_page()
-        whats_new_page.new_yoga_link_click()
-        assert whats_new_page.is_current_url_yoga()
-        whats_new_page.verify_header_text('New Luma Yoga Collection')
+        whats_new.open_page()
+        whats_new.new_yoga_link_click()
+        assert whats_new.is_current_url_yoga()
+        whats_new.verify_header_text('New Luma Yoga Collection')
 
     @allure.link("https://trello.com/c/oTH09O30")
     @allure.title("TC_006.007.003| What`s new page > New Luma Yoga Collection "
                   "> The \"Shop New Yoga\" button link redirects to New Luma Yoga Collection page")
     def test_yoga_button_redirection(self):
-        whats_new_page.open_page()
-        whats_new_page.click_button_shop_new_yoga()
-        assert whats_new_page.is_current_url_yoga()
-        whats_new_page.verify_header_text('New Luma Yoga Collection')
+        whats_new.open_page()
+        whats_new.click_button_shop_new_yoga()
+        assert whats_new.is_current_url_yoga()
+        whats_new.verify_header_text('New Luma Yoga Collection')
 
 
     @allure.link("https://trello.com/c/jRy1WrCH")

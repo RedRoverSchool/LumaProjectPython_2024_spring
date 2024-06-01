@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages import performans_new_page, sign_in, product_page
+from pages import performans_new_page, sign_in, product
 
 
 @allure.feature(" What's new > Performance Sportswear New > Check count of products")
@@ -72,6 +72,6 @@ def test_006_008_004_add_to_cart_from_product_page_without_color_and_size():
 def test_product_review_section(login, product_name):
     performans_new_page.visit()
     performans_new_page.click_product_review(product_name)
-    product_page.assert_reviews_title_is_visible()
+    product.assert_reviews_title_is_visible()
 
 
