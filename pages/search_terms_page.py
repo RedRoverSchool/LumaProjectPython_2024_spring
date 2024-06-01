@@ -131,10 +131,6 @@ def verify_keywords_hyperlink():
 def navigated_to_after_click_keyword():
     search_terms = browser.all(list_of_search_terms)
     for i in range(100):
-        try:
-            pop_sms.click()
-            search_terms[i].click()
-            browser.driver.back()
-            popular_search_terms.should(have.text("Popular Search Terms"))
-        except TimeoutException:
-            print(f'Try {i} failed, trying again')
+        search_terms[i].click()
+        browser.driver.back()
+        popular_search_terms.should(have.text("Popular Search Terms"))
