@@ -132,4 +132,4 @@ def navigated_to_after_click_keyword():
             Popular_Search_Terms.should(have.text("Popular Search Terms"))
         except TimeoutException:
             print(f'Try {i} failed, trying again')
-            browser.driver.refresh()
+
