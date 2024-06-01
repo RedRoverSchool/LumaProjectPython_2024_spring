@@ -12,7 +12,7 @@ def open_login_page():
 
 
 def login_in():
-    sign_in.login(SignInData.email, SignInData.password)
+    sign_in.login(SignInData.email_s, SignInData.password_s)
 
 
 def click_on_four_tees_discount_banner():

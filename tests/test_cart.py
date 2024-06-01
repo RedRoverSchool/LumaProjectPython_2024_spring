@@ -3,6 +3,7 @@ import allure
 from selene import browser, have
 from pages.main_page import MainPage
 from pages import cart
+from pages import bags
 
 
 @allure.title("Test Checking the quantity of item in the cart is able to change")
@@ -60,3 +61,16 @@ class TestCart:
         cart_page.check_price_present_in_checkout_cart_page("$22.00")
         cart_page.check_subtotal_present_in_checkout_cart_page()
         cart_page.check_qty_present_in_checkout_cart_page()
+
+    @allure.link('https://trello.com/c/YNtpKcN1')
+    @allure.title('TC_004.001.004 | Sign in & Registration, Account > Anonym User can change item quantity in the cart')
+    def test_item_quantity_updating_by_anonym_user(self):
+        bags.open()
+        bags.add_item_to_cart()
+        cart.click_cart_icon()
+        bags.view_and_edit_card_button().click()
+        cart.counter_should_be_equal('1')
+        cart.set_value_of_qty('2')
+        cart.update_shopping_cart_button().click()
+        cart.counter_should_be_equal('2')
+        cart.cart_subtotal_should_be_calculated_with_qty_equal(2)

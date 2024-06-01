@@ -1,6 +1,5 @@
 import allure
 import pytest
-
 from pages import men_sale_page
 
 

@@ -14,6 +14,7 @@ argus_all_weather_tank_color = '//*[@title="Argus All-Weather Tank"]/../..//*[@o
 argus_all_weather_tank_add_to_card = '//*[@title="Argus All-Weather Tank"]/../..//*[@title="Add to Cart"]'
 MINI_BASKET_WINDOW = '[class="action showcart"]'
 view_and_edit_cart_link = "//*[text()='View and Edit Cart']"
+notes_link = s('//footer//a[contains(text(), "Notes")]')
 
 
 class MainPage:

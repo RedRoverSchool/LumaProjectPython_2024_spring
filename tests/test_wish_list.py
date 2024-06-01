@@ -1,13 +1,15 @@
+import time
+
 import allure
 import pytest
-from pages import wish_list, sale_page, sign_in
-from pages import whats_new_page
+from pages import wish_list
+from pages import whats_new
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link("https://trello.com/c/kVWLOEl5")
 def test_button_update_clickable(login):
-    whats_new_page.add_item_to_wish_list()
+    whats_new.add_item_to_wish_list()
     wish_list.visit()
     wish_list.click_update()
     wish_list.url_should_contain("wishlist_id")
@@ -27,7 +29,7 @@ def test_remove_item_from_wishlist(login):
         wish_list.is_item_removed(item_title)
 
 
-# @pytest.mark.skip
+@pytest.mark.skip
 @allure.link('https://trello.com/c/WQ4d6xa4')
 def test_011_006_001_message_no_items_is_displayed():
     wish_list.visit_login()
@@ -66,4 +68,19 @@ def test_011_006_002_check_info_in_wish_list():
     wish_list.items_name_in_wishlist_is_clickable()
     wish_list.images_in_wishlist_is_clickable()
     wish_list.count_images_in_wishlist(3)
+    wish_list.clear_wish_list()
+
+
+def test_011_006_005_check_items_on_page_wishlist():
+    wish_list.visit_login()
+    wish_list.login("ahahah1@gmail2.com", "jk$34_tor2")
+    wish_list.visit_women_jackets()
+    wish_list.add_to_wish_list_from_catalog(wish_list.ITEM_6_ADD_TO_WISH_LIST)
+    wish_list.visit_women_jackets()
+    wish_list.add_to_wish_list_from_catalog(wish_list.ITEM_8_ADD_TO_WISH_LIST)
+    wish_list.visit_women_jackets()
+    wish_list.add_to_wish_list_from_catalog(wish_list.ITEM_9_ADD_TO_WISH_LIST)
+    wish_list.go_to_wish_list()
+    items_in_wishlist = wish_list.collect_items_for_wishpage()
+    wish_list.compare_side_panel_and_wishpage(items_in_wishlist)
     wish_list.clear_wish_list()
