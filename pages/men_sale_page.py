@@ -106,7 +106,7 @@ def product_arrangement_should_correspond_to_sort_option(option: str):
         browser.wait_until(have.url(men_sale_page_url + "?product_list_order=price"))
         products_arrangement_should_be_sorted_by_price()
     elif option == "Product Name":
-        browser.wait_until(have.url(men_sale_page_url + "?product_list_order=name"))
+        browser.wait_until(staleness_of(position_sort_option.locate()))
         products_arrangement_should_be_sorted_by_name()
 
 
