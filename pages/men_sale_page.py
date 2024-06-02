@@ -7,7 +7,7 @@ from pages.locators import BaseLocators as Header
 from selenium.webdriver.support.expected_conditions import staleness_of
 
 title_page = s("[data-ui-id='page-title-wrapper']")
-list_items = ss("li.product-item")
+list_items = ss("ol.product-items > li.product-item.item.product")
 product_images = ss("img.product-image-photo")
 grid_mode_option = s(".toolbar.toolbar-products:nth-child(3) > .modes > #mode-grid")
 list_mode_option = s(".toolbar.toolbar-products:nth-child(3) > .modes > #mode-list")
@@ -120,7 +120,7 @@ def products_arrangement_should_be_sorted_by_position():
             browser.wait_until(staleness_of(el.locate()))
             position_list.append(el.locate().text.split()[-1])
     sorted_list = sorted(position_list)
-    assert position_list == sorted_list
+    assert position_list == sorted_list, f"Position list is not sorted, actual list: {position_list}"
 
 
 def products_arrangement_should_be_sorted_by_price():
@@ -133,7 +133,7 @@ def products_arrangement_should_be_sorted_by_price():
             browser.wait_until(staleness_of(el.locate()))
             prices_list.append(float(el.locate().text[1:]))
     sorted_list = sorted(prices_list)
-    assert prices_list == sorted_list
+    assert prices_list == sorted_list, f"Price list is not sorted, actual list: {prices_list}"
 
 
 def products_arrangement_should_be_sorted_by_name():
@@ -146,4 +146,4 @@ def products_arrangement_should_be_sorted_by_name():
             browser.wait_until(staleness_of(el.locate()))
             names_list.append(el.locate().text.strip())
     sorted_list = sorted(names_list)
-    assert names_list == sorted_list
+    assert names_list == sorted_list, f"Name list is not sorted, actual list: {names_list}"
