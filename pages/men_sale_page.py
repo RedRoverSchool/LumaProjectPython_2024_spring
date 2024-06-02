@@ -2,6 +2,7 @@ from selene import Collection, browser
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 from pages.locators import BaseLocators as Header
+from selenium.webdriver.support.expected_conditions import staleness_of
 
 title_page = s("[data-ui-id='page-title-wrapper']")
 list_items = ss("li.product-item")
@@ -110,8 +111,8 @@ def product_arrangement_should_correspond_to_sort_option(option: str):
 def products_arrangement_should_be_sorted_by_position(products: Collection):
     position_list = []
     for el in products:
-        position_title = el.locate().text
-        position_list.append(position_title.split()[-1])
+        browser.wait_until(staleness_of(el.locate()))
+        position_list.append(el.locate().text.split()[-1])
     sorted_list = sorted(position_list)
     assert position_list == sorted_list
 
@@ -119,8 +120,8 @@ def products_arrangement_should_be_sorted_by_position(products: Collection):
 def products_arrangement_should_be_sorted_by_price(products: Collection):
     prices_list = []
     for el in products:
-        el_price = el.locate().text
-        prices_list.append(float(el_price[1:]))
+        browser.wait_until(staleness_of(el.locate()))
+        prices_list.append(float(el.locate().text[1:]))
     sorted_list = sorted(prices_list)
     assert prices_list == sorted_list
 
@@ -128,7 +129,7 @@ def products_arrangement_should_be_sorted_by_price(products: Collection):
 def products_arrangement_should_be_sorted_by_name(products: Collection):
     names_list = []
     for el in products:
-        el_name = el.locate().text
-        names_list.append(el_name.strip())
+        browser.wait_until(staleness_of(el.locate()))
+        names_list.append(el.locate().text.strip())
     sorted_list = sorted(names_list)
     assert names_list == sorted_list
