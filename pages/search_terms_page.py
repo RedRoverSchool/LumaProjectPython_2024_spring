@@ -7,6 +7,7 @@ TERMS_FOR_SEARCH_LIST_QTY = '[class="item"]'
 PRODUCT_ITEM_NAMES = '[class=product-item-link]'
 BASE_TITLE = '[class=base]'
 PAGE_TITLE = "h1"
+Popular_Search_Terms = s(".base")
 
 
 def order_search_terms():
@@ -111,3 +112,17 @@ def unique_search_terms():
 def clickable_by_keywords():
     keyword_elements = ss(LIST_OF_SEARCH_TERMS)
     [k.should(be.clickable) for k in keyword_elements]
+
+
+def verify_keywords_hyperlink():
+    keyword_elements = ss(LIST_OF_SEARCH_TERMS)
+    for k in keyword_elements:
+        k.should(have.attribute('href'))
+
+
+def navigated_to_after_click_keyword():
+    search_terms = browser.all(LIST_OF_SEARCH_TERMS)
+    for i in range(100):
+        search_terms[i].click()
+        browser.driver.back()
+        Popular_Search_Terms.should(have.text("Popular Search Terms"))

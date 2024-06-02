@@ -106,6 +106,9 @@ def product_arrangement_should_correspond_to_sort_option(option: str):
     elif option == "Price":
         browser.wait_until(have.url(men_sale_page_url + "?product_list_order=price"))
         products_arrangement_should_be_sorted_by_price(product_prices)
+    elif option == "Product Name":
+        browser.wait_until(have.url(men_sale_page_url + "?product_list_order=name"))
+        products_arrangement_should_be_sorted_by_name(product_titles)
 
 
 def products_arrangement_should_be_sorted_by_position(products: Collection):
@@ -124,6 +127,15 @@ def products_arrangement_should_be_sorted_by_price(products: Collection):
         prices_list.append(float(el_price[1:]))
     sorted_list = sorted(prices_list)
     assert prices_list == sorted_list
+
+
+def products_arrangement_should_be_sorted_by_name(products: Collection):
+    names_list = []
+    for el in products:
+        el_name = el.locate().text
+        names_list.append(el_name.strip())
+    sorted_list = sorted(names_list)
+    assert names_list == sorted_list
 
 
 def product_cards_should_have_correct_content():
