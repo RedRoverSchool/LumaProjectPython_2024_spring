@@ -9,6 +9,7 @@ user_password = s("div.login-container #pass")
 sign_in_button = s("div.login-container #send2")
 AUTHORIZATION_LINK = 'authorization-link'
 USER_NAME_IN_WELCOME = '.logged-in'
+forgot_your_password_link = "a[class='action remind']"
 MANY_URL = ["https://magento.softwaretestingboard.com/",
            "https://magento.softwaretestingboard.com/what-is-new.html",
            "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html,"
@@ -46,3 +47,7 @@ def check_all_pages_have_user_name(name):
     for lnk in MANY_URL:
         browser.open(lnk)
         s(USER_NAME_IN_WELCOME).should(have.text(name))
+
+def verify_forgot_password_link_is_underlined():
+    s(forgot_your_password_link).hover()
+    s(forgot_your_password_link).should(have.css_property('text-decoration-line').value('underline'))
