@@ -98,8 +98,3 @@ def test_verify_contents_of_each_product_card():
     page.open()
     page.product_list_should_be_present()
     page.product_cards_should_have_correct_content()
-    # page.product_cards_should_have_title()
-    # page.product_cards_should_have_price()
-    # page.product_cards_should_have_image()
-    # page.product_cards_should_have_available_sizes_list()
-    # page.product_cards_should_have_available_colors_list()
