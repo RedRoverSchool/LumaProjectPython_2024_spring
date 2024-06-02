@@ -2,7 +2,7 @@ import allure
 from pages import advanced_search
 
 
-@allure.link('https://trello.com/c/kn91s1De')
+@allure.link('https://trello.com/c/kn91s1De/')
 @allure.feature("Advanced Search")
 @allure.title('Empty input fields')
 def test_input_fields_are_empty():
@@ -45,3 +45,12 @@ def test_all_input_fields_are_filled_in():
     advanced_search.fill_in_all_input_fields('Jacket', 'MJ03', 'Adjustable hood.', 'Adjustable hood.', '40', '50')
     advanced_search.click_search_button()
     advanced_search.check_full_search_results('Jacket', 'MJ03', 'Adjustable hood.', 40, 50)
+
+@allure.link('https://trello.com/c/cfPCcQjS/')
+@allure.feature('Advanced Search')
+@allure.title('Search for a non-existent product')
+def test_non_existent_product():
+    advanced_search.open()
+    advanced_search.fill_non_existent_product_name()
+    advanced_search.click_search_button()
+    advanced_search.check_search_results_for_non_existent_product()

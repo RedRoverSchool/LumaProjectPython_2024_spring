@@ -9,11 +9,6 @@ promotions_men_sale_html = 'https://magento.softwaretestingboard.com/promotions/
 women_jacket_link = "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html"
 men_tops_hoodies_url = 'https://magento.softwaretestingboard.com/men/tops-men/hoodies-and-sweatshirts-men.html'
 create_an_account_link = "(//a[.='Create an Account'])[1]"
-mens_deals_img = 'a.block-promo.sale-mens img'
-mens_deals_img_link = 'a.block-promo.sale-mens'
-mens_bargains_text = 'a.block-promo.sale-mens span strong'
-stretch_your_budget_text = "//span[text()='Stretch your budget with active attire']"
-shop_mens_deals = "//span[text()='Shop Men’s Deals']"
 
 breadcrumbs_list = ss(".breadcrumbs li")
 
@@ -38,32 +33,27 @@ def check_if_breadcrumbs_have_all_parts():
     breadcrumbs_list.should(have.texts('Home', 'Sale'))
 
 
-def is_mens_deals_img_visible():
-    s(mens_deals_img).should(be.visible)
+def should_be_visible_image(name):
+    s(f'//span[contains(text(), "{name}")]/../../img').should(be.visible)
 
 
-def is_mens_deals_img_clickable():
-    s(mens_deals_img).should(be.clickable)
+def should_be_clickable_image(name):
+    s(f'//span[contains(text(), "{name}")]/../../img').should(be.clickable)
 
 
-def click_mens_deals_img():
-    s(mens_deals_img_link).click()
+def click_image_with_name(name):
+    s(f'//span[contains(text(), "{name}")]/../..').click()
 
 
-def check_redirection_mens_deals():
-    assert browser.driver.current_url == promotions_men_sale_html
+def should_be_redirected_to_url_containing(text):
+    browser.should(have.url_containing(text))
 
 
-def is_stretch_your_budget_text_visible():
-    s(stretch_your_budget_text).should(have.text('Stretch your budget with active attire'))
-
-
-def is_mens_bargains_text_visible():
-    s(mens_bargains_text).should(have.text('Men’s Bargains'))
-
-
-def is_shop_mens_deals_text_visible():
-    s(shop_mens_deals).should(have.text('Shop Men’s Deals'))
+def should_be_visible_texts_on_image(text1, text2, text3, image):
+    text_elements = ss(f"//span[contains(text(), '{image}')]/../*")
+    text_elements[0].should(have.text(text1))
+    text_elements[1].should(have.text(text2))
+    text_elements[2].should(have.text(text3))
 
 
 def check_page_title():

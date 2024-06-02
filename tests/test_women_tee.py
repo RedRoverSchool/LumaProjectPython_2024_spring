@@ -121,3 +121,31 @@ def test_adding_product_to_comparison_list(login):
     compare_items.should_be_redirected_to_url_containing('product_compare')
     compare_items.should_display_product_name('Radiant Tee')
     compare_items.clear_comparison_list()
+
+
+@allure.suite('US_002.001 | Page of any product')
+@allure.link('https://trello.com/c/R6TsIcuW')
+@allure.title('TC_002.001.006 | Radiant Tee product page > Reviews > Writing the product review')
+def test_product_reviews_writing(login):
+    product.open('radiant-tee')
+    product.click_reviews_tab()
+    product.put_review_stars('4')
+    product.fill_nickname_field_with_text('Lena')
+    product.fill_summary_field_with_text('Very comfortable')
+    product.fill_review_field_with_text('Great! Soft and beautiful')
+    product.submit_review()
+    product.success_msg_should_have_text('You submitted your review for moderation.')
+
+    
+@allure.suite('US_002.001 | Page of any product')    
+@allure.link('https://trello.com/c/Ik5u2Zsm')
+@allure.title('TC_002.001.008 | Radiant Tee product page > Product parameters > Changing the product color')
+def test_changing_product_color(login):
+    product.open('radiant-tee')
+    product.select_color('Blue')
+    product.select_color('Orange')
+    product.color_should_be_selected('Orange', 'true')
+    product.color_label_should_have_frame_with_color('Orange', '#ff5501')
+    product.color_indicator_should_have_text('Orange')
+    product.image_should_have_color('orange')
+

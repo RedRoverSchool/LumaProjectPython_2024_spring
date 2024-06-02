@@ -67,3 +67,4 @@ LAYLA_TEE_URL = 'https://magento.softwaretestingboard.com/layla-tee.html'
 LINK_WOMEN = "https://magento.softwaretestingboard.com/women.html"
 LINK_SHIPPING = "https://magento.softwaretestingboard.com/checkout/#shipping"
 LINK_PAYMENT = "https://magento.softwaretestingboard.com/checkout/#payment"
+SOFTWARE_TESTING_BOARD = "https://softwaretestingboard.com/magento-store-notes/?utm_source=magento_store&utm_medium=banner&utm_campaign=notes_promo&utm_id=notes_promotion"
