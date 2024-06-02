@@ -1,6 +1,8 @@
 from selene import Collection, browser
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
+from selenium.common import StaleElementReferenceException
+
 from pages.locators import BaseLocators as Header
 from selenium.webdriver.support.expected_conditions import staleness_of
 
@@ -18,8 +20,8 @@ position_sort_option = s("option[value='position']")
 product_name_sort_option = s("option[value='name']")
 price_sort_option = s("option[value='price']")
 sorter = s("#sorter")
-product_titles = ss("a.product-item-link")
-product_prices = ss("span>span.price")
+product_titles = "a.product-item-link"
+product_prices = "span>span.price"
 men_sale_page_url = 'https://magento.softwaretestingboard.com/promotions/men-sale.html'
 breadcrumbs_path = ['Home', 'Sale', 'Men Sale']
 page_title = "Men Sale"
@@ -99,37 +101,49 @@ def switch_to_sorting_option(option: str):
 def product_arrangement_should_correspond_to_sort_option(option: str):
     if option == "Position":
         browser.wait_until(have.url("expected_url"))
-        products_arrangement_should_be_sorted_by_position(product_titles)
+        products_arrangement_should_be_sorted_by_position()
     elif option == "Price":
         browser.wait_until(have.url(men_sale_page_url + "?product_list_order=price"))
-        products_arrangement_should_be_sorted_by_price(product_prices)
+        products_arrangement_should_be_sorted_by_price()
     elif option == "Product Name":
         browser.wait_until(have.url(men_sale_page_url + "?product_list_order=name"))
-        products_arrangement_should_be_sorted_by_name(product_titles)
+        products_arrangement_should_be_sorted_by_name()
 
 
-def products_arrangement_should_be_sorted_by_position(products: Collection):
+def products_arrangement_should_be_sorted_by_position():
     position_list = []
+    products = ss(product_titles)
     for el in products:
-        browser.wait_until(staleness_of(el.locate()))
-        position_list.append(el.locate().text.split()[-1])
+        try:
+            position_list.append(el.locate().text.split()[-1])
+        except StaleElementReferenceException:
+            browser.wait_until(staleness_of(el.locate()))
+            position_list.append(el.locate().text.split()[-1])
     sorted_list = sorted(position_list)
     assert position_list == sorted_list
 
 
-def products_arrangement_should_be_sorted_by_price(products: Collection):
+def products_arrangement_should_be_sorted_by_price():
     prices_list = []
+    products = ss(product_prices)
     for el in products:
-        browser.wait_until(staleness_of(el.locate()))
-        prices_list.append(float(el.locate().text[1:]))
+        try:
+            prices_list.append(float(el.locate().text[1:]))
+        except StaleElementReferenceException:
+            browser.wait_until(staleness_of(el.locate()))
+            prices_list.append(float(el.locate().text[1:]))
     sorted_list = sorted(prices_list)
     assert prices_list == sorted_list
 
 
-def products_arrangement_should_be_sorted_by_name(products: Collection):
+def products_arrangement_should_be_sorted_by_name():
     names_list = []
+    products = ss(product_titles)
     for el in products:
-        browser.wait_until(staleness_of(el.locate()))
-        names_list.append(el.locate().text.strip())
+        try:
+            names_list.append(el.locate().text.strip())
+        except StaleElementReferenceException:
+            browser.wait_until(staleness_of(el.locate()))
+            names_list.append(el.locate().text.strip())
     sorted_list = sorted(names_list)
     assert names_list == sorted_list
