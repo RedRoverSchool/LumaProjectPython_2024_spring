@@ -140,10 +140,14 @@ def products_arrangement_should_be_sorted_by_name():
     names_list = []
     products = ss(product_titles)
     for el in products:
-        try:
-            names_list.append(el.locate().text.strip())
-        except StaleElementReferenceException:
-            browser.wait_until(staleness_of(el.locate()))
-            names_list.append(el.locate().text.strip())
+        attempts = 0
+        name = ''
+        while attempts < 2:
+            try:
+                name = el.locate().text.strip()
+                break
+            except StaleElementReferenceException:
+                attempts += 1
+        names_list.append(name)
     sorted_list = sorted(names_list)
     assert names_list == sorted_list, f"Name list is not sorted, actual list: {names_list}"
