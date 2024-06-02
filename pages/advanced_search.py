@@ -1,7 +1,7 @@
 from selene import browser, have, be, command, by, query
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.support.color import Color
-
+from selenium.webdriver.support.expected_conditions import staleness_of
 
 url = "https://magento.softwaretestingboard.com/catalogsearch/advanced/"
 
@@ -62,6 +62,7 @@ def search_by_product_name():
 def check_search_result():
     product_name = 'Jacket'
     for item in all_items_found:
+        browser.wait_until(staleness_of(item.locate()))
         item.should(have.text(product_name))
 
 def fill_in_all_input_fields(product_name, sku, desc, short_desc, price_from, price_to):
