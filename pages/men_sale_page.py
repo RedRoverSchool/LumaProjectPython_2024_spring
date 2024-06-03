@@ -1,8 +1,7 @@
-from selene import Collection, browser
+from selene import browser
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 from selenium.common import StaleElementReferenceException
-
 from pages.locators import BaseLocators as Header
 from selenium.webdriver.support.expected_conditions import staleness_of
 
@@ -100,7 +99,7 @@ def switch_to_sorting_option(option: str):
 
 def product_arrangement_should_correspond_to_sort_option(option: str):
     if option == "Position":
-        browser.wait_until(have.url("expected_url"))
+        browser.wait_until(have.url('expected_url'))
         products_arrangement_should_be_sorted_by_position()
     elif option == "Price":
         browser.wait_until(have.url(men_sale_page_url + "?product_list_order=price"))
@@ -141,13 +140,15 @@ def products_arrangement_should_be_sorted_by_name():
     products = ss(product_titles)
     for el in products:
         attempts = 0
-        name = ''
         while attempts < 2:
             try:
                 name = el.locate().text.strip()
-                break
+                if name:
+                    names_list.append(name)
+                    break
             except StaleElementReferenceException:
                 attempts += 1
-        names_list.append(name)
+    # Removing empty lines from the list of names before sorting
+    names_list = [name for name in names_list if name]
     sorted_list = sorted(names_list)
     assert names_list == sorted_list, f"Name list is not sorted, actual list: {names_list}"
