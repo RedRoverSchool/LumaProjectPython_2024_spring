@@ -59,6 +59,11 @@ class ProductLocators:
     SHOULD_CHOOSE_SIZE_AND_COLOR = '.swatch-input super-attribute-select'
     TEXT_REQUIRED_FIELD = 'This is a required field.'
 
+    PRODUCT_REVIEW_TAB = '#tab-label-reviews'
+    CUSTOMER_REVIEWS = '#customer-reviews'
+    REVIEWS = '#customer-reviews .review'
+    REVIEW_DETAILS = '.review-details'
+
 
 class HomeLocators:
     CONSENT_COOKIES_BTN = '(//p[@class="fc-button-label"])[1]'
@@ -180,6 +185,7 @@ class ProductItemLocators:
     WISH_LIST = "[aria-label='Add to Wish List']"
     PRODUCTS_GRID = ".products-grid.grid"
     ITEM_INFO = ".product-item-info"
+    REVIEWS_LINK = "div.reviews-actions a"
     LAYLA_TEE_PRODUCT_NAME = "a[title='Layla Tee']"
     LAYLA_TEE_TITLE = "h1.page-title span"
     LAYLA_TEE_IMG = "img[alt='Layla Tee']"
@@ -306,3 +312,6 @@ class SetYogaStrapsLocators:
 class PopularSearchTermsLocators:
     HOODIE_LINK = '//a[contains(text(),"HOODIE")]'
     SEARCH_RESULTS_HEADER = '//h1/span[@data-ui-id="page-title-wrapper"]'
+
+
+

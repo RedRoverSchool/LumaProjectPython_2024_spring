@@ -1,9 +1,9 @@
 from selene import query
 from selene.support.shared.jquery_style import s
+from selene.support.conditions import be
 from selenium.webdriver import Keys
 
 from pages.locators import ProductLocators as PL, HomeLocators as HL
-from selene.support.conditions import be
 
 
 def select_product_size(size):
@@ -34,4 +34,21 @@ def check_minicart_subtotal(qty):
     subtotal = float(s(HL.MINICART_SUBTOTAL).get(query.text).strip('$'))
     assert subtotal == round(product_price * int(qty), 2)
 
+def find_reviews_tab():
+    return s(PL.PRODUCT_REVIEW_TAB)
 
+def is_reviews_tab_visible():
+    return find_reviews_tab().should(be.visible)
+
+def open_reviews_tab():
+    if is_reviews_tab_visible():
+        s(PL.PRODUCT_REVIEW_TAB).click()
+
+def is_customer_reviews_present():
+    return s(PL.CUSTOMER_REVIEWS).should(be.existing)
+
+def is_review_details_visible(review):
+    return review.s(PL.REVIEW_DETAILS).should(be.visible)
+
+def is_rating_visible(review):
+    return review.s(".rating-result").should(be.visible)
