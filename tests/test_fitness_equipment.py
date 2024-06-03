@@ -1,7 +1,9 @@
 
 import allure
+from selene import be
+from selene.support.shared.jquery_style import ss, s
 
-from pages import set_of_sprite_yoga_straps_page, women_page
+from pages import set_of_sprite_yoga_straps_page, women_page, fitness_equipment_page
 
 
 @allure.suite("US_009.005 | Gear catalog > Fitness Equipment > Set of Sprite Yoga Straps")
@@ -15,6 +17,13 @@ class TestFitnessEquipment:
         page.add_to_cart_more(1000)
         page.assert_text_of_element('//div[contains(text(),"The requested qty is not available")]', 'The requested qty is not available')
 
+def test_009_003_001_check_the_user_can_read_reviews_about_the_product():
+    fitness_equipment_page.open_page()
+    link_to_reviews = 'a.action.view'
+    s(link_to_reviews).click()
+    reviews = ss("#customer-reviews")
+    for review in reviews:
+        assert review.should(be.visible)
 
 def test_009_005_004_put_sets_of_straps_in_the_cart():
     set_of_sprite_yoga_straps_page.visit()
