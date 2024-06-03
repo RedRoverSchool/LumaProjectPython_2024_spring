@@ -1,32 +1,49 @@
-from selene import browser, command, Element
-from selene.support.conditions import have, be
-from selene.support.shared.jquery_style import s, ss
+from selene import browser
+from selene.support.conditions import be
+from selene.support.shared.jquery_style import s
 
-from data.links import YOGA_URL, YOGA_LIST_URL
-from pages.locators import WhatsNewPageLocators as WNL, YogaPageLocators as YPL
+yoga_url = 'https://magento.softwaretestingboard.com/collections/yoga-new.html'
+yoga_list_url = 'https://magento.softwaretestingboard.com/collections/yoga-new.html?product_list_mode=list'
+
+list_button = s('.modes-mode.mode-list')
+grid_button = s('.modes-mode.mode-grid')
 
 
-class YogaPage:
-    def __init__(self, browser):
-        self.browser = browser
+def open_page():
+    browser.open(yoga_url)
 
-    def open_page(self):
-        self.browser.open(YOGA_URL)
 
-    def is_list_button_visible(self):
-        return s(YPL.LIST_BUTTON).should(be.visible)
+def is_list_button_visible():
+    list_button.should(be.visible)
 
-    def list_button_click(self):
-        return s(YPL.LIST_BUTTON).click()
 
-    def check_current_url(self):
-        return browser.driver.current_url
+def list_button_click():
+    list_button.click()
 
-    def open_list_view_page(self):
-        self.browser.open(YOGA_LIST_URL)
 
-    def is_grid_button_visible(self):
-        return s(YPL.GRID_BUTTON).should(be.visible)
+def is_current_url_yoga():
+    return browser.driver.current_url == yoga_url
 
-    def grid_button_click(self):
-        return s(YPL.GRID_BUTTON).click()
+
+def is_current_url_list():
+    return browser.driver.current_url == yoga_list_url
+
+
+def open_list_view_page():
+    browser.open(yoga_list_url)
+
+
+def is_grid_button_visible():
+    grid_button.should(be.visible)
+
+
+def grid_button_click():
+    grid_button.click()
+
+
+def is_wrapper_list_view_visible():
+    s('.products.wrapper.list').should(be.present).should(be.visible)
+
+
+def is_wrapper_grid_view_visible():
+    s('.products.wrapper.grid').should(be.visible)

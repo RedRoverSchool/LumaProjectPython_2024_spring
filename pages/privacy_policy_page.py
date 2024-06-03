@@ -1,6 +1,8 @@
-from selene import browser, by, be
+from selene import browser, by, be, have
 from selene.support.shared.jquery_style import s
-from pages.locators import PrivacyPolicyPageLocators as PPPL
+
+page_main_header_locator = "span[data-ui-id='page-title-wrapper']"
+privacy_policy_page_link = 'https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode'
 
 
 def open_page_with_navigate_block(url):
@@ -17,15 +19,13 @@ def move_to_elements(text_data):
     return elements
 
 
-class PrivacyPolicyPage:
+def get_privacy_policy_url():
+    return browser.driver.current_url
 
-    def __init__(self, browser):
-        self.browser = browser
 
-    @property
-    def get_privacy_policy_url(self):
-        return self.browser.driver.current_url
+def is_header_has_text(title):
+    s(page_main_header_locator).should(have.text(title))
 
-    @property
-    def page_main_header(self):
-        return s(PPPL.PAGE_MAIN_HEADER_LOCATOR)
+
+def is_current_url():
+    return get_privacy_policy_url() == privacy_policy_page_link

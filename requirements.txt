@@ -19,8 +19,10 @@ pluggy==1.5.0
 pycparser==2.22
 PySocks==1.7.1
 pytest==8.1.1
+pytest-rerunfailures==14.0
 pytest-xdist==3.5.0
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
 selene==2.0.0rc9
 selenium==4.20.0
 six==1.16.0

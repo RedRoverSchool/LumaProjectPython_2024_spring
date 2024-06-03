@@ -1,29 +1,16 @@
-import data.page_data
-import data.links
-import pages
-from pages import locators
-from pages import sign_in
+from pages import compare_items
 import allure
-from selene import browser, be, have, by
-from selene.support.shared.jquery_style import s
 import pytest
 
 
 @pytest.mark.skip
-@allure.title("check value of selected items to compare products section")
-def test_check_quantity_value_in_compare_product_section(browser_management):
-    browser.open(pages.locators.LoginLocators.LINK_LOGIN)
-    sign_in.login(data.page_data.SignInData.email, data.page_data.SignInData.password)
-    browser.element(pages.locators.SalePageLocators.SALE_TAP).click()
-    browser.should(have.url(data.links.SALE_SECTION_LINK))
-    browser.element(pages.locators.SaleWomenDealsLocators.JACKETS).click()
-    s(pages.locators.SaleWomenDealsLocators.ELEMENT_ONE).hover()
-    s(pages.locators.SaleWomenDealsLocators.ADD_TO_COMPARE_BTN_ONE).hover().click()
-    s(pages.locators.SaleWomenDealsLocators.ELEMENT_TWO).wait_until(be.present)
-    s(pages.locators.SaleWomenDealsLocators.ELEMENT_TWO).hover()
-    s(pages.locators.SaleWomenDealsLocators.ADD_TO_COMPARE_BTN_ONE_TWO).wait_until(be.present)
-    s(pages.locators.SaleWomenDealsLocators.ADD_TO_COMPARE_BTN_ONE_TWO).hover().click()
-    s(pages.locators.SaleWomenDealsLocators.QUANTITY_ITEMS).should(have.text("2 items"))
-    s(by.id("compare-clear-all")).click()
-    s(by.css("button[class='action-primary action-accept']")).wait_until(be.present)
-    s(by.css("button[class='action-primary action-accept']")).click()
+@allure.title("check value of selected items to compare products section when compare product section is empty")
+def test_check_quantity_value_in_empty_compare_product_section():
+    compare_items.compare_items_values_in_empty_compare_items_section()
+
+
+@pytest.mark.skip
+@allure.title("check selected items from compare products section are deleted after clicking on clear all btn")
+def test_check_compare_product_item_section_is_empty_after_click_on_clear_all_btn(browser_management):
+    compare_items.compare_items_values_in_empty_compare_items_section()
+    compare_items.clear_compare_product_section_after_test()

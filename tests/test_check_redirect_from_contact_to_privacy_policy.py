@@ -1,11 +1,10 @@
 import pytest
+from selene import browser, have
 
-from pages.locators import *
 from data.links import *
-from selene import browser, by, be, have, support
+from pages.locators import *
 
 
-@pytest.mark.skip(reason="Unable to locate element: browser.element(ContactUsLocators.CONTACT_US_LINK).click()")
 def test_redirect_from_contact_to_privacy_policy():
     browser.open(PRIVACY_POLICY_PAGE_LINK)
     browser.element(ContactUsLocators.CONTACT_US_LINK).click()
