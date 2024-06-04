@@ -1,4 +1,5 @@
 import allure
+import pytest
 from pages import advanced_search
 
 
