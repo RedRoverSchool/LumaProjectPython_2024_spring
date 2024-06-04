@@ -23,7 +23,7 @@ sorter = s("#sorter")
 product_titles = "a.product-item-link"
 product_prices = "span>span.price"
 men_sale_page_url = 'https://magento.softwaretestingboard.com/promotions/men-sale.html'
-breadcrumbs_path = ['Home', 'Sale', 'Men Sale']
+breadcrumbs_path = ['Home', 'Men Sale']
 page_title = "Men Sale"
 
 
