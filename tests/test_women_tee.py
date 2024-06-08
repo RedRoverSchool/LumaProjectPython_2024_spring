@@ -1,6 +1,4 @@
 import allure
-import pytest
-
 from pages import women_page, product, cart, wish_list, compare_items
 
 
@@ -136,8 +134,8 @@ def test_product_reviews_writing(login):
     product.submit_review()
     product.success_msg_should_have_text('You submitted your review for moderation.')
 
-    
-@allure.suite('US_002.001 | Page of any product')    
+
+@allure.suite('US_002.001 | Page of any product')
 @allure.link('https://trello.com/c/Ik5u2Zsm')
 @allure.title('TC_002.001.008 | Radiant Tee product page > Product parameters > Changing the product color')
 def test_changing_product_color(login):
@@ -148,4 +146,3 @@ def test_changing_product_color(login):
     product.color_label_should_have_frame_with_color('Orange', '#ff5501')
     product.color_indicator_should_have_text('Orange')
     product.image_should_have_color('orange')
-
