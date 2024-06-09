@@ -3,9 +3,11 @@ from selene.core import command, query
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
 
+from data.links import SOFTWARE_TESTING_BOARD
 from pages import cart
 from pages.components import mini_card
 from pages.components import nav
+from pages.locators import FooterLocators
 
 main_page_link = 'https://magento.softwaretestingboard.com/'
 create_an_account = "(//a[.='Create an Account'])[1]"
@@ -176,3 +178,24 @@ class MainPage:
     @staticmethod
     def has_create_account_text():
         s(create_an_account).should(have.text('Create an Account'))
+
+    def scrol_to_footer(self):
+        s(FooterLocators.NOTES).perform(command.js.scroll_into_view)
+
+    def move_to_element(self):
+        s(FooterLocators.NOTES).hover()
+
+    def is_visible_Notes(self):
+        s(FooterLocators.NOTES).should(be.visible)
+
+    def is_clicable_Notes(self):
+        s(FooterLocators.NOTES).should(be.clickable)
+
+    def click_Notes(self):
+        s(FooterLocators.NOTES).click()
+
+    def magento_text_check(self, text):
+        s(FooterLocators.MAGENTO).should(have.text(text))
+
+    def check_for_redirection_to_magento_store_notes(self):
+        assert self.get_current_url() == SOFTWARE_TESTING_BOARD

@@ -2,7 +2,6 @@ from selene import browser, have, be, command, by, query
 from selene.support.shared.jquery_style import s, ss
 from selenium.webdriver.support.color import Color
 
-
 url = "https://magento.softwaretestingboard.com/catalogsearch/advanced/"
 
 button_search = s('//button[contains(@class, "primary")]')
