@@ -51,7 +51,7 @@ jobs:
               https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$REPORT_ID/zip \
               -o pages.zip
           fi
-
+        continue-on-error: true
 #      - run: mkdir allure-results && unzip artifacts.zip -d allure-results
 #        continue-on-error: true
       - run: mkdir allure-results old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
