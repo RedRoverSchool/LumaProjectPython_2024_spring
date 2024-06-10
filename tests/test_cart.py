@@ -4,7 +4,7 @@ from pages.main_page import MainPage
 from pages import main_page, cart, bags
 
 
-@allure.suite('Main Page>Cart')
+@allure.feature('Main Page>Cart')
 @allure.title("TC_005.001.004 Checking the quantity is able to change")
 @allure.link('https://trello.com/c/tGCH9Kif')
 def test_the_quantity_of_item_in_the_cart_is_able_to_change():
@@ -17,7 +17,7 @@ def test_the_quantity_of_item_in_the_cart_is_able_to_change():
     cart.counter_number.should(have.text('2'))
 
 
-@allure.suite('Main Page>Cart')
+@allure.feature('Main Page>Cart')
 @allure.title('TC_005.001.005 Checking the product is deleted from the cart')
 @allure.link('https://trello.com/c/L4n3T6W3')
 def test_the_product_is_deleted_from_the_cart():
@@ -30,7 +30,7 @@ def test_the_product_is_deleted_from_the_cart():
     cart.should_be_message_click('Click here to continue shopping.')
 
 
-@allure.suite('Main Page>Cart')
+@allure.feature('Main Page>Cart')
 @allure.title('ТС_005.001.016 View and edit cart>Checking that the size color product-image and product name')
 @allure.link("https://trello.com/c/lvLslLGD")
 def test_size_color_and_product_name_are_correct_in_the_checkout_cart_page():
@@ -45,7 +45,7 @@ def test_size_color_and_product_name_are_correct_in_the_checkout_cart_page():
     cart_page.checking_color_are_correct_in_checkout_cart_page("Gray")
 
 
-@allure.suite('Main Page>Cart')
+@allure.feature('Main Page>Cart')
 @allure.title('ТС_005.001.017 View and edit cart>Check price Quantity and Cart Subtotal present in Cart page')
 @allure.link("https://trello.com/c/SQ3op4DX")
 def test_check_price_qty_and_cart_subtotal_present_in_checkout_cart_page():
@@ -60,7 +60,7 @@ def test_check_price_qty_and_cart_subtotal_present_in_checkout_cart_page():
     cart_page.check_qty_present_in_checkout_cart_page()
 
 
-@allure.suite('Sign in & Registration')
+@allure.feature('Sign in & Registration')
 @allure.link('https://trello.com/c/YNtpKcN1')
 @allure.title('TC_004.001.004 Sign in & Registration, Account > Anonym User can change item quantity in the cart')
 def test_item_quantity_updating_by_anonym_user():
