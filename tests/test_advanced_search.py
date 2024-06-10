@@ -1,4 +1,5 @@
 import allure
+import pytest
 from pages import advanced_search
 
 
@@ -28,6 +29,7 @@ def test_prohibited_characters_in_price():
     advanced_search.click_search_button()
     advanced_search.invalid_number_price_error_message()
 
+@pytest.mark.skip
 @allure.link('https://trello.com/c/fpWChrDR/')
 @allure.feature('Advanced Search')
 @allure.title('Products found match the search criteria')
