@@ -24,6 +24,7 @@ minicart_subtotal = s('//*[@id="minicart-content-wrapper"]/div[2]/div[2]/div/spa
 product_price_cart = s('//td[@class="col price"]/span/span/span')
 subtotal_price_cart = s('//td[@class="col subtotal"]/span/span/span')
 
+
 def open_page():
     browser.open(CART_LINK)
 

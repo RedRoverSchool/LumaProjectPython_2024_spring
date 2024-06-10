@@ -1,8 +1,7 @@
-from selene import have, be, Element
+from selene import have, be, Element, browser
 from selene.core import command, query
 from selene.support.conditions import be, have
 from selene.support.shared.jquery_style import s, ss
-
 from data.links import SOFTWARE_TESTING_BOARD
 from pages import cart
 from pages.components import mini_card
@@ -14,9 +13,12 @@ create_an_account = "(//a[.='Create an Account'])[1]"
 argus_all_weather_tank_size = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="M"]'
 argus_all_weather_tank_color = '//*[@title="Argus All-Weather Tank"]/../..//*[@option-label="Gray"]'
 argus_all_weather_tank_add_to_card = '//*[@title="Argus All-Weather Tank"]/../..//*[@title="Add to Cart"]'
-MINI_BASKET_WINDOW = '[class="action showcart"]'
+mini_basket_window = '[class="action showcart"]'
 view_and_edit_cart_link = "//*[text()='View and Edit Cart']"
 notes_link = s('//footer//a[contains(text(), "Notes")]')
+item_size = s('[option-label="XS"]')
+color_item = s('[option-label="Orange"]')
+btn_add_to_cart = s('form[data-product-sku="WS12"] button')
 
 
 class MainPage:
@@ -148,18 +150,13 @@ class MainPage:
     def check_product_qty_inside_minicart(value):
         s('input[class="item-qty cart-item-qty"]').should(have.attribute('data-item-qty').value(value))
 
-    def add_item_to_cart(self, size, color, add_to_cart_button):
-        s(size).click()
-        s(color).click()
-        s(add_to_cart_button).click()
-
     def add_to_cart_from_main_page(self):
         s(argus_all_weather_tank_size).click()
         s(argus_all_weather_tank_color).click()
         s(argus_all_weather_tank_add_to_card).click()
 
     def go_to_mini_cart(self):
-        s(MINI_BASKET_WINDOW).should(be.clickable).click()
+        s(mini_basket_window).should(be.clickable).click()
 
     def go_to_checkout_cart(self):
         s(view_and_edit_cart_link).click()
@@ -199,3 +196,13 @@ class MainPage:
 
     def check_for_redirection_to_magento_store_notes(self):
         assert self.get_current_url() == SOFTWARE_TESTING_BOARD
+
+
+def open_page():
+    browser.open(main_page_link)
+
+
+def add_item_to_cart():
+    item_size.click()
+    color_item.click()
+    btn_add_to_cart.click()
