@@ -7,7 +7,9 @@ from pages.main_page import MainPage
 
 @allure.suite("US_001.002 | Testing Erin Recommends Page")
 class TestErinRecommends:
-    @allure.title("TC_001.002.002 | Check redirection to 'Shop Erin Recommends' page by clicking block")
+    @allure.feature("Main Page > Erin Recommendations")
+    @allure.title("Check redirection to 'Shop Erin Recommends' page by clicking block")
+    @allure.link('https://trello.com/c/WV6EggMW')
     def test_erin_block_link_redirection(self):
         with allure.step("Open home page"):
             page = MainPage(browser=browser)
@@ -22,7 +24,9 @@ class TestErinRecommends:
         with allure.step("Assert header contains text 'Erin Recommends'"):
             page.is_element_text_correct(header, "Erin Recommends")
 
-    @allure.title("TC_001.002.003 | Main Page > Erin Recommendations > Paginated Product Catalog Display")
+    @allure.feature("Main Page > Erin Recommendations")
+    @allure.title("Paginated Product Catalog Display")
+    @allure.link('https://trello.com/c/5IqfevjC')
     def test_pagination_controls(self):
         with allure.step("Open Erin Recommends page"):
             page = erin_recommends_page
@@ -36,7 +40,9 @@ class TestErinRecommends:
             page.click_next()
             browser.should(have.url_containing("p=2"))
 
-    @allure.title("TC_001.002.004 | Main Page > Erin Recommendations > Select Number of Products Displayed")
+    @allure.feature("Main Page > Erin Recommendations")
+    @allure.title("Select Number of Products Displayed")
+    @allure.link('https://trello.com/c/Xwdzlpus')
     def test_show_per_page(self):
         with allure.step("Open Erin Recommends page"):
             page = erin_recommends_page
@@ -49,7 +55,9 @@ class TestErinRecommends:
         with allure.step("Assert number of product displayed matches to selection"):
             page.verify_number_of_product_displayed(13, 24)
 
-    @allure.title("TC_001.002.005 | Main Page > Erin Recommendations > Arrangement of Products Display")
+    @allure.feature("Main Page > Erin Recommendations")
+    @allure.title("Arrangement of Products Display")
+    @allure.link('https://trello.com/c/SiNG1wlV')
     def test_switch_to_list_view(self):
         with allure.step("Open Erin Recommends page"):
             page = erin_recommends_page
@@ -60,11 +68,15 @@ class TestErinRecommends:
             page.is_list_view_activate()
 
 
-@allure.title("TC_001.002.015_1 | Main Page > Erin Recommendations > Adding an Item for Comparison")
+@allure.feature("Main Page > Erin Recommendations")
+@allure.title("Adding an Item for Comparison(D_01)")
+@allure.link('https://trello.com/c/TQTWkM0l')
 def test_add_item_to_compare():
     with allure.step("Open Erin Recommends page"):
         erin_recommends_page.open_page()
         erin_recommends_page.hover_click_item()
-        erin_recommends_page.assert_text_of_element("//div[contains(text(), 'You added product Jade Yoga Jacket to the ')]", "You added product Jade Yoga Jacket to the ")
+        erin_recommends_page.assert_text_of_element(
+            "//div[contains(text(), 'You added product Jade Yoga Jacket to the ')]",
+            "You added product Jade Yoga Jacket to the ")
         erin_recommends_page.click_text_compare_products()
-        erin_recommends_page.assert_text_of_element("//a[contains(text(), 'Jade Yoga Jacket')]","Jade Yoga Jacket")
+        erin_recommends_page.assert_text_of_element("//a[contains(text(), 'Jade Yoga Jacket')]", "Jade Yoga Jacket")
