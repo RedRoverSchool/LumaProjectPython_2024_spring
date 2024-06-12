@@ -24,7 +24,7 @@ def test_check_color_of_hover_element(element):
 
 @pytest.mark.parametrize("element", text)
 @allure.feature('Privacy and Cookie Policy > Main Content')
-@allure.title("Privacy and Cookie Policy>Main Content>Verify link highlight after hovering")
+@allure.title("Verify link highlight after hovering")
 @allure.link('https://trello.com/c/hMNWYKkj')
 def test_all_links_are_highlighted(element):
     browser.open(url_navigate)

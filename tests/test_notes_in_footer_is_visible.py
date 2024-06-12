@@ -4,28 +4,36 @@ from pages import notes
 from pages.main_page import MainPage
 
 
+@allure.feature('Footer > Notes')
+@allure.link('https://trello.com/c/LjJnpd6J')
+@allure.title('Verify visibility Notes in footer')
 def test_notes_in_footer_is_visible():
     page = MainPage(browser=browser)
     page.open_page()
     page.scrol_to_footer()
     page.move_to_element()
-    page.is_visible_Notes()
+    page.is_visible_notes()
 
 
+@allure.feature('Footer > Notes')
+@allure.link('https://trello.com/c/jPZfHFpe')
+@allure.title('Verify clickability Notes in footer')
 def test_notes_in_footer_is_clickable():
     page = MainPage(browser=browser)
     page.open_page()
     page.scrol_to_footer()
     page.move_to_element()
-    page.is_clicable_Notes()
+    page.is_clicable_notes()
 
 
+@allure.feature('Footer > Notes')
+@allure.link('https://trello.com/c/LlzHLtqd')
 @allure.title("Verify redirect from Notes to Software Testing Board")
 def test_redirect_to_contact_form_from_notes():
     page = MainPage(browser=browser)
     page.open_page()
     original_window = browser.driver.current_window_handle
-    page.click_Notes()
+    page.click_notes()
     for window_handle in browser.driver.window_handles:
         if window_handle != original_window:
             browser.driver.switch_to.window(window_handle)

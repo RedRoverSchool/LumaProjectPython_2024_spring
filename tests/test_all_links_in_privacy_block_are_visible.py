@@ -11,7 +11,7 @@ text = ["Luma Security", "Luma Privacy Policy", "The Information We Collect",
         "List of cookies we collect", "Online Account Registration", "Emails", "Acceptance", "Questions for Luma?"]
 
 
-@allure.feature("Privacy and Cookie Policy > Main Content >")
+@allure.feature("Privacy and Cookie Policy > Main Content")
 @allure.title('All links in the block on the left are visible')
 @allure.link('https://trello.com/c/sRAofRDe')
 def test_all_links_in_privacy_left_block_are_visible():

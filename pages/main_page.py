@@ -7,6 +7,7 @@ from pages import cart
 from pages.components import mini_card
 from pages.components import nav
 from pages.locators import FooterLocators
+from pages import privacy_policy_page
 
 main_page_link = 'https://magento.softwaretestingboard.com/'
 create_an_account = "(//a[.='Create an Account'])[1]"
@@ -19,6 +20,7 @@ notes_link = s('//footer//a[contains(text(), "Notes")]')
 item_size = s('[option-label="XS"]')
 color_item = s('[option-label="Orange"]')
 btn_add_to_cart = s('form[data-product-sku="WS12"] button')
+privacy_cookie_policy_link = s("//a[contains(@href, 'privacy-policy-cookie')]")
 
 
 class MainPage:
@@ -117,12 +119,6 @@ class MainPage:
     def open_page(self):
         self.visit(main_page_link)
 
-    def scroll_to_privacy_cookie_policy_link(self):
-        self.browser.driver.execute_script("arguments[0].scrollIntoView(true);", self.privacy_cookie_policy_link())
-
-    def click_privacy_cookie_policy_link(self):
-        self.privacy_cookie_policy_link.click()
-
     @staticmethod
     def menu_should_be_present():
         s('#ui-id-2').should(be.present)
@@ -182,13 +178,13 @@ class MainPage:
     def move_to_element(self):
         s(FooterLocators.NOTES).hover()
 
-    def is_visible_Notes(self):
+    def is_visible_notes(self):
         s(FooterLocators.NOTES).should(be.visible)
 
-    def is_clicable_Notes(self):
+    def is_clicable_notes(self):
         s(FooterLocators.NOTES).should(be.clickable)
 
-    def click_Notes(self):
+    def click_notes(self):
         s(FooterLocators.NOTES).click()
 
     def magento_text_check(self, text):
@@ -206,3 +202,21 @@ def add_item_to_cart():
     item_size.click()
     color_item.click()
     btn_add_to_cart.click()
+
+
+def scroll_to_privacy_cookie_policy_link():
+    privacy_cookie_policy_link.perform(command.js.scroll_into_view)
+
+
+def link_name_is_visible(text):
+    privacy_cookie_policy_link.should(be.visible)
+    privacy_cookie_policy_link.should(have.text(text))
+
+
+def click_privacy_cookie_policy_link():
+    privacy_cookie_policy_link.click()
+
+
+def should_be_redirected_to(text):
+    privacy_policy_page.is_current_url()
+    privacy_policy_page.is_header_has_text(text)
