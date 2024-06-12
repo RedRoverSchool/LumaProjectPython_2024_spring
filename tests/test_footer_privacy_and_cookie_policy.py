@@ -8,7 +8,7 @@ from pages import main_page
 def test_visibility_privacy_and_cookie_policy_link():
     main_page.open_page()
     main_page.scroll_to_privacy_cookie_policy_link()
-    main_page.link_name_is_visible('Privacy & Cookie Policy')
+    main_page.link_name_is_visible('Privacy and Cookie Policy')
 
 
 @allure.feature("Footer > Privacy and Cookie Policy > Redirect, Clickability, Visibility")
