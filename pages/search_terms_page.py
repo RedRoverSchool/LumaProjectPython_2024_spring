@@ -1,3 +1,5 @@
+import time
+
 from selene import query, have, browser, be
 from selene.support.shared.jquery_style import s, ss
 
