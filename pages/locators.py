@@ -58,11 +58,11 @@ class HomeLocators:
 
 
 class NavigatorLocators:
-    NAV_WOMEN = '#ui-id-4'
+    nav_women = '#ui-id-4'
     NAV_MEN = '#ui-id-5'
     NAV_GEAR = '#ui-id-6'
     NAV_TRAINING = '#ui-id-7'
-    NAV_SALE = '#ui-id-8'
+    nav_sale = '#ui-id-8'
     NAV_MEN_TOPS = '#ui-id-17'
     NAV_MEN_BOTTOMS = '#ui-id-18'
     NAV_MEN_TOPS_JACKET = '#ui-id-19'

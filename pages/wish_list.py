@@ -18,9 +18,9 @@ user_password = s("div.login-container #pass")
 sign_in_button = s("div.login-container #send2")
 
 ITEM_1_ADD_TO_WISH_LIST = 'ol > li:nth-child(1) a.action.towishlist'
-ITEM_6_ADD_TO_WISH_LIST = 'ol > li:nth-child(6) a.action.towishlist'
-ITEM_8_ADD_TO_WISH_LIST = 'ol > li:nth-child(8) a.action.towishlist'
-ITEM_9_ADD_TO_WISH_LIST = 'ol > li:nth-child(9) a.action.towishlist'
+item_6_add_to_wish_list = 'ol > li:nth-child(6) a.action.towishlist'
+item_8_add_to_wish_list = 'ol > li:nth-child(8) a.action.towishlist'
+item_9_add_to_wish_list = 'ol > li:nth-child(9) a.action.towishlist'
 LINK_SALE = "https://magento.softwaretestingboard.com/sale.html"
 delete_bucket = '.btn-remove.action.delete'
 

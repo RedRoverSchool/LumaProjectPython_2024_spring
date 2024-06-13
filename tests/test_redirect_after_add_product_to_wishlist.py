@@ -3,9 +3,9 @@ import allure
 from pages import whats_new
 
 
+@allure.feature("What's new")
 @allure.link('https://trello.com/c/jgLmzBZX')
-@allure.suite("US_006.004 | What's new > Eco Collection New")
-@allure.feature("TC_006.004.005 | What's new > Eco Collection New")
+@allure.feature("Eco Collection New")
 def test_add_product_to_wishlist_as_non_logged_in_user():
     with allure.step("Assert current url == What's New Page url"):
         whats_new.open_page()

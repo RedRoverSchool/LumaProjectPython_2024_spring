@@ -117,7 +117,7 @@ def test_each_image_includes_short_description_of_the_promotion():
 def test_011_001_004_user_can_see_sale_page(url):
     browser.open(url)
     MainPage.handle_cookies_popup()
-    s(NavigatorLocators.NAV_SALE).should(be.visible)
+    s(NavigatorLocators.nav_sale).should(be.visible)
 
 
 @allure.feature('Sale > Block “Men’s Deals”')

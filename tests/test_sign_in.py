@@ -1,19 +1,19 @@
 import allure
-import pytest
-
 from pages import sign_in, my_account, message
 
 
+@allure.feature("Sign in & Registration, Account > Sign in_(authorization)")
+@allure.title('Successful sign-in & redirection')
 @allure.link("https://trello.com/c/V3vp6nIt")
-@allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
 def test_sign_in_with_good_credentials():
     sign_in.visit()
     sign_in.login("pamela341714226113@example.com", "@8j%Yltt(E")
     my_account.should_be_page_title("My Account")
 
 
+@allure.feature("Sign in & Registration, Account > Sign in_(authorization)")
 @allure.link("https://trello.com/c/L5xi1X8i")
-@allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
+@allure.title('Sign-in error handling & redirection')
 def test_sign_in_with_bad_credentials():
     sign_in.visit()
     sign_in.login("jasonbrown1714146903@example.net", "wrong_password")
@@ -21,9 +21,10 @@ def test_sign_in_with_bad_credentials():
 
 
 # @pytest.mark.skip
+@allure.feature("Sign in & Registration, Account > Sign in_(authorization)")
 @allure.link("https://trello.com/c/FxDGeQYY")
-@allure.feature("Sign in & Registration, Account >Sign in_(authorization)")
-def test_004_005_001_login_unsuccessful():
+@allure.title('Login without password')
+def test_login_unsuccessful():
     sign_in.visit()
     sign_in.login("ahahah1@gmail.com", "")
     sign_in.message_unsuccessful("This is a required field.")

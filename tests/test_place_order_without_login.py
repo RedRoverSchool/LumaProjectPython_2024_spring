@@ -3,8 +3,10 @@ import allure
 from pages import shipping_page
 
 
+@allure.feature('Sign in & Registration, Account > Anonym User')
+@allure.title('Checkout from mini-cart')
 @allure.link("https://trello.com/c/6IIncPjn")
-def test_004_001_002_guest_user_checkout_from_minicart():
+def test_guest_user_checkout_from_minicart():
     shipping_page.visit()
     # choose item
     shipping_page.choose_size_for_tank()
@@ -33,4 +35,3 @@ def test_004_001_002_guest_user_checkout_from_minicart():
     shipping_page.click_button_place_order()
     shipping_page.check_message_about_oder_nr()
     shipping_page.check_success_message()
-

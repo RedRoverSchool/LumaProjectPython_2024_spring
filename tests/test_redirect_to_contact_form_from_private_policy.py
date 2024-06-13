@@ -1,16 +1,11 @@
 import allure
-from selene import browser, by, be, have, support
-from selene.support.shared.jquery_style import s
 
-base_url = "https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode"
-contact_us_url = "https://magento.softwaretestingboard.com/contact/"
+from pages import privacy_policy_page
 
 
+@allure.feature('Privacy and Cookie Policy > Contact us link')
 @allure.title("Verify redirect from Privacy Policy to Contact Us link")
+@allure.link('https://trello.com/c/JMia3A7B')
 def test_redirect_to_contact_form_from_private_policy():
-    browser.open(base_url)
-    s(by.link_text("Questions for Luma?")).click()
-    s(by.link_text("Contact Us")).click()
-    browser.should(have.url(contact_us_url))
-    s(by.css("span[class='base']")).should(have.text("Whoops, our bad..."))
-
+    privacy_policy_page.open_page()
+    privacy_policy_page.should_be_open_contact_us_page()

@@ -3,7 +3,7 @@ from selene.support.shared.jquery_style import s
 
 base_url = 'https://magento.softwaretestingboard.com'
 privacy_policy_page_link = base_url + '/privacy-policy-cookie-restriction-mode'
-
+contact_us_url = "https://magento.softwaretestingboard.com/contact/"
 page_main_header_locator = "span[data-ui-id='page-title-wrapper']"
 contact_us_link = s("a[href$='/contact/']")
 title_page = s('.base')
@@ -46,3 +46,10 @@ def click_to_contact_us_link():
 def check_redirect_to_contact_us_page(text):
     browser.wait_until(have.url_containing('contact-us'))
     title_page.should(have.text(text))
+
+
+def should_be_open_contact_us_page():
+    s(by.link_text("Questions for Luma?")).click()
+    s(by.link_text("Contact Us")).click()
+    browser.should(have.url(contact_us_url))
+    title_page.should(have.text("Whoops, our bad..."))

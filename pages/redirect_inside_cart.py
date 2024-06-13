@@ -1,5 +1,5 @@
-import allure
-from selene import browser, be, have, support
+from selene import browser, be
+from selene.support.conditions import have
 from selene.support.shared.jquery_style import s
 
 base_url = "https://magento.softwaretestingboard.com/"
@@ -9,9 +9,8 @@ COLOR_BTN = ("xpath", "//*[@id='option-label-color-93-item-59']")
 ADD_TO_CATT_BTN = ("xpath", "//*[@id='product-addtocart-button']/span")
 CART_ICON = ("//*[@class='action showcart']")
 VIEW_AND_EDIT_CART_BLUE_TEXT = ("xpath", "//*[@id='minicart-content-wrapper']/div[2]/div[5]/div/a/span")
-a = '//*[@class="action showcart"]'
-
-LINK_CHECKOUT = "https://magento.softwaretestingboard.com/checkout/cart/"
+showcart = s('//*[@class="action showcart"]')
+link_checkout = "https://magento.softwaretestingboard.com/checkout/cart/"
 
 
 def open_main_page():
@@ -51,5 +50,8 @@ def assert_view_and_edit_cart_blue_text_visibility():
 
 
 def move_to_cart():
-    s(a).hover()
+    showcart.hover()
 
+
+def should_be_have_current_url():
+    browser.should(have.url(link_checkout))

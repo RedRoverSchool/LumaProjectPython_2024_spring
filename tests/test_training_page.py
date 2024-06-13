@@ -3,6 +3,7 @@ from pages import training_page
 
 
 @allure.feature("Training page")
+@allure.link('https://trello.com/c/sQZTeeBf')
 @allure.title('Verify clickability and visibility of the "Video Download" link')
 def test_verify_clickability_visibility_video_download_link():
     training_page.open()
@@ -11,6 +12,7 @@ def test_verify_clickability_visibility_video_download_link():
 
 
 @allure.feature("Training page")
+@allure.link('https://trello.com/c/UBj6f2Xa')
 @allure.title("Category Video Download>Check the redirection to the Video Download page.")
 def test_check_the_redirection_to_the_video_download_page():
     training_page.open()
@@ -19,6 +21,7 @@ def test_check_the_redirection_to_the_video_download_page():
 
 
 @allure.feature("Training page")
+@allure.link('https://trello.com/c/GvCkcdic')
 @allure.title('Block-promo training-main>Verify visibility "Block 1"')
 def test_verify_visibility_block_1():
     training_page.open()
@@ -26,6 +29,7 @@ def test_verify_visibility_block_1():
 
 
 @allure.feature("Training page")
+@allure.link('https://trello.com/c/V9sTn1i3')
 @allure.title('Block-promo training-main>Verify Block1 consists text')
 def test_verify_block1_consists_text():
     training_page.open()
@@ -34,6 +38,7 @@ def test_verify_block1_consists_text():
 
 
 @allure.feature("Training page")
+@allure.link('https://trello.com/c/EUB3f5Ma')
 @allure.title('Block-promo training-main>Verify Block1 dimensions')
 def test_verify_block1_consists_text():
     training_page.open()
@@ -41,6 +46,7 @@ def test_verify_block1_consists_text():
 
 
 @allure.feature("Training page")
+@allure.link('https://trello.com/c/JgK1dTWX')
 @allure.title('Block-promo training-main>Verify the picture format')
 def test_verify_the_picture_format():
     training_page.open()

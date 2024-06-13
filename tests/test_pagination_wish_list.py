@@ -1,6 +1,7 @@
 from pages import limiter_item
 import allure
 
+
 @allure.link('https://trello.com/c/4pi1wsxr')
 @allure.feature('Pagination')
 @allure.title('Verify the function of pagination')
