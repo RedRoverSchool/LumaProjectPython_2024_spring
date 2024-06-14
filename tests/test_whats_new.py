@@ -29,7 +29,7 @@ def test_redirection_to_whats_new_page():
     whats_new.element_should_have_correct_text(header, "What's New")
 
 
-@pytest.mark.xfail('Only 4 men’s displayed in the list')
+@pytest.mark.xfail(reason='Only 4 mens displayed in the list')
 @allure.feature('Whats new page')
 @allure.link("https://trello.com/c/bCZOe2Tp")
 @allure.title("Check Luma`s latest list visibility")
