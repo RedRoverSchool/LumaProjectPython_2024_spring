@@ -8,7 +8,7 @@ from pages.main_page import MainPage
 @allure.feature("Sale > 20% OFF:")
 @allure.link('https://trello.com/c/9c2BadPx')
 @allure.title("Purchase of goods with a 20% discount")
-def test_sale_off_purchase_of_goods_with_discount(self):
+def test_sale_off_purchase_of_goods_with_discount():
     with allure.step("Open main page and check if load successfully"):
         page = MainPage(browser=browser)
         page.open_page()
