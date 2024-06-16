@@ -8,6 +8,7 @@ link_tees_women = "https://magento.softwaretestingboard.com/women/tops-women/tee
 base_url = 'https://magento.softwaretestingboard.com'
 link_top_women = base_url + '/women/tops-women.html'
 bottoms_women_page_link = base_url + '/women/bottoms-women.html'
+tops_women_page_link = base_url + '/women/tops-women.html'
 
 add_to_compare_icon = s("(//a[@title='Add to Compare'])[1]")
 bottoms_link = s("//*[@id='ui-id-10']")
@@ -162,3 +163,11 @@ def dropdown_menu_have_elements(first_elem, second_elem):
 
 def should_have_page_title(locator, title):
     s(locator).should(have.text(title))
+
+
+def visit_tops_women():
+    browser.open(link_top_women)
+
+
+def visit_bottoms_women():
+    browser.open(bottoms_women_page_link)

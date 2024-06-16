@@ -15,6 +15,6 @@ def test_redirect_to_men_page():
     main_page.open_page()
     main_page.handle_cookies_popup()
     s(NavigatorLocators.NAV_MEN).click()
-    s(BaseLocators.PAGE_TITLE).should(have.exact_text('Men'))
-    assert browser.driver.current_url == data.links.MEN_PAGE_URL, 'wrong URL'
+    s(BaseLocators.page_title).should(have.exact_text('Men'))
+    assert browser.driver.current_url == data.links.men_page_url, 'wrong URL'
     assert browser.driver.title == 'Men', 'Wrong title'

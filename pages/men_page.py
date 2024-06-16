@@ -5,10 +5,14 @@ from selenium.webdriver.support.color import Color
 
 from pages.components.nav import men_top_urls, men_bottoms_urls
 
+base_url = 'https://magento.softwaretestingboard.com'
+men_page_url = base_url + '/men.html'
+men_top_url = base_url + '/men/tops-men.html'
+men_bottoms_url = base_url + '/men/bottoms-men.html'
+
 nav_men = s('#ui-id-5')
 page_header = s("#page-title-heading")
 error_message = "Men's page did not load successfully"
-men_page_url = 'https://magento.softwaretestingboard.com/men.html'
 
 
 def get_current_url():
@@ -37,3 +41,11 @@ def verify_top_urls(name):
 
 def verify_bottoms_urls(name):
     assert get_current_url() == men_bottoms_urls[name]
+
+
+def visit_men_top_page():
+    browser.open(men_top_url)
+
+
+def visit_bottoms_page():
+    browser.open(men_bottoms_url)

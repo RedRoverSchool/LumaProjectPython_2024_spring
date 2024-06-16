@@ -1,7 +1,7 @@
 from selene import browser, by, be, have
 from selene.support.shared.jquery_style import s
 from pages.locators import FooterLocators
-from data.links import BASE_URL
+from data.links import base_url
 from selene import command
 
 
@@ -11,7 +11,7 @@ class Footer:
         self.browser = browser
 
     def open_base_page(self):
-        self.browser.open(BASE_URL)
+        self.browser.open(base_url)
 
     def scrol_to_footer(self):
         s(FooterLocators.NOTES).perform(command.js.scroll_into_view)

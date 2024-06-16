@@ -22,6 +22,8 @@ color_item = s('[option-label="Orange"]')
 btn_add_to_cart = s('form[data-product-sku="WS12"] button')
 privacy_cookie_policy_link = s("//a[contains(@href, 'privacy-policy-cookie')]")
 sign_in_link = s('(//li[@class="authorization-link"])[1]')
+page_title = s("h1")
+footer_links = ss('//footer[@class="page-footer"]//li')
 
 
 class MainPage:
@@ -229,3 +231,7 @@ def click_on_create_account_link():
 
 def click_on_sign_in_link():
     sign_in_link.should(be.visible).click()
+
+
+def check_header(header):
+    return page_title.should(have.text(header))

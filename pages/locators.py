@@ -86,7 +86,7 @@ class SideBarLocators:
 class BaseLocators:
     SUCCESS_MESSAGE = '.message-success.success.message'
     PAGE_NAME = ".base"
-    PAGE_TITLE = "h1"
+    page_title = "h1"
     BREADCRUMBS_LINKS = '.breadcrumbs > ul  > li > a'
     BREADCRUMBS = ".breadcrumbs > ul"
     PRODUCT_ITEM_IN_CATALOG = '.product-item-info'
@@ -159,7 +159,7 @@ class LoginLocators:
 
 
 class FooterLocators:
-    FOOTER_LINKS = ('xpath', '//footer[@class="page-footer"]//li')
+    footer_links = ('xpath', '//footer[@class="page-footer"]//li')
     LINK_SEARCH_TERMS = 'footer > div > ul > li:nth-child(1)'
     NOTES = "//*[contains(text() ,'Notes')]"
     MAGENTO = 'h1.alignwide'

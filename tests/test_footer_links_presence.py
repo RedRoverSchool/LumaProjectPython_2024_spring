@@ -1,90 +1,74 @@
 import allure
-import data.links
-from selene import browser
-from selene.support.conditions import have
-from selene.support.shared.jquery_style import s, ss
-from pages.components.nav import men_sub_urls
-from pages.locators import FooterLocators, BaseLocators
+
+from pages import main_page, whats_new, women_page, men_page, gear_page, training_page, sale, footer
+
+base_url = 'https://magento.softwaretestingboard.com/'
+gear_page_url = base_url + 'gear.html'
+gear_bags_url = base_url + 'gear/bags.html'
+gear_fitness_url = base_url + 'gear/fitness-equipment.html'
+gear_watches_url = base_url + 'gear/watches.html'
 
 
 @allure.feature('Footer > Visibility, Clickability, Redirect')
 @allure.title('Verifying a footer links from all of the site pages')
 @allure.link('https://trello.com/c/PMzBgZUn')
 def test_verify_footer_links():
-    def visit(url):
-        return browser.open(url)
+    main_page.open_page()
+    main_page.check_header("Home Page")
+    footer.check_links_texts()
 
-    def check_header(header):
-        return s(BaseLocators.PAGE_TITLE).should(have.text(header))
+    whats_new.open_page()
+    main_page.check_header("What's New")
+    footer.check_links_texts()
 
-    def check_links_texts():
-        ss(FooterLocators.FOOTER_LINKS).should(have.exact_texts(
-            "Notes ",
-            "Practice API Testing using Magento 2",
-            "Write for us",
-            "Subscribe",
-            "Search Terms",
-            "Privacy and Cookie Policy",
-            "Advanced Search",
-            "Orders and Returns"
-        ))
+    women_page.visit()
+    main_page.check_header("Women")
+    footer.check_links_texts()
 
-    visit(data.links.BASE_URL)
-    check_header("Home Page")
-    check_links_texts()
+    women_page.visit_tops_women()
+    main_page.check_header("Tops")
+    footer.check_links_texts()
 
-    visit(data.links.WHATS_NEW_PAGE_LINK)
-    check_header("What's New")
-    check_links_texts()
+    women_page.visit_bottoms_women()
+    main_page.check_header("Bottoms")
+    footer.check_links_texts()
 
-    visit(data.links.WOMEN_PAGE_LINK)
-    check_header("Women")
-    check_links_texts()
+    men_page.open_page()
+    main_page.check_header("Men")
+    footer.check_links_texts()
 
-    visit(data.links.TOPS_WOMEN_PAGE_LINK)
-    check_header("Tops")
-    check_links_texts()
+    men_page.visit_men_top_page()
+    main_page.check_header("Tops")
+    footer.check_links_texts()
 
-    visit(data.links.BOTTOMS_WOMEN_PAGE_LINK)
-    check_header("Bottoms")
-    check_links_texts()
+    men_page.visit_bottoms_page()
+    main_page.check_header("Bottoms")
+    footer.check_links_texts()
 
-    visit(data.links.MEN_PAGE_URL)
-    check_header("Men")
-    check_links_texts()
+    gear_page.open_page()
+    main_page.check_header("Gear")
+    footer.check_links_texts()
 
-    visit(men_sub_urls['Tops'])
-    check_header("Tops")
-    check_links_texts()
+    gear_page.open_gear_bags_page()
+    main_page.check_header("Bags")
+    footer.check_links_texts()
 
-    visit(men_sub_urls['Bottoms'])
-    check_header("Bottoms")
-    check_links_texts()
+    gear_page.visit(gear_fitness_url)
+    main_page.check_header("Fitness Equipment")
+    footer.check_links_texts()
 
-    visit(data.links.GEAR_PAGE_URL)
-    check_header("Gear")
-    check_links_texts()
+    gear_page.visit(gear_watches_url)
+    main_page.check_header("Watches")
+    footer.check_links_texts()
 
-    visit(data.links.GEAR_BAGS_URL)
-    check_header("Bags")
-    check_links_texts()
+    training_page.open()
+    main_page.check_header("Training")
+    footer.check_links_texts()
 
-    visit(data.links.GEAR_FITNESS_URL)
-    check_header("Fitness Equipment")
-    check_links_texts()
+    training_page.visit_download_page()
+    main_page.check_header("Video Download")
+    footer.check_links_texts()
 
-    visit(data.links.GEAR_WATCHES_URL)
-    check_header("Watches")
-    check_links_texts()
-
-    visit(data.links.TRAINING_URL)
-    check_header("Training")
-    check_links_texts()
-
-    visit(data.links.VIDEO_DOWNLOAD_URL)
-    check_header("Video Download")
-    check_links_texts()
-
-    visit(data.links.SALE_PAGE_URL)
-    check_header("Sale")
-    check_links_texts()
+    sale.open_page()
+    main_page.check_header("Sale")
+    footer.check_links_texts()
